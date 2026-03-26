@@ -7,7 +7,7 @@
         </h1>
         <div class="mt-4 w-full max-w-[400px] sm:max-w-[460px] md:mt-6 md:max-w-[520px]">
           <DotLottieVue
-            src="/Animation - 1698647540467.lottie"
+            src="/Office Re-Color.lottie"
             class="h-auto w-full object-contain object-left"
             autoplay
             loop
