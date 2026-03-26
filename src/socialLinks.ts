@@ -1,9 +1,9 @@
-export const parseLedgerSiteUrl = 'https://parseledger.ae'
+export const parseLedgerSiteUrl = 'https://parse-ledger.ae'
 
 export const socialLinks = [
   {
     network: 'youtube' as const,
-    href: 'https://www.youtube.com/@ParseLedger',
+    href: 'https://www.youtube.com/@parseledger',
     label: 'ParseLedger на YouTube',
     name: 'YouTube',
   },

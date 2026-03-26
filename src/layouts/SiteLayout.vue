@@ -12,18 +12,22 @@ type NavLink =
 
 const navLinks: NavLink[] = [
   { label: 'Главная', to: { name: 'home' } },
-  { label: 'ParseLedger', to: { name: 'parseledger' } },
+  { label: 'Parse-Ledger', to: { name: 'Parse-Ledger' } },
   { label: 'Контакты', to: { name: 'contact' } },
 ]
 
 const serviceLinks: { label: string; to: RouteLocationRaw }[] = [
   { label: 'FirstBit / 1С', to: { name: 'service-details', params: { slug: 'firstbit' } } },
+  { label: 'Битрикс24', to: { name: 'service-details', params: { slug: 'bitrix24' } } },
   { label: 'Внедрение и восстановление', to: { name: 'service-details', params: { slug: 'accounting-systems' } } },
   { label: 'Настройка учета', to: { name: 'service-details', params: { slug: 'accounting-setup' } } },
   { label: 'Сопровождение и обучение', to: { name: 'service-details', params: { slug: 'training' } } },
 ]
 
 const headerContactEmail = 'info@parseconsult.ae'
+const headerWhatsappNumber = '+971000000000'
+const headerWhatsappHref = `https://wa.me/${headerWhatsappNumber.replace(/\D/g, '')}`
+const headerTelegramHref = 'https://t.me/parseconsult'
 const isServicesMenuOpen = ref(false)
 const isMobileMenuOpen = ref(false)
 const isHeaderHidden = ref(false)
@@ -122,10 +126,13 @@ onBeforeUnmount(() => {
             </div>
 
             <RouterLink
-              :to="{ name: 'parseledger' }"
-              class="whitespace-nowrap text-sm font-medium text-slate-600 transition hover:text-brand-dark"
+              :to="{ name: 'Parse-Ledger' }"
+              class="group relative inline-flex items-center whitespace-nowrap rounded-full border border-brand/60 bg-brand px-3 py-1.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark hover:text-slate-900"
             >
-              ParseLedger
+              <span class="absolute -right-1 -top-2 rounded-full bg-red-500 px-1.5 py-0.5 text-[9px] font-semibold uppercase leading-none tracking-wide text-white">
+                beta
+              </span>
+              Parse-Ledger
             </RouterLink>
             <RouterLink
               :to="{ name: 'contact' }"
@@ -135,13 +142,42 @@ onBeforeUnmount(() => {
             </RouterLink>
           </nav>
 
-          <a
-            :href="`mailto:${headerContactEmail}`"
-            class="ml-2 hidden max-w-[11rem] items-center gap-2 truncate border-l border-slate-200 pl-4 text-sm font-medium text-slate-600 transition hover:text-brand-dark xl:inline-flex xl:ml-4 xl:max-w-none xl:pl-5"
-          >
-            <span aria-hidden="true">✉</span>
-            {{ headerContactEmail }}
-          </a>
+          <div class="hidden items-center gap-1 lg:flex xl:gap-1.5">
+            <span class="h-6 w-px bg-slate-200" aria-hidden="true"></span>
+            <a
+              :href="`mailto:${headerContactEmail}`"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-violet-600 transition hover:bg-violet-50 hover:text-violet-700"
+              aria-label="Написать на email"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+                <path d="M1.5 6.75A2.25 2.25 0 013.75 4.5h16.5a2.25 2.25 0 012.25 2.25v10.5a2.25 2.25 0 01-2.25 2.25H3.75a2.25 2.25 0 01-2.25-2.25V6.75zm2.76-.75L12 11.01 19.74 6H4.26zm16.74 1.37l-8.59 5.56a.75.75 0 01-.82 0L3 7.37v9.88c0 .41.34.75.75.75h16.5c.41 0 .75-.34.75-.75V7.37z" />
+              </svg>
+            </a>
+            <a
+              :href="headerTelegramHref"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-blue-600 transition hover:bg-blue-50 hover:text-blue-700"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Написать в Telegram"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+                <path d="M21.49 4.52a1.5 1.5 0 00-1.63-.2L3.16 12.03a1.5 1.5 0 00.13 2.75l3.84 1.4 1.44 4.64a1.5 1.5 0 002.63.51l2.18-2.65 3.59 2.62a1.5 1.5 0 002.35-.9L22 6.05a1.5 1.5 0 00-.51-1.53zm-3.15 3.34l-8 7.76-.69 2.08-.88-2.85a1.5 1.5 0 00-.92-.94l-2.28-.83 12.77-5.95zm-6.78 8.87l5.62-5.45-4.67 5.68-.95-.23z" />
+              </svg>
+            </a>
+            <a
+              :href="headerWhatsappHref"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-emerald-600 transition hover:bg-emerald-50 hover:text-emerald-700"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Написать в WhatsApp"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+                <path
+                  d="M19.05 4.91A9.82 9.82 0 0012.03 2C6.56 2 2.1 6.46 2.1 11.93c0 1.75.46 3.45 1.33 4.95L2 22l5.27-1.38a9.9 9.9 0 004.76 1.22h.01c5.47 0 9.93-4.46 9.93-9.93a9.8 9.8 0 00-2.92-7zm-7.02 15.25h-.01a8.23 8.23 0 01-4.2-1.15l-.3-.17-3.13.82.84-3.05-.2-.31a8.24 8.24 0 01-1.27-4.37c0-4.56 3.71-8.27 8.28-8.27a8.2 8.2 0 015.85 2.43 8.2 8.2 0 012.42 5.84c0 4.56-3.71 8.26-8.28 8.26zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2.01-1.24-.74-.66-1.25-1.47-1.4-1.72-.14-.25-.02-.38.11-.5.11-.1.25-.27.37-.4.12-.14.17-.23.25-.39.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.86-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.61c.12.17 1.77 2.69 4.28 3.78.6.26 1.08.41 1.45.53.61.19 1.16.16 1.6.1.49-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.1-.22-.16-.46-.27z"
+                />
+              </svg>
+            </a>
+          </div>
 
             <div
             class="flex shrink-0 items-center rounded-full border border-slate-200/90 bg-white/80 p-0.5 shadow-sm"
@@ -187,10 +223,13 @@ onBeforeUnmount(() => {
               Главная
             </RouterLink>
             <RouterLink
-              :to="{ name: 'parseledger' }"
-              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-brand-dark"
+              :to="{ name: 'Parse-Ledger' }"
+              class="relative mt-2 inline-flex w-fit items-center rounded-full border border-brand/60 bg-brand px-3 py-1.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark hover:text-slate-900"
             >
-              ParseLedger
+              <span class="absolute -right-1 -top-2 rounded-full bg-red-500 px-1.5 py-0.5 text-[9px] font-semibold uppercase leading-none tracking-wide text-white">
+                beta
+              </span>
+              <span>Parse-Ledger</span>
             </RouterLink>
             <RouterLink
               :to="{ name: 'contact' }"
@@ -211,9 +250,38 @@ onBeforeUnmount(() => {
             </div>
             <a
               :href="`mailto:${headerContactEmail}`"
-              class="mt-1 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-brand-dark"
+              class="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-lg text-violet-600 transition hover:bg-violet-50 hover:text-violet-700"
+              aria-label="Написать на email"
             >
-              {{ headerContactEmail }}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+                <path d="M1.5 6.75A2.25 2.25 0 013.75 4.5h16.5a2.25 2.25 0 012.25 2.25v10.5a2.25 2.25 0 01-2.25 2.25H3.75a2.25 2.25 0 01-2.25-2.25V6.75zm2.76-.75L12 11.01 19.74 6H4.26zm16.74 1.37l-8.59 5.56a.75.75 0 01-.82 0L3 7.37v9.88c0 .41.34.75.75.75h16.5c.41 0 .75-.34.75-.75V7.37z" />
+              </svg>
+            </a>
+            <a
+              :href="headerTelegramHref"
+              class="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-lg text-blue-600 transition hover:bg-blue-50 hover:text-blue-700"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Написать в Telegram"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+                <path
+                  d="M21.49 4.52a1.5 1.5 0 00-1.63-.2L3.16 12.03a1.5 1.5 0 00.13 2.75l3.84 1.4 1.44 4.64a1.5 1.5 0 002.63.51l2.18-2.65 3.59 2.62a1.5 1.5 0 002.35-.9L22 6.05a1.5 1.5 0 00-.51-1.53zm-3.15 3.34l-8 7.76-.69 2.08-.88-2.85a1.5 1.5 0 00-.92-.94l-2.28-.83 12.77-5.95zm-6.78 8.87l5.62-5.45-4.67 5.68-.95-.23z"
+                />
+              </svg>
+            </a>
+            <a
+              :href="headerWhatsappHref"
+              class="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-lg text-emerald-600 transition hover:bg-emerald-50 hover:text-emerald-700"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Написать в WhatsApp"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+                <path
+                  d="M19.05 4.91A9.82 9.82 0 0012.03 2C6.56 2 2.1 6.46 2.1 11.93c0 1.75.46 3.45 1.33 4.95L2 22l5.27-1.38a9.9 9.9 0 004.76 1.22h.01c5.47 0 9.93-4.46 9.93-9.93a9.8 9.8 0 00-2.92-7zm-7.02 15.25h-.01a8.23 8.23 0 01-4.2-1.15l-.3-.17-3.13.82.84-3.05-.2-.31a8.24 8.24 0 01-1.27-4.37c0-4.56 3.71-8.27 8.28-8.27a8.2 8.2 0 015.85 2.43 8.2 8.2 0 012.42 5.84c0 4.56-3.71 8.26-8.28 8.26zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2.01-1.24-.74-.66-1.25-1.47-1.4-1.72-.14-.25-.02-.38.11-.5.11-.1.25-.27.37-.4.12-.14.17-.23.25-.39.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.86-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.61c.12.17 1.77 2.69 4.28 3.78.6.26 1.08.41 1.45.53.61.19 1.16.16 1.6.1.49-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.1-.22-.16-.46-.27z"
+                />
+              </svg>
             </a>
             <RouterLink
               :to="{ name: 'contact' }"

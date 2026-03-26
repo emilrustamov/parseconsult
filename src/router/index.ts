@@ -19,8 +19,8 @@ const router = createRouter({
           component: () => import('@/views/ContactPage.vue'),
         },
         {
-          path: 'parseledger',
-          name: 'parseledger',
+          path: 'Parse-Ledger',
+          name: 'Parse-Ledger',
           component: () => import('@/views/ParseLedgerPage.vue'),
         },
         {
