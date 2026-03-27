@@ -12,7 +12,7 @@ type NavLink =
 
 const navLinks: NavLink[] = [
   { label: 'Главная', to: { name: 'home' } },
-  { label: 'Parse Ledger', to: { name: 'Parse-Ledger' } },
+  { label: 'Parse Ledger', to: { name: 'parse-ledger' } },
   { label: 'Контакты', to: { name: 'contact' } },
 ]
 
@@ -126,13 +126,18 @@ onBeforeUnmount(() => {
             </div>
 
             <RouterLink
-              :to="{ name: 'Parse-Ledger' }"
-              class="group relative inline-flex items-center whitespace-nowrap rounded-full border border-brand/60 bg-brand px-3 py-1.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark hover:text-slate-900"
+              :to="{ name: 'parse-ledger' }"
+              class="group relative inline-flex items-center whitespace-nowrap"
             >
-              <span class="absolute -right-1 -top-2 rounded-full bg-red-500 px-1.5 py-0.5 text-[9px] font-semibold uppercase leading-none tracking-wide text-white">
+              <span
+                class="pointer-events-none absolute -right-1 -top-2 z-10 rounded-full bg-red-500 px-1.5 py-0.5 text-[9px] font-semibold uppercase leading-none tracking-wide text-white"
+                aria-hidden="true"
+              >
                 beta
               </span>
-              Parse Ledger
+              <span class="nav-parse-ledger-shine relative inline-flex items-center overflow-hidden rounded-full border border-brand/60 bg-brand px-3 py-1.5 text-sm font-semibold text-slate-900 transition group-hover:bg-brand-dark group-hover:text-slate-900">
+                <span class="relative z-[1]">Parse Ledger</span>
+              </span>
             </RouterLink>
             <RouterLink
               :to="{ name: 'contact' }"
@@ -224,13 +229,18 @@ onBeforeUnmount(() => {
                 Главная
               </RouterLink>
               <RouterLink
-                :to="{ name: 'Parse-Ledger' }"
-                class="relative mt-2 inline-flex w-fit items-center rounded-full border border-brand/60 bg-brand px-3 py-1.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark hover:text-slate-900"
+                :to="{ name: 'parse-ledger' }"
+                class="relative mt-2 inline-flex w-fit items-center"
               >
-                <span class="absolute -right-1 -top-2 rounded-full bg-red-500 px-1.5 py-0.5 text-[9px] font-semibold uppercase leading-none tracking-wide text-white">
+                <span
+                  class="pointer-events-none absolute -right-1 -top-2 z-10 rounded-full bg-red-500 px-1.5 py-0.5 text-[9px] font-semibold uppercase leading-none tracking-wide text-white"
+                  aria-hidden="true"
+                >
                   beta
                 </span>
-                <span>Parse Ledger</span>
+                <span class="nav-parse-ledger-shine relative inline-flex items-center overflow-hidden rounded-full border border-brand/60 bg-brand px-3 py-1.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark hover:text-slate-900">
+                  <span class="relative z-[1]">Parse Ledger</span>
+                </span>
               </RouterLink>
               <RouterLink
                 :to="{ name: 'contact' }"
@@ -365,5 +375,39 @@ onBeforeUnmount(() => {
 .mobile-menu-leave-to {
   opacity: 0;
   transform: translateY(-8px);
+}
+
+.nav-parse-ledger-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2em;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateX(-4em) skewX(-45deg);
+  z-index: 0;
+  pointer-events: none;
+  animation: nav-parse-ledger-shine-loop 3.2s linear infinite;
+}
+
+@keyframes nav-parse-ledger-shine-loop {
+  0%,
+  52% {
+    transform: translateX(-4em) skewX(-45deg);
+  }
+  82% {
+    transform: translateX(10em) skewX(-45deg);
+  }
+  82.01%,
+  100% {
+    transform: translateX(-4em) skewX(-45deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-parse-ledger-shine::before {
+    animation: none;
+  }
 }
 </style>

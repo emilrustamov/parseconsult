@@ -19,13 +19,17 @@ const router = createRouter({
           component: () => import('@/views/ContactPage.vue'),
         },
         {
-          path: 'Parse-Ledger',
-          name: 'Parse-Ledger',
+          path: 'parse-ledger',
+          name: 'parse-ledger',
           component: () => import('@/views/ParseLedgerPage.vue'),
         },
         {
+          path: 'Parse-Ledger',
+          redirect: { name: 'parse-ledger' },
+        },
+        {
           path: 'services/parse-ledger',
-          redirect: { name: 'Parse-Ledger' },
+          redirect: { name: 'parse-ledger' },
         },
         {
           path: 'services/:slug',

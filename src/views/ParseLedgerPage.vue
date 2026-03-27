@@ -1,5 +1,5 @@
 <template>
-  <section id="Parse-Ledger" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pt-24">
+  <section id="parse-ledger" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pt-24">
     <div class="mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-12 lg:px-8 lg:py-10">
       <div class="max-w-3xl">
         <h1 class="mt-4 max-w-4xl text-3xl font-semibold leading-[1.05] tracking-tight text-slate-950 md:text-4xl lg:text-5xl">

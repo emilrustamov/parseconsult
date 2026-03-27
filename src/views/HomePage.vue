@@ -266,9 +266,17 @@ const keyServices = [
     id: 'parse-ledger',
     slug: 'parse-ledger',
     icon: '🧾',
-    title: 'Parse Ledger — автоматическая загрузка банковской выписки',
+    title: 'Parse Ledger — автоматическая загрузка банковской выписки в ОАЭ',
     description:
       'Настраиваем и внедряем Parse Ledger для прозрачного управленческого и бухгалтерского учета в ежедневной работе команды.',
+  },
+  {
+    id: 'firstbit',
+    slug: 'firstbit',
+    icon: '⚙️',
+    title: 'Экспертное внедрение и кастомизация 1C и FirstBit в ОАЭ',
+    description:
+      'Настраиваем систему под требования бизнеса в ОАЭ с учётом локального законодательства и специфики процессов.',
   },
   {
     id: 'bitrix24',
@@ -277,14 +285,6 @@ const keyServices = [
     title: 'Внедрение CRM Битрикс24',
     description:
       'Внедряем Битрикс24, настраиваем воронки, автоматизации и интеграции с учетом и внутренними бизнес-процессами.',
-  },
-  {
-    id: 'firstbit',
-    slug: 'firstbit',
-    icon: '⚙️',
-    title: 'Экспертное внедрение и кастомизация FirstBit в ОАЭ',
-    description:
-      'Настраиваем систему под требования бизнеса в ОАЭ с учётом локального законодательства и специфики процессов.',
   },
   {
     id: 'accounting-systems',
@@ -318,7 +318,7 @@ const heroServices = keyServices.map((item) => ({
   title: item.title,
   to: (
     item.slug === 'parse-ledger'
-      ? { name: 'Parse-Ledger' }
+      ? { name: 'parse-ledger' }
       : { name: 'service-details', params: { slug: item.slug } }
   ) as RouteLocationRaw,
 }))
@@ -327,7 +327,7 @@ const serviceCards = keyServices.map((service) => ({
   ...service,
   to: (
     service.slug === 'parse-ledger'
-      ? { name: 'Parse-Ledger' }
+      ? { name: 'parse-ledger' }
       : { name: 'service-details', params: { slug: service.slug } }
   ) as RouteLocationRaw,
 }))

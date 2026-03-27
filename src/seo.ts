@@ -22,7 +22,7 @@ const staticMetaByRouteName: Record<string, Omit<SeoMeta, 'path'>> = {
     title: 'Контакты Parse Consult',
     description: 'Свяжитесь с Parse Consult для консультации по внедрению бухгалтерских систем и автоматизации учета в ОАЭ.',
   },
-  'Parse-Ledger': {
+  'parse-ledger': {
     title: 'parseledger.ae',
     description: 'Parse Ledger преобразует банковские PDF и Excel выписки в структурированные данные для загрузки в бухгалтерские системы.',
   },
@@ -34,7 +34,7 @@ const staticMetaByRouteName: Record<string, Omit<SeoMeta, 'path'>> = {
 }
 
 const serviceDescriptionBySlug: Record<string, string> = {
-  firstbit: 'Экспертное внедрение и кастомизация 1С (First Bit) в ОАЭ: аудит, автоматизация процессов и методология IFRS.',
+  firstbit: 'Экспертное внедрение и кастомизация 1C и FirstBit в ОАЭ: аудит, автоматизация процессов и методология IFRS.',
   'accounting-systems': 'Внедрение, восстановление и оптимизация бухгалтерских систем с интеграцией банков и CRM для бизнеса в ОАЭ.',
   'accounting-setup': 'Настройка бухгалтерского учета под отраслевую специфику бизнеса в ОАЭ: от e-commerce до строительства и логистики.',
   training: 'Сопровождение и обучение персонала: регламенты, инструкции и практическая адаптация команды к новым процессам учета.',
