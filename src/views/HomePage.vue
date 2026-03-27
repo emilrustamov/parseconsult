@@ -1,6 +1,6 @@
 <template>
   <section id="hero" class="relative overflow-hidden scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pt-24">
-    <div v-reveal class="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-10 lg:px-8 lg:py-20 xl:gap-12">
+    <div v-reveal class="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-10 lg:px-8 lg:py-10 xl:gap-12">
       <div class="flex max-w-3xl flex-col lg:h-full lg:justify-between">
         <h1 class="relative z-10 max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 md:text-[2.55rem] lg:text-[2.7rem] xl:text-[3.2rem]">
           Учёт, внедрение и обучение в <span class="text-[#3ccd98]">ОАЭ</span>
@@ -44,7 +44,7 @@
     </div>
   </section>
 
-  <section id="platforms" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-24">
+  <section id="platforms" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div v-reveal class="max-w-4xl">
         <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
@@ -88,7 +88,7 @@
     </div>
   </section>
 
-  <section id="about" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-24">
+  <section id="about" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div v-reveal class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div class="lg:sticky lg:top-32">
@@ -128,7 +128,7 @@
     </div>
   </section>
 
-  <section id="services" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-24">
+  <section id="services" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div v-reveal class="max-w-4xl">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
@@ -201,7 +201,7 @@
     </div>
   </section>
 
-  <section id="home-lead" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-24">
+  <section id="home-lead" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div v-reveal class="mx-auto max-w-3xl text-center">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">Расскажите о ситуации в учёте</h2>
@@ -303,7 +303,7 @@ const keyServices = [
     icon: '🧾',
     title: 'Parse Ledger — автоматическая загрузка банковской выписки',
     description:
-      'Настраиваем и внедряем Parse-Ledger для прозрачного управленческого и бухгалтерского учета в ежедневной работе команды.',
+      'Настраиваем и внедряем Parse Ledger для прозрачного управленческого и бухгалтерского учета в ежедневной работе команды.',
   },
   {
     id: 'bitrix24',
@@ -351,12 +351,20 @@ const heroServices = keyServices.map((item) => ({
   id: item.id,
   icon: item.icon,
   title: item.title,
-  to: { name: 'service-details', params: { slug: item.slug } } as RouteLocationRaw,
+  to: (
+    item.slug === 'parse-ledger'
+      ? { name: 'Parse-Ledger' }
+      : { name: 'service-details', params: { slug: item.slug } }
+  ) as RouteLocationRaw,
 }))
 
 const serviceCards = keyServices.map((service) => ({
   ...service,
-  to: { name: 'service-details', params: { slug: service.slug } } as RouteLocationRaw,
+  to: (
+    service.slug === 'parse-ledger'
+      ? { name: 'Parse-Ledger' }
+      : { name: 'service-details', params: { slug: service.slug } }
+  ) as RouteLocationRaw,
 }))
 
 const faqItems = [

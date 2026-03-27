@@ -12,7 +12,7 @@ type NavLink =
 
 const navLinks: NavLink[] = [
   { label: 'Главная', to: { name: 'home' } },
-  { label: 'Parse-Ledger', to: { name: 'Parse-Ledger' } },
+  { label: 'Parse Ledger', to: { name: 'Parse-Ledger' } },
   { label: 'Контакты', to: { name: 'contact' } },
 ]
 
@@ -132,7 +132,7 @@ onBeforeUnmount(() => {
               <span class="absolute -right-1 -top-2 rounded-full bg-red-500 px-1.5 py-0.5 text-[9px] font-semibold uppercase leading-none tracking-wide text-white">
                 beta
               </span>
-              Parse-Ledger
+              Parse Ledger
             </RouterLink>
             <RouterLink
               :to="{ name: 'contact' }"
@@ -230,7 +230,7 @@ onBeforeUnmount(() => {
                 <span class="absolute -right-1 -top-2 rounded-full bg-red-500 px-1.5 py-0.5 text-[9px] font-semibold uppercase leading-none tracking-wide text-white">
                   beta
                 </span>
-                <span>Parse-Ledger</span>
+                <span>Parse Ledger</span>
               </RouterLink>
               <RouterLink
                 :to="{ name: 'contact' }"

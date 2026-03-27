@@ -1,9 +1,9 @@
 <template>
   <section id="Parse-Ledger" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pt-24">
-    <div class="mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-12 lg:px-8 lg:py-20">
+    <div class="mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-12 lg:px-8 lg:py-10">
       <div class="max-w-3xl">
-        <h1 class="mt-4 max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 md:text-5xl lg:text-6xl">
-          <span class="text-brand-dark">Parse-Ledger</span> — автоматическая загрузка банковской выписки
+        <h1 class="mt-4 max-w-4xl text-3xl font-semibold leading-[1.05] tracking-tight text-slate-950 md:text-4xl lg:text-5xl">
+          <span class="text-brand-dark">Parse Ledger</span> — автоматическая загрузка банковской выписки в ОАЭ
         </h1>
         <div class="relative mt-6 min-h-[260px] w-full lg:hidden">
           <DotLottieVue
@@ -13,15 +13,9 @@
             loop
           />
         </div>
-        <div class="mt-6 space-y-6 text-base leading-8 text-slate-600 md:text-lg">
-          <p>
-            Когда отсутствует прямая интеграция с банком, бухгалтерия возвращается к ручному вводу, таблицам и дополнительной операционной нагрузке.
-          </p>
-          <p>
-            Parse-Ledger принимает банковские выписки в формате PDF и Excel и превращает их в структурированные данные, готовые к загрузке в бухгалтерские системы.
-          </p>
-        </div>
-        <p class="mt-8 text-base font-medium leading-8 text-slate-700 md:text-lg">
+        <p class="mt-6 text-base leading-8 text-slate-600 md:text-lg">
+          Когда отсутствует прямая интеграция с банком, бухгалтерия возвращается к ручному вводу, таблицам и дополнительной операционной нагрузке.<br>
+          Parse Ledger принимает банковские выписки в формате PDF и Excel и превращает их в структурированные данные, готовые к загрузке в бухгалтерские системы.<br>
           Разработано для бухгалтеров, финансовых отделов и аутсорсинговых компаний в ОАЭ.
         </p>
         <a

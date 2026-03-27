@@ -23,8 +23,8 @@ const staticMetaByRouteName: Record<string, Omit<SeoMeta, 'path'>> = {
     description: 'Свяжитесь с Parse Consult для консультации по внедрению бухгалтерских систем и автоматизации учета в ОАЭ.',
   },
   'Parse-Ledger': {
-    title: 'Parse-Ledger - автоматическая загрузка выписок',
-    description: 'Parse-Ledger преобразует банковские PDF и Excel выписки в структурированные данные для загрузки в бухгалтерские системы.',
+    title: 'parseledger.ae',
+    description: 'Parse Ledger преобразует банковские PDF и Excel выписки в структурированные данные для загрузки в бухгалтерские системы.',
   },
   'not-found': {
     title: 'Страница не найдена | Parse Consult',

@@ -59,15 +59,18 @@ html {
   h1 {
     @apply font-semibold tracking-tight text-slate-950;
     letter-spacing: -0.03em;
+    line-height: 1.12;
   }
 
   h2 {
     @apply font-semibold tracking-tight text-slate-950;
     letter-spacing: -0.025em;
+    line-height: 1.16;
   }
 
   h3 {
     @apply font-semibold text-slate-950;
     letter-spacing: -0.02em;
+    line-height: 1.2;
   }
 }
