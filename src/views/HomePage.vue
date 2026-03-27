@@ -1,6 +1,6 @@
 <template>
   <section id="hero" class="relative overflow-hidden scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pt-24">
-    <div v-reveal class="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-10 lg:px-8 lg:py-10 xl:gap-12">
+    <div class="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-10 lg:px-8 lg:py-10 xl:gap-12">
       <div class="flex max-w-3xl flex-col lg:h-full lg:justify-between">
         <h1 class="relative z-10 max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 md:text-[2.55rem] lg:text-[2.7rem] xl:text-[3.2rem]">
           Учёт, внедрение и обучение в <span class="text-[#3ccd98]">ОАЭ</span>
@@ -46,7 +46,7 @@
 
   <section id="platforms" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div v-reveal class="max-w-4xl">
+      <div class="max-w-4xl">
         <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
           Структурированное внедрение
           <span class="text-brand-dark">FirstBit</span>,
@@ -63,7 +63,7 @@
       </div>
 
       <div class="mt-12 grid gap-6 lg:grid-cols-4">
-        <article v-for="(platform, index) in platforms" :key="platform.name" v-reveal="100 + index * 70" class="group rounded-xl border border-slate-200 bg-white p-7 transition hover:border-slate-300">
+        <article v-for="platform in platforms" :key="platform.name" class="group rounded-xl border border-slate-200 bg-white p-7 transition hover:border-slate-300">
           <div class="flex min-w-0 max-w-full items-center gap-3 sm:gap-4">
             <img
               :src="platform.logoSrc"
@@ -90,7 +90,7 @@
 
   <section id="about" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div v-reveal class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div class="lg:sticky lg:top-32">
           <h2 class=" text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
             Помогаем убрать рутину и выстроить прозрачный учет
@@ -130,7 +130,7 @@
 
   <section id="services" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div v-reveal class="max-w-4xl">
+      <div class="max-w-4xl">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
           Внедрение, обучение, автоматизация
         </h2>
@@ -139,7 +139,7 @@
         </p>
       </div>
 
-      <div v-reveal="80" class="mt-10">
+      <div class="mt-10">
         <Carousel
           v-model="currentServiceSlide"
           class="services-carousel"
@@ -203,13 +203,13 @@
 
   <section id="home-lead" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div v-reveal class="mx-auto max-w-3xl text-center">
+      <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">Расскажите о ситуации в учёте</h2>
     
       </div>
 
       <div class="mx-auto mt-12 grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-stretch lg:gap-12">
-        <aside v-reveal class="flex flex-col rounded-2xl border border-transparent bg-transparent p-0 md:border-slate-200/90 md:bg-gradient-to-b md:from-slate-50 md:to-white md:p-7">
+        <aside class="flex flex-col rounded-2xl border border-transparent bg-transparent p-0 md:border-slate-200/90 md:bg-gradient-to-b md:from-slate-50 md:to-white md:p-7">
           <h3 class="text-lg font-semibold tracking-tight text-slate-950 md:text-xl">
             FAQ
           </h3>
@@ -245,10 +245,7 @@
           </ul>
         </aside>
 
-        <div
-          v-reveal="120"
-          class="rounded-2xl border border-transparent bg-transparent p-0 md:border-slate-200/90 md:bg-gradient-to-b md:from-slate-50 md:to-white md:p-7"
-        >
+        <div class="rounded-2xl border border-transparent bg-transparent p-0 md:border-slate-200/90 md:bg-gradient-to-b md:from-slate-50 md:to-white md:p-7">
           <LeadRequestForm id-prefix="home-lead" />
         </div>
       </div>
@@ -258,44 +255,12 @@
 
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router'
-import type { DirectiveBinding } from 'vue'
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import 'vue3-carousel/carousel.css'
 import LeadRequestForm from '@/components/LeadRequestForm.vue'
 
-type RevealElement = HTMLElement & { __revealObserver?: IntersectionObserver }
-
-const vReveal = {
-  mounted(el: RevealElement, binding: DirectiveBinding<number | undefined>) {
-    const delay = typeof binding.value === 'number' ? binding.value : 0
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    if (prefersReducedMotion) {
-      el.classList.add('reveal-visible')
-      return
-    }
-
-    el.classList.add('reveal-block')
-    el.style.transitionDelay = `${delay}ms`
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (!entries[0]?.isIntersecting) return
-        el.classList.add('reveal-visible')
-        observer.unobserve(el)
-      },
-      { threshold: 0.18, rootMargin: '0px 0px -10% 0px' },
-    )
-
-    observer.observe(el)
-    el.__revealObserver = observer
-  },
-  unmounted(el: RevealElement) {
-    el.__revealObserver?.disconnect()
-  },
-}
 const keyServices = [
   {
     id: 'parse-ledger',
@@ -517,22 +482,4 @@ const platforms = [
   }
 }
 
-.reveal-block {
-  opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
-
-.reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal-block {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
 </style>
