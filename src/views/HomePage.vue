@@ -1,5 +1,5 @@
 <template>
-  <section id="hero" class="relative overflow-hidden scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-24 backdrop-blur-[2px] md:scroll-mt-32 md:pt-28">
+  <section id="hero" class="relative overflow-hidden scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pt-24">
     <div v-reveal class="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-10 lg:px-8 lg:py-20 xl:gap-12">
       <div class="flex max-w-3xl flex-col lg:h-full lg:justify-between">
         <h1 class="relative z-10 max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 md:text-[2.55rem] lg:text-[2.7rem] xl:text-[3.2rem]">
@@ -16,26 +16,26 @@
       </div>
 
       <div class="flex min-h-0 flex-col lg:h-full">
-        <div class="flex flex-col gap-3 rounded-xl border border-slate-200 bg-slate-50/80 p-3 lg:h-full lg:min-h-0">
+        <div class="flex flex-col gap-3 rounded-xl border border-transparent bg-transparent p-0 md:border-slate-200 md:bg-slate-50/80 md:p-3 lg:h-full lg:min-h-0">
           <RouterLink
             v-for="item in heroServices"
             :key="item.id"
             :to="item.to"
             class="group flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:bg-slate-50/90 sm:gap-4 lg:min-h-0 lg:flex-1"
-            :class="item.id === 'parse-ledger' ? 'text-white' : ''"
-            :style="item.id === 'parse-ledger' ? { backgroundColor: '#153d34', borderColor: '#153d34' } : undefined"
+            :class="item.id === 'parse-ledger' ? 'border-slate-900 text-slate-900 shadow-sm' : ''"
+            :style="item.id === 'parse-ledger' ? { backgroundColor: '#d9fbe8', borderColor: '#0f172a' } : undefined"
           >
             <span
               class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand/20 text-xl leading-none text-slate-900 transition group-hover:bg-brand/30"
-              :class="item.id === 'parse-ledger' ? 'bg-white/15 text-white group-hover:bg-white/20' : ''"
+              :class="item.id === 'parse-ledger' ? 'bg-slate-900/10 text-slate-900 group-hover:bg-slate-900/15' : ''"
               aria-hidden="true"
             >
               {{ item.icon }}
             </span>
-            <h3 class="min-w-0 flex-1 text-base font-semibold leading-snug text-slate-900" :class="item.id === 'parse-ledger' ? 'text-white' : ''">{{ item.title }}</h3>
+            <h3 class="min-w-0 flex-1 text-base font-semibold leading-snug text-slate-900">{{ item.title }}</h3>
             <span
               class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-brand/15 text-sm text-slate-900 transition group-hover:bg-brand"
-              :class="item.id === 'parse-ledger' ? 'bg-white/15 text-white group-hover:bg-white/20' : ''"
+              :class="item.id === 'parse-ledger' ? 'bg-slate-900/10 text-slate-900 group-hover:bg-slate-900/15' : ''"
               aria-hidden="true"
             >↗</span>
           </RouterLink>
@@ -44,7 +44,7 @@
     </div>
   </section>
 
-  <section id="platforms" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-16 backdrop-blur-[2px] md:scroll-mt-32 md:py-24">
+  <section id="platforms" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div v-reveal class="max-w-4xl">
         <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
@@ -72,6 +72,14 @@
               loading="lazy"
               decoding="async"
             />
+            <img
+              v-if="platform.secondaryLogoSrc"
+              :src="platform.secondaryLogoSrc"
+              :alt="platform.secondaryLogoAlt ?? ''"
+              :class="platform.secondaryLogoClass ?? 'h-8 w-auto max-w-[7rem] shrink-0 object-contain object-left sm:h-9 sm:max-w-[8rem]'"
+              loading="lazy"
+              decoding="async"
+            />
             <div class="min-w-0 text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">{{ platform.name }}</div>
           </div>
           <p class="mt-6 border-l-2 border-brand/50 pl-4 text-sm leading-7 text-slate-600">{{ platform.description }}</p>
@@ -80,7 +88,7 @@
     </div>
   </section>
 
-  <section id="about" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-16 backdrop-blur-[2px] md:scroll-mt-32 md:py-24">
+  <section id="about" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div v-reveal class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div class="lg:sticky lg:top-32">
@@ -102,9 +110,9 @@
             Оставить заявку
           </a>
         </div>
-        <div class="space-y-6 border-l border-slate-300/80 pl-6 text-base leading-8 text-slate-700 md:pl-8 md:text-lg">
+        <div class="space-y-6 border-l-0 border-slate-300/80 pl-0 text-base leading-8 text-slate-700 md:border-l md:pl-8 md:text-lg">
           <p>
-            Если в вашей компании возникают сложности, связанные с рутинными операциями, ручным вводом данных, несоответствием отчетов или отсутствием прозрачности в учете, а также если вы стремитесь получать оперативную аналитику и настроить CRM-систему под задачи бизнеса — мы готовы предложить эффективное решение.
+            Если в вашей компании возникают сложности, связанные с рутинными операциями, ручным вводом данных, несоответствием отчетов или отсутствием прозрачности в учете, а также если вы стремитесь получать оперативную аналитику и настроить CRM-систему под задачи бизнеса - мы готовы предложить эффективное решение.
           </p>
           <p>
             Команда Parse Solutions объединяет опытных программистов, бухгалтеров и финансистов с совокупным профессиональным стажем более 25 лет. Мы проводим детальный анализ текущих процессов бухгалтерского учета и CRM, выявляем проблемные зоны и внедряем решения по автоматизации и оптимизации бизнеса.
@@ -120,7 +128,7 @@
     </div>
   </section>
 
-  <section id="services" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-16 backdrop-blur-[2px] md:scroll-mt-32 md:py-24">
+  <section id="services" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div v-reveal class="max-w-4xl">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
@@ -193,7 +201,7 @@
     </div>
   </section>
 
-  <section id="home-lead" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-16 backdrop-blur-[2px] md:scroll-mt-32 md:py-24">
+  <section id="home-lead" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div v-reveal class="mx-auto max-w-3xl text-center">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">Расскажите о ситуации в учёте</h2>
@@ -201,7 +209,7 @@
       </div>
 
       <div class="mx-auto mt-12 grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-stretch lg:gap-12">
-        <aside v-reveal class="flex flex-col rounded-2xl border border-slate-200/90 bg-gradient-to-b from-slate-50 to-white p-6 md:p-7">
+        <aside v-reveal class="flex flex-col rounded-2xl border border-transparent bg-transparent p-0 md:border-slate-200/90 md:bg-gradient-to-b md:from-slate-50 md:to-white md:p-7">
           <h3 class="text-lg font-semibold tracking-tight text-slate-950 md:text-xl">
             FAQ
           </h3>
@@ -239,7 +247,7 @@
 
         <div
           v-reveal="120"
-          class="rounded-2xl border border-slate-200/90 bg-gradient-to-b from-slate-50 to-white p-6 md:p-7"
+          class="rounded-2xl border border-transparent bg-transparent p-0 md:border-slate-200/90 md:bg-gradient-to-b md:from-slate-50 md:to-white md:p-7"
         >
           <LeadRequestForm id-prefix="home-lead" />
         </div>
@@ -293,7 +301,7 @@ const keyServices = [
     id: 'parse-ledger',
     slug: 'parse-ledger',
     icon: '🧾',
-    title: 'Parse-Ledger — автоматическая загрузка банковской выписки',
+    title: 'Parse Ledger — автоматическая загрузка банковской выписки',
     description:
       'Настраиваем и внедряем Parse-Ledger для прозрачного управленческого и бухгалтерского учета в ежедневной работе команды.',
   },
@@ -333,7 +341,7 @@ const keyServices = [
     id: 'training',
     slug: 'training',
     icon: '🎓',
-    title: 'Сопровождение и обучение вашего персонала',
+    title: 'Сопровождение и обучение ведению бухгалтерского учета и работе с CRM',
     description:
       'Обучаем сотрудников работе с системой и обеспечиваем постоянную поддержку для стабильной работы.',
   },
@@ -422,6 +430,9 @@ const platforms = [
     name: 'FirstBit',
     logoSrc: '/fb.png',
     logoAlt: 'First Bit',
+    secondaryLogoSrc: '/1s-logo.svg',
+    secondaryLogoAlt: '1C',
+    secondaryLogoClass: 'h-8 w-auto max-w-[4.5rem] shrink-0 object-contain object-left sm:h-9 sm:max-w-[5rem]',
     logoClass:
       'h-11 w-auto max-w-[11rem] shrink-0 object-contain object-left sm:h-12 sm:max-w-[13rem] md:h-[3.25rem] md:max-w-[14rem]',
     description:
@@ -471,12 +482,31 @@ const platforms = [
 
 :deep(.services-carousel .carousel__prev),
 :deep(.services-carousel .carousel__next) {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: rgba(248, 250, 252, 0.75);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(148, 163, 184, 0.7);
   border-radius: 0.75rem;
   color: #334155;
   width: 2.5rem;
   height: 2.5rem;
+  z-index: 20;
+}
+
+@media (max-width: 767px) {
+  :deep(.services-carousel .carousel__prev),
+  :deep(.services-carousel .carousel__next) {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  :deep(.services-carousel .carousel__prev) {
+    left: -1.25rem;
+  }
+
+  :deep(.services-carousel .carousel__next) {
+    right: -1.25rem;
+  }
 }
 
 .reveal-block {

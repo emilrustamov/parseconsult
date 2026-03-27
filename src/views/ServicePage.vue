@@ -1,5 +1,5 @@
 <template>
-  <section class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-16 pt-24 backdrop-blur-[2px] md:scroll-mt-32 md:pb-24 md:pt-28">
+  <section class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-16 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pb-24 md:pt-24">
     <div class="mx-auto max-w-7xl px-6 pt-8 lg:px-8 lg:pt-10">
       <div v-if="!isBitrixPage" class="rounded-2xl border border-brand-dark/35 bg-brand-surface p-7 shadow-md shadow-black/10 md:p-10">
         <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand">Услуги</p>

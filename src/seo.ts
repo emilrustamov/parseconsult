@@ -154,7 +154,7 @@ const buildOrganizationJsonLd = (): Record<string, unknown> => ({
   name: SITE_NAME,
   url: SITE_URL,
   email: 'info@parseconsult.ae',
-  telephone: '+971000000000',
+  telephone: '+971 52 856 9060',
   areaServed: 'AE',
   sameAs: socialLinks.map((item) => item.href),
 })

@@ -1,9 +1,8 @@
 <template>
-  <section id="contact" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-16 pt-24 backdrop-blur-[2px] md:scroll-mt-32 md:pb-24 md:pt-28">
+  <section id="contact" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-16 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pb-24 md:pt-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <p class="text-sm font-semibold uppercase tracking-[0.22em] text-slate-500">Контакты</p>
-        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">Свяжитесь с нами</h1>
+        <h1 class="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">Контакты</h1>
 
       </div>
 
@@ -23,7 +22,7 @@
               <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-brand/20 text-lg text-slate-900">☎</span>
               <div>
                 <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Телефон</div>
-                <a href="tel:+971000000000" class="mt-1 block text-base font-semibold text-slate-900 transition hover:text-brand-dark">+971 (0)00 000 0000</a>
+                <a href="tel:+971528569060" class="mt-1 block text-base font-semibold text-slate-900 transition hover:text-brand-dark">+971 52 856 9060</a>
               </div>
             </div>
           </div>
@@ -53,7 +52,7 @@
           </div>
         </div>
 
-        <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 md:p-8">
+        <div class="rounded-xl border border-transparent bg-transparent p-0 md:border-slate-200 md:bg-slate-50 md:p-8">
           <LeadRequestForm id-prefix="contact" />
         </div>
       </div>

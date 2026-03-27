@@ -1,5 +1,5 @@
 <template>
-  <section class="relative isolate overflow-hidden scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-24 backdrop-blur-[2px] md:scroll-mt-32 md:pt-28">
+  <section class="relative isolate overflow-hidden scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pt-24">
     <div class="pointer-events-none absolute inset-0" aria-hidden="true">
       <div class="orb orb-primary"></div>
       <div class="orb orb-secondary"></div>

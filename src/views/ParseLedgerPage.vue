@@ -1,10 +1,18 @@
 <template>
-  <section id="Parse-Ledger" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-24 backdrop-blur-[2px] md:scroll-mt-32 md:pt-28">
+  <section id="Parse-Ledger" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pt-24">
     <div class="mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-12 lg:px-8 lg:py-20">
       <div class="max-w-3xl">
         <h1 class="mt-4 max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 md:text-5xl lg:text-6xl">
           <span class="text-brand-dark">Parse-Ledger</span> — автоматическая загрузка банковской выписки
         </h1>
+        <div class="relative mt-6 min-h-[260px] w-full lg:hidden">
+          <DotLottieVue
+            src="/Yogi finance.lottie"
+            class="absolute inset-0 h-full w-full object-contain"
+            autoplay
+            loop
+          />
+        </div>
         <div class="mt-6 space-y-6 text-base leading-8 text-slate-600 md:text-lg">
           <p>
             Когда отсутствует прямая интеграция с банком, бухгалтерия возвращается к ручному вводу, таблицам и дополнительной операционной нагрузке.
@@ -26,7 +34,7 @@
         </a>
       </div>
 
-      <div class="relative min-h-[340px] w-full lg:min-h-0 lg:h-full">
+      <div class="relative hidden min-h-[340px] w-full lg:block lg:min-h-0 lg:h-full">
         <DotLottieVue
           src="/Yogi finance.lottie"
           class="absolute inset-0 h-full w-full object-contain"

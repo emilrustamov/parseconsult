@@ -80,7 +80,7 @@
     </div>
 
     <fieldset v-if="showSocialField" class="animate-fade-up">
-      <div class="grid gap-3 sm:grid-cols-2">
+      <div class="grid grid-cols-2 gap-2 sm:gap-3">
         <div>
           <label :for="ids.whatsapp" class="mb-2 flex h-6 items-center text-brand-dark" aria-label="WhatsApp">
             <svg viewBox="0 0 24 24" class="size-5 fill-current">
