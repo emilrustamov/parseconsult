@@ -24,7 +24,6 @@ const serviceLinks: { label: string; to: RouteLocationRaw }[] = [
   { label: 'Сопровождение и обучение', to: { name: 'service-details', params: { slug: 'training' } } },
 ]
 
-const headerContactEmail = 'info@parseconsult.ae'
 const headerWhatsappNumber = '+971 52 856 9060'
 const headerWhatsappHref = `https://wa.me/${headerWhatsappNumber.replace(/\D/g, '')}`
 const headerTelegramHref = 'https://t.me/parseconsult'
@@ -32,6 +31,22 @@ const isServicesMenuOpen = ref(false)
 const isMobileMenuOpen = ref(false)
 const isHeaderHidden = ref(false)
 const route = useRoute()
+
+const isActiveServiceSlug = (slug: string): boolean =>
+  route.name === 'service-details' && route.params.slug === slug
+
+const serviceLinkSlug = (item: (typeof serviceLinks)[number]): string => {
+  const to = item.to
+  if (typeof to === 'object' && to !== null && 'params' in to && to.params && typeof to.params === 'object' && 'slug' in to.params) {
+    const raw = (to.params as { slug?: unknown }).slug
+    return typeof raw === 'string' ? raw : ''
+  }
+  return ''
+}
+
+const dismissMobileMenu = (): void => {
+  isMobileMenuOpen.value = false
+}
 
 const handleLeadModalToggle = (event: Event): void => {
   const customEvent = event as CustomEvent<{ open?: boolean }>
@@ -87,11 +102,17 @@ onBeforeUnmount(() => {
 
           <div class="flex min-w-0 items-center justify-center gap-3 sm:gap-4 lg:gap-4 xl:gap-6">
           <nav class="hidden items-center gap-4 lg:flex xl:gap-7">
-            <RouterLink
-              :to="{ name: 'home' }"
-              class="whitespace-nowrap text-sm font-medium text-slate-600 transition hover:text-brand-dark"
-            >
-              Главная
+            <RouterLink :to="{ name: 'home' }" class="group inline-flex items-center whitespace-nowrap">
+              <span
+                class="relative inline-flex items-center rounded-full px-3 py-1.5 text-sm font-semibold transition"
+                :class="
+                  route.name === 'home'
+                    ? 'overflow-hidden bg-brand text-slate-900 group-hover:bg-brand-dark group-hover:text-slate-900'
+                    : 'border-0 overflow-visible bg-transparent text-slate-600 group-hover:text-brand-dark'
+                "
+              >
+                <span class="relative z-[1]">Главная</span>
+              </span>
             </RouterLink>
 
             <div
@@ -102,10 +123,21 @@ onBeforeUnmount(() => {
               <button
                 type="button"
                 @click="isServicesMenuOpen = !isServicesMenuOpen"
-                class="inline-flex items-center gap-1 whitespace-nowrap text-sm font-medium text-slate-600 transition hover:text-brand-dark"
+                class="group inline-flex items-center whitespace-nowrap"
               >
-                Услуги
-                <span class="text-xs">▾</span>
+                <span
+                  class="relative inline-flex items-center rounded-full px-3 py-1.5 text-sm font-semibold transition"
+                  :class="
+                    route.name === 'service-details'
+                      ? 'overflow-hidden bg-brand text-slate-900'
+                      : 'border-0 overflow-visible bg-transparent text-slate-600 group-hover:text-brand-dark'
+                  "
+                >
+                  <span class="relative z-[1] inline-flex items-center gap-1">
+                    Услуги
+                    <span class="text-xs" aria-hidden="true">▾</span>
+                  </span>
+                </span>
               </button>
               <div
                 class="absolute left-0 top-full z-50 w-64 pt-1 transition duration-150"
@@ -117,9 +149,14 @@ onBeforeUnmount(() => {
                     :key="item.label"
                     :to="item.to"
                     @click="isServicesMenuOpen = false"
-                    class="block rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-brand-dark"
+                    class="block rounded-lg px-3 py-2 text-sm font-semibold transition"
+                    :class="
+                      isActiveServiceSlug(serviceLinkSlug(item))
+                        ? 'overflow-hidden bg-brand text-slate-900'
+                        : 'overflow-visible text-slate-700 hover:bg-slate-50 hover:text-brand-dark'
+                    "
                   >
-                    {{ item.label }}
+                    <span class="relative z-[1]">{{ item.label }}</span>
                   </RouterLink>
                 </div>
               </div>
@@ -135,29 +172,31 @@ onBeforeUnmount(() => {
               >
                 beta
               </span>
-              <span class="nav-parse-ledger-shine relative inline-flex items-center overflow-hidden rounded-full border border-brand/60 bg-brand px-3 py-1.5 text-sm font-semibold text-slate-900 transition group-hover:bg-brand-dark group-hover:text-slate-900">
+              <span
+                class="relative inline-flex items-center rounded-full px-3 py-1.5 text-sm font-semibold transition"
+                :class="
+                  route.name === 'parse-ledger'
+                    ? 'border border-brand/60 overflow-hidden bg-brand text-slate-900 group-hover:bg-brand-dark group-hover:text-slate-900'
+                    : 'border border-brand/60 overflow-visible bg-transparent text-slate-600 group-hover:text-brand-dark'
+                "
+              >
                 <span class="relative z-[1]">Parse Ledger</span>
               </span>
             </RouterLink>
             <RouterLink
               :to="{ name: 'contact' }"
-              class="whitespace-nowrap text-sm font-medium text-slate-600 transition hover:text-brand-dark"
+              :class="
+                route.name === 'contact'
+                  ? 'group relative inline-flex items-center overflow-hidden whitespace-nowrap rounded-full bg-brand px-3 py-1.5 text-sm font-semibold text-slate-900 transition group-hover:bg-brand-dark group-hover:text-slate-900'
+                  : 'whitespace-nowrap text-sm font-medium text-slate-600 transition hover:text-brand-dark'
+              "
             >
-              Контакты
+              <span :class="route.name === 'contact' ? 'relative z-[1]' : null">Контакты</span>
             </RouterLink>
           </nav>
 
           <div class="hidden items-center gap-1 lg:flex xl:gap-1.5">
             <span class="h-6 w-px bg-slate-200" aria-hidden="true"></span>
-            <a
-              :href="`mailto:${headerContactEmail}`"
-              class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-violet-600 transition hover:bg-violet-50 hover:text-violet-700"
-              aria-label="Написать на email"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
-                <path d="M1.5 6.75A2.25 2.25 0 013.75 4.5h16.5a2.25 2.25 0 012.25 2.25v10.5a2.25 2.25 0 01-2.25 2.25H3.75a2.25 2.25 0 01-2.25-2.25V6.75zm2.76-.75L12 11.01 19.74 6H4.26zm16.74 1.37l-8.59 5.56a.75.75 0 01-.82 0L3 7.37v9.88c0 .41.34.75.75.75h16.5c.41 0 .75-.34.75-.75V7.37z" />
-              </svg>
-            </a>
             <a
               :href="headerTelegramHref"
               class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-blue-600 transition hover:bg-blue-50 hover:text-blue-700"
@@ -201,11 +240,20 @@ onBeforeUnmount(() => {
         </div>
 
           <div class="flex items-center gap-2">
+            <a
+              v-if="route.name === 'home'"
+              href="#home-lead"
+              class="hidden shrink-0 items-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark md:inline-flex md:px-5 md:py-3"
+              @click="dismissMobileMenu"
+            >
+              Связаться с нами
+            </a>
             <RouterLink
+              v-else
               :to="{ name: 'contact' }"
               class="hidden shrink-0 items-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark md:inline-flex md:px-5 md:py-3"
             >
-              Обсудить проект
+              Связаться с нами
             </RouterLink>
             <button
               type="button"
@@ -222,11 +270,17 @@ onBeforeUnmount(() => {
         <Transition name="mobile-menu">
           <div v-if="isMobileMenuOpen" class="mt-4 border-t border-slate-200 pt-4 lg:hidden">
             <nav class="flex flex-col items-center gap-2 text-center">
-              <RouterLink
-                :to="{ name: 'home' }"
-                class="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-brand-dark"
-              >
-                Главная
+              <RouterLink :to="{ name: 'home' }" class="group inline-flex w-fit items-center whitespace-nowrap">
+                <span
+                  class="relative inline-flex items-center rounded-full px-3 py-1.5 text-sm font-semibold transition"
+                  :class="
+                    route.name === 'home'
+                      ? 'overflow-hidden bg-brand text-slate-900 hover:bg-brand-dark hover:text-slate-900'
+                      : 'border-0 overflow-visible bg-transparent text-slate-600 hover:text-brand-dark'
+                  "
+                >
+                  <span class="relative z-[1]">Главная</span>
+                </span>
               </RouterLink>
               <RouterLink
                 :to="{ name: 'parse-ledger' }"
@@ -238,37 +292,55 @@ onBeforeUnmount(() => {
                 >
                   beta
                 </span>
-                <span class="nav-parse-ledger-shine relative inline-flex items-center overflow-hidden rounded-full border border-brand/60 bg-brand px-3 py-1.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark hover:text-slate-900">
+                <span
+                  class="relative inline-flex items-center rounded-full px-3 py-1.5 text-sm font-semibold transition"
+                  :class="
+                    route.name === 'parse-ledger'
+                      ? 'border border-brand/60 overflow-hidden bg-brand text-slate-900 hover:bg-brand-dark hover:text-slate-900'
+                      : 'border border-brand/60 overflow-visible bg-transparent text-slate-600 hover:text-brand-dark'
+                  "
+                >
                   <span class="relative z-[1]">Parse Ledger</span>
                 </span>
               </RouterLink>
               <RouterLink
                 :to="{ name: 'contact' }"
-                class="whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-brand-dark"
+                :class="
+                  route.name === 'contact'
+                    ? 'relative inline-flex w-fit items-center overflow-hidden whitespace-nowrap rounded-full bg-brand px-3 py-1.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark hover:text-slate-900'
+                    : 'whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-brand-dark'
+                "
               >
-                Контакты
+                <span :class="route.name === 'contact' ? 'relative z-[1]' : null">Контакты</span>
               </RouterLink>
               <div class="mt-1 w-full max-w-sm rounded-lg border border-slate-200 p-2">
-                <div class="px-2 pb-1 text-center text-xs font-semibold uppercase tracking-wide text-slate-500">Услуги</div>
+                <div class="flex justify-center px-2 pb-2">
+                  <span
+                    class="relative inline-flex items-center rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wide transition"
+                    :class="
+                      route.name === 'service-details'
+                        ? 'overflow-hidden bg-brand text-slate-900'
+                        : 'border-0 overflow-visible bg-transparent text-slate-500'
+                    "
+                  >
+                    <span class="relative z-[1]">Услуги</span>
+                  </span>
+                </div>
                 <RouterLink
                   v-for="item in serviceLinks"
                   :key="`mobile-${item.label}`"
                   :to="item.to"
-                  class="block rounded-md px-2 py-2 text-center text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-brand-dark"
+                  class="block rounded-md px-2 py-2 text-center text-sm font-semibold transition"
+                  :class="
+                    isActiveServiceSlug(serviceLinkSlug(item))
+                      ? 'overflow-hidden bg-brand text-slate-900'
+                      : 'overflow-visible text-slate-700 hover:bg-slate-50 hover:text-brand-dark'
+                  "
                 >
-                  {{ item.label }}
+                  <span class="relative z-[1]">{{ item.label }}</span>
                 </RouterLink>
               </div>
               <div class="mt-1 flex items-center justify-center gap-2">
-                <a
-                  :href="`mailto:${headerContactEmail}`"
-                  class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-violet-600 transition hover:bg-violet-50 hover:text-violet-700"
-                  aria-label="Написать на email"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
-                    <path d="M1.5 6.75A2.25 2.25 0 013.75 4.5h16.5a2.25 2.25 0 012.25 2.25v10.5a2.25 2.25 0 01-2.25 2.25H3.75a2.25 2.25 0 01-2.25-2.25V6.75zm2.76-.75L12 11.01 19.74 6H4.26zm16.74 1.37l-8.59 5.56a.75.75 0 01-.82 0L3 7.37v9.88c0 .41.34.75.75.75h16.5c.41 0 .75-.34.75-.75V7.37z" />
-                  </svg>
-                </a>
                 <a
                   :href="headerTelegramHref"
                   class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-blue-600 transition hover:bg-blue-50 hover:text-blue-700"
@@ -296,11 +368,20 @@ onBeforeUnmount(() => {
                   </svg>
                 </a>
               </div>
+              <a
+                v-if="route.name === 'home'"
+                href="#home-lead"
+                class="mt-1 inline-flex items-center justify-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
+                @click="dismissMobileMenu"
+              >
+                Связаться с нами
+              </a>
               <RouterLink
+                v-else
                 :to="{ name: 'contact' }"
                 class="mt-1 inline-flex items-center justify-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
               >
-                Обсудить проект
+                Связаться с нами
               </RouterLink>
             </nav>
           </div>
@@ -377,37 +458,4 @@ onBeforeUnmount(() => {
   transform: translateY(-8px);
 }
 
-.nav-parse-ledger-shine::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2em;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.3);
-  transform: translateX(-4em) skewX(-45deg);
-  z-index: 0;
-  pointer-events: none;
-  animation: nav-parse-ledger-shine-loop 3.2s linear infinite;
-}
-
-@keyframes nav-parse-ledger-shine-loop {
-  0%,
-  52% {
-    transform: translateX(-4em) skewX(-45deg);
-  }
-  82% {
-    transform: translateX(10em) skewX(-45deg);
-  }
-  82.01%,
-  100% {
-    transform: translateX(-4em) skewX(-45deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .nav-parse-ledger-shine::before {
-    animation: none;
-  }
-}
 </style>

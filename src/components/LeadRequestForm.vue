@@ -152,10 +152,10 @@
 
     <button
       type="submit"
-      class="w-full rounded-lg bg-brand py-3.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-10"
+      class="ui-shine w-full rounded-lg bg-brand py-3.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-10"
       :disabled="formSubmitting"
     >
-      {{ formSubmitting ? 'Отправка…' : submitButtonLabel }}
+      <span class="relative z-[1]">{{ formSubmitting ? 'Отправка…' : submitButtonLabel }}</span>
     </button>
   </form>
 </template>

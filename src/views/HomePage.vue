@@ -21,7 +21,7 @@
             v-for="item in heroServices"
             :key="item.id"
             :to="item.to"
-            class="group flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:bg-slate-50/90 sm:gap-4 lg:min-h-0 lg:flex-1"
+            class="ui-shine group flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:bg-slate-50/90 sm:gap-4 lg:min-h-0 lg:flex-1"
             :class="item.id === 'parse-ledger' ? 'border-slate-900 text-slate-900 shadow-sm' : ''"
             :style="item.id === 'parse-ledger' ? { backgroundColor: '#d9fbe8', borderColor: '#0f172a' } : undefined"
           >
@@ -105,9 +105,9 @@
           </div>
           <a
             href="#home-lead"
-            class="mx-auto mt-8 flex w-fit items-center rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
+            class="ui-shine mx-auto mt-8 flex w-fit items-center rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
           >
-            Оставить заявку
+            <span class="relative z-[1]">Оставить заявку</span>
           </a>
         </div>
         <div class="space-y-6 border-l-0 border-slate-300/80 pl-0 text-base leading-8 text-slate-700 md:border-l md:pl-8 md:text-lg">
@@ -183,12 +183,12 @@
               </p>
               <RouterLink
                 :to="service.to"
-                class="mt-5 inline-flex items-center self-start rounded-lg px-4 py-2.5 text-sm font-semibold transition"
+                class="ui-shine mt-5 inline-flex items-center self-start rounded-lg px-4 py-2.5 text-sm font-semibold transition"
                 :class="isAccentServiceCard(index)
                   ? 'bg-brand text-slate-900 hover:bg-brand-dark'
                   : 'bg-brand/15 text-slate-900 hover:bg-brand/25'"
               >
-                Подробнее
+                <span class="relative z-[1]">Подробнее</span>
               </RouterLink>
             </article>
           </Slide>
