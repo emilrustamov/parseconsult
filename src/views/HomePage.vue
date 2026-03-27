@@ -21,7 +21,7 @@
             v-for="item in heroServices"
             :key="item.id"
             :to="item.to"
-            class="ui-shine group flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:bg-slate-50/90 sm:gap-4 lg:min-h-0 lg:flex-1"
+            class="group flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:bg-slate-50/90 sm:gap-4 lg:min-h-0 lg:flex-1"
             :class="item.id === 'parse-ledger' ? 'border-slate-900 text-slate-900 shadow-sm' : ''"
             :style="item.id === 'parse-ledger' ? { backgroundColor: '#d9fbe8', borderColor: '#0f172a' } : undefined"
           >
@@ -34,10 +34,12 @@
             </span>
             <h3 class="min-w-0 flex-1 text-base font-semibold leading-snug text-slate-900">{{ item.title }}</h3>
             <span
-              class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-brand/15 text-sm text-slate-900 transition group-hover:bg-brand"
+              class="ui-shine relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-md bg-brand/15 text-sm text-slate-900 transition group-hover:bg-brand"
               :class="item.id === 'parse-ledger' ? 'bg-slate-900/10 text-slate-900 group-hover:bg-slate-900/15' : ''"
               aria-hidden="true"
-            >↗</span>
+            >
+              <span class="relative z-[1]">↗</span>
+            </span>
           </RouterLink>
         </div>
       </div>
@@ -183,12 +185,21 @@
               </p>
               <RouterLink
                 :to="service.to"
-                class="ui-shine mt-5 inline-flex items-center self-start rounded-lg px-4 py-2.5 text-sm font-semibold transition"
+                class="group mt-5 inline-flex items-center gap-2 self-start text-sm font-semibold transition"
                 :class="isAccentServiceCard(index)
-                  ? 'bg-brand text-slate-900 hover:bg-brand-dark'
-                  : 'bg-brand/15 text-slate-900 hover:bg-brand/25'"
+                  ? 'text-emerald-50 hover:text-white'
+                  : 'text-slate-900 hover:text-brand-dark'"
               >
-                <span class="relative z-[1]">Подробнее</span>
+                <span>Подробнее</span>
+                <span
+                  class="ui-shine relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-md text-sm transition"
+                  :class="isAccentServiceCard(index)
+                    ? 'bg-brand text-slate-900 group-hover:bg-brand-dark'
+                    : 'bg-brand/15 text-slate-900 group-hover:bg-brand'"
+                  aria-hidden="true"
+                >
+                  <span class="relative z-[1]">↗</span>
+                </span>
               </RouterLink>
             </article>
           </Slide>
