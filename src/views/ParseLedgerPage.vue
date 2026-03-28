@@ -38,9 +38,51 @@
       </div>
     </div>
   </section>
+
+  <section class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold tracking-tight text-slate-950 md:text-3xl">
+        Инструкция по использованию программы
+      </h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          v-for="video in parseLedgerTutorialVideos"
+          :key="video.embedSrc"
+          class="overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-sm shadow-slate-200/40"
+        >
+          <div class="aspect-video w-full bg-slate-900">
+            <iframe
+              class="h-full w-full"
+              :src="video.embedSrc"
+              :title="video.title"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import { parseLedgerSiteUrl } from '@/socialLinks'
+
+const parseLedgerTutorialVideos = [
+  {
+    title: 'Parse Ledger — инструкция (видео 1)',
+    embedSrc: 'https://www.youtube.com/embed/rYQ1q5-YsYg',
+  },
+  {
+    title: 'Parse Ledger — инструкция (видео 2)',
+    embedSrc: 'https://www.youtube.com/embed/G4yr5viuawM?start=5',
+  },
+  {
+    title: 'Parse Ledger — инструкция (видео 3)',
+    embedSrc: 'https://www.youtube.com/embed/8Y0GXxRpVX8',
+  },
+] as const
 </script>

@@ -1,4 +1,4 @@
-export const parseLedgerSiteUrl = 'https://parse-ledger.ae'
+export const parseLedgerSiteUrl = 'https://parseledger.ae/'
 
 export const socialLinks = [
   {
