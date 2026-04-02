@@ -39,7 +39,7 @@
     </div>
   </section>
 
-  <section class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-16">
+  <section class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 pt-6 pb-12 backdrop-blur-[2px] md:scroll-mt-32 md:pt-8 md:pb-16">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <h2 class="max-w-4xl text-xl font-semibold tracking-tight text-slate-950 md:text-3xl">
         <span class="text-brand-dark">Parse Ledger</span> поддерживает автоматическую обработку банковских выписок ведущих банков ОАЭ
