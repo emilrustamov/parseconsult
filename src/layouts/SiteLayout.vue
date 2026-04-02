@@ -17,7 +17,7 @@ const navLinks: NavLink[] = [
 ]
 
 const serviceLinks: { label: string; to: RouteLocationRaw }[] = [
-  { label: 'FirstBit / 1С', to: { name: 'service-details', params: { slug: 'firstbit' } } },
+  { label: '1С и Firstbit', to: { name: 'service-details', params: { slug: 'firstbit' } } },
   { label: 'Битрикс24', to: { name: 'service-details', params: { slug: 'bitrix24' } } },
   { label: 'Внедрение и восстановление', to: { name: 'service-details', params: { slug: 'accounting-systems' } } },
   { label: 'Настройка учета', to: { name: 'service-details', params: { slug: 'accounting-setup' } } },
@@ -88,19 +88,32 @@ onBeforeUnmount(() => {
 
     <header v-show="!isHeaderHidden" class="pointer-events-none fixed inset-x-0 top-4 z-50 flex justify-center px-4 md:top-6 md:px-6">
       <div class="pointer-events-auto w-full max-w-7xl rounded-xl border border-slate-200/90 bg-white py-3 pl-4 pr-3 shadow-sm md:py-3.5 md:pl-6 md:pr-4 lg:px-6 xl:px-8">
-        <div class="flex items-center justify-between gap-4">
-        <RouterLink :to="{ name: 'home' }" class="flex shrink-0 items-center gap-2">
-          <img
-            src="/logo.svg"
-            alt="Parse Consult"
-            class="h-10 w-10 shrink-0 rounded-lg object-contain"
-            loading="eager"
-            decoding="async"
+        <div class="relative flex w-full items-center gap-3 lg:gap-4">
+          <button
+            type="button"
+            class="relative z-20 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-50 lg:hidden"
+            :aria-expanded="isMobileMenuOpen"
+            aria-label="Открыть меню"
+            @click="isMobileMenuOpen = !isMobileMenuOpen"
           >
-          <span class="hidden text-sm font-semibold tracking-tight text-slate-900 sm:inline">parseconsult ae</span>
-        </RouterLink>
+            <span class="text-lg leading-none">{{ isMobileMenuOpen ? '×' : '☰' }}</span>
+          </button>
 
-          <div class="flex min-w-0 items-center justify-center gap-3 sm:gap-4 lg:gap-4 xl:gap-6">
+          <RouterLink
+            :to="{ name: 'home' }"
+            class="absolute left-1/2 top-1/2 z-10 flex shrink-0 -translate-x-1/2 -translate-y-1/2 items-center gap-2 lg:static lg:left-auto lg:top-auto lg:z-auto lg:translate-x-0 lg:translate-y-0"
+          >
+            <img
+              src="/logo.svg"
+              alt="Parse Consult"
+              class="h-10 w-10 shrink-0 rounded-lg object-contain"
+              loading="eager"
+              decoding="async"
+            >
+            <span class="hidden text-sm font-semibold tracking-tight text-slate-900 sm:inline">parseconsult ae</span>
+          </RouterLink>
+
+          <div class="flex min-w-0 flex-1 items-center justify-end gap-3 sm:gap-4 lg:justify-center lg:gap-4 xl:gap-6">
           <nav class="hidden items-center gap-4 lg:flex xl:gap-7">
             <RouterLink :to="{ name: 'home' }" class="group inline-flex items-center whitespace-nowrap">
               <span
@@ -255,15 +268,6 @@ onBeforeUnmount(() => {
             >
               Связаться с нами
             </RouterLink>
-            <button
-              type="button"
-              class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-50 lg:hidden"
-              :aria-expanded="isMobileMenuOpen"
-              aria-label="Открыть меню"
-              @click="isMobileMenuOpen = !isMobileMenuOpen"
-            >
-              <span class="text-lg leading-none">{{ isMobileMenuOpen ? '×' : '☰' }}</span>
-            </button>
           </div>
         </div>
 
@@ -406,7 +410,7 @@ onBeforeUnmount(() => {
           >
           <div>
             <div class="font-semibold tracking-tight text-slate-900">Parse Consult</div>
-            <div class="font-medium text-slate-600">Учёт, внедрение, автоматизация — ОАЭ</div>
+            <div class="font-medium text-slate-600">Учёт, внедрение, автоматизация — ОАЭ, России и Казахстана</div>
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-x-5 gap-y-3">

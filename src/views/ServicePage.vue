@@ -10,6 +10,55 @@
       </div>
 
       <section
+        v-if="isAccountingSystemsPage"
+        id="platforms"
+        class="fade-in-up mt-10 scroll-mt-28 border-b border-slate-200/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10"
+        style="animation-delay: 80ms"
+      >
+        <div class="max-w-4xl">
+          <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
+            Структурированное внедрение
+            <span class="text-brand-dark">1С</span>
+            и
+            <span class="text-brand-dark">Firstbit</span>,
+            <span class="text-brand-dark">Zoho Books</span>
+            и
+            <span class="text-brand-dark">QuickBooks</span>,
+            а также
+            <span class="text-[#03bcef]">Bitrix24</span>.
+          </h2>
+          <p class="mt-6 text-base leading-8 text-slate-600 md:text-lg">
+            Поддерживаем внедрение, настройку и интеграцию современных бухгалтерских систем — 1С и Firstbit, Zoho Books и QuickBooks —
+            обеспечивая прозрачный учёт, автоматизацию процессов и соответствие требованиям бизнеса в ОАЭ, в России и в Казахстане.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-4">
+          <article v-for="platform in homePlatforms" :key="platform.name" class="group rounded-xl border border-slate-200 bg-white p-7 transition hover:border-slate-300">
+            <div class="flex min-w-0 max-w-full items-center gap-3 sm:gap-4">
+              <img
+                :src="platform.logoSrc"
+                :alt="platform.logoAlt"
+                :class="platform.logoClass ?? 'h-8 w-auto max-w-[7rem] shrink-0 object-contain object-left sm:h-9 sm:max-w-[8rem]'"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                v-if="platform.secondaryLogoSrc"
+                :src="platform.secondaryLogoSrc"
+                :alt="platform.secondaryLogoAlt ?? ''"
+                :class="platform.secondaryLogoClass ?? 'h-8 w-auto max-w-[7rem] shrink-0 object-contain object-left sm:h-9 sm:max-w-[8rem]'"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="min-w-0 text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">{{ platform.name }}</div>
+            </div>
+            <p class="mt-6 border-l-2 border-brand/50 pl-4 text-sm leading-7 text-slate-600">{{ platform.description }}</p>
+          </article>
+        </div>
+      </section>
+
+      <section
         v-if="isBitrixPage && bitrixPlatformGroup"
         class="fade-in-up group relative mt-10 overflow-hidden rounded-[2rem] border border-brand/35 bg-[radial-gradient(circle_at_15%_20%,rgba(94,233,181,0.22),transparent_42%),radial-gradient(circle_at_85%_80%,rgba(56,189,248,0.2),transparent_38%),linear-gradient(135deg,#0b201c_0%,#12352d_45%,#0f2b25_100%)] p-7 shadow-[0_22px_55px_-25px_rgba(15,54,44,0.9)] sm:p-9"
         style="animation-delay: 90ms"
@@ -313,6 +362,7 @@ import { computed, onBeforeUnmount, onMounted, watch } from 'vue'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import LeadRequestForm from '@/components/LeadRequestForm.vue'
+import { homePlatforms } from '@/content/platforms'
 import { serviceContent } from '@/content/services'
 
 const route = useRoute()
@@ -320,6 +370,7 @@ const router = useRouter()
 const showcaseSlugs = new Set(['firstbit', 'accounting-systems', 'training'])
 const isShowcasePage = computed(() => showcaseSlugs.has(String(route.params.slug ?? '')))
 const isBitrixPage = computed(() => String(route.params.slug ?? '') === 'bitrix24')
+const isAccountingSystemsPage = computed(() => String(route.params.slug ?? '') === 'accounting-systems')
 const isLeadModalOpen = ref(false)
 const modalFormKey = ref(0)
 const isLeadFormDirty = ref(false)

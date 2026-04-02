@@ -3,7 +3,7 @@
     <div class="mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-12 lg:px-8 lg:py-10">
       <div class="max-w-3xl">
         <h1 class="mt-4 max-w-4xl text-3xl font-semibold leading-[1.05] tracking-tight text-slate-950 md:text-4xl lg:text-5xl">
-          <span class="text-brand-dark">Parse Ledger</span> — автоматическая загрузка банковской выписки в ОАЭ
+          <span class="text-brand-dark">Parse Ledger</span> — автоматическая загрузка банковской выписки в ОАЭ, в России и в Казахстане
         </h1>
         <div class="relative mt-6 min-h-[260px] w-full lg:hidden">
           <DotLottieVue
@@ -16,7 +16,7 @@
         <p class="mt-6 text-base leading-8 text-slate-600 md:text-lg">
           Когда отсутствует прямая интеграция с банком, бухгалтерия возвращается к ручному вводу, таблицам и дополнительной операционной нагрузке.<br>
           Parse Ledger принимает банковские выписки в формате PDF и Excel и превращает их в структурированные данные, готовые к загрузке в бухгалтерские системы.<br>
-          Разработано для бухгалтеров, финансовых отделов и аутсорсинговых компаний в ОАЭ.
+          Разработано для бухгалтеров, финансовых отделов и аутсорсинговых компаний в ОАЭ, в России и в Казахстане.
         </p>
         <a
           :href="parseLedgerSiteUrl"

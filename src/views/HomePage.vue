@@ -3,7 +3,7 @@
     <div class="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-10 lg:px-8 lg:py-10 xl:gap-12">
       <div class="flex max-w-3xl flex-col lg:h-full lg:justify-between">
         <h1 class="relative z-10 max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 md:text-[2.55rem] lg:text-[2.7rem] xl:text-[3.2rem]">
-          Учёт, внедрение и обучение в <span class="text-[#3ccd98]">ОАЭ</span>
+          Учёт, внедрение и обучение в <span class="text-[#3ccd98]">ОАЭ, в России и в Казахстане</span>
         </h1>
         <div class="mt-4 w-full max-w-[460px] sm:max-w-[560px] md:mt-6 md:max-w-[640px] lg:mt-10 lg:max-w-none lg:pb-2">
           <DotLottieVue
@@ -51,7 +51,9 @@
       <div class="max-w-4xl">
         <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
           Структурированное внедрение
-          <span class="text-brand-dark">FirstBit</span>,
+          <span class="text-brand-dark">1С</span>
+          и
+          <span class="text-brand-dark">Firstbit</span>,
           <span class="text-brand-dark">Zoho Books</span>
           и
           <span class="text-brand-dark">QuickBooks</span>,
@@ -59,8 +61,8 @@
           <span class="text-[#03bcef]">Bitrix24</span>.
         </h2>
         <p class="mt-6 text-base leading-8 text-slate-600 md:text-lg">
-          Поддерживаем внедрение, настройку и интеграцию современных бухгалтерских систем — FirstBit, Zoho Books и QuickBooks —
-          обеспечивая прозрачный учёт, автоматизацию процессов и соответствие требованиям бизнеса в ОАЭ.
+          Поддерживаем внедрение, настройку и интеграцию современных бухгалтерских систем — 1С и Firstbit, Zoho Books и QuickBooks —
+          обеспечивая прозрачный учёт, автоматизацию процессов и соответствие требованиям бизнеса в ОАЭ, в России и в Казахстане.
         </p>
       </div>
 
@@ -137,7 +139,7 @@
           Внедрение, обучение, автоматизация
         </h2>
         <p class="mt-6 text-base leading-8 text-slate-600 md:text-lg">
-          Выстраиваем прозрачный и управляемый учёт с точной отчётностью, полностью адаптированной под требования бизнеса и регуляции ОАЭ.
+          Выстраиваем прозрачный и управляемый учёт с точной отчётностью, полностью адаптированной под требования бизнеса и регуляции ОАЭ, России и Казахстана.
         </p>
       </div>
 
@@ -214,13 +216,15 @@
 
   <section id="home-lead" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">Расскажите о ситуации в учёте</h2>
-    
-      </div>
-
-      <div class="mx-auto mt-12 grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-stretch lg:gap-12">
-        <aside class="flex flex-col rounded-2xl border border-transparent bg-transparent p-0 md:border-slate-200/90 md:bg-gradient-to-b md:from-slate-50 md:to-white md:p-7">
+      <div class="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-stretch lg:gap-12">
+        <h2
+          class="order-2 col-span-full mx-auto max-w-3xl text-center text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl lg:order-1"
+        >
+          Расскажите о ситуации в учёте
+        </h2>
+        <aside
+          class="order-1 flex flex-col rounded-2xl border border-transparent bg-transparent p-0 md:border-slate-200/90 md:bg-gradient-to-b md:from-slate-50 md:to-white md:p-7 lg:order-2"
+        >
           <h3 class="text-lg font-semibold tracking-tight text-slate-950 md:text-xl">
             FAQ
           </h3>
@@ -256,7 +260,9 @@
           </ul>
         </aside>
 
-        <div class="rounded-2xl border border-transparent bg-transparent p-0 md:border-slate-200/90 md:bg-gradient-to-b md:from-slate-50 md:to-white md:p-7">
+        <div
+          class="order-3 rounded-2xl border border-transparent bg-transparent p-0 md:border-slate-200/90 md:bg-gradient-to-b md:from-slate-50 md:to-white md:p-7"
+        >
           <LeadRequestForm id-prefix="home-lead" />
         </div>
       </div>
@@ -271,13 +277,14 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import 'vue3-carousel/carousel.css'
 import LeadRequestForm from '@/components/LeadRequestForm.vue'
+import { homePlatforms as platforms } from '@/content/platforms'
 
 const keyServices = [
   {
     id: 'parse-ledger',
     slug: 'parse-ledger',
     icon: '🧾',
-    title: 'Parse Ledger — автоматическая загрузка банковской выписки в ОАЭ',
+    title: 'Parse Ledger — автоматическая загрузка банковской выписки в ОАЭ, в России и в Казахстане',
     description:
       'Настраиваем и внедряем Parse Ledger для прозрачного управленческого и бухгалтерского учета в ежедневной работе команды.',
   },
@@ -285,9 +292,9 @@ const keyServices = [
     id: 'firstbit',
     slug: 'firstbit',
     icon: '⚙️',
-    title: 'Экспертное внедрение и кастомизация 1C и FirstBit в ОАЭ',
+    title: 'Экспертное внедрение и кастомизация 1С и Firstbit в ОАЭ, в России и в Казахстане',
     description:
-      'Настраиваем систему под требования бизнеса в ОАЭ с учётом локального законодательства и специфики процессов.',
+      'Настраиваем систему под требования бизнеса в ОАЭ, в России и в Казахстане с учётом локального законодательства и специфики процессов.',
   },
   {
     id: 'bitrix24',
@@ -345,24 +352,47 @@ const serviceCards = keyServices.map((service) => ({
 
 const faqItems = [
   {
-    id: 'faq-start',
-    question: 'С чего начать работу с вами?',
-    answer: 'Оставьте заявку в форме. Мы свяжемся с вами, уточним задачи и предложим подходящий формат внедрения.',
-  },
-  {
-    id: 'faq-duration',
-    question: 'Сколько времени занимает внедрение?',
-    answer: 'Срок зависит от объёма задач и состояния текущего учёта. Базовый этап обычно занимает от 2 до 6 недель.',
-  },
-  {
     id: 'faq-systems',
     question: 'С какими системами вы работаете?',
-    answer: 'Мы внедряем и настраиваем FirstBit, Zoho Books, QuickBooks и Bitrix24, а также интеграции между ними.',
+    answer:
+      'Мы осуществляем внедрение, настройку и сопровождение таких систем, как 1С, FirstBit, Zoho Books, QuickBooks и Bitrix24, а также выполняем интеграцию между указанными решениями.',
   },
   {
-    id: 'faq-training',
-    question: 'Обучаете ли вы команду после внедрения?',
-    answer: 'Да, проводим обучение сотрудников и сопровождаем запуск, чтобы команда уверенно работала в новой системе.',
+    id: 'faq-1c-configs',
+    question: 'Какие программы 1С и FirstBit подлежат доработке?',
+    answer:
+      'Доработке подлежат все конфигурации 1С и FirstBit, включая: «Бухгалтерия», «Управление торговлей», «Зарплата и управление персоналом», а также иные специализированные решения.',
+  },
+  {
+    id: 'faq-order-customization',
+    question: 'Как заказать услугу доработки 1С и FirstBit?',
+    answer:
+      'Для заказа услуги вы можете заполнить форму заявки на нашем сайте либо связаться с нашими специалистами по телефону или электронной почте.',
+  },
+  {
+    id: 'faq-cost',
+    question: 'Какова стоимость доработки 1С и FirstBit?',
+    answer:
+      'Стоимость услуг определяется индивидуально и зависит от объема, сложности задач и требований проекта. Окончательная цена формируется после проведения анализа и подготовки технического задания.',
+  },
+  {
+    id: 'faq-timelines',
+    question:
+      'Какие сроки предусмотрены для внедрения и доработки систем (1С, FirstBit, Zoho Books, QuickBooks)?',
+    answer:
+      'Сроки выполнения работ определяются индивидуально в зависимости от масштаба проекта и согласовываются на этапе планирования. Мы обеспечиваем соблюдение установленных сроков и контроль качества на всех этапах реализации.',
+  },
+  {
+    id: 'faq-integration',
+    question: 'Возможна ли интеграция 1С и FirstBit с другими системами?',
+    answer:
+      'Да, мы выполняем интеграцию решений 1С и FirstBit с различными системами, включая CRM, ERP, веб-сервисы и другие внешние платформы.',
+  },
+  {
+    id: 'faq-support',
+    question: 'Как осуществляется поддержка после доработки 1С и Bitrix24?',
+    answer:
+      'Мы предоставляем комплексное сопровождение после внедрения и доработки систем, включая обновление программного обеспечения, устранение возможных ошибок, а также консультационную поддержку пользователей.',
   },
 ]
 
@@ -409,41 +439,6 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', handleWindowResize)
 })
 
-const platforms = [
-  {
-    name: 'FirstBit',
-    logoSrc: '/fb.png',
-    logoAlt: 'First Bit',
-    secondaryLogoSrc: '/1s-logo.svg',
-    secondaryLogoAlt: '1C',
-    secondaryLogoClass: 'h-8 w-auto max-w-[4.5rem] shrink-0 object-contain object-left sm:h-9 sm:max-w-[5rem]',
-    logoClass:
-      'h-11 w-auto max-w-[11rem] shrink-0 object-contain object-left sm:h-12 sm:max-w-[13rem] md:h-[3.25rem] md:max-w-[14rem]',
-    description:
-      'FirstBit — внедряем и настраиваем систему с учётом требований локального учёта в ОАЭ, обеспечивая полный контроль финансов и соответствие регуляциям.',
-  },
-  {
-    name: 'Zoho Books',
-    logoSrc: '/zoho.png',
-    logoAlt: 'Zoho',
-    description:
-      'Zoho Books — настраиваем облачный учёт с автоматизацией операций, интеграцией с банками и удобным управлением финансами в реальном времени.',
-  },
-  {
-    name: 'QuickBooks',
-    logoSrc: '/qb.svg',
-    logoAlt: 'QuickBooks',
-    description:
-      'QuickBooks — внедряем гибкую систему для малого и среднего бизнеса с быстрой настройкой учёта, отчётности и интеграций с внешними сервисами.',
-  },
-  {
-    name: 'Bitrix24',
-    logoSrc: '/bitrix24.png',
-    logoAlt: 'Bitrix24',
-    description:
-      'Bitrix24 — настраиваем CRM, автоматизируем воронку продаж, задачи и внутренние процессы, связывая операции с финансовым учётом.',
-  },
-]
 </script>
 
 <style scoped>

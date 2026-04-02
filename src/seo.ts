@@ -15,12 +15,12 @@ type SeoMeta = {
 
 const staticMetaByRouteName: Record<string, Omit<SeoMeta, 'path'>> = {
   home: {
-    title: 'Parse Consult в ОАЭ - внедрение и автоматизация учета',
-    description: 'Внедрение FirstBit, Zoho Books и QuickBooks в ОАЭ. Восстановление учета, обучение персонала и автоматизация финансовых процессов.',
+    title: 'Parse Consult в ОАЭ, в России и в Казахстане - внедрение и автоматизация учета',
+    description: 'Внедрение 1С и Firstbit, Zoho Books и QuickBooks в ОАЭ, в России и в Казахстане. Восстановление учета, обучение персонала и автоматизация финансовых процессов.',
   },
   contact: {
     title: 'Контакты Parse Consult',
-    description: 'Свяжитесь с Parse Consult для консультации по внедрению бухгалтерских систем и автоматизации учета в ОАЭ.',
+    description: 'Свяжитесь с Parse Consult для консультации по внедрению бухгалтерских систем и автоматизации учета в ОАЭ, в России и в Казахстане.',
   },
   'parse-ledger': {
     title: 'parseledger.ae',
@@ -34,9 +34,9 @@ const staticMetaByRouteName: Record<string, Omit<SeoMeta, 'path'>> = {
 }
 
 const serviceDescriptionBySlug: Record<string, string> = {
-  firstbit: 'Экспертное внедрение и кастомизация 1C и FirstBit в ОАЭ: аудит, автоматизация процессов и методология IFRS.',
-  'accounting-systems': 'Внедрение, восстановление и оптимизация бухгалтерских систем с интеграцией банков и CRM для бизнеса в ОАЭ.',
-  'accounting-setup': 'Настройка бухгалтерского учета под отраслевую специфику бизнеса в ОАЭ: от e-commerce до строительства и логистики.',
+  firstbit: 'Экспертное внедрение и кастомизация 1С и Firstbit в ОАЭ, в России и в Казахстане: аудит, автоматизация процессов и методология IFRS.',
+  'accounting-systems': 'Внедрение, восстановление и оптимизация бухгалтерских систем с интеграцией банков и CRM для бизнеса в ОАЭ, в России и в Казахстане.',
+  'accounting-setup': 'Настройка бухгалтерского учета под отраслевую специфику бизнеса в ОАЭ, в России и в Казахстане: от e-commerce до строительства и логистики.',
   training: 'Сопровождение и обучение персонала: регламенты, инструкции и практическая адаптация команды к новым процессам учета.',
 }
 
@@ -104,7 +104,7 @@ const buildMeta = (route: RouteLocationNormalizedLoaded): SeoMeta => {
     if (service) {
       return {
         title: `${service.title} | ${SITE_NAME}`,
-        description: serviceDescriptionBySlug[slug] ?? 'Профессиональное внедрение и настройка бухгалтерских решений для бизнеса в ОАЭ.',
+        description: serviceDescriptionBySlug[slug] ?? 'Профессиональное внедрение и настройка бухгалтерских решений для бизнеса в ОАЭ, в России и в Казахстане.',
         path,
       }
     }
@@ -112,7 +112,7 @@ const buildMeta = (route: RouteLocationNormalizedLoaded): SeoMeta => {
 
   return {
     title: `${SITE_NAME} - консалтинг и автоматизация учета`,
-    description: 'Parse Consult помогает бизнесу в ОАЭ выстраивать прозрачный учет, внедрять системы и обучать команды.',
+    description: 'Parse Consult помогает бизнесу в ОАЭ, в России и в Казахстане выстраивать прозрачный учет, внедрять системы и обучать команды.',
     path,
     robots: routeName === 'not-found' ? 'noindex,follow' : 'index,follow',
   }
@@ -178,7 +178,7 @@ const buildServiceJsonLd = (route: RouteLocationNormalizedLoaded): Record<string
     return null
   }
   const description =
-    serviceDescriptionBySlug[slug] ?? 'Профессиональное внедрение и настройка бухгалтерских решений для бизнеса в ОАЭ.'
+    serviceDescriptionBySlug[slug] ?? 'Профессиональное внедрение и настройка бухгалтерских решений для бизнеса в ОАЭ, в России и в Казахстане.'
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',

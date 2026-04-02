@@ -46,7 +46,7 @@
           </div>
           <div class="rounded-xl border border-brand-dark/35 bg-brand-surface p-7 text-white">
             <div class="text-xs font-semibold uppercase tracking-wider text-brand">Локация</div>
-            <p class="mt-3 text-sm leading-7 text-white/85">ОАЭ: онлайн и у клиента по договорённости.</p>
+            <p class="mt-3 text-sm leading-7 text-white/85">ОАЭ, Россия и Казахстан: онлайн и у клиента по договорённости.</p>
           </div>
         </div>
 

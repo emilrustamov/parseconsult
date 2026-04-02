@@ -193,7 +193,7 @@ const formServiceOptions = [
   { id: 'migration', label: 'Миграция учёта' },
   { id: 'training', label: 'Обучение учёту' },
   { id: 'automation', label: 'Автоматизация учёта' },
-  { id: 'firstbit', label: 'FirstBit / 1С (ОАЭ)' },
+  { id: 'firstbit', label: '1С и Firstbit (ОАЭ, Россия и Казахстан)' },
   { id: 'quickbooks', label: 'QuickBooks' },
   { id: 'zoho', label: 'Zoho Books' },
   { id: 'bitrix24', label: 'Bitrix24' },
