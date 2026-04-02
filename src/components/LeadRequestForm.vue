@@ -1,12 +1,12 @@
 <template>
   <form class="space-y-6" @submit.prevent="submitContactForm">
     <div v-if="formSuccess" class="rounded-lg border border-brand/30 bg-brand/10 px-4 py-3 text-sm font-medium text-slate-800">
-      Спасибо! Заявка отправлена. Мы свяжемся с вами удобным способом.
+      {{ t('leadForm.success') }}
     </div>
 
     <div>
       <label :for="ids.fullName" class="mb-2 block text-sm font-semibold text-slate-800">
-        ФИО <span class="text-red-600">*</span>
+        {{ t('leadForm.fullName') }} <span class="text-red-600">*</span>
       </label>
       <input
         :id="ids.fullName"
@@ -16,7 +16,7 @@
         required
         autocomplete="name"
         class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none ring-brand/0 transition focus:border-brand-dark focus:ring-4 focus:ring-brand/20"
-        placeholder="Иванов Иван Иванович"
+        :placeholder="t('leadForm.fullNamePlaceholder')"
       >
     </div>
 
@@ -26,7 +26,7 @@
     </div>
 
     <div>
-      <span class="mb-3 block text-sm font-semibold text-slate-800">Как с вами связаться? <span class="text-red-600">*</span></span>
+      <span class="mb-3 block text-sm font-semibold text-slate-800">{{ t('leadForm.contactMethod') }} <span class="text-red-600">*</span></span>
       <div class="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
         <label
           v-for="opt in contactMethodOptions"
@@ -44,12 +44,12 @@
           {{ opt.label }}
         </label>
       </div>
-      <p v-if="contactMethodError" class="mt-2 text-sm text-red-600">{{ contactMethodError }}</p>
+      <p v-if="showContactMethodError" class="mt-2 text-sm text-red-600">{{ t('leadForm.contactMethodError') }}</p>
     </div>
 
     <div v-if="showPhoneField" class="animate-fade-up">
       <label :for="ids.phone" class="mb-2 block text-sm font-semibold text-slate-800">
-        Телефон <span class="text-red-600">*</span>
+        {{ t('leadForm.phone') }} <span class="text-red-600">*</span>
       </label>
       <input
         :id="ids.phone"
@@ -59,13 +59,13 @@
         :required="showPhoneField"
         autocomplete="tel"
         class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-brand-dark focus:ring-4 focus:ring-brand/20"
-        placeholder="+971 XX XXX XXXX"
+        :placeholder="t('leadForm.phonePlaceholder')"
       >
     </div>
 
     <div v-if="showEmailField" class="animate-fade-up">
       <label :for="ids.email" class="mb-2 block text-sm font-semibold text-slate-800">
-        Email <span class="text-red-600">*</span>
+        {{ t('leadForm.email') }} <span class="text-red-600">*</span>
       </label>
       <input
         :id="ids.email"
@@ -75,7 +75,7 @@
         :required="showEmailField"
         autocomplete="email"
         class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-brand-dark focus:ring-4 focus:ring-brand/20"
-        placeholder="you@company.ae"
+        :placeholder="t('leadForm.emailPlaceholder')"
       >
     </div>
 
@@ -94,7 +94,7 @@
             name="whatsapp"
             autocomplete="off"
             class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-brand-dark focus:ring-4 focus:ring-brand/20"
-            placeholder="+971... или @username"
+            :placeholder="t('leadForm.whatsappPlaceholder')"
           >
         </div>
         <div>
@@ -110,14 +110,14 @@
             name="telegram"
             autocomplete="off"
             class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-brand-dark focus:ring-4 focus:ring-brand/20"
-            placeholder="@username или номер"
+            :placeholder="t('leadForm.telegramPlaceholder')"
           >
         </div>
       </div>
     </fieldset>
 
     <fieldset>
-      <legend class="mb-3 text-sm font-semibold text-slate-800">Интересующие услуги</legend>
+      <legend class="mb-3 text-sm font-semibold text-slate-800">{{ t('leadForm.servicesLegend') }}</legend>
       <div class="grid gap-3 sm:grid-cols-2">
         <label
           v-for="svc in formServiceOptions"
@@ -137,7 +137,7 @@
 
     <div>
       <label :for="ids.message" class="mb-2 block text-sm font-semibold text-slate-800">
-        Сообщение <span class="text-red-600">*</span>
+        {{ t('leadForm.message') }} <span class="text-red-600">*</span>
       </label>
       <textarea
         :id="ids.message"
@@ -146,7 +146,7 @@
         rows="4"
         required
         class="w-full resize-y rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-brand-dark focus:ring-4 focus:ring-brand/20"
-        placeholder="Кратко опишите задачу, сроки и систему учёта, если известна."
+        :placeholder="t('leadForm.messagePlaceholder')"
       ></textarea>
     </div>
 
@@ -155,13 +155,15 @@
       class="ui-shine w-full rounded-lg bg-brand py-3.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-10"
       :disabled="formSubmitting"
     >
-      <span class="relative z-[1]">{{ formSubmitting ? 'Отправка…' : submitButtonLabel }}</span>
+      <span class="relative z-[1]">{{ formSubmitting ? t('leadForm.submitting') : resolvedSubmitLabel }}</span>
     </button>
   </form>
 </template>
 
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { SITE_CONTACT_EMAIL } from '@/siteContact'
 
 type ContactMethod = 'phone' | 'email' | 'social'
 
@@ -175,7 +177,7 @@ const props = withDefaults(
   {
     initialServices: () => [],
     initialMessage: '',
-    submitButtonLabel: 'Отправить заявку',
+    submitButtonLabel: '',
     idPrefix: 'contact',
   }
 )
@@ -183,22 +185,26 @@ const emit = defineEmits<{
   (event: 'dirty-change', value: boolean): void
 }>()
 
-const contactMethodOptions = [
-  { value: 'phone', label: 'Телефон' },
-  { value: 'email', label: 'Email' },
-  { value: 'social', label: 'Соц. сети' },
-] as const
+const { t } = useI18n()
 
-const formServiceOptions = [
-  { id: 'migration', label: 'Миграция учёта' },
-  { id: 'training', label: 'Обучение учёту' },
-  { id: 'automation', label: 'Автоматизация учёта' },
-  { id: 'firstbit', label: '1С и Firstbit (ОАЭ, Россия и Казахстан)' },
-  { id: 'quickbooks', label: 'QuickBooks' },
-  { id: 'zoho', label: 'Zoho Books' },
-  { id: 'bitrix24', label: 'Bitrix24' },
-  { id: 'consulting', label: 'Консультация / другое' },
-] as const
+const contactMethodOptions = computed(() => [
+  { value: 'phone' as const, label: t('leadForm.phone') },
+  { value: 'email' as const, label: t('leadForm.email') },
+  { value: 'social' as const, label: t('leadForm.social') },
+])
+
+const formServiceOptions = computed(() => [
+  { id: 'migration', label: t('leadForm.svcMigration') },
+  { id: 'training', label: t('leadForm.svcTraining') },
+  { id: 'automation', label: t('leadForm.svcAutomation') },
+  { id: 'firstbit', label: t('leadForm.svcFirstbit') },
+  { id: 'quickbooks', label: t('leadForm.svcQuickbooks') },
+  { id: 'zoho', label: t('leadForm.svcZoho') },
+  { id: 'bitrix24', label: t('leadForm.svcBitrix24') },
+  { id: 'consulting', label: t('leadForm.svcConsulting') },
+])
+
+const resolvedSubmitLabel = computed(() => props.submitButtonLabel || t('leadForm.submit'))
 
 const form = reactive({
   fullName: '',
@@ -222,9 +228,9 @@ const ids = {
   message: `${props.idPrefix}-message`,
 }
 
-const contactMethodError = ref('')
+const showContactMethodError = ref(false)
 const selectedContactMethods = computed(() =>
-  contactMethodOptions.map((option) => option.value).filter((method) => form.contactMethods.includes(method))
+  contactMethodOptions.value.map((option) => option.value).filter((method) => form.contactMethods.includes(method)),
 )
 const showPhoneField = computed(() => selectedContactMethods.value.includes('phone'))
 const showEmailField = computed(() => selectedContactMethods.value.includes('email'))
@@ -256,10 +262,10 @@ function submitContactForm(): void {
     return
   }
   if (selectedContactMethods.value.length === 0) {
-    contactMethodError.value = 'Выберите хотя бы один вариант связи.'
+    showContactMethodError.value = true
     return
   }
-  contactMethodError.value = ''
+  showContactMethodError.value = false
   const socialValue = [form.whatsapp.trim(), form.telegram.trim()].filter(Boolean)
   if (showSocialField.value && socialValue.length === 0) {
     return
@@ -268,24 +274,27 @@ function submitContactForm(): void {
   formSubmitting.value = true
   formSuccess.value = false
 
-  const methodLabels = contactMethodOptions
+  const methodLabels = contactMethodOptions.value
     .filter((option) => selectedContactMethods.value.includes(option.value))
     .map((option) => option.label)
-  const lines = [`ФИО: ${form.fullName}`, `Связь: ${methodLabels.join(', ')}`]
-  if (showPhoneField.value) lines.push(`Телефон: ${form.phone}`)
-  if (showEmailField.value) lines.push(`Email: ${form.email}`)
+  const lines = [
+    `${t('leadForm.mailBodyName')}: ${form.fullName}`,
+    `${t('leadForm.mailBodyContact')}: ${methodLabels.join(', ')}`,
+  ]
+  if (showPhoneField.value) lines.push(`${t('leadForm.mailBodyPhone')}: ${form.phone}`)
+  if (showEmailField.value) lines.push(`${t('leadForm.mailBodyEmail')}: ${form.email}`)
   if (showSocialField.value) {
-    lines.push(`WhatsApp: ${form.whatsapp.trim() || '—'}`)
-    lines.push(`Telegram: ${form.telegram.trim() || '—'}`)
+    lines.push(`${t('leadForm.mailBodyWhatsapp')}: ${form.whatsapp.trim() || '—'}`)
+    lines.push(`${t('leadForm.mailBodyTelegram')}: ${form.telegram.trim() || '—'}`)
   }
-  const labels = formServiceOptions.filter((s) => form.services.includes(s.id)).map((s) => s.label)
-  lines.push(`Услуги: ${labels.length ? labels.join(', ') : '—'}`)
+  const labels = formServiceOptions.value.filter((s) => form.services.includes(s.id)).map((s) => s.label)
+  lines.push(`${t('leadForm.mailBodyServices')}: ${labels.length ? labels.join(', ') : '—'}`)
   lines.push('')
   lines.push(form.message)
 
   const body = encodeURIComponent(lines.join('\n'))
-  const subject = encodeURIComponent(`Заявка с сайта — ${form.fullName}`)
-  window.location.href = `mailto:info@parseconsult.ae?subject=${subject}&body=${body}`
+  const subject = encodeURIComponent(t('leadForm.mailSubject', { name: form.fullName }))
+  window.location.href = `mailto:${SITE_CONTACT_EMAIL}?subject=${subject}&body=${body}`
 
   formSuccess.value = true
   formSubmitting.value = false
@@ -297,7 +306,7 @@ function isContactOptionActive(option: ContactMethod): boolean {
 
 function toggleContactOption(option: ContactMethod): void {
   formSuccess.value = false
-  contactMethodError.value = ''
+  showContactMethodError.value = false
   if (form.contactMethods.includes(option)) {
     form.contactMethods = form.contactMethods.filter((method) => method !== option)
     return

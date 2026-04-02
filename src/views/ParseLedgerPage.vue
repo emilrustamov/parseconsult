@@ -3,7 +3,7 @@
     <div class="mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-12 lg:px-8 lg:py-10">
       <div class="max-w-3xl">
         <h1 class="mt-4 max-w-4xl text-2xl font-semibold leading-[1.05] tracking-tight text-slate-950 md:text-4xl lg:text-5xl">
-          <span class="text-brand-dark">Parse Ledger</span> — автоматическая загрузка банковской выписки в ОАЭ
+          <span class="text-brand-dark">Parse Ledger</span> — {{ t('parseLedger.heroTitle') }}
         </h1>
         <div class="relative mt-6 min-h-[260px] w-full lg:hidden">
           <DotLottieVue
@@ -13,10 +13,8 @@
             loop
           />
         </div>
-        <p class="mt-6 text-base leading-8 text-slate-600 md:text-lg">
-          Когда отсутствует прямая интеграция с банком, бухгалтерия возвращается к ручному вводу, таблицам и дополнительной операционной нагрузке.<br>
-          Parse Ledger принимает банковские выписки в формате PDF и Excel и превращает их в структурированные данные, готовые к загрузке в бухгалтерские системы.<br>
-          Разработано для бухгалтеров, финансовых отделов и аутсорсинговых компаний в ОАЭ, в России и в Казахстане.
+        <p class="mt-6 whitespace-pre-line text-base leading-8 text-slate-600 md:text-lg">
+          {{ t('parseLedger.intro') }}
         </p>
         <a
           :href="parseLedgerSiteUrl"
@@ -24,7 +22,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          Попробовать
+          {{ t('cta.tryProduct') }}
         </a>
       </div>
 
@@ -42,13 +40,13 @@
   <section class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 pt-6 pb-12 backdrop-blur-[2px] md:scroll-mt-32 md:pt-8 md:pb-16">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <h2 class="max-w-4xl text-xl font-semibold tracking-tight text-slate-950 md:text-3xl">
-        <span class="text-brand-dark">Parse Ledger</span> поддерживает автоматическую обработку банковских выписок ведущих банков ОАЭ
+        <span class="text-brand-dark">Parse Ledger</span> {{ t('parseLedger.banksTitle') }}
       </h2>
       <p class="mt-6 max-w-3xl text-base leading-8 text-slate-600 md:text-lg">
-        Программа Parse Ledger позволяет быстро и точно обрабатывать банковские выписки, минимизируя ручной труд и снижая риск ошибок.
+        {{ t('parseLedger.banksLead') }}
       </p>
       <h3 class="mt-10 text-base font-semibold text-slate-900 md:text-lg">
-        Поддерживаются выписки следующих банков:
+        {{ t('parseLedger.banksListTitle') }}
       </h3>
       <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <article
@@ -71,21 +69,21 @@
         <article
           class="flex flex-col justify-center rounded-xl border border-dashed border-slate-300/90 bg-white/60 px-4 py-4 text-center shadow-sm shadow-slate-200/20"
         >
-          <div class="text-sm font-semibold text-slate-700">и другие банки</div>
+          <div class="text-sm font-semibold text-slate-700">{{ t('parseLedger.otherBanks') }}</div>
         </article>
       </div>
       <div class="mt-12 max-w-3xl">
         <h3 class="text-base font-semibold text-slate-900 md:text-lg">
-          Что вы получаете:
+          {{ t('parseLedger.benefitsTitle') }}
         </h3>
         <ul class="mt-4 space-y-3 border-l-2 border-brand/50 pl-5 text-base leading-8 text-slate-600 md:text-lg">
-          <li>автоматическую загрузку и распознавание выписок</li>
-          <li>корректное распределение транзакций</li>
-          <li>интеграцию с учётными системами (FirstBit, Zoho Books, QuickBooks и др.)</li>
+          <li>{{ t('parseLedger.benefit1') }}</li>
+          <li>{{ t('parseLedger.benefit2') }}</li>
+          <li>{{ t('parseLedger.benefit3') }}</li>
         </ul>
       </div>
       <p class="mt-10 max-w-3xl text-base leading-8 text-slate-600 md:text-lg">
-        <span class="font-semibold text-brand-dark">Parse Ledger</span> — это удобный инструмент для бухгалтеров и бизнеса, который экономит время и делает ведение бухгалтерского учёта лёгким.
+        <span class="font-semibold text-brand-dark">Parse Ledger</span> {{ t('parseLedger.closing') }}
       </p>
     </div>
   </section>
@@ -93,7 +91,7 @@
   <section class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-16">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <h2 class="text-xl font-semibold tracking-tight text-slate-950 md:text-3xl">
-        Инструкция по использованию программы
+        {{ t('parseLedger.tutorialTitle') }}
       </h2>
       <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div
@@ -119,8 +117,12 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import { parseLedgerSiteUrl } from '@/socialLinks'
+
+const { t } = useI18n()
 
 type ParseLedgerBank = {
   name: string
@@ -145,18 +147,18 @@ const parseLedgerBanks: ParseLedgerBank[] = [
   { name: 'Wio Bank', abbr: 'WIO' },
 ]
 
-const parseLedgerTutorialVideos = [
+const parseLedgerTutorialVideos = computed(() => [
   {
-    title: 'Parse Ledger — инструкция (видео 1)',
+    title: t('parseLedger.videoTitle1'),
     embedSrc: 'https://www.youtube.com/embed/rYQ1q5-YsYg',
   },
   {
-    title: 'Parse Ledger — инструкция (видео 2)',
+    title: t('parseLedger.videoTitle2'),
     embedSrc: 'https://www.youtube.com/embed/G4yr5viuawM?start=5',
   },
   {
-    title: 'Parse Ledger — инструкция (видео 3)',
+    title: t('parseLedger.videoTitle3'),
     embedSrc: 'https://www.youtube.com/embed/8Y0GXxRpVX8',
   },
-] as const
+])
 </script>

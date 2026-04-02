@@ -9,26 +9,26 @@
     <div class="relative z-10 mx-auto grid max-w-7xl gap-10 px-6 pb-16 md:pb-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-14 lg:px-8">
       <div>
         <p class="inline-flex rounded-full border border-brand/40 bg-brand/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">
-          Error 404
+          {{ t('notFound.badge') }}
         </p>
         <h1 class="mt-5 text-2xl font-semibold leading-tight tracking-tight text-slate-950 md:text-5xl">
-          Страница не найдена
+          {{ t('notFound.title') }}
         </h1>
         <p class="mt-5 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
-          Возможно, ссылка устарела или страница была перемещена. Вернитесь на главную или перейдите в контакты, и мы быстро поможем найти нужный раздел.
+          {{ t('notFound.text') }}
         </p>
         <div class="mt-8 flex flex-wrap items-center gap-3">
           <RouterLink
             :to="{ name: 'home' }"
             class="inline-flex items-center rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
           >
-            На главную
+            {{ t('notFound.home') }}
           </RouterLink>
           <RouterLink
             :to="{ name: 'contact' }"
             class="inline-flex items-center rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
           >
-            Перейти в контакты
+            {{ t('notFound.contact') }}
           </RouterLink>
         </div>
       </div>
@@ -48,7 +48,10 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
+
+const { t } = useI18n()
 </script>
 
 <style scoped>

@@ -1,28 +1,38 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import FloatingAccountingDeco from '@/components/FloatingAccountingDeco.vue'
 import SocialNetworkIcon from '@/components/SocialNetworkIcon.vue'
-import { socialLinks } from '@/socialLinks'
+import { applyDocumentLang, persistLocale, type AppLocale } from '@/i18n'
+import { socialLinkDefs } from '@/socialLinks'
+
+const { t, locale } = useI18n()
 
 type NavLink =
   | { label: string; to: RouteLocationRaw }
   | { label: string; href: string }
 
-const navLinks: NavLink[] = [
-  { label: 'Главная', to: { name: 'home' } },
-  { label: 'Parse Ledger', to: { name: 'parse-ledger' } },
-  { label: 'Контакты', to: { name: 'contact' } },
-]
+const navLinks = computed<NavLink[]>(() => [
+  { label: t('nav.home'), to: { name: 'home' } },
+  { label: t('nav.parseLedger'), to: { name: 'parse-ledger' } },
+  { label: t('nav.contact'), to: { name: 'contact' } },
+])
 
-const serviceLinks: { label: string; to: RouteLocationRaw }[] = [
-  { label: '1С и Firstbit', to: { name: 'service-details', params: { slug: 'firstbit' } } },
-  { label: 'Битрикс24', to: { name: 'service-details', params: { slug: 'bitrix24' } } },
-  { label: 'Внедрение и восстановление бух. учета', to: { name: 'service-details', params: { slug: 'accounting-systems' } } },
-  { label: 'Настройки бух. учета', to: { name: 'service-details', params: { slug: 'accounting-setup' } } },
-  { label: 'Сопровождение и обучение бух. учету', to: { name: 'service-details', params: { slug: 'training' } } },
-]
+const serviceLinks = computed(() => [
+  { label: t('nav.firstbit'), to: { name: 'service-details', params: { slug: 'firstbit' } } },
+  { label: t('nav.bitrix24'), to: { name: 'service-details', params: { slug: 'bitrix24' } } },
+  { label: t('nav.accountingSystems'), to: { name: 'service-details', params: { slug: 'accounting-systems' } } },
+  { label: t('nav.accountingSetup'), to: { name: 'service-details', params: { slug: 'accounting-setup' } } },
+  { label: t('nav.training'), to: { name: 'service-details', params: { slug: 'training' } } },
+])
+
+const setLocale = (code: AppLocale): void => {
+  locale.value = code
+  persistLocale(code)
+  applyDocumentLang(code)
+}
 
 const headerWhatsappNumber = '+971 52 856 9060'
 const headerWhatsappHref = `https://wa.me/${headerWhatsappNumber.replace(/\D/g, '')}`
@@ -35,7 +45,7 @@ const route = useRoute()
 const isActiveServiceSlug = (slug: string): boolean =>
   route.name === 'service-details' && route.params.slug === slug
 
-const serviceLinkSlug = (item: (typeof serviceLinks)[number]): string => {
+const serviceLinkSlug = (item: { label: string; to: RouteLocationRaw }): string => {
   const to = item.to
   if (typeof to === 'object' && to !== null && 'params' in to && to.params && typeof to.params === 'object' && 'slug' in to.params) {
     const raw = (to.params as { slug?: unknown }).slug
@@ -76,7 +86,7 @@ onBeforeUnmount(() => {
       href="#main-content"
       class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[1200] focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-slate-900"
     >
-      Перейти к контенту
+      {{ t('a11y.skipToContent') }}
     </a>
     <div class="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
       <div class="absolute inset-0 bg-slate-50"></div>
@@ -93,7 +103,7 @@ onBeforeUnmount(() => {
             type="button"
             class="burger-trigger relative z-20 inline-flex h-10 min-w-[3.25rem] shrink-0 items-center justify-center rounded-lg border-2 border-brand-dark/50 px-3 text-xl font-bold leading-none text-slate-900 shadow-md transition hover:border-brand-dark lg:hidden"
             :aria-expanded="isMobileMenuOpen"
-            aria-label="Открыть меню"
+            :aria-label="t('a11y.openMenu')"
             @click="isMobileMenuOpen = !isMobileMenuOpen"
           >
             <span class="leading-none">{{ isMobileMenuOpen ? '×' : '☰' }}</span>
@@ -105,21 +115,21 @@ onBeforeUnmount(() => {
           >
             <img
               src="/logo.svg"
-              alt="Parse Consult"
+              :alt="t('brand.logoAlt')"
               class="size-[var(--logo-size)] shrink-0 rounded-lg object-contain"
               loading="eager"
               decoding="async"
             >
             <span
               class="inline-flex flex-col items-start gap-0.5 whitespace-nowrap leading-none lg:flex-row lg:items-baseline lg:gap-1.5"
-              aria-label="Parse Consult"
+              :aria-label="t('brand.siteName')"
             >
               <span
                 class="font-semibold tracking-tight text-slate-900 text-[calc(var(--logo-size)_*_0.48)] lg:text-[calc(var(--logo-size)_*_0.5)]"
-              >Parse</span>
+              >{{ t('brand.parse') }}</span>
               <span
                 class="font-semibold tracking-tight text-brand text-[calc(var(--logo-size)_*_0.48)] lg:text-[calc(var(--logo-size)_*_0.5)]"
-              >Consult</span>
+              >{{ t('brand.consult') }}</span>
             </span>
           </RouterLink>
 
@@ -134,7 +144,7 @@ onBeforeUnmount(() => {
                     : 'border-0 overflow-visible bg-transparent text-slate-600 group-hover:text-brand-dark'
                 "
               >
-                <span class="relative z-[1]">Главная</span>
+                <span class="relative z-[1]">{{ t('nav.home') }}</span>
               </span>
             </RouterLink>
 
@@ -157,7 +167,7 @@ onBeforeUnmount(() => {
                   "
                 >
                   <span class="relative z-[1] inline-flex items-center gap-1">
-                    Услуги
+                    {{ t('nav.services') }}
                     <span class="text-xs" aria-hidden="true">▾</span>
                   </span>
                 </span>
@@ -203,7 +213,7 @@ onBeforeUnmount(() => {
                     : 'border border-brand/60 overflow-visible bg-transparent text-slate-600 group-hover:text-brand-dark'
                 "
               >
-                <span class="relative z-[1]">Parse Ledger</span>
+                <span class="relative z-[1]">{{ t('nav.parseLedger') }}</span>
               </span>
             </RouterLink>
             <RouterLink
@@ -214,7 +224,7 @@ onBeforeUnmount(() => {
                   : 'whitespace-nowrap text-sm font-medium text-slate-600 transition hover:text-brand-dark'
               "
             >
-              <span :class="route.name === 'contact' ? 'relative z-[1]' : null">Контакты</span>
+              <span :class="route.name === 'contact' ? 'relative z-[1]' : null">{{ t('nav.contact') }}</span>
             </RouterLink>
           </nav>
 
@@ -225,7 +235,7 @@ onBeforeUnmount(() => {
               class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-blue-600 transition hover:bg-blue-50 hover:text-blue-700"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Написать в Telegram"
+              :aria-label="t('a11y.writeTelegram')"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
                 <path d="M21.49 4.52a1.5 1.5 0 00-1.63-.2L3.16 12.03a1.5 1.5 0 00.13 2.75l3.84 1.4 1.44 4.64a1.5 1.5 0 002.63.51l2.18-2.65 3.59 2.62a1.5 1.5 0 002.35-.9L22 6.05a1.5 1.5 0 00-.51-1.53zm-3.15 3.34l-8 7.76-.69 2.08-.88-2.85a1.5 1.5 0 00-.92-.94l-2.28-.83 12.77-5.95zm-6.78 8.87l5.62-5.45-4.67 5.68-.95-.23z" />
@@ -236,7 +246,7 @@ onBeforeUnmount(() => {
               class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-emerald-600 transition hover:bg-emerald-50 hover:text-emerald-700"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Написать в WhatsApp"
+              :aria-label="t('a11y.writeWhatsapp')"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
                 <path
@@ -249,13 +259,21 @@ onBeforeUnmount(() => {
             <div
             class="flex shrink-0 items-center rounded-full border border-slate-200/90 bg-white/80 p-0.5 shadow-sm"
             role="group"
-            aria-label="Переключение языка (скоро)"
+            :aria-label="t('a11y.languageSwitch')"
           >
-            <span class="rounded-full bg-brand/25 px-2.5 py-1.5 text-[11px] font-semibold leading-none text-slate-900 sm:px-3 sm:text-xs">RU</span>
             <button
               type="button"
-              class="cursor-default rounded-full px-2.5 py-1.5 text-[11px] font-medium leading-none text-slate-400 sm:px-3 sm:text-xs"
-              tabindex="-1"
+              class="rounded-full px-2.5 py-1.5 text-[11px] font-semibold leading-none transition sm:px-3 sm:text-xs"
+              :class="locale === 'ru' ? 'bg-brand/25 text-slate-900' : 'text-slate-500 hover:text-slate-800'"
+              @click="setLocale('ru')"
+            >
+              RU
+            </button>
+            <button
+              type="button"
+              class="rounded-full px-2.5 py-1.5 text-[11px] font-semibold leading-none transition sm:px-3 sm:text-xs"
+              :class="locale === 'en' ? 'bg-brand/25 text-slate-900' : 'text-slate-500 hover:text-slate-800'"
+              @click="setLocale('en')"
             >
               EN
             </button>
@@ -269,14 +287,14 @@ onBeforeUnmount(() => {
               class="hidden shrink-0 items-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark md:inline-flex md:px-5 md:py-3"
               @click="dismissMobileMenu"
             >
-              Связаться с нами
+              {{ t('nav.getInTouch') }}
             </a>
             <RouterLink
               v-else
               :to="{ name: 'contact' }"
               class="hidden shrink-0 items-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark md:inline-flex md:px-5 md:py-3"
             >
-              Связаться с нами
+              {{ t('nav.getInTouch') }}
             </RouterLink>
           </div>
         </div>
@@ -293,7 +311,7 @@ onBeforeUnmount(() => {
                       : 'border-0 overflow-visible bg-transparent text-slate-600 hover:text-brand-dark'
                   "
                 >
-                  <span class="relative z-[1]">Главная</span>
+                  <span class="relative z-[1]">{{ t('nav.home') }}</span>
                 </span>
               </RouterLink>
               <RouterLink
@@ -314,7 +332,7 @@ onBeforeUnmount(() => {
                       : 'border border-brand/60 overflow-visible bg-transparent text-slate-600 hover:text-brand-dark'
                   "
                 >
-                  <span class="relative z-[1]">Parse Ledger</span>
+                  <span class="relative z-[1]">{{ t('nav.parseLedger') }}</span>
                 </span>
               </RouterLink>
               <RouterLink
@@ -325,7 +343,7 @@ onBeforeUnmount(() => {
                     : 'whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-brand-dark'
                 "
               >
-                <span :class="route.name === 'contact' ? 'relative z-[1]' : null">Контакты</span>
+                <span :class="route.name === 'contact' ? 'relative z-[1]' : null">{{ t('nav.contact') }}</span>
               </RouterLink>
               <div class="mt-1 w-full max-w-sm rounded-lg border border-slate-200 p-2">
                 <div class="flex justify-center px-2 pb-2">
@@ -337,7 +355,7 @@ onBeforeUnmount(() => {
                         : 'border-0 overflow-visible bg-transparent text-slate-500'
                     "
                   >
-                    <span class="relative z-[1]">Услуги</span>
+                    <span class="relative z-[1]">{{ t('nav.services') }}</span>
                   </span>
                 </div>
                 <RouterLink
@@ -360,7 +378,7 @@ onBeforeUnmount(() => {
                   class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-blue-600 transition hover:bg-blue-50 hover:text-blue-700"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Написать в Telegram"
+                  :aria-label="t('a11y.writeTelegram')"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
                     <path
@@ -373,7 +391,7 @@ onBeforeUnmount(() => {
                   class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-emerald-600 transition hover:bg-emerald-50 hover:text-emerald-700"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Написать в WhatsApp"
+                  :aria-label="t('a11y.writeWhatsapp')"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
                     <path
@@ -388,14 +406,14 @@ onBeforeUnmount(() => {
                 class="mt-1 inline-flex items-center justify-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
                 @click="dismissMobileMenu"
               >
-                Связаться с нами
+                {{ t('nav.getInTouch') }}
               </a>
               <RouterLink
                 v-else
                 :to="{ name: 'contact' }"
                 class="mt-1 inline-flex items-center justify-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
               >
-                Связаться с нами
+                {{ t('nav.getInTouch') }}
               </RouterLink>
             </nav>
           </div>
@@ -413,19 +431,19 @@ onBeforeUnmount(() => {
         <div class="flex items-center gap-3">
           <img
             src="/logo.svg"
-            alt="Parse Consult"
+            :alt="t('brand.logoAlt')"
             class="h-9 w-9 shrink-0 rounded-md object-contain"
             loading="lazy"
             decoding="async"
           >
           <div>
-            <div class="font-semibold tracking-tight text-slate-900">Parse Consult</div>
-            <div class="font-medium text-slate-600">Бухгалтерский учёт, внедрение, автоматизация — ОАЭ, России и Казахстана</div>
+            <div class="font-semibold tracking-tight text-slate-900">{{ t('brand.siteName') }}</div>
+            <div class="font-medium text-slate-600">{{ t('footer.tagline') }}</div>
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
           <RouterLink :to="{ path: '/', hash: '#services' }" class="transition hover:text-brand-dark">
-            Услуги
+            {{ t('footer.services') }}
           </RouterLink>
           <template v-for="item in navLinks" :key="`footer-${item.label}`">
             <a
@@ -442,13 +460,13 @@ onBeforeUnmount(() => {
             </RouterLink>
           </template>
           <a
-            v-for="s in socialLinks"
+            v-for="s in socialLinkDefs"
             :key="s.href"
             :href="s.href"
             class="inline-flex text-slate-600 transition hover:text-brand-dark"
             target="_blank"
             rel="noopener noreferrer"
-            :aria-label="s.label"
+            :aria-label="t(s.labelKey)"
           >
             <SocialNetworkIcon :network="s.network" class="size-5" />
           </a>
