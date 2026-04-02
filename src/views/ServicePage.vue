@@ -3,11 +3,69 @@
     <div class="mx-auto max-w-7xl px-6 pt-8 lg:px-8 lg:pt-10">
       <div v-if="!isBitrixPage" class="rounded-2xl border border-brand-dark/35 bg-brand-surface p-7 shadow-md shadow-black/10 md:p-10">
         <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand">Услуги</p>
-        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">{{ page.title }}</h1>
+        <h1 class="mt-4 text-2xl font-semibold tracking-tight text-white md:text-4xl">{{ page.title }}</h1>
         <p class="mt-4 max-w-3xl text-sm leading-7 text-emerald-50/90 md:text-base">
           {{ page.description ?? 'Выбираем отраслевую модель учета и настраиваем процессы под реальные операции бизнеса.' }}
         </p>
       </div>
+
+      <section
+        v-if="isBitrixPage && bitrixPlatformGroup"
+        class="fade-in-up group relative overflow-hidden rounded-[2rem] border border-brand/35 bg-[radial-gradient(circle_at_15%_20%,rgba(94,233,181,0.22),transparent_42%),radial-gradient(circle_at_85%_80%,rgba(56,189,248,0.2),transparent_38%),linear-gradient(135deg,#0b201c_0%,#12352d_45%,#0f2b25_100%)] p-7 shadow-[0_22px_55px_-25px_rgba(15,54,44,0.9)] sm:p-9"
+        style="animation-delay: 50ms"
+      >
+        <div class="pointer-events-none absolute -left-10 -top-12 h-44 w-44 rounded-full bg-brand/25 blur-3xl transition duration-500 group-hover:scale-110"></div>
+        <div class="pointer-events-none absolute -bottom-16 right-8 h-36 w-36 rounded-full bg-sky-300/20 blur-3xl"></div>
+        <div class="relative z-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+          <div class="flex min-h-0 flex-col justify-between gap-6 lg:h-full">
+            <div class="space-y-5">
+              <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-50/90">
+                <span class="inline-flex h-2 w-2 rounded-full bg-brand"></span>
+                Bitrix24
+              </span>
+              <h1 class="max-w-sm text-xl font-semibold leading-tight tracking-tight text-white md:text-[2rem]">
+                {{ page.title }}
+              </h1>
+              <p class="max-w-sm text-sm leading-7 text-emerald-50/85 md:text-base">
+                {{ page.description }}
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                class="inline-flex items-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
+                @click="openLeadModal"
+              >
+                Обсудить внедрение
+              </button>
+              <a
+                v-if="page.bitrixDemoUrl"
+                :href="page.bitrixDemoUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center rounded-lg border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/50 hover:bg-white/15"
+              >
+                ⚡ Попробовать демо
+              </a>
+            </div>
+          </div>
+          <ul class="grid h-full min-h-0 gap-3 sm:grid-cols-2">
+            <li
+              v-for="(item, index) in bitrixPlatformGroup.items"
+              :key="item"
+              class="rounded-2xl border border-white/15 bg-white/[0.08] px-4 py-4 text-sm leading-7 text-emerald-50/95 backdrop-blur-sm md:text-base"
+              :class="index === 2 ? 'sm:col-span-2' : ''"
+            >
+              <div class="flex items-start gap-3.5">
+                <span class="inline-flex h-7 min-w-7 items-center justify-center rounded-lg bg-white/15 px-2 text-xs font-semibold text-white">
+                  {{ `0${index + 1}` }}
+                </span>
+                <span class="pt-0.5">{{ item }}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
 
       <section
         v-if="isAccountingSystemsPage"
@@ -16,7 +74,7 @@
         style="animation-delay: 80ms"
       >
         <div class="max-w-4xl">
-          <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
+          <h2 class="mt-4 text-2xl font-semibold tracking-tight text-slate-950 md:text-4xl">
             Структурированное внедрение
             <span class="text-brand-dark">1С</span>
             и
@@ -51,7 +109,7 @@
                 loading="lazy"
                 decoding="async"
               />
-              <div class="min-w-0 text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">{{ platform.name }}</div>
+              <div class="min-w-0 text-lg font-semibold tracking-tight text-slate-900 sm:text-2xl">{{ platform.name }}</div>
             </div>
             <p class="mt-6 border-l-2 border-brand/50 pl-4 text-sm leading-7 text-slate-600">{{ platform.description }}</p>
           </article>
@@ -59,89 +117,142 @@
       </section>
 
       <section
-        v-if="isBitrixPage && bitrixPlatformGroup"
-        class="fade-in-up group relative mt-10 overflow-hidden rounded-[2rem] border border-brand/35 bg-[radial-gradient(circle_at_15%_20%,rgba(94,233,181,0.22),transparent_42%),radial-gradient(circle_at_85%_80%,rgba(56,189,248,0.2),transparent_38%),linear-gradient(135deg,#0b201c_0%,#12352d_45%,#0f2b25_100%)] p-7 shadow-[0_22px_55px_-25px_rgba(15,54,44,0.9)] sm:p-9"
-        style="animation-delay: 90ms"
+        v-if="isBitrixPage && page.bitrixLeadBlock"
+        class="fade-in-up mt-10 border-b border-slate-200/80 pb-14"
+        style="animation-delay: 60ms"
       >
-        <div class="pointer-events-none absolute -left-10 -top-12 h-44 w-44 rounded-full bg-brand/25 blur-3xl transition duration-500 group-hover:scale-110"></div>
-        <div class="pointer-events-none absolute -bottom-16 right-8 h-36 w-36 rounded-full bg-sky-300/20 blur-3xl"></div>
-        <div class="relative z-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div class="space-y-5">
-            <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-50/90">
-              <span class="inline-flex h-2 w-2 rounded-full bg-brand"></span>
-              Bitrix24
-            </span>
-            <h2 class="max-w-sm text-2xl font-semibold leading-tight tracking-tight text-white md:text-[2rem]">
-              {{ page.title }}
-            </h2>
-            <p class="max-w-sm text-sm leading-7 text-emerald-50/85 md:text-base">
-              {{ page.description }}
-            </p>
-            <button
-              type="button"
-              class="inline-flex items-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
-              @click="openLeadModal"
-            >
-              Обсудить внедрение
-            </button>
-          </div>
-          <ul class="grid gap-3 sm:grid-cols-2">
-            <li
-              v-for="(item, index) in bitrixPlatformGroup.items"
-              :key="item"
-              class="rounded-2xl border border-white/15 bg-white/[0.08] px-4 py-4 text-sm leading-7 text-emerald-50/95 backdrop-blur-sm md:text-base"
-            >
+        <div class="max-w-5xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-brand-dark/80">Bitrix24</p>
+          <h2 class="mt-3 max-w-3xl text-xl font-semibold tracking-tight text-slate-950 md:text-3xl lg:text-[2rem]">
+            {{ page.bitrixLeadBlock.headline }}
+          </h2>
+          <p
+            v-for="(paragraph, idx) in page.bitrixLeadBlock.intro"
+            :key="idx"
+            class="mt-5 max-w-3xl text-base leading-8 text-slate-600 md:text-lg"
+          >
+            {{ paragraph }}
+          </p>
+        </div>
+
+        <div class="mt-10 grid max-w-7xl gap-6 md:grid-cols-3 md:gap-7">
+          <article
+            v-for="(block, index) in page.bitrixLeadBlock.sections"
+            :key="block.title"
+            class="fade-in-up group flex min-h-full flex-col overflow-hidden rounded-xl border border-brand-dark/40 bg-white shadow-md shadow-brand-dark/10 motion-safe:transition-[transform,box-shadow,border-color] motion-safe:duration-300 motion-safe:ease-out motion-safe:hover:-translate-y-1.5 motion-safe:hover:scale-[1.02] motion-safe:hover:border-brand/70 motion-safe:hover:shadow-[0_22px_50px_-12px_rgba(21,61,52,0.38)] sm:shadow-lg sm:shadow-brand-dark/10"
+            :style="{ animationDelay: `${70 + index * 40}ms` }"
+          >
+            <div class="flex flex-1 flex-col p-6 sm:p-7">
               <div class="flex items-start gap-3.5">
-                <span class="inline-flex h-7 min-w-7 items-center justify-center rounded-lg bg-white/15 px-2 text-xs font-semibold text-white">
-                  {{ `0${index + 1}` }}
+                <span
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand/20 text-xs font-bold tabular-nums text-slate-900 ring-1 ring-brand/25"
+                >
+                  {{ String(index + 1).padStart(2, '0') }}
                 </span>
-                <span class="pt-0.5">{{ item }}</span>
+                <h3 class="min-w-0 pt-1 text-base font-semibold leading-snug tracking-tight text-slate-950 md:text-xl">
+                  {{ block.title }}
+                </h3>
               </div>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section v-if="page.compareBlock" class="fade-in-up mt-10 space-y-5" style="animation-delay: 110ms">
-        <div>
-          <h2 class="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">{{ page.compareBlock.title }}</h2>
-          <p class="mt-2 text-sm leading-7 text-slate-600 md:text-base">{{ page.compareBlock.subtitle }}</p>
-        </div>
-
-        <div class="grid gap-6 lg:grid-cols-2">
-          <article class="rounded-2xl border border-sky-200/80 bg-sky-50/50 p-7 shadow-sm sm:p-8">
-            <h3 class="text-xl font-semibold tracking-tight text-slate-900">{{ page.compareBlock.cloudTitle }}</h3>
-            <ul class="mt-5 space-y-3">
-              <li
-                v-for="item in page.compareBlock.cloudItems"
-                :key="item"
-                class="rounded-xl border border-sky-200/70 bg-white px-4 py-3 text-sm leading-7 text-slate-700 md:text-base"
-              >
-                <div class="flex items-start gap-3">
-                  <span class="mt-1.5 inline-flex h-2 w-2 shrink-0 rounded-full bg-sky-500"></span>
-                  <span>{{ item }}</span>
-                </div>
-              </li>
-            </ul>
-          </article>
-
-          <article class="rounded-2xl border border-brand/35 bg-brand-surface p-7 shadow-md shadow-black/10 sm:p-8">
-            <h3 class="text-xl font-semibold tracking-tight text-white">{{ page.compareBlock.boxTitle }}</h3>
-            <ul class="mt-5 space-y-3">
-              <li
-                v-for="item in page.compareBlock.boxItems"
-                :key="item"
-                class="rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm leading-7 text-emerald-50/95 md:text-base"
-              >
-                <div class="flex items-start gap-3">
-                  <span class="mt-1.5 inline-flex h-2 w-2 shrink-0 rounded-full bg-brand"></span>
-                  <span>{{ item }}</span>
-                </div>
-              </li>
-            </ul>
+              <div class="mt-5 flex min-h-0 flex-1 flex-col space-y-4 border-t border-slate-100 pt-5">
+                <p v-if="block.lead" class="text-sm font-medium leading-7 text-slate-700 md:text-base">
+                  {{ block.lead }}
+                </p>
+                <ul class="space-y-2.5">
+                  <li
+                    v-for="item in block.items"
+                    :key="item"
+                    class="flex items-start gap-2.5 text-sm leading-7 text-slate-600 md:text-base"
+                  >
+                    <span class="mt-2 inline-flex h-1.5 w-1.5 shrink-0 rounded-full bg-brand-dark"></span>
+                    <span>{{ item }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div
+              v-if="block.closing"
+              class="mt-auto border-t border-white/10 bg-brand-surface px-6 py-4 transition-[background-color,filter] duration-300 ease-out group-hover:bg-[#1a4d42] group-hover:brightness-[1.03] sm:px-7 sm:py-5"
+            >
+              <p class="text-sm font-semibold leading-7 text-white md:text-base">
+                {{ block.closing }}
+              </p>
+            </div>
           </article>
         </div>
       </section>
+
+      <section
+        v-if="isBitrixPage && page.bitrixCertificates"
+        class="fade-in-up mt-12 scroll-mt-28 md:scroll-mt-32"
+        style="animation-delay: 100ms"
+        aria-labelledby="bitrix-certificates-heading"
+      >
+        <div
+          class="relative overflow-hidden rounded-[2rem] border border-slate-200/90 bg-white px-5 py-10 shadow-sm shadow-slate-200/50 sm:px-10 sm:py-14"
+        >
+          <div class="relative z-10 max-w-4xl">
+            <p class="text-[11px] font-bold uppercase tracking-[0.4em] text-brand-dark sm:text-xs">Сертификаты</p>
+            <h2
+              id="bitrix-certificates-heading"
+              class="mt-5 text-[1.4rem] font-black italic leading-[1.08] tracking-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-[2.75rem]"
+            >
+              {{ page.bitrixCertificates.headline }}
+            </h2>
+            <p
+              class="mt-4 text-lg font-extrabold leading-snug tracking-tight text-brand-dark sm:text-2xl md:text-3xl md:leading-tight"
+            >
+              {{ page.bitrixCertificates.headlineAccent }}
+            </p>
+            <div class="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-slate-600 md:text-lg">
+              <p v-for="(paragraph, idx) in page.bitrixCertificates.subline" :key="idx">
+                {{ paragraph }}
+              </p>
+            </div>
+          </div>
+
+          <div class="relative z-10 mt-10">
+            <Carousel
+              v-model="currentBitrixCertSlide"
+              class="bitrix-certs-carousel"
+              :items-to-show="1"
+              :breakpoints="bitrixCertCarouselBreakpoints"
+              :gap="20"
+              :wrap-around="true"
+              :autoplay="6000"
+              :pause-autoplay-on-hover="true"
+              :transition="650"
+              snap-align="start"
+            >
+              <Slide v-for="cert in page.bitrixCertificates.items" :key="cert.id">
+                <figure
+                  class="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-4 shadow-lg shadow-black/20 sm:p-5"
+                >
+                  <div class="flex min-h-0 flex-1 items-center justify-center rounded-xl bg-slate-50/90">
+                    <img
+                      :src="cert.src"
+                      :alt="cert.alt"
+                      class="mx-auto max-h-[min(48vh,440px)] w-full object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <figcaption
+                    v-if="cert.caption"
+                    class="mt-4 text-center text-sm font-semibold tracking-tight text-slate-800 md:text-base"
+                  >
+                    {{ cert.caption }}
+                  </figcaption>
+                </figure>
+              </Slide>
+              <template #addons>
+                <Navigation />
+              </template>
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
+      <BitrixCloudBoxSurvey v-if="isBitrixPage && page.bitrixSurvey" :content="page.bitrixSurvey" />
 
       <div v-if="isShowcasePage" class="mt-12 space-y-7">
         <article
@@ -158,7 +269,7 @@
           <div class="relative z-10 grid gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-8">
             <div class="space-y-5">
               <div class="h-1 w-16 rounded-full bg-gradient-to-r from-brand-dark to-brand"></div>
-              <h2 class="text-2xl font-semibold leading-tight tracking-tight text-slate-950 md:text-3xl">{{ group.title }}</h2>
+              <h2 class="text-xl font-semibold leading-tight tracking-tight text-slate-950 md:text-3xl">{{ group.title }}</h2>
               <button
                 type="button"
                 class="inline-flex items-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
@@ -188,7 +299,7 @@
           class="fade-in-up rounded-2xl border border-slate-200/90 bg-white p-7 shadow-sm sm:p-8"
           :style="{ animationDelay: `${index * 90}ms` }"
         >
-          <h2 class="text-xl font-semibold tracking-tight text-slate-900 md:text-2xl">{{ group.title }}</h2>
+          <h2 class="text-lg font-semibold tracking-tight text-slate-900 md:text-2xl">{{ group.title }}</h2>
           <ul class="mt-5 space-y-3">
             <li
               v-for="item in group.items"
@@ -211,7 +322,7 @@
       >
         <div class="grid gap-8 lg:grid-cols-[1.4fr_0.6fr]">
           <div>
-            <h2 class="text-xl font-semibold tracking-tight text-white md:text-2xl">{{ page.featured.title }}</h2>
+            <h2 class="text-lg font-semibold tracking-tight text-white md:text-2xl">{{ page.featured.title }}</h2>
             <ul class="mt-5 space-y-3">
               <li
                 v-for="item in page.featured.services"
@@ -226,7 +337,7 @@
             </ul>
           </div>
           <div class="lg:pl-2">
-            <h3 class="text-lg font-semibold tracking-tight text-white">{{ page.featured.systemsTitle }}</h3>
+            <h3 class="text-base font-semibold tracking-tight text-white">{{ page.featured.systemsTitle }}</h3>
             <div class="mt-4 grid gap-3">
               <div
                 v-for="system in page.featured.systems"
@@ -241,7 +352,7 @@
       </section>
 
       <div v-if="page.tiles?.length" class="fade-in-up mt-10" style="animation-delay: 160ms">
-        <h2 class="text-xl font-semibold tracking-tight text-slate-900 md:text-2xl">Отрасли</h2>
+        <h2 class="text-lg font-semibold tracking-tight text-slate-900 md:text-2xl">Отрасли</h2>
         <div class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           <article
             v-for="(tile, index) in page.tiles"
@@ -250,7 +361,7 @@
             :style="{ animationDelay: `${220 + index * 70}ms` }"
           >
             <div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-brand/80 to-brand-dark/80"></div>
-            <h3 class="text-lg font-bold leading-snug tracking-tight text-slate-950 md:text-xl">{{ tile.title }}</h3>
+            <h3 class="text-base font-bold leading-snug tracking-tight text-slate-950 md:text-xl">{{ tile.title }}</h3>
             <p v-if="tile.description" class="mt-3 text-sm leading-6 text-slate-600">{{ tile.description }}</p>
             <ul class="mt-3 space-y-2.5">
               <li
@@ -278,7 +389,7 @@
       </div>
 
       <section v-if="page.advantages?.items.length" class="fade-in-up mt-10" style="animation-delay: 180ms">
-        <h2 class="text-xl font-semibold tracking-tight text-slate-900 md:text-2xl">{{ page.advantages.title }}</h2>
+        <h2 class="text-lg font-semibold tracking-tight text-slate-900 md:text-2xl">{{ page.advantages.title }}</h2>
         <div class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           <article
             v-for="advantage in page.advantages.items"
@@ -286,7 +397,7 @@
             class="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm"
           >
             <div class="text-sm font-semibold tracking-[0.2em] text-brand-dark">{{ advantage.number }}</div>
-            <h3 class="mt-3 text-lg font-semibold tracking-tight text-slate-950">{{ advantage.title }}</h3>
+            <h3 class="mt-3 text-base font-semibold tracking-tight text-slate-950">{{ advantage.title }}</h3>
             <p class="mt-2 text-sm leading-7 text-slate-600 md:text-base">{{ advantage.description }}</p>
           </article>
         </div>
@@ -307,7 +418,7 @@
         >
           <div class="mb-5 flex items-start justify-between gap-4">
             <div>
-              <h3 class="text-xl font-semibold tracking-tight text-slate-950 sm:text-2xl">Оставить заявку</h3>
+              <h3 class="text-lg font-semibold tracking-tight text-slate-950 sm:text-2xl">Оставить заявку</h3>
             </div>
             <button
               type="button"
@@ -331,7 +442,7 @@
             class="absolute inset-0 z-20 flex items-center justify-center rounded-2xl bg-slate-950/45 p-4"
           >
             <div class="w-full max-w-md rounded-xl border border-slate-200 bg-white p-5 shadow-xl sm:p-6">
-              <h4 class="text-lg font-semibold tracking-tight text-slate-950">Закрыть форму?</h4>
+              <h4 class="text-base font-semibold tracking-tight text-slate-950">Закрыть форму?</h4>
               <p class="mt-2 text-sm leading-6 text-slate-600">Вы действительно хотите закрыть? Данные не сохранятся.</p>
               <div class="mt-5 flex items-center justify-end gap-3">
                 <button
@@ -358,9 +469,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, watch } from 'vue'
-import { ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { Carousel, Navigation, Slide } from 'vue3-carousel'
+import 'vue3-carousel/carousel.css'
+import BitrixCloudBoxSurvey from '@/components/BitrixCloudBoxSurvey.vue'
 import LeadRequestForm from '@/components/LeadRequestForm.vue'
 import { homePlatforms } from '@/content/platforms'
 import { serviceContent } from '@/content/services'
@@ -371,6 +484,17 @@ const showcaseSlugs = new Set(['firstbit', 'accounting-systems', 'training'])
 const isShowcasePage = computed(() => showcaseSlugs.has(String(route.params.slug ?? '')))
 const isBitrixPage = computed(() => String(route.params.slug ?? '') === 'bitrix24')
 const isAccountingSystemsPage = computed(() => String(route.params.slug ?? '') === 'accounting-systems')
+const currentBitrixCertSlide = ref(0)
+
+const bitrixCertCarouselBreakpoints = {
+  768: {
+    itemsToShow: 2,
+  },
+  1280: {
+    itemsToShow: 3,
+  },
+} as const
+
 const isLeadModalOpen = ref(false)
 const modalFormKey = ref(0)
 const isLeadFormDirty = ref(false)
@@ -386,6 +510,9 @@ const modalInitialServices = computed(() => {
   }
   if (slug === 'accounting-setup') {
     return ['consulting']
+  }
+  if (slug === 'bitrix24') {
+    return ['bitrix24']
   }
   return ['firstbit']
 })
@@ -533,6 +660,59 @@ const page = computed(() => {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+:deep(.bitrix-certs-carousel .carousel__viewport) {
+  overflow: hidden;
+}
+
+:deep(.bitrix-certs-carousel .carousel__track) {
+  align-items: stretch;
+}
+
+:deep(.bitrix-certs-carousel .carousel__slide) {
+  display: flex;
+  height: auto;
+}
+
+:deep(.bitrix-certs-carousel .carousel__slide > *) {
+  width: 100%;
+}
+
+:deep(.bitrix-certs-carousel .carousel__prev),
+:deep(.bitrix-certs-carousel .carousel__next) {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 0.75rem;
+  color: #0f172a;
+  width: 2.75rem;
+  height: 2.75rem;
+  z-index: 20;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.45);
+}
+
+:deep(.bitrix-certs-carousel .carousel__prev:hover),
+:deep(.bitrix-certs-carousel .carousel__next:hover) {
+  background: #fff;
+  border-color: rgba(60, 205, 152, 0.45);
+}
+
+@media (max-width: 767px) {
+  :deep(.bitrix-certs-carousel .carousel__prev),
+  :deep(.bitrix-certs-carousel .carousel__next) {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  :deep(.bitrix-certs-carousel .carousel__prev) {
+    left: -0.5rem;
+  }
+
+  :deep(.bitrix-certs-carousel .carousel__next) {
+    right: -0.5rem;
   }
 }
 </style>

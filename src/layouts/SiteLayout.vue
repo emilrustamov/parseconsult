@@ -19,9 +19,9 @@ const navLinks: NavLink[] = [
 const serviceLinks: { label: string; to: RouteLocationRaw }[] = [
   { label: '1С и Firstbit', to: { name: 'service-details', params: { slug: 'firstbit' } } },
   { label: 'Битрикс24', to: { name: 'service-details', params: { slug: 'bitrix24' } } },
-  { label: 'Внедрение и восстановление', to: { name: 'service-details', params: { slug: 'accounting-systems' } } },
-  { label: 'Настройка учета', to: { name: 'service-details', params: { slug: 'accounting-setup' } } },
-  { label: 'Сопровождение и обучение', to: { name: 'service-details', params: { slug: 'training' } } },
+  { label: 'Внедрение и восстановление бух. учета', to: { name: 'service-details', params: { slug: 'accounting-systems' } } },
+  { label: 'Настройки бух. учета', to: { name: 'service-details', params: { slug: 'accounting-setup' } } },
+  { label: 'Сопровождение и обучение бух. учету', to: { name: 'service-details', params: { slug: 'training' } } },
 ]
 
 const headerWhatsappNumber = '+971 52 856 9060'
@@ -91,26 +91,36 @@ onBeforeUnmount(() => {
         <div class="relative flex w-full items-center gap-3 lg:gap-4">
           <button
             type="button"
-            class="relative z-20 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-50 lg:hidden"
+            class="burger-trigger relative z-20 inline-flex h-10 min-w-[3.25rem] shrink-0 items-center justify-center rounded-lg border-2 border-brand-dark/50 px-3 text-xl font-bold leading-none text-slate-900 shadow-md transition hover:border-brand-dark lg:hidden"
             :aria-expanded="isMobileMenuOpen"
             aria-label="Открыть меню"
             @click="isMobileMenuOpen = !isMobileMenuOpen"
           >
-            <span class="text-lg leading-none">{{ isMobileMenuOpen ? '×' : '☰' }}</span>
+            <span class="leading-none">{{ isMobileMenuOpen ? '×' : '☰' }}</span>
           </button>
 
           <RouterLink
             :to="{ name: 'home' }"
-            class="absolute left-1/2 top-1/2 z-10 flex shrink-0 -translate-x-1/2 -translate-y-1/2 items-center gap-2 lg:static lg:left-auto lg:top-auto lg:z-auto lg:translate-x-0 lg:translate-y-0"
+            class="absolute left-1/2 top-1/2 z-10 flex min-w-0 shrink-0 -translate-x-1/2 -translate-y-1/2 items-center gap-2 [--logo-size:2.5rem] lg:static lg:left-auto lg:top-auto lg:translate-x-0 lg:translate-y-0"
           >
             <img
               src="/logo.svg"
               alt="Parse Consult"
-              class="h-10 w-10 shrink-0 rounded-lg object-contain"
+              class="size-[var(--logo-size)] shrink-0 rounded-lg object-contain"
               loading="eager"
               decoding="async"
             >
-            <span class="hidden text-sm font-semibold tracking-tight text-slate-900 sm:inline">parseconsult ae</span>
+            <span
+              class="inline-flex flex-col items-start gap-0.5 whitespace-nowrap leading-none lg:flex-row lg:items-baseline lg:gap-1.5"
+              aria-label="Parse Consult"
+            >
+              <span
+                class="font-semibold tracking-tight text-slate-900 text-[calc(var(--logo-size)_*_0.48)] lg:text-[calc(var(--logo-size)_*_0.5)]"
+              >Parse</span>
+              <span
+                class="font-semibold tracking-tight text-brand text-[calc(var(--logo-size)_*_0.48)] lg:text-[calc(var(--logo-size)_*_0.5)]"
+              >Consult</span>
+            </span>
           </RouterLink>
 
           <div class="flex min-w-0 flex-1 items-center justify-end gap-3 sm:gap-4 lg:justify-center lg:gap-4 xl:gap-6">
@@ -410,7 +420,7 @@ onBeforeUnmount(() => {
           >
           <div>
             <div class="font-semibold tracking-tight text-slate-900">Parse Consult</div>
-            <div class="font-medium text-slate-600">Учёт, внедрение, автоматизация — ОАЭ, России и Казахстана</div>
+            <div class="font-medium text-slate-600">Бухгалтерский учёт, внедрение, автоматизация — ОАЭ, России и Казахстана</div>
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-x-5 gap-y-3">

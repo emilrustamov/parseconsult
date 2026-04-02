@@ -11,7 +11,7 @@
         <p class="inline-flex rounded-full border border-brand/40 bg-brand/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700">
           Error 404
         </p>
-        <h1 class="mt-5 text-4xl font-semibold leading-tight tracking-tight text-slate-950 md:text-5xl">
+        <h1 class="mt-5 text-2xl font-semibold leading-tight tracking-tight text-slate-950 md:text-5xl">
           Страница не найдена
         </h1>
         <p class="mt-5 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">

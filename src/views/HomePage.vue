@@ -2,8 +2,8 @@
   <section id="hero" class="relative overflow-hidden scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pt-24">
     <div class="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-10 lg:px-8 lg:py-10 xl:gap-12">
       <div class="flex max-w-3xl flex-col lg:h-full lg:justify-between">
-        <h1 class="relative z-10 max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 md:text-[2.55rem] lg:text-[2.7rem] xl:text-[3.2rem]">
-          Учёт, внедрение и обучение в <span class="text-[#3ccd98]">ОАЭ, в России и в Казахстане</span>
+        <h1 class="relative z-10 max-w-4xl text-2xl font-semibold leading-tight tracking-tight text-slate-950 md:text-[2.55rem] lg:text-[2.7rem] xl:text-[3.2rem]">
+          Бухгалтерский учёт, внедрение и обучение в <span class="text-[#3ccd98]">ОАЭ</span>, в России и в Казахстане
         </h1>
         <div class="mt-4 w-full max-w-[460px] sm:max-w-[560px] md:mt-6 md:max-w-[640px] lg:mt-10 lg:max-w-none lg:pb-2">
           <DotLottieVue
@@ -49,7 +49,7 @@
   <section id="platforms" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="max-w-4xl">
-        <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
+        <h2 class="mt-4 text-2xl font-semibold tracking-tight text-slate-950 md:text-4xl">
           Структурированное внедрение
           <span class="text-brand-dark">1С</span>
           и
@@ -84,7 +84,7 @@
               loading="lazy"
               decoding="async"
             />
-            <div class="min-w-0 text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">{{ platform.name }}</div>
+            <div class="min-w-0 text-lg font-semibold tracking-tight text-slate-900 sm:text-2xl">{{ platform.name }}</div>
           </div>
           <p class="mt-6 border-l-2 border-brand/50 pl-4 text-sm leading-7 text-slate-600">{{ platform.description }}</p>
         </article>
@@ -96,7 +96,7 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div class="lg:sticky lg:top-32">
-          <h2 class=" text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
+          <h2 class=" text-2xl font-semibold tracking-tight text-slate-950 md:text-4xl">
             Помогаем убрать рутину и выстроить прозрачный учет
           </h2>
           <div class="mx-auto mt-6 h-[260px] w-full sm:h-[320px] lg:h-[360px]">
@@ -135,7 +135,7 @@
   <section id="services" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="max-w-4xl">
-        <h2 class="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-950 md:text-4xl">
           Внедрение, обучение, автоматизация
         </h2>
         <p class="mt-6 text-base leading-8 text-slate-600 md:text-lg">
@@ -218,14 +218,14 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-stretch lg:gap-12">
         <h2
-          class="order-2 col-span-full mx-auto max-w-3xl text-center text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl lg:order-1"
+          class="order-2 col-span-full mx-auto max-w-3xl text-center text-2xl font-semibold tracking-tight text-slate-950 md:text-4xl lg:order-1"
         >
           Расскажите о ситуации в учёте
         </h2>
         <aside
           class="order-1 flex flex-col rounded-2xl border border-transparent bg-transparent p-0 md:border-slate-200/90 md:bg-gradient-to-b md:from-slate-50 md:to-white md:p-7 lg:order-2"
         >
-          <h3 class="text-lg font-semibold tracking-tight text-slate-950 md:text-xl">
+          <h3 class="text-base font-semibold tracking-tight text-slate-950 md:text-xl">
             FAQ
           </h3>
           <ul class="mt-6 space-y-3">
@@ -284,7 +284,7 @@ const keyServices = [
     id: 'parse-ledger',
     slug: 'parse-ledger',
     icon: '🧾',
-    title: 'Parse Ledger — автоматическая загрузка банковской выписки в ОАЭ, в России и в Казахстане',
+    title: 'Parse Ledger — автоматическая загрузка банковской выписки в ОАЭ',
     description:
       'Настраиваем и внедряем Parse Ledger для прозрачного управленческого и бухгалтерского учета в ежедневной работе команды.',
   },

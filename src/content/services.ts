@@ -1,18 +1,73 @@
+export type BitrixLeadBlock = {
+  headline: string
+  intro: string[]
+  sections: {
+    title: string
+    lead?: string
+    items: string[]
+    closing?: string
+  }[]
+}
+
+export type BitrixCertificateItem = {
+  id: string
+  src: string
+  alt: string
+  caption?: string
+}
+
+export type BitrixCertificatesBlock = {
+  headline: string
+  headlineAccent: string
+  subline: string[]
+  items: BitrixCertificateItem[]
+}
+
+export type BitrixSurveyOption = {
+  label: string
+  cloud: number
+  box: number
+}
+
+export type BitrixSurveyQuestion = {
+  id: string
+  text: string
+  options: BitrixSurveyOption[]
+}
+
+export type BitrixSurveyContent = {
+  headline: string
+  subheadline: string
+  timeNote: string
+  questions: BitrixSurveyQuestion[]
+  finalTitle: string
+  finalText: string
+  finalCta: string
+  discountNoteUnderSubmit: string
+  nameLabel: string
+  phoneLabel: string
+  sphereLabel: string
+  otherSpherePlaceholder: string
+  businessSpheres: string[]
+  otherSphereLabel: string
+  successTitle: string
+  successLines: string[]
+  successDiscountLine: string
+  successUrgencyLine: string
+  timerLabel: string
+}
+
 export type ServiceContent = {
   title: string
   description?: string
+  bitrixDemoUrl?: string
+  bitrixLeadBlock?: BitrixLeadBlock
+  bitrixCertificates?: BitrixCertificatesBlock
+  bitrixSurvey?: BitrixSurveyContent
   groups: {
     title: string
     items: string[]
   }[]
-  compareBlock?: {
-    title: string
-    subtitle: string
-    cloudTitle: string
-    cloudItems: string[]
-    boxTitle: string
-    boxItems: string[]
-  }
   advantages?: {
     title: string
     items: {
@@ -39,6 +94,94 @@ export const serviceContent: Record<string, ServiceContent> = {
     title: 'Внедрение CRM Битрикс24',
     description:
       'Битрикс24 предоставляет комплексный инструмент организации совместной работы с задачами и проектами всех отделов — от бухгалтерии до разработки.',
+    bitrixDemoUrl: 'https://www.bitrix24.ru/create.php?p=23472882',
+    bitrixLeadBlock: {
+      headline: 'Что мы делаем в Bitrix24 — не как все',
+      intro: [
+        'Большинство внедрений Bitrix24 ограничиваются настройкой CRM.',
+        'Мы идём дальше — строим полноценную цифровую систему под ваш бизнес.',
+      ],
+      sections: [
+        {
+          title: '⚙️ Автоматизация, которая реально работает',
+          items: [
+            'Настраиваем не просто воронки, а логику продаж под ваш процесс',
+            'Убираем ручную работу через роботов и бизнес-процессы',
+            'Делаем прозрачную аналитику и контроль на каждом этапе',
+          ],
+          closing: '⚡ Результат — меньше хаоса, больше контроля и скорости.',
+        },
+        {
+          title: '🤖 Чат-боты и сценарии общения',
+          lead: 'Разрабатываем чат-ботов под задачи бизнеса:',
+          items: [
+            'обработка заявок',
+            'первичная квалификация клиента',
+            'автоматические ответы и маршрутизация',
+          ],
+          closing: '🤖 Боты не просто отвечают — они ведут клиента к продаже.',
+        },
+        {
+          title: '📞 Контакт-центр под ключ',
+          lead: 'Объединяем все каналы в одном месте:',
+          items: ['WhatsApp', 'Telegram', 'Instagram', 'Max и другие'],
+          closing: '💬 Вся коммуникация фиксируется в CRM — ни один клиент не теряется.',
+        },
+        {
+          title: '🔗 Интеграции без ограничений',
+          items: [
+            'Двусторонняя интеграция с Google Sheets',
+            'Интеграции по API с любыми сервисами',
+            'Синхронизация данных в реальном времени',
+          ],
+          closing: '🔗 CRM становится центром всей вашей системы, а не отдельным инструментом.',
+        },
+        {
+          title: '💻 Разработка под ваш бизнес',
+          lead: 'Создаём кастомные решения:',
+          items: [
+            'локальные приложения внутри Bitrix24',
+            'индивидуальные модули под процессы компании',
+            'расширение стандартного функционала',
+          ],
+          closing: '🛠️ Если в Bitrix нет нужного инструмента — мы его создаём.',
+        },
+      ],
+    },
+    bitrixCertificates: {
+      headline: 'Экспертиза, подтверждённая документально',
+      headlineAccent: 'Мы — сертифицированный партнёр Bitrix24.',
+      subline: [
+        'Все сертификаты и компетенции команды доступны для проверки.',
+        'Вы заранее понимаете, с кем работаете и какой уровень внедрения получите.',
+      ],
+      items: [
+        {
+          id: 'cert-1',
+          src: '/certificates/bitrix-cert-1.svg',
+          alt: 'Сертификат компетенций Bitrix24 — плейсхолдер, замените на скан документа',
+          caption: 'Компетенции и квалификация',
+        },
+        {
+          id: 'cert-2',
+          src: '/certificates/bitrix-cert-2.svg',
+          alt: 'Сертификат партнёрства Bitrix24 — плейсхолдер',
+          caption: 'Партнёрский статус',
+        },
+        {
+          id: 'cert-3',
+          src: '/certificates/bitrix-cert-3.svg',
+          alt: 'Сертификат внедрения Bitrix24 — плейсхолдер',
+          caption: 'Внедрение и проекты',
+        },
+        {
+          id: 'cert-4',
+          src: '/certificates/bitrix-cert-4.svg',
+          alt: 'Сертификат разработки Bitrix24 — плейсхолдер',
+          caption: 'Разработка и кастомизация',
+        },
+      ],
+    },
     groups: [
       {
         title: 'Платформа для бизнеса',
@@ -49,64 +192,89 @@ export const serviceContent: Record<string, ServiceContent> = {
         ],
       },
     ],
-    compareBlock: {
-      title: 'Коробочное решение против Облачного решения',
-      subtitle: 'Сравнение основных характеристик',
-      cloudTitle: '☁️ Облачная версия',
-      cloudItems: [
-        'Высокая доступность',
-        'Автоматические обновления',
-        'Масштабируемость',
-        'Минимальные затраты на обслуживание',
-        'Гибкость интеграции',
-        'Быстрая настройка',
-      ],
-      boxTitle: '📦 Коробочное решение Битрикс24',
-      boxItems: [
-        'Максимум возможностей',
-        'Полная автономность',
-        'Высокая производительность',
-        'Глубокая настройка',
-        'Поддержка локальных серверов',
-        'Безопасность данных',
-        'Индивидуальные решения',
-        'Гарантированная поддержка',
-      ],
-    },
-    advantages: {
-      title: 'Преимущества CRM Битрикс24',
-      items: [
+    bitrixSurvey: {
+      headline: 'Не уверены, что выбрать — облако или коробку?',
+      subheadline:
+        'Пройдите короткий опрос — система подберёт оптимальный вариант под ваш бизнес и сразу закрепит за вами скидку на внедрение.',
+      timeNote: '⏱ Займёт не больше 1 минуты',
+      questions: [
         {
-          number: '01',
-          title: 'Интеграция',
-          description: 'Быстрая интеграция с существующими системами.',
+          id: 'q1',
+          text: 'Сколько человек будет работать в системе?',
+          options: [
+            { label: 'До 10', cloud: 2, box: 0 },
+            { label: '10–50', cloud: 1, box: 0 },
+            { label: '50+', cloud: 0, box: 2 },
+          ],
         },
         {
-          number: '02',
-          title: 'Надежность',
-          description: 'Высокая стабильность работы системы.',
+          id: 'q2',
+          text: 'Нужны ли интеграции?',
+          options: [
+            { label: 'Нет', cloud: 2, box: 0 },
+            { label: 'Стандартные (WhatsApp, Telegram, почта)', cloud: 1, box: 0 },
+            { label: 'Сложные / API / 1С', cloud: 0, box: 2 },
+          ],
         },
         {
-          number: '03',
-          title: 'Масштабируемость',
-          description: 'Система растет вместе с вашим бизнесом.',
+          id: 'q3',
+          text: 'Как быстро нужно запуститься?',
+          options: [
+            { label: 'Срочно (до 3 дней)', cloud: 2, box: 0 },
+            { label: 'В течение недели', cloud: 1, box: 0 },
+            { label: 'Не срочно', cloud: 0, box: 1 },
+          ],
         },
         {
-          number: '04',
-          title: 'Безопасность',
-          description: 'Надежная защита данных и операций.',
+          id: 'q4',
+          text: 'Есть ли требования к безопасности?',
+          options: [
+            { label: 'Нет', cloud: 2, box: 0 },
+            { label: 'Желательно контроль', cloud: 0, box: 1 },
+            { label: 'Строгие требования / свои сервера', cloud: 0, box: 2 },
+          ],
         },
         {
-          number: '05',
-          title: 'Гибкость',
-          description: 'Настраиваемые решения под любые нужды.',
-        },
-        {
-          number: '06',
-          title: 'Поддержка',
-          description: 'Круглосуточная техническая поддержка.',
+          id: 'q5',
+          text: 'Планируете масштабирование?',
+          options: [
+            { label: 'Нет', cloud: 2, box: 0 },
+            { label: 'Возможно', cloud: 1, box: 0 },
+            { label: 'Да, рост / структура', cloud: 0, box: 2 },
+          ],
         },
       ],
+      finalTitle: 'Остался последний шаг',
+      finalText: 'Заполните контактные данные — закрепим за вами результат и скидку.',
+      finalCta: 'Отправить и закрепить скидку',
+      discountNoteUnderSubmit: 'Скидка закрепляется только после заполнения контактов',
+      nameLabel: 'Имя',
+      phoneLabel: 'Телефон',
+      sphereLabel: 'Сфера бизнеса',
+      otherSpherePlaceholder: 'Укажите сферу',
+      businessSpheres: [
+        'Розничная торговля',
+        'Оптовая торговля',
+        'Услуги',
+        'Производство',
+        'Строительство',
+        'Недвижимость',
+        'Образование',
+        'Медицина',
+        'Финансы',
+        'Логистика',
+        'HoReCa',
+        'IT / Digital',
+        'E-commerce',
+        'Автобизнес',
+        'Консалтинг',
+      ],
+      otherSphereLabel: 'Другое',
+      successTitle: 'Спасибо за ответы.',
+      successLines: ['Мы подобрали оптимальное решение под ваш бизнес.'],
+      successDiscountLine: '👉 За вами закреплена скидка на внедрение Bitrix24',
+      successUrgencyLine: '⏳ Действует 24 часа',
+      timerLabel: 'Осталось времени',
     },
   },
   firstbit: {

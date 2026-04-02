@@ -118,3 +118,11 @@ html {
     line-height: 1.2;
   }
 }
+
+.burger-trigger {
+  background-color: color-mix(in oklab, var(--color-brand) 25%, transparent);
+}
+
+.burger-trigger:hover {
+  background-color: color-mix(in oklab, var(--color-brand) 50%, transparent);
+}
