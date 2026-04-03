@@ -10,8 +10,8 @@
             <div class="flex items-start gap-4">
               <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-brand/20 text-lg font-semibold text-slate-900">@</span>
               <div>
-                <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Email</div>
-                <a href="mailto:info@parseconsult.ae" class="mt-1 block text-base font-semibold text-slate-900 underline decoration-brand/50 decoration-2 underline-offset-4 transition hover:text-brand-dark">info@parseconsult.ae</a>
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">{{ t('contact.email') }}</div>
+                <a :href="`mailto:${SITE_CONTACT_EMAIL}`" class="mt-1 block text-base font-semibold text-slate-900 underline decoration-brand/50 decoration-2 underline-offset-4 transition hover:text-brand-dark">{{ SITE_CONTACT_EMAIL }}</a>
               </div>
             </div>
           </div>
@@ -19,13 +19,13 @@
             <div class="flex items-start gap-4">
               <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-brand/20 text-lg text-slate-900">☎</span>
               <div>
-                <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Телефон</div>
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">{{ t('contact.phone') }}</div>
                 <a href="tel:+971528569060" class="mt-1 block text-base font-semibold text-slate-900 transition hover:text-brand-dark">+971 52 856 9060</a>
               </div>
             </div>
           </div>
           <div
-            v-for="s in socialLinks"
+            v-for="s in socialLinkDefs"
             :key="s.href"
             class="rounded-xl border border-slate-200 bg-white p-7"
           >
@@ -34,19 +34,19 @@
                 <SocialNetworkIcon :network="s.network" class="size-6" />
               </span>
               <div class="min-w-0 flex-1">
-                <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">{{ s.name }}</div>
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">{{ t(s.nameKey) }}</div>
                 <a
                   :href="s.href"
                   class="mt-1 block text-base font-semibold text-slate-900 underline decoration-brand/50 decoration-2 underline-offset-4 transition hover:text-brand-dark"
                   target="_blank"
                   rel="noopener noreferrer"
-                >{{ s.label }}</a>
+                >{{ t(s.labelKey) }}</a>
               </div>
             </div>
           </div>
           <div class="rounded-xl border border-brand-dark/35 bg-brand-surface p-7 text-white">
-            <div class="text-xs font-semibold uppercase tracking-wider text-brand">Локация</div>
-            <p class="mt-3 text-sm leading-7 text-white/85">ОАЭ, Россия и Казахстан: онлайн и у клиента по договорённости.</p>
+            <div class="text-xs font-semibold uppercase tracking-wider text-brand">{{ t('contact.location') }}</div>
+            <p class="mt-3 text-sm leading-7 text-white/85">{{ t('contact.locationText') }}</p>
           </div>
         </div>
 
@@ -59,7 +59,11 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import LeadRequestForm from '@/components/LeadRequestForm.vue'
 import SocialNetworkIcon from '@/components/SocialNetworkIcon.vue'
-import { socialLinks } from '@/socialLinks'
+import { socialLinkDefs } from '@/socialLinks'
+import { SITE_CONTACT_EMAIL } from '@/siteContact'
+
+const { t } = useI18n()
 </script>

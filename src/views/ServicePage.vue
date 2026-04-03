@@ -2,10 +2,10 @@
   <section class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-16 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pb-24 md:pt-24">
     <div class="mx-auto max-w-7xl px-6 pt-8 lg:px-8 lg:pt-10">
       <div v-if="!isBitrixPage" class="rounded-2xl border border-brand-dark/35 bg-brand-surface p-7 shadow-md shadow-black/10 md:p-10">
-        <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand">Услуги</p>
+        <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand">{{ t('servicePage.services') }}</p>
         <h1 class="mt-4 text-2xl font-semibold tracking-tight text-white md:text-4xl">{{ page.title }}</h1>
         <p class="mt-4 max-w-3xl text-sm leading-7 text-emerald-50/90 md:text-base">
-          {{ page.description ?? 'Выбираем отраслевую модель учета и настраиваем процессы под реальные операции бизнеса.' }}
+          {{ page.description ?? t('servicePage.defaultDescription') }}
         </p>
       </div>
 
@@ -36,7 +36,7 @@
                 class="inline-flex items-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
                 @click="openLeadModal"
               >
-                Обсудить внедрение
+                {{ t('servicePage.discussImplementation') }}
               </button>
               <a
                 v-if="page.bitrixDemoUrl"
@@ -45,7 +45,7 @@
                 rel="noopener noreferrer"
                 class="inline-flex items-center rounded-lg border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/50 hover:bg-white/15"
               >
-                ⚡ Попробовать демо
+                {{ t('servicePage.tryDemo') }}
               </a>
             </div>
           </div>
@@ -75,24 +75,22 @@
       >
         <div class="max-w-4xl">
           <h2 class="mt-4 text-2xl font-semibold tracking-tight text-slate-950 md:text-4xl">
-            Структурированное внедрение
-            <span class="text-brand-dark">1С</span>
-            и
-            <span class="text-brand-dark">Firstbit</span>,
+            {{ t('servicePage.platformsIntro1') }}
+            <span class="text-brand-dark">{{ t('home.platformsMeta.onec') }}</span>
+            {{ t('home.platformsHeading.and') }}
+            <span class="text-brand-dark">Firstbit</span>{{ t('home.platformsHeading.comma') }}
             <span class="text-brand-dark">Zoho Books</span>
-            и
-            <span class="text-brand-dark">QuickBooks</span>,
-            а также
+            {{ t('home.platformsHeading.and') }}
+            <span class="text-brand-dark">QuickBooks</span>{{ t('home.platformsHeading.also') }}
             <span class="text-[#03bcef]">Bitrix24</span>.
           </h2>
           <p class="mt-6 text-base leading-8 text-slate-600 md:text-lg">
-            Поддерживаем внедрение, настройку и интеграцию современных бухгалтерских систем — 1С и Firstbit, Zoho Books и QuickBooks —
-            обеспечивая прозрачный учёт, автоматизацию процессов и соответствие требованиям бизнеса в ОАЭ, в России и в Казахстане.
+            {{ t('servicePage.platformsOutro') }}
           </p>
         </div>
 
         <div class="mt-12 grid gap-6 lg:grid-cols-4">
-          <article v-for="platform in homePlatforms" :key="platform.name" class="group rounded-xl border border-slate-200 bg-white p-7 transition hover:border-slate-300">
+          <article v-for="platform in servicePlatforms" :key="platform.key" class="group rounded-xl border border-slate-200 bg-white p-7 transition hover:border-slate-300">
             <div class="flex min-w-0 max-w-full items-center gap-3 sm:gap-4">
               <img
                 :src="platform.logoSrc"
@@ -191,7 +189,7 @@
           class="relative overflow-hidden rounded-[2rem] border border-slate-200/90 bg-white px-5 py-10 shadow-sm shadow-slate-200/50 sm:px-10 sm:py-14"
         >
           <div class="relative z-10 max-w-4xl">
-            <p class="text-[11px] font-bold uppercase tracking-[0.4em] text-brand-dark sm:text-xs">Сертификаты</p>
+            <p class="text-[11px] font-bold uppercase tracking-[0.4em] text-brand-dark sm:text-xs">{{ t('servicePage.certificates') }}</p>
             <h2
               id="bitrix-certificates-heading"
               class="mt-5 text-[1.4rem] font-black italic leading-[1.08] tracking-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-[2.75rem]"
@@ -275,7 +273,7 @@
                 class="inline-flex items-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
                 @click="openLeadModal"
               >
-                Оставить заявку
+                {{ t('servicePage.leaveRequest') }}
               </button>
             </div>
             <ul class="space-y-3 border-l border-brand/30 pl-5 sm:pl-6">
@@ -352,7 +350,7 @@
       </section>
 
       <div v-if="page.tiles?.length" class="fade-in-up mt-10" style="animation-delay: 160ms">
-        <h2 class="text-lg font-semibold tracking-tight text-slate-900 md:text-2xl">Отрасли</h2>
+        <h2 class="text-lg font-semibold tracking-tight text-slate-900 md:text-2xl">{{ t('servicePage.industries') }}</h2>
         <div class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           <article
             v-for="(tile, index) in page.tiles"
@@ -381,7 +379,7 @@
                 class="inline-flex items-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
                 @click="openLeadModalForTile(tile.title)"
               >
-                Связаться
+                {{ t('servicePage.connect') }}
               </button>
             </div>
           </article>
@@ -414,11 +412,11 @@
           class="relative my-0 w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl sm:p-6"
           role="dialog"
           aria-modal="true"
-          aria-label="Форма заявки"
+          :aria-label="t('servicePage.modalAria')"
         >
           <div class="mb-5 flex items-start justify-between gap-4">
             <div>
-              <h3 class="text-lg font-semibold tracking-tight text-slate-950 sm:text-2xl">Оставить заявку</h3>
+              <h3 class="text-lg font-semibold tracking-tight text-slate-950 sm:text-2xl">{{ t('servicePage.modalTitle') }}</h3>
             </div>
             <button
               type="button"
@@ -433,7 +431,7 @@
             id-prefix="service-modal"
             :initial-services="modalInitialServices"
             :initial-message="modalInitialMessage"
-            submit-button-label="Отправить заявку"
+            :submit-button-label="t('servicePage.modalSubmit')"
             @dirty-change="onLeadFormDirtyChange"
           />
 
@@ -442,22 +440,22 @@
             class="absolute inset-0 z-20 flex items-center justify-center rounded-2xl bg-slate-950/45 p-4"
           >
             <div class="w-full max-w-md rounded-xl border border-slate-200 bg-white p-5 shadow-xl sm:p-6">
-              <h4 class="text-base font-semibold tracking-tight text-slate-950">Закрыть форму?</h4>
-              <p class="mt-2 text-sm leading-6 text-slate-600">Вы действительно хотите закрыть? Данные не сохранятся.</p>
+              <h4 class="text-base font-semibold tracking-tight text-slate-950">{{ t('servicePage.closeConfirmTitle') }}</h4>
+              <p class="mt-2 text-sm leading-6 text-slate-600">{{ t('servicePage.closeConfirmText') }}</p>
               <div class="mt-5 flex items-center justify-end gap-3">
                 <button
                   type="button"
                   class="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
                   @click="cancelCloseLeadModal"
                 >
-                  Отмена
+                  {{ t('servicePage.cancel') }}
                 </button>
                 <button
                   type="button"
                   class="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700"
                   @click="confirmCloseLeadModal"
                 >
-                  Закрыть без сохранения
+                  {{ t('servicePage.closeWithoutSave') }}
                 </button>
               </div>
             </div>
@@ -471,15 +469,25 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import 'vue3-carousel/carousel.css'
 import BitrixCloudBoxSurvey from '@/components/BitrixCloudBoxSurvey.vue'
 import LeadRequestForm from '@/components/LeadRequestForm.vue'
-import { homePlatforms } from '@/content/platforms'
-import { serviceContent } from '@/content/services'
+import { homePlatformAssets } from '@/content/platforms'
+import { getServiceContent } from '@/content/services'
 
 const route = useRoute()
 const router = useRouter()
+const { t, locale } = useI18n()
+
+const servicePlatforms = computed(() =>
+  homePlatformAssets.map((asset) => ({
+    ...asset,
+    name: t(`home.platformCards.${asset.key}.name`),
+    description: t(`home.platformCards.${asset.key}.description`),
+  })),
+)
 const showcaseSlugs = new Set(['firstbit', 'accounting-systems', 'training'])
 const isShowcasePage = computed(() => showcaseSlugs.has(String(route.params.slug ?? '')))
 const isBitrixPage = computed(() => String(route.params.slug ?? '') === 'bitrix24')
@@ -518,7 +526,9 @@ const modalInitialServices = computed(() => {
 })
 
 const modalInitialMessage = computed(() =>
-  selectedTileTitle.value.length > 0 ? `Интересующая конфигурация: ${selectedTileTitle.value}` : ''
+  selectedTileTitle.value.length > 0
+    ? `${t('servicePage.modalMessagePrefix')} ${selectedTileTitle.value}`
+    : '',
 )
 
 const openLeadModal = (): void => {
@@ -566,13 +576,13 @@ watch(isLeadModalOpen, (open) => {
 })
 
 watch(
-  () => String(route.params.slug ?? ''),
-  (slug) => {
-    if (!serviceContent[slug]) {
+  () => [String(route.params.slug ?? ''), locale.value] as const,
+  ([slug]) => {
+    if (!getServiceContent(String(locale.value))[slug]) {
       void router.replace({ name: 'not-found' })
     }
   },
-  { immediate: true }
+  { immediate: true },
 )
 
 const onEscapePress = (event: KeyboardEvent): void => {
@@ -601,7 +611,10 @@ const splitServiceItem = (item: string): { lead: string; details: string } => {
   }
 }
 
-const defaultService = serviceContent.firstbit ?? Object.values(serviceContent)[0]!
+const defaultService = computed(() => {
+  const bundle = getServiceContent(String(locale.value))
+  return bundle.firstbit ?? Object.values(bundle)[0]!
+})
 
 const bitrixPlatformGroup = computed(() => (isBitrixPage.value ? page.value.groups[0] : null))
 const displayGroups = computed(() => (isBitrixPage.value ? page.value.groups.slice(1) : page.value.groups))
@@ -643,7 +656,8 @@ const showcaseGroups = computed(() => {
 
 const page = computed(() => {
   const slug = String(route.params.slug ?? '')
-  return serviceContent[slug] ?? defaultService
+  const bundle = getServiceContent(String(locale.value))
+  return bundle[slug] ?? defaultService.value
 })
 </script>
 

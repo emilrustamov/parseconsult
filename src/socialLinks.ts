@@ -1,16 +1,16 @@
 export const parseLedgerSiteUrl = 'https://parseledger.ae/'
 
-export const socialLinks = [
+export const socialLinkDefs = [
   {
     network: 'youtube' as const,
     href: 'https://www.youtube.com/@parseledger',
-    label: 'ParseLedger на YouTube',
-    name: 'YouTube',
+    labelKey: 'social.youtubeLabel',
+    nameKey: 'social.youtubeName',
   },
   {
     network: 'instagram' as const,
     href: 'https://www.instagram.com/parseledger.ae/',
-    label: 'ParseLedger в Instagram',
-    name: 'Instagram',
+    labelKey: 'social.instagramLabel',
+    nameKey: 'social.instagramName',
   },
 ] as const

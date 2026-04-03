@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -26,8 +29,8 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
           decoding="async"
         >
         <div class="text-left">
-          <div class="text-sm font-semibold tracking-tight text-slate-900">Parse Consult</div>
-          <div class="text-[11px] font-medium text-slate-500">Бухучёт и системы</div>
+          <div class="text-sm font-semibold tracking-tight text-slate-900">{{ t('brand.siteName') }}</div>
+          <div class="text-[11px] font-medium text-slate-500">{{ t('preloader.subtitle') }}</div>
         </div>
       </div>
 

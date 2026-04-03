@@ -1,9 +1,13 @@
 import type { RouteLocationNormalizedLoaded, Router } from 'vue-router'
-import { socialLinks } from '@/socialLinks'
-import { serviceContent } from '@/content/services'
+import { unref, watch } from 'vue'
+import type { Composer } from 'vue-i18n'
+
+type I18nInstance = { global: Composer }
+import { socialLinkDefs } from '@/socialLinks'
+import { SITE_CONTACT_EMAIL } from '@/siteContact'
+import { getServiceContent } from '@/content/services'
 
 const SITE_URL = 'https://parseconsult.ae'
-const SITE_NAME = 'Parse Consult'
 const DEFAULT_IMAGE = `${SITE_URL}/logo.svg`
 
 type SeoMeta = {
@@ -11,33 +15,6 @@ type SeoMeta = {
   description: string
   path: string
   robots?: 'index,follow' | 'noindex,follow'
-}
-
-const staticMetaByRouteName: Record<string, Omit<SeoMeta, 'path'>> = {
-  home: {
-    title: 'Parse Consult в ОАЭ, в России и в Казахстане - внедрение и автоматизация учета',
-    description: 'Внедрение 1С и Firstbit, Zoho Books и QuickBooks в ОАЭ, в России и в Казахстане. Восстановление учета, обучение персонала и автоматизация финансовых процессов.',
-  },
-  contact: {
-    title: 'Контакты Parse Consult',
-    description: 'Свяжитесь с Parse Consult для консультации по внедрению бухгалтерских систем и автоматизации учета в ОАЭ, в России и в Казахстане.',
-  },
-  'parse-ledger': {
-    title: 'parseledger.ae',
-    description: 'Parse Ledger преобразует банковские PDF и Excel выписки в структурированные данные для загрузки в бухгалтерские системы.',
-  },
-  'not-found': {
-    title: 'Страница не найдена | Parse Consult',
-    description: 'Запрошенная страница не найдена. Перейдите на главную страницу Parse Consult.',
-    robots: 'noindex,follow',
-  },
-}
-
-const serviceDescriptionBySlug: Record<string, string> = {
-  firstbit: 'Экспертное внедрение и кастомизация 1С и Firstbit в ОАЭ, в России и в Казахстане: аудит, автоматизация процессов и методология IFRS.',
-  'accounting-systems': 'Внедрение, восстановление и оптимизация бухгалтерских систем с интеграцией банков и CRM для бизнеса в ОАЭ, в России и в Казахстане.',
-  'accounting-setup': 'Настройка бухгалтерского учета под отраслевую специфику бизнеса в ОАЭ, в России и в Казахстане: от e-commerce до строительства и логистики.',
-  training: 'Сопровождение и обучение персонала: регламенты, инструкции и практическая адаптация команды к новым процессам учета.',
 }
 
 const upsertMetaTag = (
@@ -90,44 +67,83 @@ const upsertJsonLd = (id: string, payload: unknown): void => {
   script.textContent = JSON.stringify(payload)
 }
 
-const buildMeta = (route: RouteLocationNormalizedLoaded): SeoMeta => {
+const currentLocale = (i18n: I18nInstance): string => String(unref(i18n.global.locale))
+
+const buildMeta = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): SeoMeta => {
+  const t = i18n.global.t as (key: string) => string
+  const te = i18n.global.te as (key: string) => boolean
+  const siteName = t('brand.siteName')
   const routeName = String(route.name ?? '')
   const path = route.path
-  const staticMeta = staticMetaByRouteName[routeName]
-  if (staticMeta) {
-    return { ...staticMeta, path }
+
+  if (routeName === 'home') {
+    return {
+      title: t('seo.homeTitle'),
+      description: t('seo.homeDescription'),
+      path,
+    }
+  }
+  if (routeName === 'contact') {
+    return {
+      title: t('seo.contactTitle'),
+      description: t('seo.contactDescription'),
+      path,
+    }
+  }
+  if (routeName === 'parse-ledger') {
+    return {
+      title: t('seo.parseLedgerTitle'),
+      description: t('seo.parseLedgerDescription'),
+      path,
+    }
+  }
+  if (routeName === 'not-found') {
+    return {
+      title: t('seo.notFoundTitle'),
+      description: t('seo.notFoundDescription'),
+      path,
+      robots: 'noindex,follow',
+    }
   }
 
   if (routeName === 'service-details') {
     const slug = String(route.params.slug ?? '')
-    const service = serviceContent[slug]
+    const locale = currentLocale(i18n)
+    const service = getServiceContent(locale)[slug]
     if (service) {
+      const descKey = `seo.serviceDescriptions.${slug}`
+      const description = te(descKey) ? t(descKey) : t('seo.serviceFallbackDescription')
       return {
-        title: `${service.title} | ${SITE_NAME}`,
-        description: serviceDescriptionBySlug[slug] ?? 'Профессиональное внедрение и настройка бухгалтерских решений для бизнеса в ОАЭ, в России и в Казахстане.',
+        title: `${service.title} | ${siteName}`,
+        description,
         path,
       }
     }
   }
 
   return {
-    title: `${SITE_NAME} - консалтинг и автоматизация учета`,
-    description: 'Parse Consult помогает бизнесу в ОАЭ, в России и в Казахстане выстраивать прозрачный учет, внедрять системы и обучать команды.',
+    title: t('seo.fallbackTitle'),
+    description: t('seo.fallbackDescription'),
     path,
     robots: routeName === 'not-found' ? 'noindex,follow' : 'index,follow',
   }
 }
 
-const buildBreadcrumbJsonLd = (route: RouteLocationNormalizedLoaded): Record<string, unknown> | null => {
+const buildBreadcrumbJsonLd = (
+  route: RouteLocationNormalizedLoaded,
+  i18n: I18nInstance
+): Record<string, unknown> | null => {
   const routeName = String(route.name ?? '')
   if (routeName !== 'service-details') {
     return null
   }
   const slug = String(route.params.slug ?? '')
-  const service = serviceContent[slug]
+  const locale = currentLocale(i18n)
+  const service = getServiceContent(locale)[slug]
   if (!service) {
     return null
   }
+  const t = i18n.global.t as (key: string) => string
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -135,7 +151,7 @@ const buildBreadcrumbJsonLd = (route: RouteLocationNormalizedLoaded): Record<str
       {
         '@type': 'ListItem',
         position: 1,
-        name: 'Главная',
+        name: t('seo.breadcrumbHome'),
         item: SITE_URL,
       },
       {
@@ -148,37 +164,49 @@ const buildBreadcrumbJsonLd = (route: RouteLocationNormalizedLoaded): Record<str
   }
 }
 
-const buildOrganizationJsonLd = (): Record<string, unknown> => ({
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: SITE_NAME,
-  url: SITE_URL,
-  email: 'info@parseconsult.ae',
-  telephone: '+971 52 856 9060',
-  areaServed: 'AE',
-  sameAs: socialLinks.map((item) => item.href),
-})
+const buildOrganizationJsonLd = (i18n: I18nInstance): Record<string, unknown> => {
+  const siteName = (i18n.global.t as (key: string) => string)('brand.siteName')
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: siteName,
+    url: SITE_URL,
+    email: SITE_CONTACT_EMAIL,
+    telephone: '+971 52 856 9060',
+    areaServed: 'AE',
+    sameAs: socialLinkDefs.map((item) => item.href),
+  }
+}
 
-const buildWebsiteJsonLd = (): Record<string, unknown> => ({
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: SITE_NAME,
-  url: SITE_URL,
-  inLanguage: 'ru',
-})
+const buildWebsiteJsonLd = (i18n: I18nInstance): Record<string, unknown> => {
+  const siteName = (i18n.global.t as (key: string) => string)('brand.siteName')
+  const lang = currentLocale(i18n) === 'en' ? 'en' : 'ru'
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteName,
+    url: SITE_URL,
+    inLanguage: lang,
+  }
+}
 
-const buildServiceJsonLd = (route: RouteLocationNormalizedLoaded): Record<string, unknown> | null => {
+const buildServiceJsonLd = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): Record<string, unknown> | null => {
   const routeName = String(route.name ?? '')
   if (routeName !== 'service-details') {
     return null
   }
   const slug = String(route.params.slug ?? '')
-  const service = serviceContent[slug]
+  const locale = currentLocale(i18n)
+  const service = getServiceContent(locale)[slug]
   if (!service) {
     return null
   }
-  const description =
-    serviceDescriptionBySlug[slug] ?? 'Профессиональное внедрение и настройка бухгалтерских решений для бизнеса в ОАЭ, в России и в Казахстане.'
+  const t = i18n.global.t as (key: string) => string
+  const te = i18n.global.te as (key: string) => boolean
+  const siteName = t('brand.siteName')
+  const descKey = `seo.serviceDescriptions.${slug}`
+  const description = te(descKey) ? t(descKey) : t('seo.serviceFallbackDescription')
+  const lang = currentLocale(i18n) === 'en' ? 'en' : 'ru'
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -186,7 +214,7 @@ const buildServiceJsonLd = (route: RouteLocationNormalizedLoaded): Record<string
     description,
     provider: {
       '@type': 'Organization',
-      name: SITE_NAME,
+      name: siteName,
       url: SITE_URL,
     },
     areaServed: {
@@ -194,33 +222,36 @@ const buildServiceJsonLd = (route: RouteLocationNormalizedLoaded): Record<string
       name: 'United Arab Emirates',
     },
     url: `${SITE_URL}/services/${slug}`,
-    inLanguage: 'ru',
+    inLanguage: lang,
   }
 }
 
-const applySeo = (route: RouteLocationNormalizedLoaded): void => {
-  const meta = buildMeta(route)
+const applySeo = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): void => {
+  const meta = buildMeta(route, i18n)
   const canonicalUrl = `${SITE_URL}${meta.path}`
+  const siteName = (i18n.global.t as (key: string) => string)('brand.siteName')
+  const ogLocale = currentLocale(i18n) === 'en' ? 'en_US' : 'ru_RU'
+
   document.title = meta.title
   upsertMetaTag('description', meta.description)
   upsertMetaTag('robots', meta.robots ?? 'index,follow')
-  upsertMetaTag('author', SITE_NAME)
+  upsertMetaTag('author', siteName)
   upsertMetaTag('og:title', meta.title)
   upsertMetaTag('og:description', meta.description)
   upsertMetaTag('og:type', 'website')
   upsertMetaTag('og:url', canonicalUrl)
   upsertMetaTag('og:image', DEFAULT_IMAGE)
-  upsertMetaTag('og:site_name', SITE_NAME)
-  upsertMetaTag('og:locale', 'ru_RU')
+  upsertMetaTag('og:site_name', siteName)
+  upsertMetaTag('og:locale', ogLocale)
   upsertMetaTag('twitter:card', 'summary_large_image')
   upsertMetaTag('twitter:title', meta.title)
   upsertMetaTag('twitter:description', meta.description)
   upsertMetaTag('twitter:image', DEFAULT_IMAGE)
   upsertCanonical(canonicalUrl)
-  upsertJsonLd('organization', buildOrganizationJsonLd())
-  upsertJsonLd('website', buildWebsiteJsonLd())
+  upsertJsonLd('organization', buildOrganizationJsonLd(i18n))
+  upsertJsonLd('website', buildWebsiteJsonLd(i18n))
 
-  const breadcrumb = buildBreadcrumbJsonLd(route)
+  const breadcrumb = buildBreadcrumbJsonLd(route, i18n)
   if (breadcrumb) {
     upsertJsonLd('breadcrumb', breadcrumb)
   } else {
@@ -230,7 +261,7 @@ const applySeo = (route: RouteLocationNormalizedLoaded): void => {
     }
   }
 
-  const service = buildServiceJsonLd(route)
+  const service = buildServiceJsonLd(route, i18n)
   if (service) {
     upsertJsonLd('service', service)
   } else {
@@ -241,8 +272,17 @@ const applySeo = (route: RouteLocationNormalizedLoaded): void => {
   }
 }
 
-export const installSeo = (router: Router): void => {
-  router.afterEach((to) => {
-    applySeo(to)
+export const installSeo = (router: Router, i18n: I18nInstance): void => {
+  const run = (): void => {
+    applySeo(router.currentRoute.value, i18n)
+  }
+  router.afterEach(() => {
+    run()
   })
+  watch(
+    () => currentLocale(i18n),
+    () => {
+      run()
+    },
+  )
 }

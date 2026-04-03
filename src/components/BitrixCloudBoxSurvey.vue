@@ -38,7 +38,7 @@
       </div>
 
       <div class="space-y-5">
-        <div class="flex gap-1.5 sm:gap-2" role="progressbar" :aria-valuenow="questionIndex + 1" :aria-valuemax="totalSteps" aria-label="Прогресс опроса">
+        <div class="flex gap-1.5 sm:gap-2" role="progressbar" :aria-valuenow="questionIndex + 1" :aria-valuemax="totalSteps" :aria-label="t('bitrixSurveyUi.quizProgressAria')">
           <div
             v-for="step in totalSteps"
             :key="step"
@@ -47,14 +47,14 @@
           ></div>
         </div>
         <div class="flex items-center justify-between gap-4 text-sm text-slate-400">
-          <span class="font-medium text-slate-200">Шаг {{ questionIndex + 1 }} из {{ totalSteps }}</span>
+          <span class="font-medium text-slate-200">{{ t('bitrixSurveyUi.stepOf', { current: questionIndex + 1, total: totalSteps }) }}</span>
           <button
             v-if="questionIndex > 0"
             type="button"
             class="font-semibold text-brand underline-offset-2 hover:underline"
             @click="goBack"
           >
-            Назад
+            {{ t('bitrixSurveyUi.back') }}
           </button>
         </div>
         <h3 class="text-lg font-semibold tracking-tight text-white md:text-2xl">{{ currentQuestion.text }}</h3>
@@ -126,7 +126,7 @@
               required
               class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-brand-dark focus:ring-4 focus:ring-brand/20"
             >
-              <option value="" disabled>Выберите сферу</option>
+              <option value="" disabled>{{ t('bitrixSurveyUi.selectSphere') }}</option>
               <option v-for="s in content.businessSpheres" :key="s" :value="s">{{ s }}</option>
               <option :value="OTHER_VALUE">{{ content.otherSphereLabel }}</option>
             </select>
@@ -149,7 +149,7 @@
               class="ui-shine w-full rounded-lg bg-brand py-3.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark disabled:opacity-60"
               :disabled="submitting"
             >
-              {{ submitting ? 'Отправка…' : content.finalCta }}
+              {{ submitting ? t('bitrixSurveyUi.sending') : content.finalCta }}
             </button>
             <p class="text-center text-xs leading-5 text-slate-500 md:text-sm">{{ content.discountNoteUnderSubmit }}</p>
           </div>
@@ -175,7 +175,7 @@
         class="text-sm font-semibold text-brand underline-offset-2 hover:underline"
         @click="resetAll"
       >
-        Пройти опрос заново
+        {{ t('bitrixSurveyUi.retake') }}
       </button>
     </div>
       </div>
@@ -186,10 +186,14 @@
 <script setup lang="ts">
 import type { BitrixSurveyContent } from '@/content/services'
 import { computed, onBeforeUnmount, reactive, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { SITE_CONTACT_EMAIL } from '@/siteContact'
 
 const props = defineProps<{
   content: BitrixSurveyContent
 }>()
+
+const { t } = useI18n()
 
 const OTHER_VALUE = '__other__'
 const ids = {
@@ -238,12 +242,12 @@ const scores = computed(() => {
 const recommendationText = computed(() => {
   const { cloud, box } = scores.value
   if (cloud > box) {
-    return 'Персональная рекомендация: облачная версия Bitrix24.'
+    return t('bitrixSurveyUi.recommendationCloud')
   }
   if (box > cloud) {
-    return 'Персональная рекомендация: коробочная версия Bitrix24.'
+    return t('bitrixSurveyUi.recommendationBox')
   }
-  return 'Персональная рекомендация: начать с облака с возможностью перехода на коробку позже.'
+  return t('bitrixSurveyUi.recommendationTie')
 })
 
 function goBack(): void {
@@ -281,7 +285,7 @@ function formatAnswersForEmail(): string {
 
 function resolvedSphere(): string {
   if (leadForm.sphere === OTHER_VALUE) {
-    return leadForm.otherSphere.trim() || 'Другое'
+    return leadForm.otherSphere.trim() || t('bitrixSurveyUi.otherFallback')
   }
   return leadForm.sphere
 }
@@ -296,21 +300,21 @@ function submitLead(): void {
   submitting.value = true
   const { cloud, box } = scores.value
   const bodyLines = [
-    'Опрос Bitrix24: облако или коробка',
+    t('bitrixSurveyUi.mailIntro'),
     '',
-    `Баллы — облако: ${cloud}, коробка: ${box}`,
+    t('bitrixSurveyUi.mailScores', { cloud, box }),
     recommendationText.value,
     '',
-    'Ответы:',
+    t('bitrixSurveyUi.mailAnswers'),
     formatAnswersForEmail(),
     '',
-    `Имя: ${leadForm.name.trim()}`,
-    `Телефон: ${leadForm.phone.trim()}`,
-    `Сфера: ${resolvedSphere()}`,
+    `${t('bitrixSurveyUi.mailName')}: ${leadForm.name.trim()}`,
+    `${t('bitrixSurveyUi.mailPhone')}: ${leadForm.phone.trim()}`,
+    `${t('bitrixSurveyUi.mailSphere')}: ${resolvedSphere()}`,
   ]
   const body = encodeURIComponent(bodyLines.join('\n'))
-  const subject = encodeURIComponent(`Опрос Bitrix24 — скидка — ${leadForm.name.trim()}`)
-  window.location.href = `mailto:info@parseconsult.ae?subject=${subject}&body=${body}`
+  const subject = encodeURIComponent(t('bitrixSurveyUi.mailSubject', { name: leadForm.name.trim() }))
+  window.location.href = `mailto:${SITE_CONTACT_EMAIL}?subject=${subject}&body=${body}`
 
   deadlineMs.value = Date.now() + 24 * 60 * 60 * 1000
   startTimerTick()
