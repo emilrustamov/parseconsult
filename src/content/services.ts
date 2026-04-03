@@ -158,25 +158,25 @@ export const serviceContent: Record<string, ServiceContent> = {
       items: [
         {
           id: 'cert-1',
-          src: '/certificates/bitrix-cert-1.svg',
+          src: '/certificates/certf1.webp',
           alt: 'Сертификат компетенций Bitrix24 — плейсхолдер, замените на скан документа',
           caption: 'Компетенции и квалификация',
         },
         {
           id: 'cert-2',
-          src: '/certificates/bitrix-cert-2.svg',
+          src: '/certificates/certf2.webp',
           alt: 'Сертификат партнёрства Bitrix24 — плейсхолдер',
           caption: 'Партнёрский статус',
         },
         {
           id: 'cert-3',
-          src: '/certificates/bitrix-cert-3.svg',
+          src: '/certificates/certf3.webp',
           alt: 'Сертификат внедрения Bitrix24 — плейсхолдер',
           caption: 'Внедрение и проекты',
         },
         {
           id: 'cert-4',
-          src: '/certificates/bitrix-cert-4.svg',
+          src: '/certificates/certf4.webp',
           alt: 'Сертификат разработки Bitrix24 — плейсхолдер',
           caption: 'Разработка и кастомизация',
         },
