@@ -6,11 +6,10 @@
           {{ t('home.hero.p1') }}<span class="text-[#3ccd98]">{{ t('home.hero.uae') }}</span>{{ t('home.hero.p2') }}<span class="text-[#3ccd98]">{{ t('home.hero.ru') }}</span>{{ t('home.hero.p3') }}<span class="text-[#3ccd98]">{{ t('home.hero.kz') }}</span>
         </h1>
         <div class="mt-4 w-full max-w-[460px] sm:max-w-[560px] md:mt-6 md:max-w-[640px] lg:mt-10 lg:max-w-none lg:pb-2">
-          <DotLottieVue
-            src="/Office Re-Color.lottie"
-            class="h-full w-full object-contain object-left"
-            autoplay
-            loop
+          <LazyDotLottie
+            src="/office-re-color.lottie"
+            root-class="h-full w-full"
+            lottie-class="h-full w-full object-contain object-left"
           />
         </div>
       </div>
@@ -20,7 +19,7 @@
           <RouterLink
             v-for="item in heroServices"
             :key="item.id"
-            :to="item.to"
+            :to="localized(item.to)"
             class="group flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:bg-slate-50/90 sm:gap-4 lg:min-h-0 lg:flex-1"
             :class="item.id === 'parse-ledger' ? 'border-slate-900 text-slate-900 shadow-sm' : ''"
             :style="item.id === 'parse-ledger' ? { backgroundColor: '#d9fbe8', borderColor: '#0f172a' } : undefined"
@@ -98,11 +97,10 @@
             {{ t('home.about.title') }}
           </h2>
           <div class="mx-auto mt-6 h-[260px] w-full sm:h-[320px] lg:h-[360px]">
-            <DotLottieVue
-              src="/Budget And Bills.lottie"
-              class="mx-auto h-full w-full object-contain object-center"
-              autoplay
-              loop
+            <LazyDotLottie
+              src="/budget-and-bills.lottie"
+              root-class="mx-auto h-full w-full"
+              lottie-class="mx-auto h-full w-full object-contain object-center"
             />
           </div>
           <a
@@ -178,7 +176,7 @@
                 {{ service.description }}
               </p>
               <RouterLink
-                :to="service.to"
+                :to="localized(service.to)"
                 class="group mt-5 inline-flex items-center gap-2 self-start text-sm font-semibold transition"
                 :class="isAccentServiceCard(index)
                   ? 'text-emerald-50 hover:text-white'
@@ -266,13 +264,15 @@
 import type { RouteLocationRaw } from 'vue-router'
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import 'vue3-carousel/carousel.css'
+import LazyDotLottie from '@/components/LazyDotLottie.vue'
 import LeadRequestForm from '@/components/LeadRequestForm.vue'
+import { useLocaleRoute } from '@/composables/useLocaleRoute'
 import { homePlatformAssets } from '@/content/platforms'
 
 const { t, tm } = useI18n()
+const { localized } = useLocaleRoute()
 
 type KeyServiceRow = {
   id: string

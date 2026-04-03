@@ -6,11 +6,10 @@
           <span class="text-brand-dark">Parse Ledger</span> — {{ t('parseLedger.heroTitle') }}
         </h1>
         <div class="relative mt-6 min-h-[260px] w-full lg:hidden">
-          <DotLottieVue
-            src="/Yogi finance.lottie"
-            class="absolute inset-0 h-full w-full object-contain"
-            autoplay
-            loop
+          <LazyDotLottie
+            src="/yogi-finance.lottie"
+            root-class="absolute inset-0 h-full w-full"
+            lottie-class="absolute inset-0 h-full w-full object-contain"
           />
         </div>
         <p class="mt-6 whitespace-pre-line text-base leading-8 text-slate-600 md:text-lg">
@@ -27,11 +26,10 @@
       </div>
 
       <div class="relative hidden min-h-[340px] w-full lg:block lg:min-h-0 lg:h-full">
-        <DotLottieVue
-          src="/Yogi finance.lottie"
-          class="absolute inset-0 h-full w-full object-contain"
-          autoplay
-          loop
+        <LazyDotLottie
+          src="/yogi-finance.lottie"
+          root-class="absolute inset-0 h-full w-full"
+          lottie-class="absolute inset-0 h-full w-full object-contain"
         />
       </div>
     </div>
@@ -119,7 +117,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
+import LazyDotLottie from '@/components/LazyDotLottie.vue'
 import { parseLedgerSiteUrl } from '@/socialLinks'
 
 const { t } = useI18n()

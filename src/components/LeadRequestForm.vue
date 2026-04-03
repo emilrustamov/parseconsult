@@ -1,7 +1,13 @@
 <template>
   <form class="space-y-6" @submit.prevent="submitContactForm">
-    <div v-if="formSuccess" class="rounded-lg border border-brand/30 bg-brand/10 px-4 py-3 text-sm font-medium text-slate-800">
-      {{ t('leadForm.success') }}
+    <div v-if="formSuccess && submitKind === 'api'" class="rounded-lg border border-brand/30 bg-brand/10 px-4 py-3 text-sm font-medium text-slate-800">
+      {{ t('leadForm.successApi') }}
+    </div>
+    <div v-if="formSuccess && submitKind === 'mailto'" class="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-medium text-slate-800">
+      {{ t('leadForm.successMailto', { email: SITE_CONTACT_EMAIL }) }}
+    </div>
+    <div v-if="submitError" class="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-900">
+      {{ t('leadForm.submitError', { email: SITE_CONTACT_EMAIL }) }}
     </div>
 
     <div>
@@ -47,7 +53,7 @@
       <p v-if="showContactMethodError" class="mt-2 text-sm text-red-600">{{ t('leadForm.contactMethodError') }}</p>
     </div>
 
-    <div v-if="showPhoneField" class="animate-fade-up">
+    <div v-if="showPhoneField" class="lead-field-reveal">
       <label :for="ids.phone" class="mb-2 block text-sm font-semibold text-slate-800">
         {{ t('leadForm.phone') }} <span class="text-red-600">*</span>
       </label>
@@ -63,7 +69,7 @@
       >
     </div>
 
-    <div v-if="showEmailField" class="animate-fade-up">
+    <div v-if="showEmailField" class="lead-field-reveal">
       <label :for="ids.email" class="mb-2 block text-sm font-semibold text-slate-800">
         {{ t('leadForm.email') }} <span class="text-red-600">*</span>
       </label>
@@ -79,7 +85,7 @@
       >
     </div>
 
-    <fieldset v-if="showSocialField" class="animate-fade-up">
+    <fieldset v-if="showSocialField" class="lead-field-reveal">
       <div class="grid grid-cols-2 gap-2 sm:gap-3">
         <div>
           <label :for="ids.whatsapp" class="mb-2 flex h-6 items-center text-brand-dark" aria-label="WhatsApp">
@@ -218,7 +224,7 @@ const form = reactive({
   message: props.initialMessage,
 })
 
-const ids = {
+const ids = computed(() => ({
   fullName: `${props.idPrefix}-fullname`,
   phone: `${props.idPrefix}-phone`,
   email: `${props.idPrefix}-email`,
@@ -226,7 +232,7 @@ const ids = {
   telegram: `${props.idPrefix}-telegram`,
   website: `${props.idPrefix}-website`,
   message: `${props.idPrefix}-message`,
-}
+}))
 
 const showContactMethodError = ref(false)
 const selectedContactMethods = computed(() =>
@@ -248,6 +254,13 @@ const isDirty = computed(
 
 const formSubmitting = ref(false)
 const formSuccess = ref(false)
+const submitKind = ref<'api' | 'mailto' | null>(null)
+const submitError = ref(false)
+
+const formEndpoint = (): string | undefined => {
+  const raw = import.meta.env.VITE_CONTACT_FORM_ENDPOINT
+  return typeof raw === 'string' && raw.trim().length > 0 ? raw.trim() : undefined
+}
 
 watch(
   isDirty,
@@ -257,7 +270,7 @@ watch(
   { immediate: true }
 )
 
-function submitContactForm(): void {
+async function submitContactForm(): Promise<void> {
   if (form.website.trim().length > 0) {
     return
   }
@@ -273,6 +286,8 @@ function submitContactForm(): void {
 
   formSubmitting.value = true
   formSuccess.value = false
+  submitError.value = false
+  submitKind.value = null
 
   const methodLabels = contactMethodOptions.value
     .filter((option) => selectedContactMethods.value.includes(option.value))
@@ -292,10 +307,43 @@ function submitContactForm(): void {
   lines.push('')
   lines.push(form.message)
 
+  const endpoint = formEndpoint()
+  if (endpoint) {
+    try {
+      const payload = {
+        fullName: form.fullName.trim(),
+        contactMethods: form.contactMethods,
+        phone: form.phone.trim(),
+        email: form.email.trim(),
+        whatsapp: form.whatsapp.trim(),
+        telegram: form.telegram.trim(),
+        services: form.services,
+        message: form.message.trim(),
+        textBody: lines.join('\n'),
+        mailSubject: t('leadForm.mailSubject', { name: form.fullName }),
+      }
+      const r = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!r.ok) {
+        throw new Error('bad status')
+      }
+      submitKind.value = 'api'
+      formSuccess.value = true
+    } catch {
+      submitError.value = true
+    } finally {
+      formSubmitting.value = false
+    }
+    return
+  }
+
   const body = encodeURIComponent(lines.join('\n'))
   const subject = encodeURIComponent(t('leadForm.mailSubject', { name: form.fullName }))
   window.location.href = `mailto:${SITE_CONTACT_EMAIL}?subject=${subject}&body=${body}`
-
+  submitKind.value = 'mailto'
   formSuccess.value = true
   formSubmitting.value = false
 }
@@ -306,6 +354,8 @@ function isContactOptionActive(option: ContactMethod): boolean {
 
 function toggleContactOption(option: ContactMethod): void {
   formSuccess.value = false
+  submitKind.value = null
+  submitError.value = false
   showContactMethodError.value = false
   if (form.contactMethods.includes(option)) {
     form.contactMethods = form.contactMethods.filter((method) => method !== option)
@@ -316,18 +366,23 @@ function toggleContactOption(option: ContactMethod): void {
 </script>
 
 <style scoped>
-@keyframes fade-up {
+@keyframes lead-field-reveal-move {
   from {
-    opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(10px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
 
-.animate-fade-up {
-  animation: fade-up 0.8s ease forwards;
+.lead-field-reveal {
+  opacity: 1;
+  animation: lead-field-reveal-move 0.45s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-field-reveal {
+    animation: none;
+  }
 }
 </style>

@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import FloatingAccountingDeco from '@/components/FloatingAccountingDeco.vue'
 import SocialNetworkIcon from '@/components/SocialNetworkIcon.vue'
-import { applyDocumentLang, persistLocale, type AppLocale } from '@/i18n'
+import { useLocaleRoute } from '@/composables/useLocaleRoute'
+import type { AppLocale } from '@/i18n'
 import { socialLinkDefs } from '@/socialLinks'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
+const route = useRoute()
+const router = useRouter()
+const { localized } = useLocaleRoute()
 
 type NavLink =
   | { label: string; to: RouteLocationRaw }
@@ -29,9 +33,17 @@ const serviceLinks = computed(() => [
 ])
 
 const setLocale = (code: AppLocale): void => {
-  locale.value = code
-  persistLocale(code)
-  applyDocumentLang(code)
+  const cur = route.params.locale
+  const current = typeof cur === 'string' ? cur : Array.isArray(cur) ? cur[0] : ''
+  if (current === code) {
+    return
+  }
+  void router.push({
+    name: (route.name as string | undefined) ?? 'home',
+    params: { ...route.params, locale: code },
+    query: route.query,
+    hash: route.hash,
+  })
 }
 
 const headerWhatsappNumber = '+971 52 856 9060'
@@ -40,8 +52,6 @@ const headerTelegramHref = 'https://t.me/parseconsult'
 const isServicesMenuOpen = ref(false)
 const isMobileMenuOpen = ref(false)
 const isHeaderHidden = ref(false)
-const route = useRoute()
-
 const isActiveServiceSlug = (slug: string): boolean =>
   route.name === 'service-details' && route.params.slug === slug
 
@@ -78,6 +88,14 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('lead-modal-toggle', handleLeadModalToggle as EventListener)
 })
+
+const routeLocale = computed(() => {
+  const p = route.params.locale
+  const raw = typeof p === 'string' ? p : Array.isArray(p) ? p[0] : ''
+  return raw === 'en' ? 'en' : 'ru'
+})
+
+const isHomeRoute = computed(() => route.matched.some((record) => record.name === 'home'))
 </script>
 
 <template>
@@ -110,7 +128,7 @@ onBeforeUnmount(() => {
           </button>
 
           <RouterLink
-            :to="{ name: 'home' }"
+            :to="localized({ name: 'home' })"
             class="absolute left-1/2 top-1/2 z-10 flex min-w-0 shrink-0 -translate-x-1/2 -translate-y-1/2 items-center gap-2 [--logo-size:2.5rem] lg:static lg:left-auto lg:top-auto lg:translate-x-0 lg:translate-y-0"
           >
             <img
@@ -135,11 +153,11 @@ onBeforeUnmount(() => {
 
           <div class="flex min-w-0 flex-1 items-center justify-end gap-3 sm:gap-4 lg:justify-center lg:gap-4 xl:gap-6">
           <nav class="hidden items-center gap-4 lg:flex xl:gap-7">
-            <RouterLink :to="{ name: 'home' }" class="group inline-flex items-center whitespace-nowrap">
+            <RouterLink :to="localized({ name: 'home' })" class="group inline-flex items-center whitespace-nowrap">
               <span
                 class="relative inline-flex items-center rounded-full px-3 py-1.5 text-sm font-semibold transition"
                 :class="
-                  route.name === 'home'
+                  isHomeRoute
                     ? 'overflow-hidden bg-brand text-slate-900 group-hover:bg-brand-dark group-hover:text-slate-900'
                     : 'border-0 overflow-visible bg-transparent text-slate-600 group-hover:text-brand-dark'
                 "
@@ -155,6 +173,10 @@ onBeforeUnmount(() => {
             >
               <button
                 type="button"
+                id="nav-services-trigger"
+                aria-haspopup="true"
+                :aria-expanded="isServicesMenuOpen"
+                aria-controls="nav-services-panel"
                 @click="isServicesMenuOpen = !isServicesMenuOpen"
                 class="group inline-flex items-center whitespace-nowrap"
               >
@@ -173,6 +195,9 @@ onBeforeUnmount(() => {
                 </span>
               </button>
               <div
+                id="nav-services-panel"
+                role="region"
+                aria-labelledby="nav-services-trigger"
                 class="absolute left-0 top-full z-50 w-64 pt-1 transition duration-150"
                 :class="isServicesMenuOpen ? 'visible opacity-100' : 'invisible opacity-0'"
               >
@@ -180,7 +205,7 @@ onBeforeUnmount(() => {
                   <RouterLink
                     v-for="item in serviceLinks"
                     :key="item.label"
-                    :to="item.to"
+                    :to="localized(item.to)"
                     @click="isServicesMenuOpen = false"
                     class="block rounded-lg px-3 py-2 text-sm font-semibold transition"
                     :class="
@@ -196,7 +221,7 @@ onBeforeUnmount(() => {
             </div>
 
             <RouterLink
-              :to="{ name: 'parse-ledger' }"
+              :to="localized({ name: 'parse-ledger' })"
               class="group relative inline-flex items-center whitespace-nowrap"
             >
               <span
@@ -217,7 +242,7 @@ onBeforeUnmount(() => {
               </span>
             </RouterLink>
             <RouterLink
-              :to="{ name: 'contact' }"
+              :to="localized({ name: 'contact' })"
               :class="
                 route.name === 'contact'
                   ? 'group relative inline-flex items-center overflow-hidden whitespace-nowrap rounded-full bg-brand px-3 py-1.5 text-sm font-semibold text-slate-900 transition group-hover:bg-brand-dark group-hover:text-slate-900'
@@ -264,7 +289,7 @@ onBeforeUnmount(() => {
             <button
               type="button"
               class="rounded-full px-2.5 py-1.5 text-[11px] font-semibold leading-none transition sm:px-3 sm:text-xs"
-              :class="locale === 'ru' ? 'bg-brand/25 text-slate-900' : 'text-slate-500 hover:text-slate-800'"
+              :class="routeLocale === 'ru' ? 'bg-brand/25 text-slate-900' : 'text-slate-500 hover:text-slate-800'"
               @click="setLocale('ru')"
             >
               RU
@@ -272,7 +297,7 @@ onBeforeUnmount(() => {
             <button
               type="button"
               class="rounded-full px-2.5 py-1.5 text-[11px] font-semibold leading-none transition sm:px-3 sm:text-xs"
-              :class="locale === 'en' ? 'bg-brand/25 text-slate-900' : 'text-slate-500 hover:text-slate-800'"
+              :class="routeLocale === 'en' ? 'bg-brand/25 text-slate-900' : 'text-slate-500 hover:text-slate-800'"
               @click="setLocale('en')"
             >
               EN
@@ -282,7 +307,7 @@ onBeforeUnmount(() => {
 
           <div class="flex items-center gap-2">
             <a
-              v-if="route.name === 'home'"
+              v-if="isHomeRoute"
               href="#home-lead"
               class="hidden shrink-0 items-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark md:inline-flex md:px-5 md:py-3"
               @click="dismissMobileMenu"
@@ -291,7 +316,7 @@ onBeforeUnmount(() => {
             </a>
             <RouterLink
               v-else
-              :to="{ name: 'contact' }"
+              :to="localized({ name: 'home', hash: '#home-lead' })"
               class="hidden shrink-0 items-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark md:inline-flex md:px-5 md:py-3"
             >
               {{ t('nav.getInTouch') }}
@@ -302,11 +327,11 @@ onBeforeUnmount(() => {
         <Transition name="mobile-menu">
           <div v-if="isMobileMenuOpen" class="mt-4 border-t border-slate-200 pt-4 lg:hidden">
             <nav class="flex flex-col items-center gap-2 text-center">
-              <RouterLink :to="{ name: 'home' }" class="group inline-flex w-fit items-center whitespace-nowrap">
+              <RouterLink :to="localized({ name: 'home' })" class="group inline-flex w-fit items-center whitespace-nowrap">
                 <span
                   class="relative inline-flex items-center rounded-full px-3 py-1.5 text-sm font-semibold transition"
                   :class="
-                    route.name === 'home'
+                    isHomeRoute
                       ? 'overflow-hidden bg-brand text-slate-900 hover:bg-brand-dark hover:text-slate-900'
                       : 'border-0 overflow-visible bg-transparent text-slate-600 hover:text-brand-dark'
                   "
@@ -315,7 +340,7 @@ onBeforeUnmount(() => {
                 </span>
               </RouterLink>
               <RouterLink
-                :to="{ name: 'parse-ledger' }"
+                :to="localized({ name: 'parse-ledger' })"
                 class="relative mt-2 inline-flex w-fit items-center"
               >
                 <span
@@ -336,7 +361,7 @@ onBeforeUnmount(() => {
                 </span>
               </RouterLink>
               <RouterLink
-                :to="{ name: 'contact' }"
+                :to="localized({ name: 'contact' })"
                 :class="
                   route.name === 'contact'
                     ? 'relative inline-flex w-fit items-center overflow-hidden whitespace-nowrap rounded-full bg-brand px-3 py-1.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark hover:text-slate-900'
@@ -361,7 +386,7 @@ onBeforeUnmount(() => {
                 <RouterLink
                   v-for="item in serviceLinks"
                   :key="`mobile-${item.label}`"
-                  :to="item.to"
+                  :to="localized(item.to)"
                   class="block rounded-md px-2 py-2 text-center text-sm font-semibold transition"
                   :class="
                     isActiveServiceSlug(serviceLinkSlug(item))
@@ -401,7 +426,7 @@ onBeforeUnmount(() => {
                 </a>
               </div>
               <a
-                v-if="route.name === 'home'"
+                v-if="isHomeRoute"
                 href="#home-lead"
                 class="mt-1 inline-flex items-center justify-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
                 @click="dismissMobileMenu"
@@ -410,8 +435,9 @@ onBeforeUnmount(() => {
               </a>
               <RouterLink
                 v-else
-                :to="{ name: 'contact' }"
+                :to="localized({ name: 'home', hash: '#home-lead' })"
                 class="mt-1 inline-flex items-center justify-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
+                @click="dismissMobileMenu"
               >
                 {{ t('nav.getInTouch') }}
               </RouterLink>
@@ -442,7 +468,7 @@ onBeforeUnmount(() => {
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
-          <RouterLink :to="{ path: '/', hash: '#services' }" class="transition hover:text-brand-dark">
+          <RouterLink :to="localized({ path: '/', hash: '#services' })" class="transition hover:text-brand-dark">
             {{ t('footer.services') }}
           </RouterLink>
           <template v-for="item in navLinks" :key="`footer-${item.label}`">
@@ -455,7 +481,7 @@ onBeforeUnmount(() => {
             >
               {{ item.label }}
             </a>
-            <RouterLink v-else :to="item.to" class="transition hover:text-brand-dark">
+            <RouterLink v-else :to="localized(item.to)" class="transition hover:text-brand-dark">
               {{ item.label }}
             </RouterLink>
           </template>

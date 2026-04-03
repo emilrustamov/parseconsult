@@ -8,7 +8,7 @@ export const LOCALE_STORAGE_KEY = 'parseconsult_locale'
 
 export type AppLocale = 'ru' | 'en'
 
-function readStoredLocale(): AppLocale {
+export function readStoredLocale(): AppLocale {
   if (typeof localStorage === 'undefined') return 'ru'
   return localStorage.getItem(LOCALE_STORAGE_KEY) === 'en' ? 'en' : 'ru'
 }

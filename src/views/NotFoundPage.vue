@@ -19,13 +19,13 @@
         </p>
         <div class="mt-8 flex flex-wrap items-center gap-3">
           <RouterLink
-            :to="{ name: 'home' }"
+            :to="localized({ name: 'home' })"
             class="inline-flex items-center rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
           >
             {{ t('notFound.home') }}
           </RouterLink>
           <RouterLink
-            :to="{ name: 'contact' }"
+            :to="localized({ name: 'contact' })"
             class="inline-flex items-center rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
           >
             {{ t('notFound.contact') }}
@@ -35,11 +35,10 @@
 
       <div class="relative">
         <div class="glass-card overflow-hidden rounded-2xl border border-slate-200/80 bg-white/80 p-4 shadow-lg shadow-slate-200/40 md:p-6">
-          <DotLottieVue
-            src="/Animation - 1698647540467.lottie"
-            class="h-[260px] w-full object-contain md:h-[320px]"
-            autoplay
-            loop
+          <LazyDotLottie
+            src="/animation-1698647540467.lottie"
+            root-class="w-full"
+            lottie-class="h-[260px] w-full object-contain md:h-[320px]"
           />
         </div>
       </div>
@@ -49,9 +48,11 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
+import LazyDotLottie from '@/components/LazyDotLottie.vue'
+import { useLocaleRoute } from '@/composables/useLocaleRoute'
 
 const { t } = useI18n()
+const { localized } = useLocaleRoute()
 </script>
 
 <style scoped>
