@@ -8,7 +8,7 @@ import { SITE_CONTACT_EMAIL } from '@/siteContact'
 import { getServiceContent } from '@/content/services'
 
 const SITE_URL = 'https://parseconsult.ae'
-const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`
+const DEFAULT_IMAGE = `${SITE_URL}/logo.svg`
 
 type SeoMeta = {
   title: string

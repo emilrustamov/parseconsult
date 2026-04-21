@@ -42,55 +42,100 @@
   <section class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-16">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-3xl">
-        <h2 class="text-xl font-semibold tracking-tight text-slate-950 md:text-2xl">
+        <span
+          class="inline-flex items-center rounded-full border border-brand/30 bg-brand/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-dark"
+        >
+          {{ t('parseLedger.aiEyebrow') }}
+        </span>
+        <h2 class="mt-4 text-xl font-semibold tracking-tight text-slate-950 md:text-2xl lg:text-3xl">
           {{ t('parseLedger.aiTitle') }}
         </h2>
-        <p class="mt-4 text-base leading-8 text-slate-600 md:text-lg">
-          {{ t('parseLedger.aiBody') }}
-        </p>
-        <h3 class="mt-10 text-base font-semibold text-slate-900 md:text-lg">
-          {{ t('parseLedger.keyFeaturesTitle') }}
-        </h3>
-        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-8 text-slate-600 md:text-lg">
-          <li v-for="(line, index) in keyFeatureLines" :key="`kf-${index}`">{{ line }}</li>
-        </ul>
+        <div class="mt-5 space-y-4 text-base leading-8 text-slate-600 md:text-lg">
+          <p>{{ t('parseLedger.aiBody1') }}</p>
+          <p>{{ t('parseLedger.aiBody2') }}</p>
+        </div>
+      </div>
 
-        <h2 class="mt-12 text-xl font-semibold tracking-tight text-slate-950 md:text-2xl">
+      <h3 class="mx-auto mt-12 max-w-3xl text-base font-semibold text-slate-900 md:text-lg">
+        {{ t('parseLedger.keyFeaturesTitle') }}
+      </h3>
+      <div class="mx-auto mt-5 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <article
+          v-for="(line, index) in keyFeatureLines"
+          :key="`kf-${index}`"
+          class="flex min-h-full flex-col rounded-xl border border-slate-200/90 bg-slate-50/60 px-4 py-4 shadow-sm shadow-slate-200/30 transition hover:border-slate-300 hover:bg-white sm:px-5 sm:py-4"
+        >
+          <div class="flex items-start gap-3">
+            <span
+              class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand/20 text-xs font-bold tabular-nums text-slate-900 ring-1 ring-brand/25"
+            >
+              {{ String(index + 1).padStart(2, '0') }}
+            </span>
+            <p class="min-w-0 pt-0.5 text-sm font-medium leading-7 text-slate-800 md:text-base">
+              {{ line }}
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="mx-auto mt-14 max-w-3xl border-t border-slate-200/90 pt-14">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-950 md:text-2xl">
           {{ t('parseLedger.builtForTitle') }}
         </h2>
         <p class="mt-4 text-base leading-8 text-slate-600 md:text-lg">
           {{ t('parseLedger.builtForLead') }}
         </p>
-        <p class="mt-4 text-base font-medium leading-8 text-slate-800 md:text-lg">
+        <p class="mt-6 text-base font-semibold leading-8 text-slate-900 md:text-lg">
           {{ t('parseLedger.integrationsLead') }}
         </p>
-        <ul class="mt-3 list-disc space-y-2 pl-5 text-base leading-8 text-slate-600 md:text-lg">
-          <li v-for="(name, index) in integrationNames" :key="`int-${index}`">{{ name }}</li>
-        </ul>
-        <p class="mt-4 text-base leading-8 text-slate-600 md:text-lg">
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span
+            v-for="(name, index) in integrationNames"
+            :key="`int-${index}`"
+            class="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-800 shadow-sm shadow-slate-200/40 md:text-sm"
+          >
+            {{ name }}
+          </span>
+        </div>
+        <p class="mt-5 text-base leading-8 text-slate-600 md:text-lg">
           {{ t('parseLedger.integrationsOutro') }}
         </p>
+      </div>
 
-        <h2 class="mt-12 text-xl font-semibold tracking-tight text-slate-950 md:text-2xl">
-          {{ t('parseLedger.saveTimeTitle') }}
-        </h2>
-        <p class="mt-4 text-base leading-8 text-slate-600 md:text-lg">
-          {{ t('parseLedger.saveTimeLead') }}
-        </p>
-        <h3 class="mt-8 text-base font-semibold text-slate-900 md:text-lg">
-          {{ t('parseLedger.benefitsSectionTitle') }}
-        </h3>
-        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-8 text-slate-600 md:text-lg">
-          <li v-for="(line, index) in benefitLines" :key="`bf-${index}`">{{ line }}</li>
-        </ul>
+      <div class="mx-auto mt-14 max-w-5xl border-t border-slate-200/90 pt-14 lg:grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-start lg:gap-10 xl:gap-14">
+        <div class="max-w-3xl">
+          <h2 class="text-xl font-semibold tracking-tight text-slate-950 md:text-2xl">
+            {{ t('parseLedger.saveTimeTitle') }}
+          </h2>
+          <p class="mt-4 text-base leading-8 text-slate-600 md:text-lg">
+            {{ t('parseLedger.saveTimeLead') }}
+          </p>
+        </div>
+        <div class="mt-10 lg:mt-0">
+          <h3 class="text-base font-semibold text-slate-900 md:text-lg">
+            {{ t('parseLedger.benefitsSectionTitle') }}
+          </h3>
+          <ul class="mt-4 grid gap-2.5 sm:grid-cols-2">
+            <li
+              v-for="(line, index) in benefitLines"
+              :key="`bf-${index}`"
+              class="flex items-start gap-2.5 rounded-xl border border-slate-200/90 bg-white px-3.5 py-3 text-sm leading-6 text-slate-700 shadow-sm shadow-slate-200/25 md:text-base md:leading-7"
+            >
+              <span class="mt-2 inline-flex h-1.5 w-1.5 shrink-0 rounded-full bg-brand-dark" aria-hidden="true"></span>
+              <span>{{ line }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-        <h2 class="mt-12 text-xl font-semibold tracking-tight text-slate-950 md:text-2xl">
+      <div class="mx-auto mt-14 max-w-3xl rounded-2xl border border-brand/30 bg-brand/10 p-6 sm:p-8">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-950 md:text-2xl">
           {{ t('parseLedger.ctaTitle') }}
         </h2>
-        <p class="mt-4 text-base leading-8 text-slate-600 md:text-lg">
+        <p class="mt-4 text-base leading-8 text-slate-700 md:text-lg">
           {{ t('parseLedger.ctaLead') }}
         </p>
-        <p class="mt-4 text-base font-semibold leading-8 text-slate-900 md:text-lg">
+        <p class="mt-5 text-base font-semibold leading-8 text-brand-dark md:text-lg">
           {{ t('parseLedger.ctaHighlight') }}
         </p>
       </div>

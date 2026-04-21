@@ -107,9 +107,12 @@ export const commonEn = {
     lead2:
       'Stop wasting time on manual data entry. With Parse Ledger, you can instantly transform raw bank statements into XLSX, CSV or JSON files fully prepared for seamless import into leading accounting software such as Zoho Books, QuickBooks, and FirstBit.',
     aiTitle: 'AI-Powered Bank Statement Processing',
-    aiBody:
-      'Parse Ledger uses advanced artificial intelligence to extract, clean, and structure financial data with high accuracy. Whether your statements come from UAE banks or even photos, our system can accurately read and process data not only from files exported from banking apps but also directly from images, adapting to different formats and layouts automatically.',
-    keyFeaturesTitle: 'Key Features:',
+    aiEyebrow: 'AI · Statements · UAE',
+    aiBody1:
+      'Parse Ledger uses advanced artificial intelligence to extract, clean, and structure financial data with high accuracy.',
+    aiBody2:
+      'Whether your statements come from UAE banks or even photos, our system can accurately read and process data not only from files exported from banking apps but also directly from images, adapting to different formats and layouts automatically.',
+    keyFeaturesTitle: 'Key features',
     keyFeatures: [
       'Automatic data extraction from PDF, XLS, XLSX',
       'Smart transaction categorization',
@@ -127,7 +130,7 @@ export const commonEn = {
     saveTimeTitle: 'Save Time, Reduce Errors, Increase Efficiency',
     saveTimeLead:
       'Manual processing of bank statements is time-consuming and prone to errors. Parse Ledger eliminates repetitive tasks and significantly reduces the risk of human mistakes.',
-    benefitsSectionTitle: 'Benefits:',
+    benefitsSectionTitle: 'Benefits',
     benefitLines: [
       'Save hours of manual work every month',
       'Reduce operational costs',
@@ -138,7 +141,7 @@ export const commonEn = {
     ctaTitle: 'Start Using Parse Ledger Today',
     ctaLead:
       'Take advantage of our free beta testing period and experience the future of accounting automation in the UAE.',
-    ctaHighlight: '👉 Upload your bank statements and let AI do the work.',
+    ctaHighlight: 'Upload your bank statements and let AI do the work.',
     banksTitle: 'supports automatic processing of statements from leading UAE banks',
     banksLead:
       'Parse Ledger helps you process bank statements quickly and accurately, cutting manual work and reducing error risk.',
