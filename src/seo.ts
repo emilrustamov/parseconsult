@@ -8,7 +8,7 @@ import { SITE_CONTACT_EMAIL } from '@/siteContact'
 import { getServiceContent } from '@/content/services'
 
 const SITE_URL = 'https://parseconsult.ae'
-const DEFAULT_IMAGE = `${SITE_URL}/logo.svg`
+const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`
 
 type SeoMeta = {
   title: string
@@ -46,6 +46,32 @@ const upsertMetaTag = (
   element.setAttribute('content', content)
 }
 
+const upsertHreflang = (hreflang: string, href: string): void => {
+  const id = `hreflang-${hreflang}`
+  let el = document.head.querySelector<HTMLLinkElement>(`link[data-seo-id="${id}"]`)
+  if (!el) {
+    el = document.createElement('link')
+    el.setAttribute('rel', 'alternate')
+    el.setAttribute('data-seo-id', id)
+    document.head.appendChild(el)
+  }
+  el.setAttribute('hreflang', hreflang)
+  el.setAttribute('href', href)
+}
+
+const applyHreflangs = (route: RouteLocationNormalizedLoaded): void => {
+  const m = route.path.match(/^\/(ru|en)(\/.*)?$/)
+  if (!m) {
+    return
+  }
+  const suffix = m[2] ?? ''
+  const ruPath = `/ru${suffix}`
+  const enPath = `/en${suffix}`
+  upsertHreflang('ru', `${SITE_URL}${ruPath}`)
+  upsertHreflang('en', `${SITE_URL}${enPath}`)
+  upsertHreflang('x-default', `${SITE_URL}/ru${suffix}`)
+}
+
 const upsertCanonical = (href: string): void => {
   let canonical = document.head.querySelector('link[rel="canonical"]')
   if (!canonical) {
@@ -68,6 +94,15 @@ const upsertJsonLd = (id: string, payload: unknown): void => {
 }
 
 const currentLocale = (i18n: I18nInstance): string => String(unref(i18n.global.locale))
+
+const routeLocalePath = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): string => {
+  const fromRoute = route.params.locale
+  const raw = typeof fromRoute === 'string' ? fromRoute : Array.isArray(fromRoute) ? fromRoute[0] : ''
+  if (raw === 'ru' || raw === 'en') {
+    return raw
+  }
+  return currentLocale(i18n)
+}
 
 const buildMeta = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): SeoMeta => {
   const t = i18n.global.t as (key: string) => string
@@ -144,6 +179,7 @@ const buildBreadcrumbJsonLd = (
     return null
   }
   const t = i18n.global.t as (key: string) => string
+  const loc = routeLocalePath(route, i18n)
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -152,13 +188,13 @@ const buildBreadcrumbJsonLd = (
         '@type': 'ListItem',
         position: 1,
         name: t('seo.breadcrumbHome'),
-        item: SITE_URL,
+        item: `${SITE_URL}/${loc}`,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: service.title,
-        item: `${SITE_URL}/services/${slug}`,
+        item: `${SITE_URL}/${loc}/services/${slug}`,
       },
     ],
   }
@@ -171,6 +207,7 @@ const buildOrganizationJsonLd = (i18n: I18nInstance): Record<string, unknown> =>
     '@type': 'Organization',
     name: siteName,
     url: SITE_URL,
+    logo: `${SITE_URL}/logo.svg`,
     email: SITE_CONTACT_EMAIL,
     telephone: '+971 52 856 9060',
     areaServed: 'AE',
@@ -207,6 +244,7 @@ const buildServiceJsonLd = (route: RouteLocationNormalizedLoaded, i18n: I18nInst
   const descKey = `seo.serviceDescriptions.${slug}`
   const description = te(descKey) ? t(descKey) : t('seo.serviceFallbackDescription')
   const lang = currentLocale(i18n) === 'en' ? 'en' : 'ru'
+  const loc = routeLocalePath(route, i18n)
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -221,7 +259,7 @@ const buildServiceJsonLd = (route: RouteLocationNormalizedLoaded, i18n: I18nInst
       '@type': 'Country',
       name: 'United Arab Emirates',
     },
-    url: `${SITE_URL}/services/${slug}`,
+    url: `${SITE_URL}/${loc}/services/${slug}`,
     inLanguage: lang,
   }
 }
@@ -248,6 +286,7 @@ const applySeo = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): voi
   upsertMetaTag('twitter:description', meta.description)
   upsertMetaTag('twitter:image', DEFAULT_IMAGE)
   upsertCanonical(canonicalUrl)
+  applyHreflangs(route)
   upsertJsonLd('organization', buildOrganizationJsonLd(i18n))
   upsertJsonLd('website', buildWebsiteJsonLd(i18n))
 

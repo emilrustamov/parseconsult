@@ -477,6 +477,7 @@
         @click.self="attemptCloseLeadModal"
       >
         <div
+          ref="leadModalRootRef"
           class="relative my-0 w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl sm:p-6"
           role="dialog"
           aria-modal="true"
@@ -542,6 +543,8 @@ import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import 'vue3-carousel/carousel.css'
 import BitrixCloudBoxSurvey from '@/components/BitrixCloudBoxSurvey.vue'
 import LeadRequestForm from '@/components/LeadRequestForm.vue'
+import { useFocusTrap } from '@/composables/useFocusTrap'
+import { readStoredLocale } from '@/i18n'
 import { homePlatformAssets } from '@/content/platforms'
 import { getServiceContent } from '@/content/services'
 
@@ -571,6 +574,8 @@ const bitrixCertCarouselBreakpoints = {
 } as const
 
 const isLeadModalOpen = ref(false)
+const leadModalRootRef = ref<HTMLElement | null>(null)
+useFocusTrap(isLeadModalOpen, leadModalRootRef)
 const modalFormKey = ref(0)
 const isLeadFormDirty = ref(false)
 const isCloseConfirmOpen = ref(false)
@@ -649,7 +654,13 @@ watch(
   () => [String(route.params.slug ?? ''), locale.value] as const,
   ([slug]) => {
     if (!getServiceContent(String(locale.value))[slug]) {
-      void router.replace({ name: 'not-found' })
+      void router.replace({
+        name: 'not-found',
+        params: {
+          locale: String(route.params.locale ?? readStoredLocale()),
+          pathMatch: ['page-not-found'],
+        },
+      })
     }
   },
   { immediate: true },

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
+import LazyDotLottie from '@/components/LazyDotLottie.vue'
 
 const { t } = useI18n()
 </script>
@@ -35,11 +35,11 @@ const { t } = useI18n()
       </div>
 
       <div class="w-[min(100%,360px)]">
-        <DotLottieVue
-          src="/Budget And Bills.lottie"
-          class="h-auto w-full object-contain"
-          autoplay
-          loop
+        <LazyDotLottie
+          src="/budget-and-bills.lottie"
+          root-class="h-auto w-full"
+          lottie-class="h-auto w-full object-contain"
+          root-margin="400px"
         />
       </div>
     </div>
