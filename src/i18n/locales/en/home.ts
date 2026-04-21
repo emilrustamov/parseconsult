@@ -1,12 +1,12 @@
 export const homeEn = {
   home: {
     hero: {
-      p1: 'Accounting, implementation, and training in the ',
+      titleStart: 'Set Up Your Accounting & CRM Systems in ',
       uae: 'UAE',
-      p2: ', in ',
-      ru: 'Russia',
-      p3: ', and in ',
-      kz: 'Kazakhstan',
+      titleMiddle: ' & ',
+      gcc: 'GCC',
+      titleEnd: '!',
+      subtitle: 'We implement Zoho Books, QuickBooks, FirstBit, Microsoft Dynamics 365, Zoho CRM, and Bitrix24 CRM.',
     },
     platformsMeta: {
       onec: '1C',
@@ -17,7 +17,7 @@ export const homeEn = {
       comma: ', ',
       also: ', as well as ',
       outro:
-        'We support implementation, configuration, and integration of modern accounting systems — 1C and Firstbit, Zoho Books and QuickBooks — delivering transparent accounting, process automation, and compliance for businesses in the UAE, Russia, and Kazakhstan.',
+        'We support implementation, configuration, and integration of modern accounting systems — 1C and Firstbit, Zoho Books and QuickBooks — delivering transparent accounting, process automation, and compliance for businesses in the UAE and GCC.',
     },
     about: {
       title: 'We cut routine and build transparent accounting',
@@ -27,9 +27,31 @@ export const homeEn = {
       p3: 'Our goal is to reduce operational load, improve accuracy, and make data clear for management decisions.',
       p4: 'Leave a request and we will discuss your needs and the best approach.',
     },
+    crm: {
+      titleStart: '',
+      zoho: 'Zoho CRM',
+      titleMiddle: ' & ',
+      bitrix: 'Bitrix24',
+      titleEnd: ' setup, automation, and support in the UAE',
+      p1: 'We deliver full-cycle CRM launch for UAE businesses: setup, implementation, integrations, and support.',
+      p2: 'From first configuration to sales-pipeline automation, we build practical systems your team can use every day.',
+      tag1: 'Setup & Implementation',
+      tag2: 'Automation & Integrations',
+      tag3: 'Lead & Sales Pipeline',
+      tag4: 'Ongoing Support',
+      cardTitle: 'Full CRM Setup & Implementation',
+    },
+    taxFiling: {
+      title: 'VAT and CIT Filing Help in the UAE',
+      text: 'Filing taxes in the UAE does not have to be complicated. Our tax specialists provide full-service support for VAT and Corporate Tax (CIT) filing, so your business stays compliant while you save time and effort.',
+      cardTitle: 'Simple and Hassle-Free Tax Filing Process',
+      point1: 'VAT return preparation and filing',
+      point2: 'Corporate Tax calculation and submission',
+      point3: 'Deadline control and payment support',
+    },
     servicesSection: {
       title: 'Implementation, training, automation',
-      text: 'We build transparent, controllable accounting with reporting tailored to your business and regulations in the UAE, Russia, and Kazakhstan.',
+      text: 'We build transparent, controllable accounting with reporting tailored to your business and regulations in the UAE and GCC.',
     },
     lead: {
       title: 'Tell us about your accounting situation',
@@ -37,52 +59,53 @@ export const homeEn = {
     },
     keyServices: [
       {
-        id: 'parse-ledger',
-        slug: 'parse-ledger',
-        icon: '🧾',
-        title: 'Parse Ledger — automatic UAE bank statement import',
-        description:
-          'We implement Parse Ledger for transparent management and daily accounting workflows.',
-      },
-      {
         id: 'firstbit',
         slug: 'firstbit',
-        icon: '⚙️',
-        title: 'Expert 1C and Firstbit implementation in the UAE, Russia, and Kazakhstan',
-        description:
-          'We configure systems for local requirements in the UAE, Russia, and Kazakhstan.',
+        icon: '🧩',
+        title: 'Zoho Books, QuickBooks, FirstBit & Microsoft Dynamics 365 Setup and Implementation',
+        description: 'Implementation and setup of accounting systems for UAE businesses.',
       },
       {
         id: 'bitrix24',
         slug: 'bitrix24',
         icon: '🤖',
-        title: 'Bitrix24 CRM implementation',
-        description:
-          'We roll out Bitrix24, set up pipelines, automation, and integrations with accounting and internal processes.',
+        title: 'Zoho CRM & Bitrix24 Setup, Implementation, Automation, Integration, Support',
+        description: 'CRM implementation and support for sales and service teams.',
+      },
+      {
+        id: 'vat-cit-filing',
+        slug: 'vat-cit-filing',
+        icon: '🧾',
+        title: 'VAT and CIT Filing Help in the UAE',
+        description: 'Support with VAT and CIT calculation and filing in the UAE.',
       },
       {
         id: 'accounting-systems',
         slug: 'accounting-systems',
-        icon: '🔧',
-        title: 'Accounting system implementation and recovery',
-        description:
-          'We restore accounting, implement systems from scratch, and build a stable finance infrastructure.',
+        icon: '🛡️',
+        title: 'Accounting System Setup for UAE VAT Compliance',
+        description: 'Accounting setup aligned with UAE VAT and reporting requirements.',
       },
       {
         id: 'accounting-setup',
         slug: 'accounting-setup',
-        icon: '📊',
-        title: 'Accounting setup for your business model',
-        description:
-          'We adapt accounting to your model for accurate analytics and management reporting.',
+        icon: '📈',
+        title: 'CRM Automation for Sales & Business Growth',
+        description: 'Automation of sales and customer workflow processes.',
       },
       {
         id: 'training',
         slug: 'training',
         icon: '🎓',
-        title: 'Support and training for accounting and CRM',
-        description:
-          'We train your team and provide ongoing support for stable day-to-day operations.',
+        title: 'Full Setup, Training & Support',
+        description: 'Complete setup, team training, and ongoing support.',
+      },
+      {
+        id: 'firstbit-expert',
+        slug: 'firstbit',
+        icon: '⚙️',
+        title: 'Expert 1C and Firstbit implementation and customization in the UAE and GCC',
+        description: 'Tailored implementation and customization of 1C/FirstBit for your operations.',
       },
     ],
     faqItems: [
@@ -130,25 +153,20 @@ export const homeEn = {
       },
     ],
     platformCards: {
-      onecFirstbit: {
-        name: '1C and Firstbit',
-        description:
-          '1C and Firstbit — we implement and configure accounting aligned with local rules in the UAE, Russia, and Kazakhstan, with full financial control and compliance.',
+      onec: {
+        name: '1C',
+      },
+      firstbit: {
+        name: 'Firstbit',
       },
       zoho: {
         name: 'Zoho Books',
-        description:
-          'Zoho Books — cloud accounting with workflow automation, bank integration, payroll, and real-time finance visibility.',
       },
       quickbooks: {
         name: 'QuickBooks',
-        description:
-          'QuickBooks — flexible accounting for SMBs with fast setup, reporting, and third-party integrations.',
       },
-      bitrix24: {
-        name: 'Bitrix24',
-        description:
-          'Bitrix24 — CRM setup, sales pipeline automation, tasks, and internal workflows linked to finance.',
+      microsoftDynamics: {
+        name: 'Microsoft Dynamics',
       },
     },
   },

@@ -2,194 +2,85 @@ import type { ServiceContent } from './serviceTypes'
 
 export const serviceContentEn: Record<string, ServiceContent> = {
   bitrix24: {
-    title: 'Bitrix24 CRM implementation',
+    title: 'Zoho CRM & Bitrix24 Setup, Implementation, Automation, Integration & Support in the UAE',
     description:
-      'Bitrix24 is a comprehensive platform for team collaboration on tasks and projects across every department — from accounting to development.',
-    bitrixDemoUrl: 'https://www.bitrix24.ru/create.php?p=23472882',
-    bitrixLeadBlock: {
-      headline: 'What we do in Bitrix24 — not the usual rollout',
-      intro: [
-        'Most Bitrix24 projects stop at basic CRM setup.',
-        'We go further — we build a full digital system tailored to your business.',
-      ],
-      sections: [
-        {
-          title: '⚙️ Automation that actually works',
-          items: [
-            'We configure not just pipelines but sales logic that matches your process',
-            'We remove manual work with robots and business processes',
-            'We deliver transparent analytics and control at every stage',
-          ],
-          closing: '⚡ Less chaos, more control and speed.',
-        },
-        {
-          title: '🤖 Chatbots and communication flows',
-          lead: 'We build chatbots for real business tasks:',
-          items: [
-            'lead handling',
-            'first-line client qualification',
-            'auto-replies and routing',
-          ],
-          closing: '🤖 Bots do not just reply — they move clients toward a sale.',
-        },
-        {
-          title: '📞 Contact center, end to end',
-          lead: 'We unite every channel in one place:',
-          items: ['WhatsApp', 'Telegram', 'Instagram', 'Max and more'],
-          closing: '💬 Every conversation is logged in CRM — no client slips away.',
-        },
-        {
-          title: '🔗 Integrations without limits',
-          items: [
-            'Two-way Google Sheets integration',
-            'API integrations with any services',
-            'Real-time data sync',
-          ],
-          closing: '🔗 CRM becomes the hub of your stack, not a silo.',
-        },
-        {
-          title: '💻 Development for your business',
-          lead: 'We build custom solutions:',
-          items: [
-            'local apps inside Bitrix24',
-            'custom modules for your processes',
-            'extensions beyond standard features',
-          ],
-          closing: '🛠️ If Bitrix lacks a tool — we build it.',
-        },
-      ],
-    },
-    bitrixCertificates: {
-      headline: 'Expertise backed by documentation',
-      headlineAccent: 'We are a certified Bitrix24 partner.',
-      subline: [
-        'Certificates and team competencies are available for verification.',
-        'You know who you work with and what level of delivery to expect.',
-      ],
-      items: [
-        {
-          id: 'cert-1',
-          src: '/certificates/bitrix-cert-1.svg',
-          alt: 'Bitrix24 competency certificate — placeholder, replace with scan',
-          caption: 'Competencies and qualifications',
-        },
-        {
-          id: 'cert-2',
-          src: '/certificates/bitrix-cert-2.svg',
-          alt: 'Bitrix24 partnership certificate — placeholder',
-          caption: 'Partner status',
-        },
-        {
-          id: 'cert-3',
-          src: '/certificates/bitrix-cert-3.svg',
-          alt: 'Bitrix24 implementation certificate — placeholder',
-          caption: 'Delivery and projects',
-        },
-        {
-          id: 'cert-4',
-          src: '/certificates/bitrix-cert-4.svg',
-          alt: 'Bitrix24 development certificate — placeholder',
-          caption: 'Development and customization',
-        },
-      ],
-    },
+      'Looking to streamline your business processes and boost sales performance? We provide full-cycle Zoho CRM and Bitrix24 setup, implementation, automation, integration, and ongoing support tailored for businesses in the UAE. Our team delivers turnkey CRM solutions - from initial setup to advanced automation - so you can focus on growing your business while we handle the technical side.',
     groups: [
       {
-        title: 'A platform for business',
+        title: 'Full CRM Setup & Implementation',
         items: [
-          'A business platform should be convenient and include everything teams need day to day.',
-          'Bring employees together to collaborate on tasks and projects.',
-          'Monitor work, analyze outcomes, and run business processes inside your CRM.',
+          'Zoho CRM and Bitrix24 account setup.',
+          'Custom pipeline and deal stages configuration.',
+          'Lead and contact management structure.',
+          'User roles, permissions, and access control.',
+          'Data import from Excel, legacy systems, or other CRMs.',
+          'Our goal is simple: build a CRM that matches your real business processes - not a generic template.',
+        ],
+      },
+      {
+        title: 'Business Process Automation',
+        items: [
+          'Lead assignment automation.',
+          'Sales funnel automation.',
+          'Task and follow-up reminders.',
+          'Email, WhatsApp, and Telegram triggers.',
+          'Invoice and document generation.',
+          'Approval workflows.',
+          'With proper automation, your CRM becomes a powerful engine that drives revenue, not just a database.',
+        ],
+      },
+      {
+        title: 'CRM Integrations',
+        items: [
+          'Email systems (Gmail, Outlook).',
+          'Accounting software (Zoho Books, QuickBooks, FirstBit).',
+          'Telephony and call tracking systems.',
+          'WhatsApp, Telegram, and messaging platforms.',
+          'Payment gateways and websites.',
+          'This creates a unified ecosystem where all your data flows seamlessly in one place.',
+        ],
+      },
+      {
+        title: 'Customization & Advanced Setup',
+        items: [
+          'Custom fields, modules, and dashboards.',
+          'Sales performance tracking and reports.',
+          'KPI monitoring and analytics.',
+          'Industry-specific solutions.',
+          'You get a system that works exactly the way your business operates.',
+        ],
+      },
+      {
+        title: 'Ongoing Support & Training',
+        items: [
+          'Fast-response support via chat or calls.',
+          'Staff training and onboarding.',
+          'CRM usage guidance and best practices.',
+          'System updates and improvements.',
+          'We stay in touch and help your team actually use the CRM effectively, not just have it installed.',
+        ],
+      },
+      {
+        title: 'Why Choose Us?',
+        items: [
+          'Turnkey CRM implementation.',
+          'Deep experience with UAE businesses.',
+          'Focus on automation and efficiency.',
+          'Fast support and real human communication.',
+          'Scalable solutions for growing companies.',
+        ],
+      },
+      {
+        title: 'Get Started Today',
+        items: [
+          'Whether you are implementing CRM for the first time or improving an existing system, we help you build a powerful, automated, and fully integrated CRM environment using Zoho CRM or Bitrix24.',
+          'Contact us today and take control of your sales and business processes.',
         ],
       },
     ],
-    bitrixSurvey: {
-      headline: 'Not sure whether to choose cloud or on-premise?',
-      subheadline:
-        'Take a short quiz — we will suggest the best fit for your business and lock in an implementation discount.',
-      timeNote: '⏱ Takes about one minute',
-      questions: [
-        {
-          id: 'q1',
-          text: 'How many people will use the system?',
-          options: [
-            { label: 'Up to 10', cloud: 2, box: 0 },
-            { label: '10–50', cloud: 1, box: 0 },
-            { label: '50+', cloud: 0, box: 2 },
-          ],
-        },
-        {
-          id: 'q2',
-          text: 'Do you need integrations?',
-          options: [
-            { label: 'No', cloud: 2, box: 0 },
-            { label: 'Standard (WhatsApp, Telegram, email)', cloud: 1, box: 0 },
-            { label: 'Complex / API / 1C', cloud: 0, box: 2 },
-          ],
-        },
-        {
-          id: 'q3',
-          text: 'How fast do you need to go live?',
-          options: [
-            { label: 'Urgent (within 3 days)', cloud: 2, box: 0 },
-            { label: 'Within a week', cloud: 1, box: 0 },
-            { label: 'Not urgent', cloud: 0, box: 1 },
-          ],
-        },
-        {
-          id: 'q4',
-          text: 'Any security requirements?',
-          options: [
-            { label: 'No', cloud: 2, box: 0 },
-            { label: 'Prefer more control', cloud: 0, box: 1 },
-            { label: 'Strict / own servers', cloud: 0, box: 2 },
-          ],
-        },
-        {
-          id: 'q5',
-          text: 'Do you plan to scale?',
-          options: [
-            { label: 'No', cloud: 2, box: 0 },
-            { label: 'Maybe', cloud: 1, box: 0 },
-            { label: 'Yes — growth / structure', cloud: 0, box: 2 },
-          ],
-        },
-      ],
-      finalTitle: 'One last step',
-      finalText: 'Share your contacts — we will save your result and discount.',
-      finalCta: 'Submit and lock in the discount',
-      discountNoteUnderSubmit: 'The discount applies only after contacts are submitted',
-      nameLabel: 'Name',
-      phoneLabel: 'Phone',
-      sphereLabel: 'Industry',
-      otherSpherePlaceholder: 'Describe your industry',
-      businessSpheres: [
-        'Retail',
-        'Wholesale',
-        'Services',
-        'Manufacturing',
-        'Construction',
-        'Real estate',
-        'Education',
-        'Healthcare',
-        'Finance',
-        'Logistics',
-        'HoReCa',
-        'IT / Digital',
-        'E-commerce',
-        'Automotive',
-        'Consulting',
-      ],
-      otherSphereLabel: 'Other',
-      successTitle: 'Thank you for your answers.',
-      successLines: ['We matched the best option for your business.'],
-      successDiscountLine: '👉 An implementation discount is reserved for you',
-      successUrgencyLine: '⏳ Valid for 24 hours',
-      timerLabel: 'Time left',
-    },
   },
   firstbit: {
-    title: 'Expert 1C and Firstbit implementation and customization in the UAE, Russia, and Kazakhstan',
+    title: 'Expert 1C and Firstbit implementation and customization in the UAE and GCC',
     groups: [
       {
         title: 'Strategic consulting and system audit',
@@ -323,6 +214,51 @@ export const serviceContentEn: Record<string, ServiceContent> = {
           'Onboarding: custom playbooks and training so teams are productive from day one.',
           'Hands-on product training: 1C, Firstbit, Zoho Books, and QuickBooks — practical skills to cut routine and speed up work.',
           'Advisory and support: questions on accounting in your stack or efficiency improvements — we explain options and recommend approaches.',
+        ],
+      },
+    ],
+  },
+  'vat-cit-filing': {
+    title: 'VAT and CIT Filing Help in the UAE',
+    description:
+      'Filing taxes in the UAE does not have to be complicated. Our experienced tax specialists provide full-service support for VAT and Corporate Tax (CIT) filing, helping your business stay compliant while saving time and effort.',
+    groups: [
+      {
+        title: 'Simple and Hassle-Free Tax Filing Process',
+        items: [
+          'Send us your bank statements.',
+          'Provide primary documents (invoices, receipts, contracts).',
+          'Our tax experts handle the rest: data processing, calculations, filing, and payment support.',
+        ],
+      },
+      {
+        title: 'What We Do for You',
+        items: [
+          'Review and process bank statements and financial documents.',
+          'Calculate output and input VAT amounts (payable and recoverable VAT).',
+          'Prepare and submit VAT returns according to UAE regulations.',
+          'Compute Corporate Tax (CIT) from your financial data.',
+          'Prepare and file Corporate Tax returns.',
+          'Support tax payments and deadline control.',
+          'Provide guidance to reduce risks and avoid penalties.',
+        ],
+      },
+      {
+        title: 'Experienced Tax Specialists You Can Trust',
+        items: [
+          'Qualified experts with hands-on experience in UAE tax regulations.',
+          'Practical and reliable support for startups, SMEs, and established companies.',
+          'Clear communication and solutions tailored to your business needs.',
+        ],
+      },
+      {
+        title: 'Focus on Your Business - We Handle Your Taxes',
+        items: [
+          'Stay compliant with UAE tax laws.',
+          'Avoid costly penalties and fines.',
+          'Keep accurate, audit-ready records.',
+          'From document processing to filing and payment, we manage the full cycle.',
+          'Get in touch today to simplify VAT and Corporate Tax filing in the UAE.',
         ],
       },
     ],

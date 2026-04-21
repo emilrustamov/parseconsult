@@ -6,6 +6,10 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      redirect: '/ru',
+    },
+    {
+      path: '/:locale(ru|en)',
       component: SiteLayout,
       children: [
         {
@@ -42,6 +46,13 @@ const router = createRouter({
           component: () => import('@/views/NotFoundPage.vue'),
         },
       ],
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: (to) => {
+        const cleanPath = to.path.replace(/^\/+/, '')
+        return cleanPath.length ? `/ru/${cleanPath}` : '/ru'
+      },
     },
   ],
   scrollBehavior(to, _from, savedPosition) {

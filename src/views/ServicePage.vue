@@ -1,12 +1,21 @@
 <template>
   <section class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-16 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pb-24 md:pt-24">
     <div class="mx-auto max-w-7xl px-6 pt-8 lg:px-8 lg:pt-10">
-      <div v-if="!isBitrixPage" class="rounded-2xl border border-brand-dark/35 bg-brand-surface p-7 shadow-md shadow-black/10 md:p-10">
+      <div v-if="!isBitrixPage || !page.bitrixLeadBlock" class="rounded-2xl border border-brand-dark/35 bg-brand-surface p-7 shadow-md shadow-black/10 md:p-10">
         <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand">{{ t('servicePage.services') }}</p>
         <h1 class="mt-4 text-2xl font-semibold tracking-tight text-white md:text-4xl">{{ page.title }}</h1>
         <p class="mt-4 max-w-3xl text-sm leading-7 text-emerald-50/90 md:text-base">
           {{ page.description ?? t('servicePage.defaultDescription') }}
         </p>
+        <div class="mt-6">
+          <button
+            type="button"
+            class="inline-flex items-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
+            @click="openLeadModal"
+          >
+            {{ t('servicePage.discussImplementation') }}
+          </button>
+        </div>
       </div>
 
       <section
@@ -81,8 +90,8 @@
             <span class="text-brand-dark">Firstbit</span>{{ t('home.platformsHeading.comma') }}
             <span class="text-brand-dark">Zoho Books</span>
             {{ t('home.platformsHeading.and') }}
-            <span class="text-brand-dark">QuickBooks</span>{{ t('home.platformsHeading.also') }}
-            <span class="text-[#03bcef]">Bitrix24</span>.
+            <span class="text-brand-dark">QuickBooks</span>{{ t('home.platformsHeading.comma') }}
+            <span class="text-[#03bcef]">Microsoft Dynamics</span>.
           </h2>
           <p class="mt-6 text-base leading-8 text-slate-600 md:text-lg">
             {{ t('servicePage.platformsOutro') }}
@@ -109,7 +118,6 @@
               />
               <div class="min-w-0 text-lg font-semibold tracking-tight text-slate-900 sm:text-2xl">{{ platform.name }}</div>
             </div>
-            <p class="mt-6 border-l-2 border-brand/50 pl-4 text-sm leading-7 text-slate-600">{{ platform.description }}</p>
           </article>
         </div>
       </section>
@@ -290,9 +298,46 @@
         </article>
       </div>
 
+      <section
+        v-else-if="isBitrixRoadmapPage"
+        class="fade-in-up mt-10"
+        style="animation-delay: 100ms"
+      >
+        <h2 class="text-lg font-semibold tracking-tight text-slate-900 md:text-2xl">{{ t('servicePage.roadmapTitle') }}</h2>
+        <ol class="relative mt-6 space-y-5">
+          <li
+            v-for="(group, index) in primaryDisplayGroups"
+            :key="`roadmap-${group.title}`"
+            class="relative pl-10"
+          >
+            <span class="absolute left-0 top-1.5 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-brand text-xs font-semibold text-slate-900">
+              {{ index + 1 }}
+            </span>
+            <span
+              v-if="index < primaryDisplayGroups.length - 1"
+              class="absolute left-3 top-8 h-[calc(100%+1rem)] w-px bg-brand/40"
+              aria-hidden="true"
+            ></span>
+            <article class="rounded-xl border border-slate-200/90 bg-slate-50/70 p-5">
+              <h3 class="text-base font-semibold tracking-tight text-slate-900 md:text-xl">{{ group.title }}</h3>
+              <ul class="mt-4 space-y-2.5">
+                <li
+                  v-for="item in group.items"
+                  :key="item"
+                  class="flex items-start gap-2.5 text-sm leading-7 text-slate-700 md:text-base"
+                >
+                  <span class="mt-2 inline-flex h-1.5 w-1.5 shrink-0 rounded-full bg-brand-dark"></span>
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </article>
+          </li>
+        </ol>
+      </section>
+
       <div v-else class="mt-10 grid gap-6 lg:grid-cols-2">
         <article
-          v-for="(group, index) in displayGroups"
+          v-for="(group, index) in primaryDisplayGroups"
           :key="group.title"
           class="fade-in-up rounded-2xl border border-slate-200/90 bg-white p-7 shadow-sm sm:p-8"
           :style="{ animationDelay: `${index * 90}ms` }"
@@ -303,6 +348,29 @@
               v-for="item in group.items"
               :key="item"
               class="rounded-xl border border-slate-200/80 bg-slate-50/80 px-4 py-3 text-sm leading-7 text-slate-700 md:text-base"
+            >
+              <div class="flex items-start gap-3">
+                <span class="mt-1.5 inline-flex h-2 w-2 shrink-0 rounded-full bg-brand-dark"></span>
+                <span>{{ item }}</span>
+              </div>
+            </li>
+          </ul>
+        </article>
+      </div>
+
+      <div v-if="bitrixFinalGroups.length" class="mt-8 grid gap-6 lg:grid-cols-2">
+        <article
+          v-for="(group, index) in bitrixFinalGroups"
+          :key="`bitrix-final-${group.title}`"
+          class="fade-in-up h-full rounded-2xl border border-brand/30 bg-brand/10 p-7 shadow-sm sm:p-8"
+          :style="{ animationDelay: `${index * 90}ms` }"
+        >
+          <h2 class="text-lg font-semibold tracking-tight text-slate-900 md:text-2xl">{{ group.title }}</h2>
+          <ul class="mt-5 space-y-3">
+            <li
+              v-for="item in group.items"
+              :key="item"
+              class="rounded-xl border border-brand/25 bg-white/85 px-4 py-3 text-sm leading-7 text-slate-700 md:text-base"
             >
               <div class="flex items-start gap-3">
                 <span class="mt-1.5 inline-flex h-2 w-2 shrink-0 rounded-full bg-brand-dark"></span>
@@ -485,10 +553,9 @@ const servicePlatforms = computed(() =>
   homePlatformAssets.map((asset) => ({
     ...asset,
     name: t(`home.platformCards.${asset.key}.name`),
-    description: t(`home.platformCards.${asset.key}.description`),
   })),
 )
-const showcaseSlugs = new Set(['firstbit', 'accounting-systems', 'training'])
+const showcaseSlugs = new Set(['firstbit', 'accounting-systems', 'training', 'vat-cit-filing'])
 const isShowcasePage = computed(() => showcaseSlugs.has(String(route.params.slug ?? '')))
 const isBitrixPage = computed(() => String(route.params.slug ?? '') === 'bitrix24')
 const isAccountingSystemsPage = computed(() => String(route.params.slug ?? '') === 'accounting-systems')
@@ -517,10 +584,13 @@ const modalInitialServices = computed(() => {
     return ['automation']
   }
   if (slug === 'accounting-setup') {
-    return ['consulting']
+    return ['other']
   }
   if (slug === 'bitrix24') {
     return ['bitrix24']
+  }
+  if (slug === 'vat-cit-filing') {
+    return ['vat-cit']
   }
   return ['firstbit']
 })
@@ -616,8 +686,21 @@ const defaultService = computed(() => {
   return bundle.firstbit ?? Object.values(bundle)[0]!
 })
 
-const bitrixPlatformGroup = computed(() => (isBitrixPage.value ? page.value.groups[0] : null))
-const displayGroups = computed(() => (isBitrixPage.value ? page.value.groups.slice(1) : page.value.groups))
+const bitrixPlatformGroup = computed(() =>
+  isBitrixPage.value && page.value.bitrixLeadBlock ? page.value.groups[0] : null
+)
+const displayGroups = computed(() =>
+  isBitrixPage.value && page.value.bitrixLeadBlock ? page.value.groups.slice(1) : page.value.groups
+)
+const bitrixFinalGroups = computed(() =>
+  isBitrixPage.value && !page.value.bitrixLeadBlock ? displayGroups.value.slice(-2) : []
+)
+const primaryDisplayGroups = computed(() =>
+  bitrixFinalGroups.value.length ? displayGroups.value.slice(0, -2) : displayGroups.value
+)
+const isBitrixRoadmapPage = computed(() =>
+  isBitrixPage.value && !page.value.bitrixLeadBlock && primaryDisplayGroups.value.length > 0
+)
 
 const showcaseGroups = computed(() => {
   const groups = displayGroups.value

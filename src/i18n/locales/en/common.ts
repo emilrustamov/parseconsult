@@ -19,13 +19,14 @@ export const commonEn = {
     contact: 'Contact',
     getInTouch: 'Contact us',
     firstbit: '1C and Firstbit',
-    bitrix24: 'Bitrix24',
+    bitrix24: 'Zoho CRM & Bitrix24 Setup',
     accountingSystems: 'Accounting system implementation and recovery',
     accountingSetup: 'Accounting setup',
     training: 'Support and training',
+    vatCitFiling: 'VAT and CIT filing support',
   },
   footer: {
-    tagline: 'Accounting, implementation, automation — UAE, Russia, and Kazakhstan',
+    tagline: 'Accounting, implementation, automation — UAE and GCC',
     services: 'Services',
   },
   cta: {
@@ -38,7 +39,7 @@ export const commonEn = {
     email: 'Email',
     phone: 'Phone',
     location: 'Location',
-    locationText: 'UAE, Russia, and Kazakhstan: online and on-site by agreement.',
+    locationText: 'UAE and GCC: online and on-site by agreement.',
   },
   social: {
     youtubeName: 'YouTube',
@@ -64,6 +65,8 @@ export const commonEn = {
     submitting: 'Sending…',
     submit: 'Submit request',
     contactMethodError: 'Select at least one contact method.',
+    servicesError: 'Select at least one service.',
+    servicesSelectPlaceholder: 'Select services',
     mailSubject: 'Website request — {name}',
     mailBodyName: 'Name',
     mailBodyContact: 'Contact via',
@@ -75,11 +78,14 @@ export const commonEn = {
     svcMigration: 'Accounting migration',
     svcTraining: 'Accounting training',
     svcAutomation: 'Accounting automation',
-    svcFirstbit: '1C and Firstbit (UAE, Russia, Kazakhstan)',
+    svcVatCit: 'VAT and CIT',
+    svcFirstbit: '1C and Firstbit (UAE and GCC)',
+    svcMicrosoftDynamics: 'Microsoft Dynamics',
     svcQuickbooks: 'QuickBooks',
     svcZoho: 'Zoho Books',
+    svcZohoCrm: 'Zoho CRM',
     svcBitrix24: 'Bitrix24',
-    svcConsulting: 'Consulting / other',
+    svcOther: 'Other',
   },
   notFound: {
     badge: 'Error 404',
@@ -94,7 +100,7 @@ export const commonEn = {
   parseLedger: {
     heroTitle: 'automatic bank statement import for the UAE',
     intro:
-      'When there is no direct bank integration, accounting falls back to manual entry, spreadsheets, and extra operational load.\nParse Ledger accepts bank statements in PDF and Excel and turns them into structured data ready for your accounting system.\nBuilt for accountants, finance teams, and outsourcing firms in the UAE, Russia, and Kazakhstan.',
+      'When there is no direct bank integration, accounting falls back to manual entry, spreadsheets, and extra operational load.\nParse Ledger accepts bank statements in PDF and Excel and turns them into structured data ready for your accounting system.\nBuilt for accountants, finance teams, and outsourcing firms in the UAE and GCC.',
     banksTitle: 'supports automatic processing of statements from leading UAE banks',
     banksLead:
       'Parse Ledger helps you process bank statements quickly and accurately, cutting manual work and reducing error risk.',
@@ -137,6 +143,7 @@ export const commonEn = {
     discussImplementation: 'Discuss implementation',
     tryDemo: 'Try the demo',
     certificates: 'Certificates',
+    roadmapTitle: 'Implementation roadmap',
     industries: 'Industries',
     leaveRequest: 'Submit request',
     connect: 'Contact us',
@@ -152,15 +159,15 @@ export const commonEn = {
     platformsAnd: 'and',
     platformsAlso: 'as well as',
     platformsOutro:
-      'We support implementation, configuration, and integration of modern accounting systems — 1C and Firstbit, Zoho Books and QuickBooks — delivering transparent accounting, process automation, and compliance for businesses in the UAE, Russia, and Kazakhstan.',
+      'We support implementation, configuration, and integration of modern accounting systems — 1C and Firstbit, Zoho Books and QuickBooks — delivering transparent accounting, process automation, and compliance for businesses in the UAE and GCC.',
   },
   seo: {
-    homeTitle: 'Parse Consult in the UAE, Russia, and Kazakhstan — accounting implementation and automation',
+    homeTitle: 'Parse Consult in the UAE and GCC — accounting implementation and automation',
     homeDescription:
-      '1C and Firstbit, Zoho Books and QuickBooks in the UAE, Russia, and Kazakhstan. Accounting recovery, team training, and financial process automation.',
+      '1C and Firstbit, Zoho Books and QuickBooks in the UAE and GCC. Accounting recovery, team training, and financial process automation.',
     contactTitle: 'Contact Parse Consult',
     contactDescription:
-      'Contact Parse Consult for advice on accounting systems and automation in the UAE, Russia, and Kazakhstan.',
+      'Contact Parse Consult for advice on accounting systems and automation in the UAE and GCC.',
     parseLedgerTitle: 'parseledger.ae',
     parseLedgerDescription:
       'Parse Ledger turns bank PDF and Excel statements into structured data for accounting systems.',
@@ -168,18 +175,20 @@ export const commonEn = {
     notFoundDescription: 'The requested page was not found. Go to the Parse Consult home page.',
     fallbackTitle: 'Parse Consult — consulting and accounting automation',
     fallbackDescription:
-      'Parse Consult helps businesses in the UAE, Russia, and Kazakhstan build transparent accounting, implement systems, and train teams.',
+      'Parse Consult helps businesses in the UAE and GCC build transparent accounting, implement systems, and train teams.',
     breadcrumbHome: 'Home',
     serviceFallbackDescription:
-      'Professional implementation and configuration of accounting solutions for businesses in the UAE, Russia, and Kazakhstan.',
+      'Professional implementation and configuration of accounting solutions for businesses in the UAE and GCC.',
     serviceDescriptions: {
       firstbit:
-        'Expert 1C and Firstbit implementation in the UAE, Russia, and Kazakhstan: audit, process automation, and IFRS methodology.',
+        'Expert 1C and Firstbit implementation in the UAE and GCC: audit, process automation, and IFRS methodology.',
       'accounting-systems':
-        'Implementation, recovery, and optimization of accounting systems with bank and CRM integration for the UAE, Russia, and Kazakhstan.',
+        'Implementation, recovery, and optimization of accounting systems with bank and CRM integration for the UAE and GCC.',
       'accounting-setup':
-        'Accounting setup for your industry in the UAE, Russia, and Kazakhstan: from e-commerce to construction and logistics.',
+        'Accounting setup for your industry in the UAE and GCC: from e-commerce to construction and logistics.',
       training: 'Support and training: policies, guides, and hands-on team onboarding for new accounting processes.',
+      'vat-cit-filing':
+        'VAT and Corporate Tax (CIT) filing in the UAE: calculations, return submission, payment support, and compliance guidance.',
     },
   },
 }

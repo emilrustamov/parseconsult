@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import FloatingAccountingDeco from '@/components/FloatingAccountingDeco.vue'
 import SocialNetworkIcon from '@/components/SocialNetworkIcon.vue'
@@ -9,6 +9,8 @@ import { applyDocumentLang, persistLocale, type AppLocale } from '@/i18n'
 import { socialLinkDefs } from '@/socialLinks'
 
 const { t, locale } = useI18n()
+const currentYear = new Date().getFullYear()
+const router = useRouter()
 
 type NavLink =
   | { label: string; to: RouteLocationRaw }
@@ -23,6 +25,7 @@ const navLinks = computed<NavLink[]>(() => [
 const serviceLinks = computed(() => [
   { label: t('nav.firstbit'), to: { name: 'service-details', params: { slug: 'firstbit' } } },
   { label: t('nav.bitrix24'), to: { name: 'service-details', params: { slug: 'bitrix24' } } },
+  { label: t('nav.vatCitFiling'), to: { name: 'service-details', params: { slug: 'vat-cit-filing' } } },
   { label: t('nav.accountingSystems'), to: { name: 'service-details', params: { slug: 'accounting-systems' } } },
   { label: t('nav.accountingSetup'), to: { name: 'service-details', params: { slug: 'accounting-setup' } } },
   { label: t('nav.training'), to: { name: 'service-details', params: { slug: 'training' } } },
@@ -32,6 +35,16 @@ const setLocale = (code: AppLocale): void => {
   locale.value = code
   persistLocale(code)
   applyDocumentLang(code)
+
+  if (route.params.locale !== code) {
+    const routeName = typeof route.name === 'string' ? route.name : 'home'
+    void router.replace({
+      name: routeName,
+      params: { ...route.params, locale: code },
+      query: route.query,
+      hash: route.hash,
+    })
+  }
 }
 
 const headerWhatsappNumber = '+971 52 856 9060'
@@ -62,6 +75,19 @@ const handleLeadModalToggle = (event: Event): void => {
   const customEvent = event as CustomEvent<{ open?: boolean }>
   isHeaderHidden.value = Boolean(customEvent.detail?.open)
 }
+
+watch(
+  () => route.params.locale,
+  (rawLocale) => {
+    const nextLocale: AppLocale = rawLocale === 'en' ? 'en' : 'ru'
+    if (locale.value !== nextLocale) {
+      locale.value = nextLocale
+      persistLocale(nextLocale)
+      applyDocumentLang(nextLocale)
+    }
+  },
+  { immediate: true },
+)
 
 watch(
   () => route.fullPath,
@@ -439,10 +465,11 @@ onBeforeUnmount(() => {
           <div>
             <div class="font-semibold tracking-tight text-slate-900">{{ t('brand.siteName') }}</div>
             <div class="font-medium text-slate-600">{{ t('footer.tagline') }}</div>
+            <div class="font-medium text-slate-500">© {{ currentYear }}</div>
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
-          <RouterLink :to="{ path: '/', hash: '#services' }" class="transition hover:text-brand-dark">
+          <RouterLink :to="{ name: 'home', hash: '#services' }" class="transition hover:text-brand-dark">
             {{ t('footer.services') }}
           </RouterLink>
           <template v-for="item in navLinks" :key="`footer-${item.label}`">

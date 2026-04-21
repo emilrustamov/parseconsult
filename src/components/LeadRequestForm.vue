@@ -117,22 +117,35 @@
     </fieldset>
 
     <fieldset>
-      <legend class="mb-3 text-sm font-semibold text-slate-800">{{ t('leadForm.servicesLegend') }}</legend>
-      <div class="grid gap-3 sm:grid-cols-2">
-        <label
-          v-for="svc in formServiceOptions"
-          :key="svc.id"
-          class="flex cursor-pointer items-start gap-3 rounded-lg border px-4 py-3 text-sm text-slate-800 transition"
-          :class="
-            form.services.includes(svc.id)
-              ? 'border-brand-dark bg-brand/10'
-              : 'border-slate-200 bg-slate-50/50 hover:border-brand/35'
-          "
+      <legend class="mb-3 text-sm font-semibold text-slate-800">
+        {{ t('leadForm.servicesLegend') }} <span class="text-red-600">*</span>
+      </legend>
+      <details class="group relative">
+        <summary
+          class="flex w-full cursor-pointer list-none items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 transition marker:content-none hover:border-slate-300"
+          :class="showServicesError ? 'border-red-400' : ''"
         >
-          <input v-model="form.services" type="checkbox" :value="svc.id" class="mt-1 size-4 shrink-0 rounded border-slate-300 accent-brand-dark">
-          {{ svc.label }}
-        </label>
-      </div>
+          <span class="truncate">{{ selectedServicesText }}</span>
+          <span class="ml-3 shrink-0 text-xs text-slate-500 transition group-open:rotate-180">⌄</span>
+        </summary>
+        <div class="mt-2 grid gap-2 rounded-lg border border-slate-200 bg-white p-2 sm:grid-cols-2">
+          <label
+            v-for="svc in formServiceOptions"
+            :key="svc.id"
+            class="flex cursor-pointer items-start gap-2 rounded-md px-2 py-2 text-sm text-slate-800 transition hover:bg-slate-50"
+          >
+            <input
+              v-model="form.services"
+              type="checkbox"
+              :value="svc.id"
+              class="mt-0.5 size-4 shrink-0 rounded border-slate-300 accent-brand-dark"
+              @change="showServicesError = false"
+            >
+            <span>{{ svc.label }}</span>
+          </label>
+        </div>
+      </details>
+      <p v-if="showServicesError" class="mt-2 text-sm text-red-600">{{ t('leadForm.servicesError') }}</p>
     </fieldset>
 
     <div>
@@ -197,11 +210,14 @@ const formServiceOptions = computed(() => [
   { id: 'migration', label: t('leadForm.svcMigration') },
   { id: 'training', label: t('leadForm.svcTraining') },
   { id: 'automation', label: t('leadForm.svcAutomation') },
+  { id: 'vat-cit', label: t('leadForm.svcVatCit') },
   { id: 'firstbit', label: t('leadForm.svcFirstbit') },
+  { id: 'microsoftDynamics', label: t('leadForm.svcMicrosoftDynamics') },
   { id: 'quickbooks', label: t('leadForm.svcQuickbooks') },
   { id: 'zoho', label: t('leadForm.svcZoho') },
+  { id: 'zohoCrm', label: t('leadForm.svcZohoCrm') },
   { id: 'bitrix24', label: t('leadForm.svcBitrix24') },
-  { id: 'consulting', label: t('leadForm.svcConsulting') },
+  { id: 'other', label: t('leadForm.svcOther') },
 ])
 
 const resolvedSubmitLabel = computed(() => props.submitButtonLabel || t('leadForm.submit'))
@@ -217,6 +233,15 @@ const form = reactive({
   services: [...props.initialServices] as string[],
   message: props.initialMessage,
 })
+const selectedServicesText = computed(() => {
+  if (form.services.length === 0) {
+    return t('leadForm.servicesSelectPlaceholder')
+  }
+  const labels = formServiceOptions.value
+    .filter((option) => form.services.includes(option.id))
+    .map((option) => option.label)
+  return labels.join(', ')
+})
 
 const ids = {
   fullName: `${props.idPrefix}-fullname`,
@@ -229,6 +254,7 @@ const ids = {
 }
 
 const showContactMethodError = ref(false)
+const showServicesError = ref(false)
 const selectedContactMethods = computed(() =>
   contactMethodOptions.value.map((option) => option.value).filter((method) => form.contactMethods.includes(method)),
 )
@@ -265,7 +291,12 @@ function submitContactForm(): void {
     showContactMethodError.value = true
     return
   }
+  if (form.services.length === 0) {
+    showServicesError.value = true
+    return
+  }
   showContactMethodError.value = false
+  showServicesError.value = false
   const socialValue = [form.whatsapp.trim(), form.telegram.trim()].filter(Boolean)
   if (showSocialField.value && socialValue.length === 0) {
     return
