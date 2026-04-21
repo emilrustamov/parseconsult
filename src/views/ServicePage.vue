@@ -1,10 +1,12 @@
 <template>
-  <section class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-16 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pb-24 md:pt-24">
+  <section class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-8 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pb-10 md:pt-24">
     <div class="mx-auto max-w-7xl px-6 pt-8 lg:px-8 lg:pt-10">
-      <div v-if="!isBitrixPage || !page.bitrixLeadBlock" class="rounded-2xl border border-brand-dark/35 bg-brand-surface p-7 shadow-md shadow-black/10 md:p-10">
-        <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand">{{ t('servicePage.services') }}</p>
-        <h1 class="mt-4 text-2xl font-semibold tracking-tight text-white md:text-4xl">{{ page.title }}</h1>
-        <p class="mt-4 max-w-3xl text-sm leading-7 text-emerald-50/90 md:text-base">
+      <div
+        v-if="!isBitrixPage || !page.bitrixLeadBlock"
+        class="rounded-2xl border border-brand-dark/35 bg-brand-surface px-7 py-7 shadow-md shadow-black/10 md:px-7 md:py-7"
+      >
+        <h1 class=" text-2xl font-semibold tracking-tight text-white md:text-4xl">{{ page.title }}</h1>
+        <p class="mt-4 text-sm leading-7 text-emerald-50/90 md:text-base">
           {{ page.description ?? t('servicePage.defaultDescription') }}
         </p>
         <div class="mt-6">
@@ -78,48 +80,10 @@
 
       <section
         v-if="isAccountingSystemsPage"
-        id="platforms"
-        class="fade-in-up mt-10 scroll-mt-28 border-b border-slate-200/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10"
+        class="fade-in-up mt-10"
         style="animation-delay: 80ms"
       >
-        <div class="max-w-4xl">
-          <h2 class="mt-4 text-2xl font-semibold tracking-tight text-slate-950 md:text-4xl">
-            {{ t('servicePage.platformsIntro1') }}
-            <span class="text-brand-dark">{{ t('home.platformsMeta.onec') }}</span>
-            {{ t('home.platformsHeading.and') }}
-            <span class="text-brand-dark">Firstbit</span>{{ t('home.platformsHeading.comma') }}
-            <span class="text-brand-dark">Zoho Books</span>
-            {{ t('home.platformsHeading.and') }}
-            <span class="text-brand-dark">QuickBooks</span>{{ t('home.platformsHeading.comma') }}
-            <span class="text-[#03bcef]">Microsoft Dynamics</span>.
-          </h2>
-          <p class="mt-6 text-base leading-8 text-slate-600 md:text-lg">
-            {{ t('servicePage.platformsOutro') }}
-          </p>
-        </div>
-
-        <div class="mt-12 grid gap-6 lg:grid-cols-4">
-          <article v-for="platform in servicePlatforms" :key="platform.key" class="group rounded-xl border border-slate-200 bg-white p-7 transition hover:border-slate-300">
-            <div class="flex min-w-0 max-w-full items-center gap-3 sm:gap-4">
-              <img
-                :src="platform.logoSrc"
-                :alt="platform.logoAlt"
-                :class="platform.logoClass ?? 'h-8 w-auto max-w-[7rem] shrink-0 object-contain object-left sm:h-9 sm:max-w-[8rem]'"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                v-if="platform.secondaryLogoSrc"
-                :src="platform.secondaryLogoSrc"
-                :alt="platform.secondaryLogoAlt ?? ''"
-                :class="platform.secondaryLogoClass ?? 'h-8 w-auto max-w-[7rem] shrink-0 object-contain object-left sm:h-9 sm:max-w-[8rem]'"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="min-w-0 text-lg font-semibold tracking-tight text-slate-900 sm:text-2xl">{{ platform.name }}</div>
-            </div>
-          </article>
-        </div>
+        <PlatformsSection />
       </section>
 
       <section
@@ -276,19 +240,12 @@
             <div class="space-y-5">
               <div class="h-1 w-16 rounded-full bg-gradient-to-r from-brand-dark to-brand"></div>
               <h2 class="text-xl font-semibold leading-tight tracking-tight text-slate-950 md:text-3xl">{{ group.title }}</h2>
-              <button
-                type="button"
-                class="inline-flex items-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
-                @click="openLeadModal"
-              >
-                {{ t('servicePage.leaveRequest') }}
-              </button>
             </div>
             <ul class="space-y-3 border-l border-brand/30 pl-5 sm:pl-6">
               <li
                 v-for="item in group.items"
                 :key="item.raw"
-                class="rounded-2xl border border-white/70 bg-white/75 px-4 py-3 text-sm leading-7 text-slate-700 backdrop-blur-sm md:text-base"
+                class="rounded-2xl border border-white/70 bg-white/75 px-4 py-0 text-sm leading-7 text-slate-700 backdrop-blur-sm md:text-base"
               >
                 <span class="font-semibold text-slate-950">{{ item.lead }}</span>
                 <span v-if="item.details">: {{ item.details }}</span>
@@ -543,21 +500,15 @@ import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import 'vue3-carousel/carousel.css'
 import BitrixCloudBoxSurvey from '@/components/BitrixCloudBoxSurvey.vue'
 import LeadRequestForm from '@/components/LeadRequestForm.vue'
+import PlatformsSection from '@/components/PlatformsSection.vue'
 import { useFocusTrap } from '@/composables/useFocusTrap'
 import { readStoredLocale } from '@/i18n'
-import { homePlatformAssets } from '@/content/platforms'
 import { getServiceContent } from '@/content/services'
 
 const route = useRoute()
 const router = useRouter()
 const { t, locale } = useI18n()
 
-const servicePlatforms = computed(() =>
-  homePlatformAssets.map((asset) => ({
-    ...asset,
-    name: t(`home.platformCards.${asset.key}.name`),
-  })),
-)
 const showcaseSlugs = new Set(['firstbit', 'accounting-systems', 'training', 'vat-cit-filing'])
 const isShowcasePage = computed(() => showcaseSlugs.has(String(route.params.slug ?? '')))
 const isBitrixPage = computed(() => String(route.params.slug ?? '') === 'bitrix24')
@@ -587,9 +538,6 @@ const modalInitialServices = computed(() => {
   }
   if (slug === 'accounting-systems') {
     return ['automation']
-  }
-  if (slug === 'accounting-setup') {
-    return ['other']
   }
   if (slug === 'bitrix24') {
     return ['bitrix24']

@@ -21,7 +21,6 @@ export const commonEn = {
     firstbit: '1C and Firstbit',
     bitrix24: 'Zoho CRM & Bitrix24 Setup',
     accountingSystems: 'Accounting system implementation and recovery',
-    accountingSetup: 'Accounting setup',
     training: 'Support and training',
     vatCitFiling: 'VAT and CIT filing support',
   },
@@ -101,20 +100,50 @@ export const commonEn = {
     subtitle: 'Accounting and systems',
   },
   parseLedger: {
-    heroTitle: 'automatic bank statement import for the UAE',
-    intro:
-      'When there is no direct bank integration, accounting falls back to manual entry, spreadsheets, and extra operational load.\nParse Ledger accepts bank statements in PDF and Excel and turns them into structured data ready for your accounting system.\nBuilt for accountants, finance teams, and outsourcing firms in the UAE and GCC.',
+    heroTitle:
+      'Automatic Bank Statement Import to Zoho Books, QuickBooks, and FirstBit in the UAE with Parse Ledger',
+    lead1:
+      'Parse Ledger is an AI-powered solution designed to automate bank statement processing for businesses in the UAE. Our intelligent system converts your bank statements from PDF, XLS, and XLSX formats into clean, structured data ready for accounting.',
+    lead2:
+      'Stop wasting time on manual data entry. With Parse Ledger, you can instantly transform raw bank statements into XLSX, CSV or JSON files fully prepared for seamless import into leading accounting software such as Zoho Books, QuickBooks, and FirstBit.',
+    aiTitle: 'AI-Powered Bank Statement Processing',
+    aiBody:
+      'Parse Ledger uses advanced artificial intelligence to extract, clean, and structure financial data with high accuracy. Whether your statements come from UAE banks or even photos, our system can accurately read and process data not only from files exported from banking apps but also directly from images, adapting to different formats and layouts automatically.',
+    keyFeaturesTitle: 'Key Features:',
+    keyFeatures: [
+      'Automatic data extraction from PDF, XLS, XLSX',
+      'Smart transaction categorization',
+      'Clean and structured output (CSV, JSON, XLSX)',
+      'High accuracy with minimal manual correction',
+      'Fast processing for large volumes of data',
+    ],
+    builtForTitle: 'Built for Accounting Automation in the UAE',
+    builtForLead:
+      'Designed specifically for businesses operating in the UAE, Parse Ledger helps accountants, finance teams, and outsourcing firms streamline their workflows.',
+    integrationsLead: 'Our solution integrates smoothly with:',
+    integrations: ['Zoho Books', 'QuickBooks', 'FirstBit'],
+    integrationsOutro:
+      'This allows you to import processed data directly into your accounting system without additional formatting or adjustments.',
+    saveTimeTitle: 'Save Time, Reduce Errors, Increase Efficiency',
+    saveTimeLead:
+      'Manual processing of bank statements is time-consuming and prone to errors. Parse Ledger eliminates repetitive tasks and significantly reduces the risk of human mistakes.',
+    benefitsSectionTitle: 'Benefits:',
+    benefitLines: [
+      'Save hours of manual work every month',
+      'Reduce operational costs',
+      'Improve data accuracy',
+      'Accelerate financial reporting',
+      'Scale your accounting processes effortlessly',
+    ],
+    ctaTitle: 'Start Using Parse Ledger Today',
+    ctaLead:
+      'Take advantage of our free beta testing period and experience the future of accounting automation in the UAE.',
+    ctaHighlight: '👉 Upload your bank statements and let AI do the work.',
     banksTitle: 'supports automatic processing of statements from leading UAE banks',
     banksLead:
       'Parse Ledger helps you process bank statements quickly and accurately, cutting manual work and reducing error risk.',
     banksListTitle: 'Supported banks include:',
     otherBanks: 'and other banks',
-    benefitsTitle: 'What you get:',
-    benefit1: 'automatic statement import and recognition',
-    benefit2: 'correct transaction allocation',
-    benefit3: 'integration with accounting systems (FirstBit, Zoho Books, QuickBooks, and more)',
-    closing:
-      'is a practical tool for accountants and businesses that saves time and makes bookkeeping easier.',
     tutorialTitle: 'How to use the app',
     videoTitle1: 'Parse Ledger — tutorial (video 1)',
     videoTitle2: 'Parse Ledger — tutorial (video 2)',
@@ -143,7 +172,7 @@ export const commonEn = {
     services: 'Services',
     defaultDescription:
       'We choose an industry accounting model and tune processes to your real operations.',
-    discussImplementation: 'Discuss implementation',
+    discussImplementation: 'Submit request',
     tryDemo: 'Try the demo',
     certificates: 'Certificates',
     roadmapTitle: 'Implementation roadmap',
@@ -173,7 +202,7 @@ export const commonEn = {
       'Contact Parse Consult for advice on accounting systems and automation in the UAE and GCC.',
     parseLedgerTitle: 'parseledger.ae',
     parseLedgerDescription:
-      'Parse Ledger turns bank PDF and Excel statements into structured data for accounting systems.',
+      'Parse Ledger uses AI to convert UAE bank statements from PDF, XLS, XLSX, and images into clean data ready for Zoho Books, QuickBooks, and FirstBit.',
     notFoundTitle: 'Page not found | Parse Consult',
     notFoundDescription: 'The requested page was not found. Go to the Parse Consult home page.',
     fallbackTitle: 'Parse Consult — consulting and accounting automation',
@@ -184,11 +213,9 @@ export const commonEn = {
       'Professional implementation and configuration of accounting solutions for businesses in the UAE and GCC.',
     serviceDescriptions: {
       firstbit:
-        'Expert 1C and Firstbit implementation in the UAE and GCC: audit, process automation, and IFRS methodology.',
+        'Expert 1C and Firstbit implementation in the UAE and GCC: audit, industry-specific accounting setup, automation, and IFRS methodology.',
       'accounting-systems':
         'Implementation, recovery, and optimization of accounting systems with bank and CRM integration for the UAE and GCC.',
-      'accounting-setup':
-        'Accounting setup for your industry in the UAE and GCC: from e-commerce to construction and logistics.',
       training: 'Support and training: policies, guides, and hands-on team onboarding for new accounting processes.',
       'vat-cit-filing':
         'VAT and Corporate Tax (CIT) filing in the UAE: calculations, return submission, payment support, and compliance guidance.',

@@ -79,7 +79,7 @@ export const homeRu = {
         id: 'bitrix24',
         slug: 'bitrix24',
         icon: '🤖',
-        title: 'Zoho CRM & Bitrix24 Setup',
+        title: 'Внедрение и настройка Zoho CRM и Bitrix24',
         description:
           'Внедряем Битрикс24, настраиваем воронки, автоматизации и интеграции с учетом и внутренними бизнес-процессами.',
       },
@@ -87,7 +87,7 @@ export const homeRu = {
         id: 'vat-cit-filing',
         slug: 'vat-cit-filing',
         icon: '🧮',
-        title: 'VAT and CIT Filing Help in the UAE',
+        title: 'Помощь с подачей VAT и CIT в ОАЭ',
         description:
           'Полное сопровождение по расчету, подаче и соблюдению сроков VAT и CIT в ОАЭ.',
       },
@@ -106,14 +106,6 @@ export const homeRu = {
         title: 'Экспертное внедрение и кастомизация 1С и Firstbit в ОАЭ',
         description:
           'Настраиваем систему под требования бизнеса в ОАЭ с учётом локального законодательства и специфики процессов.',
-      },
-      {
-        id: 'accounting-setup',
-        slug: 'accounting-setup',
-        icon: '📊',
-        title: 'Настройка бухгалтерского учета под деятельность',
-        description:
-          'Адаптируем учёт под бизнес-модель компании для точной аналитики и управленческой отчётности.',
       },
     ],
     faqItems: [

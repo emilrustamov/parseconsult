@@ -8,7 +8,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/ru',
+      redirect: '/en',
     },
     {
       path: '/:locale(ru|en)',
@@ -38,6 +38,15 @@ const router = createRouter({
           redirect: { name: 'parse-ledger' },
         },
         {
+          path: 'services/accounting-setup',
+          redirect: (to) => ({
+            name: 'service-details',
+            params: { ...to.params, slug: 'firstbit' },
+            query: to.query,
+            hash: to.hash,
+          }),
+        },
+        {
           path: 'services/:slug',
           name: 'service-details',
           component: () => import('@/views/ServicePage.vue'),
@@ -53,7 +62,7 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       redirect: (to) => {
         const cleanPath = to.path.replace(/^\/+/, '')
-        return cleanPath.length ? `/ru/${cleanPath}` : '/ru'
+        return cleanPath.length ? `/en/${cleanPath}` : '/en'
       },
     },
   ],

@@ -1,5 +1,8 @@
 <template>
-  <section id="hero" class="relative overflow-hidden scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pt-24">
+  <section
+    id="hero"
+    class="relative overflow-hidden scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-8 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pb-10 md:pt-24"
+  >
     <div class="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-10 lg:px-8 lg:py-10 xl:gap-12">
       <div class="flex max-w-3xl flex-col lg:h-full lg:justify-between">
         <h1 class="relative z-10 max-w-4xl text-2xl font-semibold leading-tight tracking-tight text-slate-950 md:text-[2.55rem] lg:text-[2.7rem] xl:text-[3.2rem]">
@@ -55,7 +58,7 @@
   </section>
 
   <section id="about" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
       <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div class="lg:sticky lg:top-32">
           <h2 class=" text-2xl font-semibold tracking-tight text-slate-950 md:text-4xl">
@@ -86,51 +89,10 @@
     </div>
   </section>
 
-  <section id="platforms" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="max-w-4xl">
-        <h2 class="mt-4 text-2xl font-semibold tracking-tight text-slate-950 md:text-4xl">
-          {{ t('home.platformsHeading.intro') }}
-          <span class="text-brand-dark">{{ t('home.platformsMeta.onec') }}</span>
-          {{ t('home.platformsHeading.and') }}
-          <span class="text-brand-dark">Firstbit</span>{{ t('home.platformsHeading.comma') }}
-          <span class="text-brand-dark">Zoho Books</span>
-          {{ t('home.platformsHeading.and') }}
-          <span class="text-brand-dark">QuickBooks</span>{{ t('home.platformsHeading.comma') }}
-          <span class="text-[#03bcef]">Microsoft Dynamics</span>.
-        </h2>
-        <p class="mt-6 text-base leading-8 text-slate-600 md:text-lg">
-          {{ t('home.platformsHeading.outro') }}
-        </p>
-      </div>
-
-      <div class="mt-12 grid gap-5 lg:grid-cols-5">
-        <article v-for="platform in platforms" :key="platform.key" class="group rounded-xl border border-slate-200 bg-white p-2.5 transition hover:border-slate-300 sm:p-3">
-          <div class="flex min-w-0 max-w-full flex-col items-center gap-3">
-            <img
-              :src="platform.logoSrc"
-              :alt="platform.logoAlt"
-              :class="platform.logoClass ?? 'h-12 w-auto max-w-[10.5rem] shrink-0 object-contain object-center sm:h-14 sm:max-w-[12rem]'"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              v-if="platform.secondaryLogoSrc"
-              :src="platform.secondaryLogoSrc"
-              :alt="platform.secondaryLogoAlt ?? ''"
-              :class="platform.secondaryLogoClass ?? 'h-8 w-auto max-w-[7rem] shrink-0 object-contain object-left sm:h-9 sm:max-w-[8rem]'"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="min-w-0 text-center break-words text-base font-semibold tracking-tight text-slate-900 sm:text-lg">{{ platform.name }}</div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+  <PlatformsSection />
 
   <section id="crm" class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
       <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
         <div>
           <h2 class="text-2xl font-semibold tracking-tight text-slate-950 md:text-4xl">
@@ -174,7 +136,7 @@
   </section>
 
   <section id="tax-filing" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
       <div class="mx-auto max-w-6xl">
         <span class="inline-flex items-center rounded-full border border-brand/30 bg-brand/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-dark">
           VAT & CIT
@@ -216,8 +178,8 @@
   </section>
 
   <section id="home-lead" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-stretch lg:gap-12">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-stretch lg:gap-12">
         <h2
           class="order-2 col-span-full mx-auto max-w-3xl text-center text-2xl font-semibold tracking-tight text-slate-950 md:text-4xl lg:order-1"
         >
@@ -277,8 +239,8 @@ import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import LazyDotLottie from '@/components/LazyDotLottie.vue'
 import LeadRequestForm from '@/components/LeadRequestForm.vue'
+import PlatformsSection from '@/components/PlatformsSection.vue'
 import { useLocaleRoute } from '@/composables/useLocaleRoute'
-import { homePlatformAssets } from '@/content/platforms'
 
 const { t, tm } = useI18n()
 const { localized } = useLocaleRoute()
@@ -299,24 +261,19 @@ type FaqRow = {
 
 const keyServices = computed<KeyServiceRow[]>(() => tm('home.keyServices') as KeyServiceRow[])
 
-const platforms = computed(() =>
-  homePlatformAssets.map((asset) => ({
-    ...asset,
-    name: t(`home.platformCards.${asset.key}.name`),
-  })),
-)
-
 const heroServices = computed(() =>
-  keyServices.value.map((item) => ({
-    id: item.id,
-    icon: item.icon,
-    title: item.title,
-    to: (
-      item.slug === 'parse-ledger'
-        ? { name: 'parse-ledger' }
-        : { name: 'service-details', params: { slug: item.slug } }
-    ) as RouteLocationRaw,
-  })),
+  keyServices.value
+    .filter((item) => item.slug !== 'accounting-setup' && item.id !== 'accounting-setup')
+    .map((item) => ({
+      id: item.id,
+      icon: item.icon,
+      title: item.title,
+      to: (
+        item.slug === 'parse-ledger'
+          ? { name: 'parse-ledger' }
+          : { name: 'service-details', params: { slug: item.slug } }
+      ) as RouteLocationRaw,
+    })),
 )
 
 const faqItems = computed<FaqRow[]>(() => tm('home.faqItems') as FaqRow[])

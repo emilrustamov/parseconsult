@@ -107,14 +107,6 @@ export const homeEn = {
         description:
           'We configure systems for local requirements in the UAE.',
       },
-      {
-        id: 'accounting-setup',
-        slug: 'accounting-setup',
-        icon: '📊',
-        title: 'Accounting setup for your business model',
-        description:
-          'We adapt accounting to your model for accurate analytics and management reporting.',
-      },
     ],
     faqItems: [
       {

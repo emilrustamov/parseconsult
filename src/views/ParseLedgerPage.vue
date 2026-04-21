@@ -1,9 +1,12 @@
 <template>
-  <section id="parse-ledger" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pt-24">
-    <div class="mx-auto grid max-w-7xl gap-12 px-6 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-12 lg:px-8 lg:py-10">
+  <section
+    id="parse-ledger"
+    class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-0 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pb-0 md:pt-24"
+  >
+    <div class="mx-auto grid max-w-7xl gap-12 pt-12 pb-0 md:pt-16 md:pb-0 lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch lg:gap-12  lg:pt-10 lg:pb-0">
       <div class="max-w-3xl">
         <h1 class="mt-4 max-w-4xl text-2xl font-semibold leading-[1.05] tracking-tight text-slate-950 md:text-4xl lg:text-5xl">
-          <span class="text-brand-dark">Parse Ledger</span> — {{ t('parseLedger.heroTitle') }}
+          {{ t('parseLedger.heroTitle') }}
         </h1>
         <div class="relative mt-6 min-h-[260px] w-full lg:hidden">
           <LazyDotLottie
@@ -12,9 +15,10 @@
             lottie-class="absolute inset-0 h-full w-full object-contain"
           />
         </div>
-        <p class="mt-6 whitespace-pre-line text-base leading-8 text-slate-600 md:text-lg">
-          {{ t('parseLedger.intro') }}
-        </p>
+        <div class="mt-6 space-y-4 text-base leading-8 text-slate-600 md:text-lg">
+          <p>{{ t('parseLedger.lead1') }}</p>
+          <p>{{ t('parseLedger.lead2') }}</p>
+        </div>
         <a
           :href="parseLedgerSiteUrl"
           class="mt-8 inline-flex w-full items-center justify-center rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark sm:w-auto"
@@ -35,7 +39,65 @@
     </div>
   </section>
 
-  <section class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 pt-6 pb-12 backdrop-blur-[2px] md:scroll-mt-32 md:pt-8 md:pb-16">
+  <section class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-12 backdrop-blur-[2px] md:scroll-mt-32 md:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-950 md:text-2xl">
+          {{ t('parseLedger.aiTitle') }}
+        </h2>
+        <p class="mt-4 text-base leading-8 text-slate-600 md:text-lg">
+          {{ t('parseLedger.aiBody') }}
+        </p>
+        <h3 class="mt-10 text-base font-semibold text-slate-900 md:text-lg">
+          {{ t('parseLedger.keyFeaturesTitle') }}
+        </h3>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-8 text-slate-600 md:text-lg">
+          <li v-for="(line, index) in keyFeatureLines" :key="`kf-${index}`">{{ line }}</li>
+        </ul>
+
+        <h2 class="mt-12 text-xl font-semibold tracking-tight text-slate-950 md:text-2xl">
+          {{ t('parseLedger.builtForTitle') }}
+        </h2>
+        <p class="mt-4 text-base leading-8 text-slate-600 md:text-lg">
+          {{ t('parseLedger.builtForLead') }}
+        </p>
+        <p class="mt-4 text-base font-medium leading-8 text-slate-800 md:text-lg">
+          {{ t('parseLedger.integrationsLead') }}
+        </p>
+        <ul class="mt-3 list-disc space-y-2 pl-5 text-base leading-8 text-slate-600 md:text-lg">
+          <li v-for="(name, index) in integrationNames" :key="`int-${index}`">{{ name }}</li>
+        </ul>
+        <p class="mt-4 text-base leading-8 text-slate-600 md:text-lg">
+          {{ t('parseLedger.integrationsOutro') }}
+        </p>
+
+        <h2 class="mt-12 text-xl font-semibold tracking-tight text-slate-950 md:text-2xl">
+          {{ t('parseLedger.saveTimeTitle') }}
+        </h2>
+        <p class="mt-4 text-base leading-8 text-slate-600 md:text-lg">
+          {{ t('parseLedger.saveTimeLead') }}
+        </p>
+        <h3 class="mt-8 text-base font-semibold text-slate-900 md:text-lg">
+          {{ t('parseLedger.benefitsSectionTitle') }}
+        </h3>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-8 text-slate-600 md:text-lg">
+          <li v-for="(line, index) in benefitLines" :key="`bf-${index}`">{{ line }}</li>
+        </ul>
+
+        <h2 class="mt-12 text-xl font-semibold tracking-tight text-slate-950 md:text-2xl">
+          {{ t('parseLedger.ctaTitle') }}
+        </h2>
+        <p class="mt-4 text-base leading-8 text-slate-600 md:text-lg">
+          {{ t('parseLedger.ctaLead') }}
+        </p>
+        <p class="mt-4 text-base font-semibold leading-8 text-slate-900 md:text-lg">
+          {{ t('parseLedger.ctaHighlight') }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scroll-mt-28 border-b border-slate-200/80 bg-slate-50/80 pt-0 pb-12 backdrop-blur-[2px] md:scroll-mt-32 md:pt-0 md:pb-16">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <h2 class="max-w-4xl text-xl font-semibold tracking-tight text-slate-950 md:text-3xl">
         <span class="text-brand-dark">Parse Ledger</span> {{ t('parseLedger.banksTitle') }}
@@ -70,19 +132,6 @@
           <div class="text-sm font-semibold text-slate-700">{{ t('parseLedger.otherBanks') }}</div>
         </article>
       </div>
-      <div class="mt-12 max-w-3xl">
-        <h3 class="text-base font-semibold text-slate-900 md:text-lg">
-          {{ t('parseLedger.benefitsTitle') }}
-        </h3>
-        <ul class="mt-4 space-y-3 border-l-2 border-brand/50 pl-5 text-base leading-8 text-slate-600 md:text-lg">
-          <li>{{ t('parseLedger.benefit1') }}</li>
-          <li>{{ t('parseLedger.benefit2') }}</li>
-          <li>{{ t('parseLedger.benefit3') }}</li>
-        </ul>
-      </div>
-      <p class="mt-10 max-w-3xl text-base leading-8 text-slate-600 md:text-lg">
-        <span class="font-semibold text-brand-dark">Parse Ledger</span> {{ t('parseLedger.closing') }}
-      </p>
     </div>
   </section>
 
@@ -120,7 +169,11 @@ import { useI18n } from 'vue-i18n'
 import LazyDotLottie from '@/components/LazyDotLottie.vue'
 import { parseLedgerSiteUrl } from '@/socialLinks'
 
-const { t } = useI18n()
+const { t, tm } = useI18n()
+
+const keyFeatureLines = computed(() => tm('parseLedger.keyFeatures') as string[])
+const benefitLines = computed(() => tm('parseLedger.benefitLines') as string[])
+const integrationNames = computed(() => tm('parseLedger.integrations') as string[])
 
 type ParseLedgerBank = {
   name: string

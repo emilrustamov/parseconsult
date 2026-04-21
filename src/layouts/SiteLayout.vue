@@ -26,14 +26,28 @@ const navLinks = computed<NavLink[]>(() => [
   { label: t('nav.contact'), to: { name: 'contact' } },
 ])
 
-const serviceLinks = computed(() => [
-  { label: t('nav.firstbit'), to: { name: 'service-details', params: { slug: 'firstbit' } } },
-  { label: t('nav.bitrix24'), to: { name: 'service-details', params: { slug: 'bitrix24' } } },
-  { label: t('nav.vatCitFiling'), to: { name: 'service-details', params: { slug: 'vat-cit-filing' } } },
-  { label: t('nav.accountingSystems'), to: { name: 'service-details', params: { slug: 'accounting-systems' } } },
-  { label: t('nav.accountingSetup'), to: { name: 'service-details', params: { slug: 'accounting-setup' } } },
-  { label: t('nav.training'), to: { name: 'service-details', params: { slug: 'training' } } },
-])
+type ServiceNavItem = { label: string; to: RouteLocationRaw }
+
+const serviceLinkSlug = (item: ServiceNavItem): string => {
+  const to = item.to
+  if (typeof to === 'object' && to !== null && 'params' in to && to.params && typeof to.params === 'object' && 'slug' in to.params) {
+    const raw = (to.params as { slug?: unknown }).slug
+    return typeof raw === 'string' ? raw : ''
+  }
+  return ''
+}
+
+const serviceLinks = computed(() =>
+  (
+    [
+      { label: t('nav.accountingSystems'), to: { name: 'service-details', params: { slug: 'accounting-systems' } } },
+      { label: t('nav.bitrix24'), to: { name: 'service-details', params: { slug: 'bitrix24' } } },
+      { label: t('nav.vatCitFiling'), to: { name: 'service-details', params: { slug: 'vat-cit-filing' } } },
+      { label: t('nav.training'), to: { name: 'service-details', params: { slug: 'training' } } },
+      { label: t('nav.firstbit'), to: { name: 'service-details', params: { slug: 'firstbit' } } },
+    ] satisfies ServiceNavItem[]
+  ).filter((item) => serviceLinkSlug(item) !== 'accounting-setup'),
+)
 
 const setLocale = (code: AppLocale): void => {
   locale.value = code
@@ -59,15 +73,6 @@ const isMobileMenuOpen = ref(false)
 const isHeaderHidden = ref(false)
 const isActiveServiceSlug = (slug: string): boolean =>
   route.name === 'service-details' && route.params.slug === slug
-
-const serviceLinkSlug = (item: { label: string; to: RouteLocationRaw }): string => {
-  const to = item.to
-  if (typeof to === 'object' && to !== null && 'params' in to && to.params && typeof to.params === 'object' && 'slug' in to.params) {
-    const raw = (to.params as { slug?: unknown }).slug
-    return typeof raw === 'string' ? raw : ''
-  }
-  return ''
-}
 
 const dismissMobileMenu = (): void => {
   isMobileMenuOpen.value = false
@@ -487,9 +492,6 @@ const isHomeRoute = computed(() => route.matched.some((record) => record.name ==
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
-          <RouterLink :to="localized({ name: 'home', hash: '#services' })" class="transition hover:text-brand-dark">
-            {{ t('footer.services') }}
-          </RouterLink>
           <template v-for="item in navLinks" :key="`footer-${item.label}`">
             <a
               v-if="'href' in item"

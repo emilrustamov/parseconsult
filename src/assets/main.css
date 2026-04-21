@@ -101,8 +101,21 @@ html {
     padding-bottom: 1rem !important;
   }
 
+  main > section + section {
+    padding-top: 0.5rem !important;
+  }
+
   main > section#hero {
     padding-top: 3.5rem !important;
+    padding-bottom: 0 !important;
+  }
+
+  main > section#parse-ledger {
+    padding-bottom: 0.75rem !important;
+  }
+
+  main > section#parse-ledger + section {
+    padding-top: 0.5rem !important;
   }
 
   @media (min-width: 768px) {
@@ -111,8 +124,21 @@ html {
       padding-bottom: 2rem !important;
     }
 
+    main > section + section {
+      padding-top: 1rem !important;
+    }
+
     main > section#hero {
       padding-top: 4rem !important;
+      padding-bottom: 0 !important;
+    }
+
+    main > section#parse-ledger {
+      padding-bottom: 1rem !important;
+    }
+
+    main > section#parse-ledger + section {
+      padding-top: 0.75rem !important;
     }
   }
 
@@ -121,12 +147,36 @@ html {
       padding-top: 1.65rem !important;
       padding-bottom: 1.65rem !important;
     }
+
+    main > section + section {
+      padding-top: 0.85rem !important;
+    }
+
+    main > section#parse-ledger {
+      padding-bottom: 1rem !important;
+    }
+
+    main > section#parse-ledger + section {
+      padding-top: 0.75rem !important;
+    }
   }
 
   @media (min-width: 1280px) {
     main > section {
       padding-top: 3.5rem !important;
       padding-bottom: 3.5rem !important;
+    }
+
+    main > section + section {
+      padding-top: 1.75rem !important;
+    }
+
+    main > section#parse-ledger {
+      padding-bottom: 1.25rem !important;
+    }
+
+    main > section#parse-ledger + section {
+      padding-top: 1rem !important;
     }
 
     p,
@@ -139,6 +189,18 @@ html {
     main > section {
       padding-top: 4.5rem !important;
       padding-bottom: 4.5rem !important;
+    }
+
+    main > section + section {
+      padding-top: 2.25rem !important;
+    }
+
+    main > section#parse-ledger {
+      padding-bottom: 1.5rem !important;
+    }
+
+    main > section#parse-ledger + section {
+      padding-top: 1rem !important;
     }
   }
 

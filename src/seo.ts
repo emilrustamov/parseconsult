@@ -59,17 +59,10 @@ const upsertHreflang = (hreflang: string, href: string): void => {
   el.setAttribute('href', href)
 }
 
-const applyHreflangs = (route: RouteLocationNormalizedLoaded): void => {
-  const m = route.path.match(/^\/(ru|en)(\/.*)?$/)
-  if (!m) {
-    return
-  }
-  const suffix = m[2] ?? ''
-  const ruPath = `/ru${suffix}`
-  const enPath = `/en${suffix}`
-  upsertHreflang('ru', `${SITE_URL}${ruPath}`)
-  upsertHreflang('en', `${SITE_URL}${enPath}`)
-  upsertHreflang('x-default', `${SITE_URL}/ru${suffix}`)
+const applyHreflangs = (): void => {
+  upsertHreflang('en', `${SITE_URL}/en`)
+  upsertHreflang('ru', `${SITE_URL}/ru`)
+  upsertHreflang('x-default', `${SITE_URL}/en`)
 }
 
 const upsertCanonical = (href: string): void => {
@@ -286,7 +279,7 @@ const applySeo = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): voi
   upsertMetaTag('twitter:description', meta.description)
   upsertMetaTag('twitter:image', DEFAULT_IMAGE)
   upsertCanonical(canonicalUrl)
-  applyHreflangs(route)
+  applyHreflangs()
   upsertJsonLd('organization', buildOrganizationJsonLd(i18n))
   upsertJsonLd('website', buildWebsiteJsonLd(i18n))
 

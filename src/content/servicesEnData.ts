@@ -107,25 +107,6 @@ export const serviceContentEn: Record<string, ServiceContent> = {
         ],
       },
     ],
-  },
-  'accounting-systems': {
-    title: 'Accounting system implementation and recovery',
-    groups: [],
-    featured: {
-      title: 'Services',
-      services: [
-        'Accounting recovery and cleanup.',
-        'Implementation and tuning of accounting software.',
-        'Process optimization.',
-        'Integration with bank statements and CRM.',
-      ],
-      systemsTitle: 'Supported systems',
-      systems: ['1C and Firstbit', 'Zoho Books', 'QuickBooks'],
-    },
-  },
-  'accounting-setup': {
-    title: 'Accounting setup tailored to your operations',
-    groups: [],
     tiles: [
       {
         title: '🚗️ Car rental',
@@ -203,6 +184,21 @@ export const serviceContentEn: Record<string, ServiceContent> = {
         items: ['Biological assets.', 'Seasonal costs.', 'Cycle-based reporting.'],
       },
     ],
+  },
+  'accounting-systems': {
+    title: 'Accounting system implementation and recovery',
+    groups: [],
+    featured: {
+      title: 'Services',
+      services: [
+        'Accounting recovery and cleanup.',
+        'Implementation and tuning of accounting software.',
+        'Process optimization.',
+        'Integration with bank statements and CRM.',
+      ],
+      systemsTitle: 'Supported systems',
+      systems: ['1C and Firstbit', 'Zoho Books', 'QuickBooks'],
+    },
   },
   training: {
     title: 'Support and training for your team',

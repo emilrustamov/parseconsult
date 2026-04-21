@@ -1,6 +1,6 @@
 <template>
   <section id="contact" class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-16 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pb-24 md:pt-24">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
       <div class="mx-auto max-w-3xl text-center">
       </div>
 
