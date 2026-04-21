@@ -22,10 +22,11 @@ export const homeEn = {
     about: {
       title: 'We cut routine and build transparent accounting',
       cta: 'Submit request',
-      p1: 'If your company struggles with repetitive tasks, manual data entry, mismatched reports, or lack of transparency — or you want faster analytics and a CRM aligned with how you work — we can help.',
+      p1: 'We provide professional accounting and CRM system setup and implementation services in the UAE, KSA, and GCC. Our team specializes in Zoho Books, QuickBooks, FirstBit, Microsoft Dynamics 365, Zoho CRM, and Bitrix24 solutions tailored for startup, SME, or established enterprise.',
       p2: 'The Parse Consult team brings together developers, accountants, and finance specialists with 25+ years of combined experience. We analyze accounting and CRM processes, find weak spots, and implement automation and optimization.',
-      p3: 'Our goal is to reduce operational load, improve accuracy, and make data clear for management decisions.',
-      p4: 'Leave a request and we will discuss your needs and the best approach.',
+      p3: 'We help companies automate accounting processes, ensure VAT compliance, and streamline financial reporting. From initial system setup to full implementation and staff training, we deliver complete solutions that save time and reduce errors.',
+      p4: 'Our CRM implementation services help businesses manage leads, automate sales pipelines, and improve customer relationships. Whether you need Zoho CRM or Bitrix24, we customize the system to fit your business workflows.',
+      p5: 'Start working with a reliable system instead of spreadsheets - we handle everything from setup to ongoing support.',
     },
     crm: {
       titleStart: '',
@@ -59,53 +60,60 @@ export const homeEn = {
     },
     keyServices: [
       {
-        id: 'firstbit',
-        slug: 'firstbit',
-        icon: '🧩',
+        icon: '🧾',
+        id: 'parse-ledger',
+        slug: 'parse-ledger',
+        title: 'Parse Ledger — automatic UAE bank statement import',
+        description:
+          'We implement Parse Ledger for transparent management and daily accounting workflows.',
+      },
+      {
+        id: 'accounting-systems',
+        slug: 'accounting-systems',
+        icon: '🔧',
         title: 'Zoho Books, QuickBooks, FirstBit & Microsoft Dynamics 365 Setup and Implementation',
-        description: 'Implementation and setup of accounting systems for UAE businesses.',
+        description:
+          'We set up and implement accounting systems for reliable day-to-day operations.',
       },
       {
         id: 'bitrix24',
         slug: 'bitrix24',
         icon: '🤖',
-        title: 'Zoho CRM & Bitrix24 Setup, Implementation, Automation, Integration, Support',
-        description: 'CRM implementation and support for sales and service teams.',
+        title: 'Zoho CRM & Bitrix24 Setup',
+        description:
+          'We roll out Bitrix24, set up pipelines, automation, and integrations with accounting and internal processes.',
       },
       {
         id: 'vat-cit-filing',
         slug: 'vat-cit-filing',
-        icon: '🧾',
+        icon: '🧮',
         title: 'VAT and CIT Filing Help in the UAE',
-        description: 'Support with VAT and CIT calculation and filing in the UAE.',
-      },
-      {
-        id: 'accounting-systems',
-        slug: 'accounting-systems',
-        icon: '🛡️',
-        title: 'Accounting System Setup for UAE VAT Compliance',
-        description: 'Accounting setup aligned with UAE VAT and reporting requirements.',
-      },
-      {
-        id: 'accounting-setup',
-        slug: 'accounting-setup',
-        icon: '📈',
-        title: 'CRM Automation for Sales & Business Growth',
-        description: 'Automation of sales and customer workflow processes.',
+        description:
+          'Full support with VAT and CIT calculation, filing, and compliance deadlines in the UAE.',
       },
       {
         id: 'training',
         slug: 'training',
         icon: '🎓',
-        title: 'Full Setup, Training & Support',
-        description: 'Complete setup, team training, and ongoing support.',
+        title: 'Support and training for accounting and CRM',
+        description:
+          'We train your team and provide ongoing support for stable day-to-day operations.',
       },
       {
-        id: 'firstbit-expert',
+        id: 'firstbit',
         slug: 'firstbit',
         icon: '⚙️',
-        title: 'Expert 1C and Firstbit implementation and customization in the UAE and GCC',
-        description: 'Tailored implementation and customization of 1C/FirstBit for your operations.',
+        title: 'Expert 1C and Firstbit implementation in the UAE',
+        description:
+          'We configure systems for local requirements in the UAE.',
+      },
+      {
+        id: 'accounting-setup',
+        slug: 'accounting-setup',
+        icon: '📊',
+        title: 'Accounting setup for your business model',
+        description:
+          'We adapt accounting to your model for accurate analytics and management reporting.',
       },
     ],
     faqItems: [

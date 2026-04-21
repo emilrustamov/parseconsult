@@ -79,9 +79,8 @@
           <p>{{ t('home.about.p1') }}</p>
           <p>{{ t('home.about.p2') }}</p>
           <p>{{ t('home.about.p3') }}</p>
-          <p class="font-medium text-slate-700">
-            {{ t('home.about.p4') }}
-          </p>
+          <p>{{ t('home.about.p4') }}</p>
+          <p class="font-medium text-slate-700">{{ t('home.about.p5') }}</p>
         </div>
       </div>
     </div>
@@ -105,13 +104,13 @@
         </p>
       </div>
 
-      <div class="mt-12 grid gap-4 lg:grid-cols-5">
-        <article v-for="platform in platforms" :key="platform.key" class="group rounded-xl border border-slate-200 bg-white p-7 transition hover:border-slate-300">
-          <div class="flex min-w-0 max-w-full items-center gap-3 sm:gap-4">
+      <div class="mt-12 grid gap-5 lg:grid-cols-5">
+        <article v-for="platform in platforms" :key="platform.key" class="group rounded-xl border border-slate-200 bg-white p-2.5 transition hover:border-slate-300 sm:p-3">
+          <div class="flex min-w-0 max-w-full flex-col items-center gap-3">
             <img
               :src="platform.logoSrc"
               :alt="platform.logoAlt"
-              :class="platform.logoClass ?? 'h-8 w-auto max-w-[7rem] shrink-0 object-contain object-left sm:h-9 sm:max-w-[8rem]'"
+              :class="platform.logoClass ?? 'h-12 w-auto max-w-[10.5rem] shrink-0 object-contain object-center sm:h-14 sm:max-w-[12rem]'"
               loading="lazy"
               decoding="async"
             />
@@ -123,7 +122,7 @@
               loading="lazy"
               decoding="async"
             />
-            <div class="min-w-0 break-words text-sm font-semibold tracking-tight text-slate-900 sm:text-base">{{ platform.name }}</div>
+            <div class="min-w-0 text-center break-words text-base font-semibold tracking-tight text-slate-900 sm:text-lg">{{ platform.name }}</div>
           </div>
         </article>
       </div>
