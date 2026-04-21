@@ -487,7 +487,6 @@ const isHomeRoute = computed(() => route.matched.some((record) => record.name ==
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
-          <RouterLink :to="{ name: 'home', hash: '#services' }" class="transition hover:text-brand-dark">
           <RouterLink :to="localized({ name: 'home', hash: '#services' })" class="transition hover:text-brand-dark">
             {{ t('footer.services') }}
           </RouterLink>
