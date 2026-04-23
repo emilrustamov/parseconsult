@@ -60,6 +60,7 @@ export type BitrixSurveyContent = {
 export type ServiceContent = {
   title: string
   description?: string
+  heroBullets?: string[]
   bitrixDemoUrl?: string
   bitrixLeadBlock?: BitrixLeadBlock
   bitrixCertificates?: BitrixCertificatesBlock

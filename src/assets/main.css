@@ -103,11 +103,20 @@ html {
 
   main > section + section {
     padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
 
-  main > section#hero {
+  main > section#hero,
+  main > section#service-hero {
     padding-top: 3.5rem !important;
     padding-bottom: 0 !important;
+  }
+
+  #platforms,
+  #tax-filing,
+  #home-lead {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
   }
 
   main > section#parse-ledger {
@@ -116,6 +125,7 @@ html {
 
   main > section#parse-ledger + section {
     padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
 
   @media (min-width: 768px) {
@@ -126,11 +136,20 @@ html {
 
     main > section + section {
       padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
     }
 
-    main > section#hero {
+    main > section#hero,
+    main > section#service-hero {
       padding-top: 4rem !important;
       padding-bottom: 0 !important;
+    }
+
+    #platforms,
+    #tax-filing,
+    #home-lead {
+      padding-top: 3rem !important;
+      padding-bottom: 3rem !important;
     }
 
     main > section#parse-ledger {
@@ -139,6 +158,7 @@ html {
 
     main > section#parse-ledger + section {
       padding-top: 0.75rem !important;
+      padding-bottom: 0.75rem !important;
     }
   }
 
@@ -150,6 +170,7 @@ html {
 
     main > section + section {
       padding-top: 0.85rem !important;
+      padding-bottom: 0.85rem !important;
     }
 
     main > section#parse-ledger {
@@ -158,6 +179,14 @@ html {
 
     main > section#parse-ledger + section {
       padding-top: 0.75rem !important;
+      padding-bottom: 0.75rem !important;
+    }
+
+    #platforms,
+    #tax-filing,
+    #home-lead {
+      padding-top: 2.5rem !important;
+      padding-bottom: 2.5rem !important;
     }
   }
 
@@ -169,6 +198,7 @@ html {
 
     main > section + section {
       padding-top: 1.75rem !important;
+      padding-bottom: 1.75rem !important;
     }
 
     main > section#parse-ledger {
@@ -177,6 +207,7 @@ html {
 
     main > section#parse-ledger + section {
       padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
     }
 
     p,
@@ -193,6 +224,7 @@ html {
 
     main > section + section {
       padding-top: 2.25rem !important;
+      padding-bottom: 2.25rem !important;
     }
 
     main > section#parse-ledger {
@@ -201,6 +233,7 @@ html {
 
     main > section#parse-ledger + section {
       padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
     }
   }
 

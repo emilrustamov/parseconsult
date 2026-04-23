@@ -18,6 +18,13 @@
         <p class="mt-6 text-base leading-8 text-slate-600 md:text-lg">
           {{ t('home.platformsHeading.outro') }}
         </p>
+        <RouterLink
+          v-if="showLearnMore"
+          :to="localized({ name: 'service-details', params: { slug: 'accounting-systems' } })"
+          class="ui-shine mt-6 inline-flex items-center justify-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
+        >
+          <span class="relative z-[1]">{{ t('cta.learnMore') }}</span>
+        </RouterLink>
       </div>
 
       <div class="mt-12 grid gap-5 lg:grid-cols-5">
@@ -56,8 +63,17 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { homePlatformAssets } from '@/content/platforms'
+import { useLocaleRoute } from '@/composables/useLocaleRoute'
+
+withDefaults(
+  defineProps<{
+    showLearnMore?: boolean
+  }>(),
+  { showLearnMore: true },
+)
 
 const { t } = useI18n()
+const { localized } = useLocaleRoute()
 
 const platforms = computed(() =>
   homePlatformAssets.map((asset) => ({

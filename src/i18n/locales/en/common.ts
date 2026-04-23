@@ -27,6 +27,7 @@ export const commonEn = {
   footer: {
     tagline: 'Accounting, implementation, automation — UAE and GCC',
     services: 'Services',
+    poweredBy: 'Powered by ltm.studio',
   },
   cta: {
     contactUs: 'Contact us',

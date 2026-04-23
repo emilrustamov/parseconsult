@@ -27,6 +27,7 @@ export const commonRu = {
   footer: {
     tagline: 'Бухгалтерский учёт, внедрение, автоматизация — ОАЭ и ССАГПЗ',
     services: 'Услуги',
+    poweredBy: 'Powered by ltm.studio',
   },
   cta: {
     contactUs: 'Связаться с нами',
