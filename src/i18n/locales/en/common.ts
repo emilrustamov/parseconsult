@@ -103,39 +103,42 @@ export const commonEn = {
     heroTitle:
       'Automatic Bank Statement Import to Zoho Books, QuickBooks, and FirstBit in the UAE with Parse Ledger',
     lead1:
-      'Parse Ledger is an AI-powered solution designed to automate bank statement processing for businesses in the UAE. Our intelligent system converts your bank statements from PDF, XLS, and XLSX formats into clean, structured data ready for accounting.',
+      '🧾 Parse Ledger is an AI-powered solution for automating bank statement processing for UAE businesses. It turns PDF, XLS, and XLSX statements into clean, structured data ready for accounting.',
     lead2:
-      'Stop wasting time on manual data entry. With Parse Ledger, you can instantly transform raw bank statements into XLSX, CSV or JSON files fully prepared for seamless import into leading accounting software such as Zoho Books, QuickBooks, and FirstBit.',
-    aiTitle: 'AI-Powered Bank Statement Processing',
-    aiBody:
-      'Parse Ledger uses advanced artificial intelligence to extract, clean, and structure financial data with high accuracy. Whether your statements come from UAE banks or even photos, our system can accurately read and process data not only from files exported from banking apps but also directly from images, adapting to different formats and layouts automatically.',
-    keyFeaturesTitle: 'Key Features:',
+      '⚡ Skip manual entry: in minutes, raw statements become XLSX, CSV, or JSON — ready to import into Zoho Books, QuickBooks, and FirstBit.',
+    aiTitle: '🤖 AI-Powered Bank Statement Processing',
+    aiEyebrow: '✨ AI · Statements · UAE',
+    aiBody1:
+      'Parse Ledger uses advanced artificial intelligence to extract, clean, and structure financial data with high accuracy.',
+    aiBody2:
+      'Whether your statements come from UAE banks or even photos, our system can accurately read and process data not only from files exported from banking apps but also directly from images, adapting to different formats and layouts automatically.',
+    keyFeaturesTitle: '📌 Key features',
     keyFeatures: [
-      'Automatic data extraction from PDF, XLS, XLSX',
-      'Smart transaction categorization',
-      'Clean and structured output (CSV, JSON, XLSX)',
-      'High accuracy with minimal manual correction',
-      'Fast processing for large volumes of data',
+      '📄 Automatic data extraction from PDF, XLS, and XLSX',
+      '🏷️ Smart transaction categorization',
+      '📊 Clean structured output (CSV, JSON, XLSX)',
+      '✅ High accuracy with minimal manual correction',
+      '⚡ Fast processing for large volumes of data',
     ],
-    builtForTitle: 'Built for Accounting Automation in the UAE',
+    builtForTitle: '🇦🇪 Built for Accounting Automation in the UAE',
     builtForLead:
       'Designed specifically for businesses operating in the UAE, Parse Ledger helps accountants, finance teams, and outsourcing firms streamline their workflows.',
-    integrationsLead: 'Our solution integrates smoothly with:',
-    integrations: ['Zoho Books', 'QuickBooks', 'FirstBit'],
+    integrationsLead: '🔗 Our solution integrates smoothly with:',
+    integrations: ['📗 Zoho Books', '📘 QuickBooks', '⚙️ FirstBit'],
     integrationsOutro:
       'This allows you to import processed data directly into your accounting system without additional formatting or adjustments.',
-    saveTimeTitle: 'Save Time, Reduce Errors, Increase Efficiency',
+    saveTimeTitle: '⏱️ Save Time, Reduce Errors, Increase Efficiency',
     saveTimeLead:
       'Manual processing of bank statements is time-consuming and prone to errors. Parse Ledger eliminates repetitive tasks and significantly reduces the risk of human mistakes.',
-    benefitsSectionTitle: 'Benefits:',
+    benefitsSectionTitle: '💡 Benefits',
     benefitLines: [
-      'Save hours of manual work every month',
-      'Reduce operational costs',
-      'Improve data accuracy',
-      'Accelerate financial reporting',
-      'Scale your accounting processes effortlessly',
+      '🕐 Save hours of manual work every month',
+      '💰 Reduce operational costs',
+      '🎯 Improve data accuracy',
+      '📈 Accelerate financial reporting',
+      '📦 Scale your accounting processes effortlessly',
     ],
-    ctaTitle: 'Start Using Parse Ledger Today',
+    ctaTitle: '🚀 Start Using Parse Ledger Today',
     ctaLead:
       'Take advantage of our free beta testing period and experience the future of accounting automation in the UAE.',
     ctaHighlight: '👉 Upload your bank statements and let AI do the work.',

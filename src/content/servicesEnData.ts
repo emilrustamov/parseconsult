@@ -187,7 +187,67 @@ export const serviceContentEn: Record<string, ServiceContent> = {
   },
   'accounting-systems': {
     title: 'Accounting system implementation and recovery',
-    groups: [],
+    description:
+      'Starting a business in the UAE or GCC? Set up accounting correctly from day one. If your company is already operating but your accounting is not structured, processes are chaotic, and reporting lacks transparency, we help you build a clear financial system through modern tools and process automation.',
+    groups: [
+      {
+        title: 'Turnkey implementation and accounting setup',
+        items: [
+          '1C and Firstbit for local and international accounting.',
+          'Zoho Books for cloud-based business automation.',
+          'QuickBooks for small and medium-sized businesses.',
+          'Microsoft Dynamics for enterprise ERP setups.',
+          'We do not just install software, we redesign accounting around your business processes.',
+        ],
+      },
+      {
+        title: 'What you get',
+        items: [
+          'Structured accounting with financial control, transparent reporting, and compliance with UAE and GCC requirements.',
+          'Process automation: less manual work, integrations with CRM, banks, and POS, and fewer errors.',
+          'Management analytics: cash flow, P&L, balance sheet, and reliable numbers for decision-making.',
+        ],
+      },
+      {
+        title: 'Who this solution is for',
+        items: [
+          'Companies at the business setup stage in the UAE.',
+          'Businesses moving from Excel to ERP.',
+          'Companies with chaotic accounting operations.',
+          'Founders and managers who need transparency and control.',
+        ],
+      },
+      {
+        title: 'Our implementation approach',
+        items: [
+          'Business and process assessment.',
+          'Selection of the optimal accounting system.',
+          'System configuration and rollout.',
+          'Team training.',
+          'Ongoing support.',
+          'Unlike typical integrators, we stay with you until outcomes are achieved, not just until installation is complete.',
+        ],
+      },
+      {
+        title: 'Support and post-launch assistance',
+        items: [
+          'Continuous technical support.',
+          'Fast responses and practical help.',
+          'Custom enhancements for your business model.',
+          'Employee training and onboarding.',
+          'You are never left alone with the system.',
+        ],
+      },
+      {
+        title: 'Why clients choose us in the UAE and GCC',
+        items: [
+          'Hands-on experience with local requirements, including VAT and IFRS.',
+          'Practical ERP and accounting expertise.',
+          'True turnkey implementation.',
+          'Focus on measurable outcomes, not process for process sake.',
+        ],
+      },
+    ],
     featured: {
       title: 'Services',
       services: [
@@ -197,7 +257,7 @@ export const serviceContentEn: Record<string, ServiceContent> = {
         'Integration with bank statements and CRM.',
       ],
       systemsTitle: 'Supported systems',
-      systems: ['1C and Firstbit', 'Zoho Books', 'QuickBooks'],
+      systems: ['1C and Firstbit', 'Zoho Books', 'QuickBooks', 'Microsoft Dynamics'],
     },
   },
   training: {
