@@ -308,6 +308,9 @@ export const installSeo = (router: Router, i18n: I18nInstance): void => {
   const run = (): void => {
     applySeo(router.currentRoute.value, i18n)
   }
+  void router.isReady().then(() => {
+    run()
+  })
   router.afterEach(() => {
     run()
   })
