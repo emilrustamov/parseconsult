@@ -6,6 +6,7 @@ type I18nInstance = { global: Composer }
 import { socialLinkDefs } from '@/socialLinks'
 import { SITE_CONTACT_EMAIL } from '@/siteContact'
 import { getServiceContent } from '@/content/services'
+import { DEVELOPER_SITE_URL } from '@/developerSite'
 
 const SITE_URL = 'https://parseconsult.ae'
 const DEFAULT_IMAGE = `${SITE_URL}/logo.svg`
@@ -266,7 +267,7 @@ const applySeo = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): voi
   document.title = meta.title
   upsertMetaTag('description', meta.description)
   upsertMetaTag('robots', meta.robots ?? 'index,follow')
-  upsertMetaTag('author', siteName)
+  upsertMetaTag('author', DEVELOPER_SITE_URL)
   upsertMetaTag('og:title', meta.title)
   upsertMetaTag('og:description', meta.description)
   upsertMetaTag('og:type', 'website')

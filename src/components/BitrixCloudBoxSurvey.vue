@@ -78,14 +78,14 @@
     </div>
 
     <div v-else-if="phase === 'lead'" class="space-y-8">
-      <div class="mx-auto max-w-xl space-y-6 rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm sm:p-8">
+      <div class="mx-auto max-w-xl space-y-4 rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm sm:p-8">
         <div>
           <p class="text-sm font-semibold leading-7 text-brand-dark md:text-base">{{ recommendationText }}</p>
           <h3 class="mt-4 text-lg font-semibold tracking-tight text-slate-950 md:text-xl">{{ content.finalTitle }}</h3>
           <p class="mt-2 text-sm leading-7 text-slate-600 md:text-base">{{ content.finalText }}</p>
         </div>
 
-        <form class="space-y-5" @submit.prevent="submitLead">
+        <form class="space-y-4" @submit.prevent="submitLead">
           <div class="hidden" aria-hidden="true">
             <input v-model="hp" type="text" tabindex="-1" autocomplete="off">
           </div>

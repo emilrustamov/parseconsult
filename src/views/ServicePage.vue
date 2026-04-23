@@ -1,6 +1,9 @@
 <template>
-  <section class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-8 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pb-10 md:pt-24">
-    <div class="mx-auto max-w-7xl px-6 pt-8 lg:px-8 lg:pt-10">
+  <section
+    id="service-hero"
+    class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-8 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pb-10 md:pt-24"
+  >
+    <div class="relative z-10 mx-auto max-w-7xl py-12 md:py-16 lg:py-10">
       <div
         v-if="!isBitrixPage || !page.bitrixLeadBlock"
         class="rounded-2xl border border-brand-dark/35 bg-brand-surface px-7 py-7 shadow-md shadow-black/10 md:px-7 md:py-7"
@@ -86,7 +89,7 @@
         class="fade-in-up mt-10"
         style="animation-delay: 80ms"
       >
-        <PlatformsSection />
+        <PlatformsSection :show-learn-more="false" />
       </section>
 
       <section
@@ -242,15 +245,15 @@
           <div class="relative z-10 grid gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-8">
             <div class="space-y-5">
               <div class="h-1 w-16 rounded-full bg-gradient-to-r from-brand-dark to-brand"></div>
-              <h2 class="text-xl font-semibold leading-tight tracking-tight text-slate-950 md:text-3xl">{{ group.title }}</h2>
+              <h2 class="text-xl font-normal leading-tight tracking-tight text-slate-950 md:text-3xl">{{ group.title }}</h2>
             </div>
-            <ul class="space-y-3 border-l border-brand/30 pl-5 sm:pl-6">
+            <ul class="space-y-3 pl-0 sm:border-l sm:border-brand/30 sm:pl-6">
               <li
                 v-for="item in group.items"
                 :key="item.raw"
                 class="rounded-2xl border border-white/70 bg-white/75 px-4 py-0 text-sm leading-7 text-slate-700 backdrop-blur-sm md:text-base"
               >
-                <span class="font-semibold text-slate-950">{{ item.lead }}</span>
+                <span class="text-slate-950 font-normal">{{ item.lead }}</span>
                 <span v-if="item.details">: {{ item.details }}</span>
               </li>
             </ul>

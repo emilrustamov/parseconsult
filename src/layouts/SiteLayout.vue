@@ -9,6 +9,7 @@ import { useLocaleRoute } from '@/composables/useLocaleRoute'
 import { applyDocumentLang, persistLocale } from '@/i18n'
 import type { AppLocale } from '@/i18n'
 import { socialLinkDefs } from '@/socialLinks'
+import { DEVELOPER_SITE_URL } from '@/developerSite'
 
 const { t, locale } = useI18n()
 const currentYear = new Date().getFullYear()
@@ -489,6 +490,12 @@ const isHomeRoute = computed(() => route.matched.some((record) => record.name ==
             <div class="font-semibold tracking-tight text-slate-900">{{ t('brand.siteName') }}</div>
             <div class="font-medium text-slate-600">{{ t('footer.tagline') }}</div>
             <div class="font-medium text-slate-500">© {{ currentYear }}</div>
+            <a
+              :href="DEVELOPER_SITE_URL"
+              class="mt-1 inline-block text-xs font-medium text-slate-400 transition hover:text-brand-dark"
+              target="_blank"
+              rel="noopener noreferrer"
+            >{{ t('footer.poweredBy') }}</a>
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-x-5 gap-y-3">

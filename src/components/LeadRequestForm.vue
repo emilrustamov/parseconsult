@@ -1,5 +1,5 @@
 <template>
-  <form class="space-y-6" @submit.prevent="submitContactForm">
+  <form class="space-y-4" @submit.prevent="submitContactForm">
     <div v-if="formSuccess && submitKind === 'api'" class="rounded-lg border border-brand/30 bg-brand/10 px-4 py-3 text-sm font-medium text-slate-800">
       {{ t('leadForm.successApi') }}
     </div>
@@ -32,7 +32,7 @@
     </div>
 
     <div>
-      <span class="mb-3 block text-sm font-semibold text-slate-800">{{ t('leadForm.contactMethod') }} <span class="text-red-600">*</span></span>
+      <span class="block text-sm font-semibold text-slate-800">{{ t('leadForm.contactMethod') }} <span class="text-red-600">*</span></span>
       <div class="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
         <label
           v-for="opt in contactMethodOptions"
@@ -162,7 +162,7 @@
         :id="ids.message"
         v-model="form.message"
         name="message"
-        rows="4"
+        rows="2"
         required
         class="w-full resize-y rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-brand-dark focus:ring-4 focus:ring-brand/20"
         :placeholder="t('leadForm.messagePlaceholder')"
