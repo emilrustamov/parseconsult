@@ -5,18 +5,29 @@
         v-if="!isBitrixPage || !page.bitrixLeadBlock"
         class="rounded-2xl border border-brand-dark/35 bg-brand-surface px-7 py-7 shadow-md shadow-black/10 md:px-7 md:py-7"
       >
-        <h1 class=" text-2xl font-semibold tracking-tight text-white md:text-4xl">{{ page.title }}</h1>
-        <p class="mt-4 text-sm leading-7 text-emerald-50/90 md:text-base">
-          {{ page.description ?? t('servicePage.defaultDescription') }}
-        </p>
-        <div class="mt-6">
-          <button
-            type="button"
-            class="inline-flex items-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
-            @click="openLeadModal"
-          >
-            {{ t('servicePage.discussImplementation') }}
-          </button>
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)] lg:items-center">
+          <div>
+            <h1 class="text-2xl font-semibold tracking-tight text-white md:text-4xl">{{ page.title }}</h1>
+            <p class="mt-4 text-sm leading-7 text-emerald-50/90 md:text-base">
+              {{ page.description ?? t('servicePage.defaultDescription') }}
+            </p>
+            <div class="mt-6">
+              <button
+                type="button"
+                class="inline-flex items-center rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-brand-dark"
+                @click="openLeadModal"
+              >
+                {{ t('servicePage.discussImplementation') }}
+              </button>
+            </div>
+          </div>
+          <div v-if="serviceLottieSrc" class="relative h-56 w-full sm:h-64 lg:h-72">
+            <LazyDotLottie
+              :src="serviceLottieSrc"
+              root-class="absolute inset-0 h-full w-full"
+              lottie-class="absolute inset-0 h-full w-full object-contain"
+            />
+          </div>
         </div>
       </div>
 
@@ -60,21 +71,13 @@
               </a>
             </div>
           </div>
-          <ul class="grid h-full min-h-0 gap-3 sm:grid-cols-2">
-            <li
-              v-for="(item, index) in bitrixPlatformGroup.items"
-              :key="item"
-              class="rounded-2xl border border-white/15 bg-white/[0.08] px-4 py-4 text-sm leading-7 text-emerald-50/95 backdrop-blur-sm md:text-base"
-              :class="index === 2 ? 'sm:col-span-2' : ''"
-            >
-              <div class="flex items-start gap-3.5">
-                <span class="inline-flex h-7 min-w-7 items-center justify-center rounded-lg bg-white/15 px-2 text-xs font-semibold text-white">
-                  {{ `0${index + 1}` }}
-                </span>
-                <span class="pt-0.5">{{ item }}</span>
-              </div>
-            </li>
-          </ul>
+          <div class="relative h-full min-h-[260px] w-full">
+            <LazyDotLottie
+              src="/Man%20and%20robot%20with%20computers%20sitting%20together%20in%20workplace.lottie"
+              root-class="absolute inset-0 h-full w-full"
+              lottie-class="absolute inset-0 h-full w-full object-contain"
+            />
+          </div>
         </div>
       </section>
 
@@ -498,6 +501,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import 'vue3-carousel/carousel.css'
+import LazyDotLottie from '@/components/LazyDotLottie.vue'
 import BitrixCloudBoxSurvey from '@/components/BitrixCloudBoxSurvey.vue'
 import LeadRequestForm from '@/components/LeadRequestForm.vue'
 import PlatformsSection from '@/components/PlatformsSection.vue'
@@ -513,6 +517,22 @@ const showcaseSlugs = new Set(['firstbit', 'accounting-systems', 'training', 'va
 const isShowcasePage = computed(() => showcaseSlugs.has(String(route.params.slug ?? '')))
 const isBitrixPage = computed(() => String(route.params.slug ?? '') === 'bitrix24')
 const isAccountingSystemsPage = computed(() => String(route.params.slug ?? '') === 'accounting-systems')
+const serviceLottieSrc = computed(() => {
+  const slug = String(route.params.slug ?? '')
+  if (slug === 'accounting-systems') {
+    return '/Software.lottie'
+  }
+  if (slug === 'firstbit') {
+    return '/Business%20Growth.lottie'
+  }
+  if (slug === 'training') {
+    return '/Online%20Learning.lottie'
+  }
+  if (slug === 'vat-cit-filing') {
+    return '/budget-and-bills.lottie'
+  }
+  return ''
+})
 const currentBitrixCertSlide = ref(0)
 
 const bitrixCertCarouselBreakpoints = {
