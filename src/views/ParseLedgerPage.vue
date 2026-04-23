@@ -182,20 +182,20 @@ type ParseLedgerBank = {
 }
 
 const parseLedgerBanks: ParseLedgerBank[] = [
-  { name: 'Abu Dhabi Commercial Bank', abbr: 'ADCB' },
-  { name: 'Abu Dhabi Islamic Bank', abbr: 'ADIB' },
-  { name: 'Ajman Bank', abbr: '' },
-  { name: 'Commercial Bank of Dubai', abbr: 'CBD' },
-  { name: 'Dubai Islamic Bank', abbr: 'DIB' },
-  { name: 'Emirates Islamic', abbr: '' },
-  { name: 'Emirates NBD', abbr: '' },
-  { name: 'First Abu Dhabi Bank', abbr: 'FAB' },
-  { name: 'Mashreq Bank', abbr: '' },
-  { name: 'Al Maryah Community Bank', abbr: 'MBank' },
-  { name: 'Banque Misr', abbr: 'MISR' },
-  { name: 'RAKBANK', abbr: '' },
-  { name: 'Sharjah Islamic Bank', abbr: 'SIB' },
-  { name: 'Wio Bank', abbr: 'WIO' },
+{ name: 'Abu Dhabi Commercial Bank', abbr: 'ADCB', logoSrc: '/logos/ADCB-1.png' },
+  { name: 'Abu Dhabi Islamic Bank', abbr: 'ADIB', logoSrc: '/logos/ADIB-2.png' },
+  { name: 'Ajman Bank', abbr: '', logoSrc: '/logos/AB-3.png' },
+  { name: 'Commercial Bank of Dubai', abbr: 'CBD', logoSrc: '/logos/CBD-4.png' },
+  { name: 'Dubai Islamic Bank', abbr: 'DIB', logoSrc: '/logos/DIB-5.png' },
+  { name: 'Emirates Islamic', abbr: '', logoSrc: '/logos/EIB-6.png' },
+  { name: 'Emirates NBD', abbr: '', logoSrc: '/logos/NBD-7.png' },
+  { name: 'First Abu Dhabi Bank', abbr: 'FAB', logoSrc: '/logos/FAB-8.png' },
+  { name: 'Mashreq Bank', abbr: '', logoSrc: '/logos/mashreq-9.png' },
+  { name: 'Al Maryah Community Bank', abbr: 'MBank', logoSrc: '/logos/AMCB-10.png' },
+  { name: 'Banque Misr', abbr: 'MISR', logoSrc: '/logos/BMisr-11.png' },
+  { name: 'RAKBANK', abbr: '', logoSrc: '/logos/RakBank-12.png' },
+  { name: 'Sharjah Islamic Bank', abbr: 'SIB', logoSrc: '/logos/SIB-13.png' },
+  { name: 'Wio Bank', abbr: 'WIO', logoSrc: '/logos/Wio-14.png' },
 ]
 
 const parseLedgerTutorialVideos = computed(() => [
