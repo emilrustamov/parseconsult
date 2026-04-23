@@ -73,7 +73,7 @@
           </div>
           <div class="relative h-full min-h-[260px] w-full">
             <LazyDotLottie
-              src="/Man%20and%20robot%20with%20computers%20sitting%20together%20in%20workplace.lottie"
+              src="/robot.lottie"
               root-class="absolute inset-0 h-full w-full"
               lottie-class="absolute inset-0 h-full w-full object-contain"
             />
@@ -523,10 +523,13 @@ const serviceLottieSrc = computed(() => {
     return '/Software.lottie'
   }
   if (slug === 'firstbit') {
-    return '/Business%20Growth.lottie'
+    return '/Business Growth.lottie'
+  }
+  if (slug === 'bitrix24') {
+    return '/robot.lottie'
   }
   if (slug === 'training') {
-    return '/Online%20Learning.lottie'
+    return '/Online Learning.lottie'
   }
   if (slug === 'vat-cit-filing') {
     return '/budget-and-bills.lottie'
