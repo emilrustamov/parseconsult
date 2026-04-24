@@ -198,29 +198,61 @@ export const commonEn = {
       'We support implementation, configuration, and integration of modern accounting systems — 1C and Firstbit, Zoho Books and QuickBooks — delivering transparent accounting, process automation, and compliance for businesses in the UAE and GCC.',
   },
   seo: {
-    homeTitle: 'Parse Consult in the UAE and GCC — accounting implementation and automation',
+    homeTitle: 'Parse Consult — UAE & GCC accounting automation',
     homeDescription:
       '1C and Firstbit, Zoho Books and QuickBooks in the UAE and GCC. Accounting recovery, team training, and financial process automation.',
-    contactTitle: 'Contact Parse Consult',
+    homeKeywords:
+      'Parse Consult, UAE accounting, GCC, 1C, Firstbit, Zoho Books, QuickBooks, accounting automation, IFRS, VAT, corporate tax, accounting implementation',
+    contactTitle: 'Contact Parse Consult — UAE & GCC',
     contactDescription:
-      'Contact Parse Consult for advice on accounting systems and automation in the UAE and GCC.',
-    parseLedgerTitle: 'parseledger.ae',
+      'Reach out to Parse Consult in the UAE and GCC for practical guidance on accounting systems, ERP and cloud tools, process automation, VAT and corporate tax questions, and team enablement tailored to your business stage and industry.',
+    contactKeywords:
+      'Parse Consult contact, UAE accounting consultant, GCC, accounting systems, automation, Zoho Books, QuickBooks, 1C, Firstbit',
+    parseLedgerTitle: 'Parse Ledger: UAE bank statements to accounting',
     parseLedgerDescription:
       'Parse Ledger uses AI to convert UAE bank statements from PDF, XLS, XLSX, and images into clean data ready for Zoho Books, QuickBooks, and FirstBit.',
+    parseLedgerKeywords:
+      'Parse Ledger, UAE bank statement, PDF to Excel, bank feed automation, Zoho Books import, QuickBooks, FirstBit, AI accounting, OCR',
     notFoundTitle: 'Page not found | Parse Consult',
-    notFoundDescription: 'The requested page was not found. Go to the Parse Consult home page.',
+    notFoundDescription:
+      'The page you requested could not be found on parseconsult.ae. Use the site navigation to explore accounting implementation, CRM and tax services in the UAE and GCC, or open the home page to contact Parse Consult.',
+    notFoundKeywords: 'Parse Consult, page not found',
     fallbackTitle: 'Parse Consult — consulting and accounting automation',
     fallbackDescription:
-      'Parse Consult helps businesses in the UAE and GCC build transparent accounting, implement systems, and train teams.',
+      'Parse Consult supports companies in the UAE and GCC with transparent accounting, structured financial processes, system implementation across 1C, Firstbit, Zoho Books and QuickBooks, integrations, training, and ongoing advisory so teams work confidently with compliant reporting.',
+    fallbackKeywords:
+      'Parse Consult, UAE, GCC, accounting, automation, 1C, Firstbit, Zoho Books, QuickBooks, CRM, VAT, CIT',
     breadcrumbHome: 'Home',
     serviceFallbackDescription:
-      'Professional implementation and configuration of accounting solutions for businesses in the UAE and GCC.',
+      'Parse Consult delivers professional design, implementation and configuration of accounting and finance platforms for UAE and GCC organisations, from discovery and data migration through go live, user training, automation, and continuous optimisation aligned with local regulatory expectations.',
+    serviceTitles: {
+      bitrix24: 'CRM implementation UAE | Parse Consult',
+      firstbit: '1C & Firstbit UAE | Parse Consult',
+      'accounting-systems': 'Accounting systems UAE | Parse Consult',
+      training: 'Team training UAE | Parse Consult',
+      'vat-cit-filing': 'VAT & CIT filing UAE | Parse Consult',
+    },
+    serviceKeywords: {
+      bitrix24:
+        'Zoho CRM, Bitrix24, CRM UAE, CRM implementation, sales automation, business process automation, Parse Consult',
+      firstbit:
+        '1C, Firstbit, UAE accounting, GCC, IFRS, ERP implementation, accounting customization, Parse Consult',
+      'accounting-systems':
+        'accounting systems UAE, accounting recovery, Zoho Books, QuickBooks, Microsoft Dynamics, bank integration, Parse Consult',
+      training:
+        'accounting training UAE, team onboarding, 1C training, Zoho Books training, QuickBooks support, Parse Consult',
+      'vat-cit-filing':
+        'UAE VAT, corporate tax UAE, CIT filing, tax compliance UAE, FTA, Parse Consult',
+    },
     serviceDescriptions: {
+      bitrix24:
+        'Zoho CRM and Bitrix24 consulting in the UAE: end to end setup, pipeline design, automation for leads and invoices, messenger integrations, role security, data imports, and managed support so sales operations stay aligned with delivery, finance and compliance requirements across the GCC.',
       firstbit:
         'Expert 1C and Firstbit implementation in the UAE and GCC: audit, industry-specific accounting setup, automation, and IFRS methodology.',
       'accounting-systems':
-        'Implementation, recovery, and optimization of accounting systems with bank and CRM integration for the UAE and GCC.',
-      training: 'Support and training: policies, guides, and hands-on team onboarding for new accounting processes.',
+        'Implementation, recovery, and optimisation of accounting systems for the UAE and GCC with bank feeds, CRM links and retail integrations. We restructure workflows, migrate historical data, configure roles and approvals, and build reporting so leadership has reliable cash flow, margin and balance sheet insight.',
+      training:
+        'Hands on support and training for finance teams in the UAE and GCC: documented policies, role based guides, workshops on 1C, Firstbit, Zoho Books and QuickBooks, shadowing during month end close, and post launch Q&A so adoption sticks and mistakes drop after go live.',
       'vat-cit-filing':
         'VAT and Corporate Tax (CIT) filing in the UAE: calculations, return submission, payment support, and compliance guidance.',
     },
