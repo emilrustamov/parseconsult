@@ -41,6 +41,8 @@ export const homeRu = {
       tag3: 'Лиды и воронка продаж',
       tag4: 'Постоянная поддержка',
       cardTitle: 'Полный цикл CRM-внедрения',
+      zohoLogoAlt: 'Логотип Zoho CRM',
+      bitrixLogoAlt: 'Логотип Bitrix24 CRM',
     },
     taxFiling: {
       title: 'Помощь с подачей VAT и CIT в ОАЭ',

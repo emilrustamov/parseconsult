@@ -41,6 +41,8 @@ export const homeEn = {
       tag3: 'Lead & Sales Pipeline',
       tag4: 'Ongoing Support',
       cardTitle: 'Full CRM Setup & Implementation',
+      zohoLogoAlt: 'Zoho CRM product logo',
+      bitrixLogoAlt: 'Bitrix24 CRM product logo',
     },
     taxFiling: {
       title: 'VAT and CIT Filing Help in the UAE',

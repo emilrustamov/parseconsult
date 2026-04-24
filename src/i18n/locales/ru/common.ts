@@ -223,6 +223,7 @@ export const commonRu = {
     fallbackKeywords:
       'Parse Consult, ОАЭ, ССАГПЗ, бухгалтерия, автоматизация, 1С, Firstbit, Zoho Books, QuickBooks, CRM, VAT, CIT',
     breadcrumbHome: 'Главная',
+    ogImageAlt: 'Логотип Parse Consult — консалтинг по учёту, CRM и налогам в ОАЭ и ССАГПЗ',
     serviceFallbackDescription:
       'Parse Consult выполняет проектирование, внедрение и настройку финансовых и учётных платформ для организаций в ОАЭ и ССАГПЗ: от обследования и миграции данных до запуска, обучения пользователей, автоматизации и сопровождения с учётом локальной отчётности и налоговых практик.',
     serviceTitles: {

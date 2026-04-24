@@ -4,7 +4,7 @@ import { RouterView } from 'vue-router'
 import SitePreloader from './components/SitePreloader.vue'
 
 const PRELOADER_COOKIE_NAME = 'parse_preloader_seen'
-const PRELOADER_DURATION_MS = 900
+const PRELOADER_DURATION_MS = 550
 const PRELOADER_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24
 
 const hasPreloaderCookie = (): boolean =>

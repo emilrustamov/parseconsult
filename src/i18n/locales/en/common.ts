@@ -223,6 +223,7 @@ export const commonEn = {
     fallbackKeywords:
       'Parse Consult, UAE, GCC, accounting, automation, 1C, Firstbit, Zoho Books, QuickBooks, CRM, VAT, CIT',
     breadcrumbHome: 'Home',
+    ogImageAlt: 'Parse Consult logo — accounting, CRM, and tax consulting in the UAE and GCC',
     serviceFallbackDescription:
       'Parse Consult delivers professional design, implementation and configuration of accounting and finance platforms for UAE and GCC organisations, from discovery and data migration through go live, user training, automation, and continuous optimisation aligned with local regulatory expectations.',
     serviceTitles: {

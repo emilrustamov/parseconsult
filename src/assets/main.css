@@ -92,7 +92,7 @@ html {
   --color-brand: #5ee9b5;
   --color-brand-dark: #3ccd98;
   --color-brand-surface: #153d34;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope Variable", "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {

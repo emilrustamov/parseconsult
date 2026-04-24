@@ -22,8 +22,8 @@ const { t } = useI18n()
     <div class="relative flex flex-col items-center gap-10 px-6">
       <div class="flex items-center gap-3">
         <img
-          src="/logo.svg"
-          alt="Parse Consult"
+          src="/logo.jpg"
+          :alt="t('brand.logoAlt')"
           class="h-11 w-11 rounded-xl object-contain"
           loading="eager"
           decoding="async"
