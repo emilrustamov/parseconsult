@@ -14,6 +14,7 @@ const DEFAULT_IMAGE = `${SITE_URL}/logo.svg`
 type SeoMeta = {
   title: string
   description: string
+  keywords: string
   path: string
   robots?: 'index,follow' | 'noindex,follow'
 }
@@ -21,6 +22,7 @@ type SeoMeta = {
 const upsertMetaTag = (
   name:
     | 'description'
+    | 'keywords'
     | 'robots'
     | 'author'
     | 'twitter:card'
@@ -45,6 +47,22 @@ const upsertMetaTag = (
     document.head.appendChild(element)
   }
   element.setAttribute('content', content)
+}
+
+const clearOgLocaleAlternates = (): void => {
+  document.head.querySelectorAll('meta[data-seo-og-locale-alt]').forEach((el) => {
+    el.remove()
+  })
+}
+
+const syncOgLocaleAlternates = (currentOgLocale: string): void => {
+  clearOgLocaleAlternates()
+  const alternate = currentOgLocale === 'en_US' ? 'ru_RU' : 'en_US'
+  const el = document.createElement('meta')
+  el.setAttribute('property', 'og:locale:alternate')
+  el.setAttribute('content', alternate)
+  el.setAttribute('data-seo-og-locale-alt', '0')
+  document.head.appendChild(el)
 }
 
 const upsertHreflang = (hreflang: string, href: string): void => {
@@ -109,6 +127,7 @@ const buildMeta = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): Se
     return {
       title: t('seo.homeTitle'),
       description: t('seo.homeDescription'),
+      keywords: t('seo.homeKeywords'),
       path,
     }
   }
@@ -116,6 +135,7 @@ const buildMeta = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): Se
     return {
       title: t('seo.contactTitle'),
       description: t('seo.contactDescription'),
+      keywords: t('seo.contactKeywords'),
       path,
     }
   }
@@ -123,6 +143,7 @@ const buildMeta = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): Se
     return {
       title: t('seo.parseLedgerTitle'),
       description: t('seo.parseLedgerDescription'),
+      keywords: t('seo.parseLedgerKeywords'),
       path,
     }
   }
@@ -130,6 +151,7 @@ const buildMeta = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): Se
     return {
       title: t('seo.notFoundTitle'),
       description: t('seo.notFoundDescription'),
+      keywords: t('seo.notFoundKeywords'),
       path,
       robots: 'noindex,follow',
     }
@@ -141,10 +163,15 @@ const buildMeta = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): Se
     const service = getServiceContent(locale)[slug]
     if (service) {
       const descKey = `seo.serviceDescriptions.${slug}`
+      const titleKey = `seo.serviceTitles.${slug}`
+      const kwKey = `seo.serviceKeywords.${slug}`
       const description = te(descKey) ? t(descKey) : t('seo.serviceFallbackDescription')
+      const title = te(titleKey) ? t(titleKey) : `${service.title} | ${siteName}`
+      const keywords = te(kwKey) ? t(kwKey) : t('seo.fallbackKeywords')
       return {
-        title: `${service.title} | ${siteName}`,
+        title,
         description,
+        keywords,
         path,
       }
     }
@@ -153,6 +180,7 @@ const buildMeta = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): Se
   return {
     title: t('seo.fallbackTitle'),
     description: t('seo.fallbackDescription'),
+    keywords: t('seo.fallbackKeywords'),
     path,
     robots: routeName === 'not-found' ? 'noindex,follow' : 'index,follow',
   }
@@ -266,6 +294,7 @@ const applySeo = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): voi
 
   document.title = meta.title
   upsertMetaTag('description', meta.description)
+  upsertMetaTag('keywords', meta.keywords)
   upsertMetaTag('robots', meta.robots ?? 'index,follow')
   upsertMetaTag('author', DEVELOPER_SITE_URL)
   upsertMetaTag('og:title', meta.title)
@@ -275,6 +304,7 @@ const applySeo = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): voi
   upsertMetaTag('og:image', DEFAULT_IMAGE)
   upsertMetaTag('og:site_name', siteName)
   upsertMetaTag('og:locale', ogLocale)
+  syncOgLocaleAlternates(ogLocale)
   upsertMetaTag('twitter:card', 'summary_large_image')
   upsertMetaTag('twitter:title', meta.title)
   upsertMetaTag('twitter:description', meta.description)

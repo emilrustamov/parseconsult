@@ -9,8 +9,19 @@ export const LOCALE_STORAGE_KEY = 'parseconsult_locale'
 export type AppLocale = 'ru' | 'en'
 
 export function readStoredLocale(): AppLocale {
-  if (typeof localStorage === 'undefined') return 'ru'
-  return localStorage.getItem(LOCALE_STORAGE_KEY) === 'en' ? 'en' : 'ru'
+  if (typeof window !== 'undefined') {
+    const m = window.location.pathname.match(/^\/(en|ru)(?:\/|$)/)
+    if (m && (m[1] === 'en' || m[1] === 'ru')) {
+      return m[1]
+    }
+  }
+  if (typeof localStorage !== 'undefined') {
+    const s = localStorage.getItem(LOCALE_STORAGE_KEY)
+    if (s === 'en' || s === 'ru') {
+      return s
+    }
+  }
+  return 'en'
 }
 
 export const i18n = createI18n({
