@@ -10,7 +10,7 @@ export const commonRu = {
     parse: 'Parse',
     consult: 'Consult',
     siteName: 'Parse Consult',
-    logoAlt: 'Parse Consult',
+    logoAlt: 'Parse Consult — консалтинг по учёту, CRM и налогам в ОАЭ и ССАГПЗ',
   },
   nav: {
     home: 'Главная',
@@ -148,6 +148,8 @@ export const commonRu = {
       'Программа Parse Ledger позволяет быстро и точно обрабатывать банковские выписки, минимизируя ручной труд и снижая риск ошибок.',
     banksListTitle: 'Поддерживаются выписки следующих банков:',
     otherBanks: 'и другие банки',
+    bankRowImageAlt:
+      '{name} — выписки банка ОАЭ для импорта в Zoho Books, QuickBooks и FirstBit (Parse Ledger)',
     tutorialTitle: 'Инструкция по использованию программы',
     videoTitle1: 'Parse Ledger — инструкция (видео 1)',
     videoTitle2: 'Parse Ledger — инструкция (видео 2)',
@@ -196,6 +198,7 @@ export const commonRu = {
     platformsAlso: 'а также',
     platformsOutro:
       'Поддерживаем внедрение, настройку и интеграцию современных бухгалтерских систем — 1С и Firstbit, Zoho Books и QuickBooks — обеспечивая прозрачный учёт, автоматизацию процессов и соответствие требованиям бизнеса в ОАЭ и странах ССАГПЗ.',
+    bitrixCertImageAlt: '{caption} — внедрение и поддержка Zoho CRM и Bitrix24 в ОАЭ',
   },
   seo: {
     homeTitle: 'Parse Consult — учёт и автоматизация в ОАЭ',
@@ -223,6 +226,7 @@ export const commonRu = {
     fallbackKeywords:
       'Parse Consult, ОАЭ, ССАГПЗ, бухгалтерия, автоматизация, 1С, Firstbit, Zoho Books, QuickBooks, CRM, VAT, CIT',
     breadcrumbHome: 'Главная',
+    ogImageAlt: 'Parse Consult — консалтинг по учёту, CRM и налогам в ОАЭ и ССАГПЗ',
     serviceFallbackDescription:
       'Parse Consult выполняет проектирование, внедрение и настройку финансовых и учётных платформ для организаций в ОАЭ и ССАГПЗ: от обследования и миграции данных до запуска, обучения пользователей, автоматизации и сопровождения с учётом локальной отчётности и налоговых практик.',
     serviceTitles: {

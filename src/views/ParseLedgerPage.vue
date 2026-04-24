@@ -174,7 +174,7 @@
           <div v-if="bank.logoSrc" class="mb-3 flex h-12 items-center">
             <img
               :src="bank.logoSrc"
-              :alt="bank.name"
+              :alt="t('parseLedger.bankRowImageAlt', { name: bank.name })"
               class="max-h-12 w-auto max-w-[9.5rem] object-contain object-left"
               loading="lazy"
               decoding="async"

@@ -9,7 +9,7 @@ import { getServiceContent } from '@/content/services'
 import { DEVELOPER_SITE_URL } from '@/developerSite'
 
 const SITE_URL = 'https://parseconsult.ae'
-const DEFAULT_IMAGE = `${SITE_URL}/logo.svg`
+const DEFAULT_IMAGE = `${SITE_URL}/logo.jpg`
 
 type SeoMeta = {
   title: string
@@ -29,11 +29,13 @@ const upsertMetaTag = (
     | 'twitter:title'
     | 'twitter:description'
     | 'twitter:image'
+    | 'twitter:image:alt'
     | 'og:title'
     | 'og:description'
     | 'og:type'
     | 'og:url'
     | 'og:image'
+    | 'og:image:alt'
     | 'og:site_name'
     | 'og:locale',
   content: string
@@ -229,7 +231,7 @@ const buildOrganizationJsonLd = (i18n: I18nInstance): Record<string, unknown> =>
     '@type': 'Organization',
     name: siteName,
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.svg`,
+    logo: `${SITE_URL}/logo.jpg`,
     email: SITE_CONTACT_EMAIL,
     telephone: '+971 52 856 9060',
     areaServed: 'AE',
@@ -290,6 +292,7 @@ const applySeo = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): voi
   const meta = buildMeta(route, i18n)
   const canonicalUrl = `${SITE_URL}${meta.path}`
   const siteName = (i18n.global.t as (key: string) => string)('brand.siteName')
+  const ogImageAlt = (i18n.global.t as (key: string) => string)('seo.ogImageAlt')
   const ogLocale = currentLocale(i18n) === 'en' ? 'en_US' : 'ru_RU'
 
   document.title = meta.title
@@ -302,6 +305,7 @@ const applySeo = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): voi
   upsertMetaTag('og:type', 'website')
   upsertMetaTag('og:url', canonicalUrl)
   upsertMetaTag('og:image', DEFAULT_IMAGE)
+  upsertMetaTag('og:image:alt', ogImageAlt)
   upsertMetaTag('og:site_name', siteName)
   upsertMetaTag('og:locale', ogLocale)
   syncOgLocaleAlternates(ogLocale)
@@ -309,6 +313,7 @@ const applySeo = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): voi
   upsertMetaTag('twitter:title', meta.title)
   upsertMetaTag('twitter:description', meta.description)
   upsertMetaTag('twitter:image', DEFAULT_IMAGE)
+  upsertMetaTag('twitter:image:alt', ogImageAlt)
   upsertCanonical(canonicalUrl)
   applyHreflangs()
   upsertJsonLd('organization', buildOrganizationJsonLd(i18n))

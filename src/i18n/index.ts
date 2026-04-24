@@ -27,7 +27,7 @@ export function readStoredLocale(): AppLocale {
 export const i18n = createI18n({
   legacy: false,
   locale: readStoredLocale(),
-  fallbackLocale: 'ru',
+  fallbackLocale: 'en',
   messages: {
     ru: { ...commonRu, ...homeRu },
     en: { ...commonEn, ...homeEn },

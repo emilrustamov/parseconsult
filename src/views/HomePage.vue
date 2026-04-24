@@ -118,10 +118,10 @@
         <aside class="rounded-2xl border border-slate-200/90 bg-white p-4 sm:p-5">
           <div class="grid gap-3 sm:grid-cols-2">
             <div class="flex items-center justify-center rounded-xl border border-slate-200 bg-slate-50 px-4 py-4">
-              <img src="/zoho.png" alt="Zoho CRM" class="h-10 w-auto object-contain" loading="lazy" decoding="async">
+              <img src="/zoho.png" :alt="t('home.crm.zohoLogoAlt')" class="h-10 w-auto object-contain" loading="lazy" decoding="async">
             </div>
             <div class="flex items-center justify-center rounded-xl border border-slate-200 bg-slate-50 px-4 py-4">
-              <img src="/bitrix24.png" alt="Bitrix24 CRM" class="h-10 w-auto object-contain" loading="lazy" decoding="async">
+              <img src="/bitrix24.png" :alt="t('home.crm.bitrixLogoAlt')" class="h-10 w-auto object-contain" loading="lazy" decoding="async">
             </div>
           </div>
           <RouterLink

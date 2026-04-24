@@ -41,6 +41,8 @@ export const homeEn = {
       tag3: 'Lead & Sales Pipeline',
       tag4: 'Ongoing Support',
       cardTitle: 'Full CRM Setup & Implementation',
+      zohoLogoAlt: 'Zoho CRM setup, implementation, automation, integration and support in the UAE',
+      bitrixLogoAlt: 'Bitrix24 setup, implementation, automation, integration and support in the UAE',
     },
     taxFiling: {
       title: 'VAT and CIT Filing Help in the UAE',
@@ -152,6 +154,13 @@ export const homeEn = {
           'We offer ongoing support: updates, fixes, and user guidance after go-live.',
       },
     ],
+    platformLogoAlts: {
+      onec: '1C implementation and customization for accounting in the UAE and GCC',
+      firstbit: 'FirstBit implementation and customization for accounting in the UAE and GCC',
+      zoho: 'Zoho Books setup, implementation, automation, integration and support in the UAE',
+      quickbooks: 'QuickBooks setup, implementation, automation, integration and support in the UAE',
+      microsoftDynamics: 'Microsoft Dynamics ERP and accounting implementation in the UAE and GCC',
+    },
     platformCards: {
       onec: {
         name: '1C',

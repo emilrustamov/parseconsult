@@ -16,4 +16,27 @@ export default defineConfig(({ mode }) => ({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) {
+            return
+          }
+          if (id.includes('@lottiefiles') || id.includes('dotlottie')) {
+            return 'vendor-lottie'
+          }
+          if (id.includes('vue-i18n')) {
+            return 'vendor-i18n'
+          }
+          if (id.includes('vue-router')) {
+            return 'vendor-router'
+          }
+          if (id.includes('vue3-carousel')) {
+            return 'vendor-carousel'
+          }
+        },
+      },
+    },
+  },
 }))
