@@ -79,6 +79,7 @@ const platforms = computed(() =>
   homePlatformAssets.map((asset) => ({
     ...asset,
     name: t(`home.platformCards.${asset.key}.name`),
+    logoAlt: t(`home.platformLogoAlts.${asset.key}`),
   })),
 )
 </script>

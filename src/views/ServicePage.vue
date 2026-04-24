@@ -206,7 +206,7 @@
                   <div class="flex min-h-0 flex-1 items-center justify-center rounded-xl bg-slate-50/90">
                     <img
                       :src="cert.src"
-                      :alt="cert.alt"
+                      :alt="t('servicePage.bitrixCertImageAlt', { caption: cert.alt || cert.caption || t('nav.bitrix24') })"
                       class="mx-auto max-h-[min(48vh,440px)] w-full object-contain"
                       loading="lazy"
                       decoding="async"

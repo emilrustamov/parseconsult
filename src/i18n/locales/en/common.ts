@@ -10,7 +10,7 @@ export const commonEn = {
     parse: 'Parse',
     consult: 'Consult',
     siteName: 'Parse Consult',
-    logoAlt: 'Parse Consult',
+    logoAlt: 'Parse Consult — accounting, CRM, and tax consulting in the UAE and GCC',
   },
   nav: {
     home: 'Home',
@@ -148,6 +148,8 @@ export const commonEn = {
       'Parse Ledger helps you process bank statements quickly and accurately, cutting manual work and reducing error risk.',
     banksListTitle: 'Supported banks include:',
     otherBanks: 'and other banks',
+    bankRowImageAlt:
+      '{name} — UAE bank statement formats for import into Zoho Books, QuickBooks, and FirstBit (Parse Ledger)',
     tutorialTitle: 'How to use the app',
     videoTitle1: 'Parse Ledger — tutorial (video 1)',
     videoTitle2: 'Parse Ledger — tutorial (video 2)',
@@ -196,6 +198,7 @@ export const commonEn = {
     platformsAlso: 'as well as',
     platformsOutro:
       'We support implementation, configuration, and integration of modern accounting systems — 1C and Firstbit, Zoho Books and QuickBooks — delivering transparent accounting, process automation, and compliance for businesses in the UAE and GCC.',
+    bitrixCertImageAlt: '{caption} — Zoho CRM & Bitrix24 setup, implementation, and support in the UAE',
   },
   seo: {
     homeTitle: 'Parse Consult — UAE & GCC accounting automation',
@@ -223,7 +226,7 @@ export const commonEn = {
     fallbackKeywords:
       'Parse Consult, UAE, GCC, accounting, automation, 1C, Firstbit, Zoho Books, QuickBooks, CRM, VAT, CIT',
     breadcrumbHome: 'Home',
-    ogImageAlt: 'Parse Consult logo — accounting, CRM, and tax consulting in the UAE and GCC',
+    ogImageAlt: 'Parse Consult — accounting, CRM, and tax consulting in the UAE and GCC',
     serviceFallbackDescription:
       'Parse Consult delivers professional design, implementation and configuration of accounting and finance platforms for UAE and GCC organisations, from discovery and data migration through go live, user training, automation, and continuous optimisation aligned with local regulatory expectations.',
     serviceTitles: {
