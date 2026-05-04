@@ -233,7 +233,7 @@ const buildOrganizationJsonLd = (i18n: I18nInstance): Record<string, unknown> =>
     url: SITE_URL,
     logo: `${SITE_URL}/logo.jpg`,
     email: SITE_CONTACT_EMAIL,
-    telephone: '+971 52 856 9060',
+    telephone: '+971 58 189 3930',
     areaServed: 'AE',
     sameAs: socialLinkDefs.map((item) => item.href),
   }

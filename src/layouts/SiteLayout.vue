@@ -66,7 +66,7 @@ const setLocale = (code: AppLocale): void => {
   }
 }
 
-const headerWhatsappNumber = '+971 52 856 9060'
+const headerWhatsappNumber = '+971 58 189 3930'
 const headerWhatsappHref = `https://wa.me/${headerWhatsappNumber.replace(/\D/g, '')}`
 const headerTelegramHref = 'https://t.me/parseconsult'
 const isServicesMenuOpen = ref(false)

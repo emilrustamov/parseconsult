@@ -20,7 +20,7 @@
               <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-brand/20 text-lg text-slate-900">☎</span>
               <div>
                 <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">{{ t('contact.phone') }}</div>
-                <a href="tel:+971528569060" class="mt-1 block text-base font-semibold text-slate-900 transition hover:text-brand-dark">+971 52 856 9060</a>
+                <a href="tel:+971528569060" class="mt-1 block text-base font-semibold text-slate-900 transition hover:text-brand-dark">+971 58 189 3930</a>
               </div>
             </div>
           </div>
