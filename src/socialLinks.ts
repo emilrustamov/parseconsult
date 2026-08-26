@@ -9,7 +9,7 @@ export const socialLinkDefs = [
   },
   {
     network: 'instagram' as const,
-    href: 'https://www.instagram.com/parseledger.ae/',
+    href: 'https://www.instagram.com/parseconsult/',
     labelKey: 'social.instagramLabel',
     nameKey: 'social.instagramName',
   },

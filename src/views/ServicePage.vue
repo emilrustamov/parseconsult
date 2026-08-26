@@ -3,7 +3,8 @@
     id="service-hero"
     class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 pb-8 pt-20 backdrop-blur-[2px] md:scroll-mt-32 md:pb-10 md:pt-24"
   >
-    <div class="relative z-10 mx-auto max-w-7xl py-12 md:py-16 lg:py-10">
+    <!-- <div class="relative z-10 mx-auto max-w-7xl px-6 py-12 md:py-16 lg:px-8 lg:py-10"> -->
+    <div class="relative z-10 mx-auto max-w-7xl px-6 py-12 md:py-16 lg:px-8 lg:py-10">
       <div
         v-if="!isBitrixPage || !page.bitrixLeadBlock"
         class="rounded-2xl border border-brand-dark/35 bg-brand-surface px-7 py-7 shadow-md shadow-black/10 md:px-7 md:py-7"
@@ -418,17 +419,23 @@
       </div>
 
       <section v-if="page.advantages?.items.length" class="fade-in-up mt-10" style="animation-delay: 180ms">
-        <h2 class="text-lg font-semibold tracking-tight text-slate-900 md:text-2xl">{{ page.advantages.title }}</h2>
-        <div class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          <article
-            v-for="advantage in page.advantages.items"
-            :key="advantage.number"
-            class="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm"
-          >
-            <div class="text-sm font-semibold tracking-[0.2em] text-brand-dark">{{ advantage.number }}</div>
-            <h3 class="mt-3 text-base font-semibold tracking-tight text-slate-950">{{ advantage.title }}</h3>
-            <p class="mt-2 text-sm leading-7 text-slate-600 md:text-base">{{ advantage.description }}</p>
-          </article>
+        <div class="rounded-2xl border border-brand/30 bg-brand/10 p-7 shadow-sm sm:p-8">
+          <h2 class="text-lg font-semibold tracking-tight text-slate-900 md:text-2xl">{{ page.advantages.title }}</h2>
+          <ul class="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            <li
+              v-for="advantage in page.advantages.items"
+              :key="advantage.number"
+              class="rounded-xl border border-brand/25 bg-white/85 px-4 py-3.5 text-sm leading-7 text-slate-700 md:text-base"
+            >
+              <div class="flex items-start gap-3">
+                <span class="mt-1.5 inline-flex h-2 w-2 shrink-0 rounded-full bg-brand-dark"></span>
+                <div>
+                  <span class="font-semibold text-slate-950">{{ advantage.title }}</span>
+                  <span> — {{ advantage.description }}</span>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
     </div>
@@ -516,7 +523,11 @@ const route = useRoute()
 const router = useRouter()
 const { t, locale } = useI18n()
 
-const showcaseSlugs = new Set(['firstbit', 'accounting-systems', 'training', 'vat-cit-filing'])
+const roadmapSlugs = new Set(['crm-erp', 'automation', ])
+const isRoadmapStylePage = computed(
+  () => isBitrixPage.value || roadmapSlugs.has(String(route.params.slug ?? '')),
+)
+const showcaseSlugs = new Set(['firstbit', 'accounting-systems', 'training', 'vat-cit-filing', 'business-registration', 'pro-services', 'accounting', 'tax-services', 'digital-solutions'])
 const isShowcasePage = computed(() => showcaseSlugs.has(String(route.params.slug ?? '')))
 const isBitrixPage = computed(() => String(route.params.slug ?? '') === 'bitrix24')
 const isAccountingSystemsPage = computed(() => String(route.params.slug ?? '') === 'accounting-systems')
@@ -525,16 +536,25 @@ const serviceLottieSrc = computed(() => {
   if (slug === 'accounting-systems') {
     return '/Software.lottie'
   }
-  if (slug === 'firstbit') {
+  if (slug === 'crm-erp') {
+  return '/CRMSystem.lottie'
+ }
+ if (slug === 'digital-solutions') {
+  return '/strategyDigital.lottie'
+ }
+ if (slug === 'tax-services') {
+  return '/Finance.lottie'
+ }
+  if (slug === 'firstbit' || slug === 'business-registration') {
     return '/Business Growth.lottie'
   }
-  if (slug === 'bitrix24') {
+  if (slug === 'bitrix24' || slug === 'automation') {
     return '/robot.lottie'
   }
-  if (slug === 'training') {
+  if (slug === 'training' || slug === 'pro-services') {
     return '/Online Learning.lottie'
   }
-  if (slug === 'vat-cit-filing') {
+  if (slug === 'vat-cit-filing' || slug === 'accounting') {
     return '/budget-and-bills.lottie'
   }
   return ''
@@ -678,13 +698,13 @@ const displayGroups = computed(() =>
   isBitrixPage.value && page.value.bitrixLeadBlock ? page.value.groups.slice(1) : page.value.groups
 )
 const bitrixFinalGroups = computed(() =>
-  isBitrixPage.value && !page.value.bitrixLeadBlock ? displayGroups.value.slice(-2) : []
+  isRoadmapStylePage.value && !page.value.bitrixLeadBlock ? displayGroups.value.slice(-2) : []
 )
 const primaryDisplayGroups = computed(() =>
   bitrixFinalGroups.value.length ? displayGroups.value.slice(0, -2) : displayGroups.value
 )
 const isBitrixRoadmapPage = computed(() =>
-  isBitrixPage.value && !page.value.bitrixLeadBlock && primaryDisplayGroups.value.length > 0
+  isRoadmapStylePage.value && !page.value.bitrixLeadBlock && primaryDisplayGroups.value.length > 0
 )
 
 const showcaseGroups = computed(() => {

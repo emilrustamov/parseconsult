@@ -23,6 +23,13 @@ export const commonEn = {
     accountingSystems: 'Accounting system implementation and recovery',
     training: 'Support and training',
     vatCitFiling: 'VAT and CIT filing support',
+    businessRegistration: 'Business Registration',  // новое
+    proServices: 'PRO Services',                     // новое
+    accounting: 'Accounting',                        // новое
+    taxServices: 'Tax Services',                     // новое
+    crmErp: 'CRM & ERP',                             // новое
+    automation: 'Business Automation',               // новое
+    digitalSolutions: 'Digital Solutions',           // новое
   },
   footer: {
     tagline: 'Accounting, implementation, automation — UAE and GCC',
@@ -235,6 +242,13 @@ export const commonEn = {
       'accounting-systems': 'Accounting systems UAE | Parse Consult',
       training: 'Team training UAE | Parse Consult',
       'vat-cit-filing': 'VAT & CIT filing UAE | Parse Consult',
+      'business-registration': 'Business Registration in the UAE | Parse Consult',
+      'pro-services': 'PRO Services in the UAE | Parse Consult',
+      accounting: 'Accounting & Tax Services UAE | Parse Consult',
+      'tax-services': 'Tax Services UAE | Parse Consult',
+      'crm-erp': 'CRM & ERP Solutions UAE | Parse Consult',
+      automation: 'Business Automation UAE | Parse Consult',
+      'digital-solutions': 'Digital Solutions for Business UAE | Parse Consult',
     },
     serviceKeywords: {
       bitrix24:
@@ -247,6 +261,20 @@ export const commonEn = {
         'accounting training UAE, team onboarding, 1C training, Zoho Books training, QuickBooks support, Parse Consult',
       'vat-cit-filing':
         'UAE VAT, corporate tax UAE, CIT filing, tax compliance UAE, FTA, Parse Consult',
+      'business-registration':
+        'business registration UAE, company setup UAE, Mainland, Free Zone, UAE trade license, Parse Consult',
+      'pro-services':
+        'PRO services UAE, UAE visas, Emirates ID, license renewal, administrative support, Parse Consult',
+      accounting:
+        'accounting UAE, bookkeeping, financial reporting, bank reconciliation, financial analysis, Parse Consult',
+      'tax-services':
+        'tax services UAE, VAT registration, Corporate Tax, tax compliance UAE, Parse Consult',
+      'crm-erp':
+        'CRM UAE, ERP UAE, CRM implementation, ERP implementation, system integration, business automation, Parse Consult',
+      automation:
+        'business automation UAE, system integration, AI solutions, digital transformation, Parse Consult',
+      'digital-solutions':
+        'digital solutions UAE, website development, landing pages, digital marketing, digital strategy, Parse Consult',
     },
     serviceDescriptions: {
       bitrix24:
@@ -259,6 +287,20 @@ export const commonEn = {
         'Hands on support and training for finance teams in the UAE and GCC: documented policies, role based guides, workshops on 1C, Firstbit, Zoho Books and QuickBooks, shadowing during month end close, and post launch Q&A so adoption sticks and mistakes drop after go live.',
       'vat-cit-filing':
         'VAT and Corporate Tax (CIT) filing in the UAE: calculations, return submission, payment support, and compliance guidance.',
+      'business-registration':
+        'Business registration in the UAE: choosing the right structure and jurisdiction (Mainland, Free Zone), document preparation, licensing, and support at every stage of company setup.',
+      'pro-services':
+        'PRO services in the UAE: visa processing and renewal, Emirates ID support, license renewals, immigration procedures, and liaison with government authorities.',
+      accounting:
+        'Accounting and tax services in the UAE: bookkeeping, financial statements, bank reconciliations, VAT and Corporate Tax support, and financial analysis.',
+      'tax-services':
+        'Tax services in the UAE: VAT registration and filing, Corporate Tax support, and tax compliance.',
+      'crm-erp':
+        'CRM and ERP solutions for businesses in the UAE: implementation, setup, and integration of customer and business process management systems.',
+      automation:
+        'Business automation in the UAE: process automation, system integration, AI solutions, and digital transformation.',
+      'digital-solutions':
+        'Digital solutions for businesses in the UAE: website development, landing pages, digital marketing, content, and digital strategy.',
     },
   },
 }

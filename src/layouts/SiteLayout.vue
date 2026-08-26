@@ -41,11 +41,18 @@ const serviceLinkSlug = (item: ServiceNavItem): string => {
 const serviceLinks = computed(() =>
   (
     [
-      { label: t('nav.accountingSystems'), to: { name: 'service-details', params: { slug: 'accounting-systems' } } },
-      { label: t('nav.bitrix24'), to: { name: 'service-details', params: { slug: 'bitrix24' } } },
-      { label: t('nav.vatCitFiling'), to: { name: 'service-details', params: { slug: 'vat-cit-filing' } } },
-      { label: t('nav.training'), to: { name: 'service-details', params: { slug: 'training' } } },
-      { label: t('nav.firstbit'), to: { name: 'service-details', params: { slug: 'firstbit' } } },
+      // { label: t('nav.accountingSystems'), to: { name: 'service-details', params: { slug: 'accounting-systems' } } },
+      // { label: t('nav.bitrix24'), to: { name: 'service-details', params: { slug: 'bitrix24' } } },
+      // { label: t('nav.vatCitFiling'), to: { name: 'service-details', params: { slug: 'vat-cit-filing' } } },
+      // { label: t('nav.training'), to: { name: 'service-details', params: { slug: 'training' } } },
+      // { label: t('nav.firstbit'), to: { name: 'service-details', params: { slug: 'firstbit' } } },
+      { label: t('nav.businessRegistration'), to: { name: 'service-details', params: { slug: 'business-registration' } } },
+      { label: t('nav.proServices'), to: { name: 'service-details', params: { slug: 'pro-services' } } },
+      { label: t('nav.accounting'), to: { name: 'service-details', params: { slug: 'accounting' } } },
+      { label: t('nav.taxServices'), to: { name: 'service-details', params: { slug: 'tax-services' } } },
+      { label: t('nav.crmErp'), to: { name: 'service-details', params: { slug: 'crm-erp' } } },
+      { label: t('nav.automation'), to: { name: 'service-details', params: { slug: 'automation' } } },
+      { label: t('nav.digitalSolutions'), to: { name: 'service-details', params: { slug: 'digital-solutions' } } },
     ] satisfies ServiceNavItem[]
   ).filter((item) => serviceLinkSlug(item) !== 'accounting-setup'),
 )

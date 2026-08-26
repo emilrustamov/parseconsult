@@ -319,4 +319,627 @@ export const serviceContentEn: Record<string, ServiceContent> = {
       },
     ],
   },
+
+
+
+  'business-registration': {
+    title: 'Business Registration in the UAE',
+    description:
+      'Setting up a company in the UAE opens major opportunities for growth, but choosing the right structure, jurisdiction, and launch strategy takes a professional approach. Parse Consult guides entrepreneurs and companies through the entire journey of starting a business in the UAE — from choosing the right setup to company registration, licensing, and completing all required procedures. We do more than help you get a license — we build a solid foundation for your business to operate and grow.',
+    groups: [
+      {
+        title: 'End-to-end company setup support',
+        items: [
+          'Mainland and Free Zone company registration.',
+          'Selecting the optimal business structure.',
+          'Assistance obtaining your license.',
+          'Preparing and processing documents.',
+          'Trade name registration.',
+          'Support with visa processing.',
+          'Assistance opening a bank account.',
+        ],
+      },
+      {
+        title: 'Comprehensive registration support',
+        items: [
+          'Analyzing your business goals and requirements.',
+          'Choosing the best registration option.',
+          'Preparing the required documents.',
+          'Obtaining the license and completing procedures.',
+          'Support after your business launch.',
+          'We support you through every stage of setting up a business in the UAE.',
+        ],
+      },
+      {
+        title: 'Who this is for',
+        items: [
+          'Entrepreneurs starting a business in the UAE.',
+          'Foreign investors.',
+          'International companies entering the UAE market.',
+          'Companies that need a reliable local partner.',
+        ],
+      },
+      {
+        title: 'Our approach',
+        items: [
+          'Analyzing your business goals and requirements.',
+          'Choosing the best registration option.',
+          'Preparing the required documents.',
+          'Obtaining the license and completing procedures.',
+          'Support after your business launch.',
+        ],
+      },
+      {
+        title: 'Support and follow-up',
+        items: [
+          'Support with visa processing.',
+          'Assistance opening a bank account.',
+          'Support after company registration.',
+          'Ongoing support with administrative processes.',
+        ],
+      },
+      {
+        title: 'Why choose us',
+        items: [
+          'Comprehensive company setup support.',
+          'Experience with both Mainland and Free Zone.',
+          'Support at every stage of registration.',
+          'Support after your business launch.',
+        ],
+      },
+    ],
+    advantages: {
+      title: 'What you get',
+      items: [
+        {
+          number: '01',
+          title: 'A clear launch strategy',
+          description:
+            'We analyze your goals and choose the business structure that fits your activity and growth plans.',
+        },
+        {
+          number: '02',
+          title: 'A smooth registration process',
+          description: 'We handle communication with the relevant authorities and manage every step of the process.',
+        },
+        {
+          number: '03',
+          title: 'A business ready to operate',
+          description: 'You start operating with the right structure in place and a clear view of next steps.',
+        },
+      ],
+    },
+  },
+  'pro-services': {
+    title: 'PRO Services in the UAE',
+    description:
+      'Running a company in the UAE means constant interaction with government authorities, ongoing document renewals, and compliance with local regulations. Parse Consult helps businesses manage administrative processes efficiently, reducing the burden on owners and staff.',
+    groups: [
+      {
+        title: 'Comprehensive support for your business',
+        items: [
+          'Visa processing and renewal.',
+          'Emirates ID support.',
+          'License renewals.',
+          'Immigration procedures.',
+          'Employee documentation.',
+          'Government approvals.',
+          'Document attestation.',
+        ],
+      },
+      {
+        title: 'Comprehensive administrative support',
+        items: [
+          'Visa processing and renewal.',
+          'Emirates ID support.',
+          'License renewals.',
+          'Immigration procedures.',
+          'Employee documentation.',
+          'Government approvals.',
+          'Document attestation.',
+          'We manage the key administrative processes involved in running a business and employing staff in the UAE.',
+        ],
+      },
+      {
+        title: 'Who this is for',
+        items: [
+          'New companies in the UAE.',
+          'Companies with staff in the country.',
+          'Businesses that need ongoing administrative support.',
+          'Foreign entrepreneurs.',
+        ],
+      },
+      {
+        title: 'Our approach',
+        items: [
+          'Analyzing the administrative processes you need.',
+          'Preparing and processing documents.',
+          'Liaising with government authorities.',
+          'Tracking processes and deadlines.',
+          'Support through to completion of the required procedures.',
+        ],
+      },
+      {
+        title: 'Support and follow-up',
+        items: [
+          'Ongoing administrative support for your business.',
+          'Processing and renewing required documents.',
+          'Support with visa and immigration matters.',
+          'Support with government approvals.',
+        ],
+      },
+      {
+        title: 'Why choose us in the UAE',
+        items: [
+          'Comprehensive administrative support for your business.',
+          'Reduced burden on owners and staff.',
+          'Careful tracking of key processes and deadlines.',
+          'Support staying compliant with UAE regulations.',
+        ],
+      },
+    ],
+    advantages: {
+      title: 'What you get',
+      items: [
+        {
+          number: '01',
+          title: 'Less bureaucracy',
+          description: 'We take on the day-to-day administrative tasks.',
+        },
+        {
+          number: '02',
+          title: 'Compliance',
+          description: 'Your documents and processes stay aligned with UAE regulations.',
+        },
+        {
+          number: '03',
+          title: 'A reliable partner by your side',
+          description: 'We track key processes and deadlines so your business runs smoothly.',
+        },
+      ],
+    },
+  },
+  accounting: {
+    title: 'Accounting and Tax Services',
+    description:
+      'Proper accounting is about more than compliance — it is a tool that helps you understand your business and make better decisions. Parse Consult helps companies in the UAE build an effective financial system, from day-to-day bookkeeping to tax support and analysis.',
+    groups: [
+      {
+        title: 'Complete financial support for your business',
+        items: [
+          'Bookkeeping.',
+          'Financial statement preparation.',
+          'Transaction monitoring.',
+          'Bank reconciliations.',
+          'VAT registration and filing.',
+          'Corporate Tax support.',
+          'Financial analysis.',
+        ],
+      },
+      {
+        title: 'Comprehensive financial support',
+        items: [
+          'Bookkeeping for day-to-day financial control.',
+          'Financial statement preparation.',
+          'Transaction monitoring and bank reconciliations.',
+          'VAT registration and filing.',
+          'Corporate Tax support.',
+          'Financial analysis.',
+          'We build a financial system that helps you track your numbers and stay compliant with tax requirements.',
+        ],
+      },
+      {
+        title: 'Who this is for',
+        items: [
+          'New companies that need a financial system.',
+          'Growing businesses.',
+          'Companies preparing for tax requirements.',
+          'Businesses looking to replace disorganized bookkeeping.',
+        ],
+      },
+      {
+        title: 'Our approach',
+        items: [
+          'Setting up your bookkeeping.',
+          'Preparing financial statements.',
+          'Monitoring financial transactions.',
+          'Bank reconciliations.',
+          'Tax support.',
+          'Financial analysis.',
+        ],
+      },
+      {
+        title: 'Support and follow-up',
+        items: [
+          'Regular bookkeeping.',
+          'Financial statement preparation.',
+          'VAT registration and filing.',
+          'Corporate Tax support.',
+          'Financial analysis and transaction monitoring.',
+        ],
+      },
+      {
+        title: 'Why choose us',
+        items: [
+          'Comprehensive financial support for your business.',
+          'Support with UAE VAT and Corporate Tax.',
+          'Transparent bookkeeping and reporting.',
+          'Financial analysis for better decision-making.',
+        ],
+      },
+    ],
+    advantages: {
+      title: 'What you get',
+      items: [
+        {
+          number: '01',
+          title: 'Financial control',
+          description: 'You get a clear view of your business through transparent reporting.',
+        },
+        {
+          number: '02',
+          title: 'Tax confidence',
+          description: 'We help you stay compliant with UAE VAT and Corporate Tax requirements.',
+        },
+        {
+          number: '03',
+          title: 'Data to guide decisions',
+          description: 'Your financial data becomes a tool for growth, not just a report.',
+        },
+      ],
+    },
+  },
+  'tax-services': {
+    title: 'Accounting and Tax Services',
+    description:
+      'Proper accounting is about more than compliance — it is a tool that helps you understand your business and make better decisions. Parse Consult helps companies in the UAE build an effective financial system, from day-to-day bookkeeping to tax support and analysis.',
+    groups: [
+      {
+        title: 'Complete financial support for your business',
+        items: [
+          'Bookkeeping.',
+          'Financial statement preparation.',
+          'Transaction monitoring.',
+          'Bank reconciliations.',
+          'VAT registration and filing.',
+          'Corporate Tax support.',
+          'Financial analysis.',
+        ],
+      },
+      {
+        title: 'Comprehensive financial support',
+        items: [
+          'Bookkeeping for day-to-day financial control.',
+          'Financial statement preparation.',
+          'Transaction monitoring and bank reconciliations.',
+          'VAT registration and filing.',
+          'Corporate Tax support.',
+          'Financial analysis.',
+          'We build a financial system that helps you track your numbers and stay compliant with tax requirements.',
+        ],
+      },
+      {
+        title: 'Who this is for',
+        items: [
+          'New companies that need a financial system.',
+          'Growing businesses.',
+          'Companies preparing for tax requirements.',
+          'Businesses looking to replace disorganized bookkeeping.',
+        ],
+      },
+      {
+        title: 'Our approach',
+        items: [
+          'Setting up your bookkeeping.',
+          'Preparing financial statements.',
+          'Monitoring financial transactions.',
+          'Bank reconciliations.',
+          'Tax support.',
+          'Financial analysis.',
+        ],
+      },
+      {
+        title: 'Support and follow-up',
+        items: [
+          'Regular bookkeeping.',
+          'Financial statement preparation.',
+          'VAT registration and filing.',
+          'Corporate Tax support.',
+          'Financial analysis and transaction monitoring.',
+        ],
+      },
+      {
+        title: 'Why choose us',
+        items: [
+          'Comprehensive financial support for your business.',
+          'Support with UAE VAT and Corporate Tax.',
+          'Transparent bookkeeping and reporting.',
+          'Financial analysis for better decision-making.',
+        ],
+      },
+    ],
+    advantages: {
+      title: 'What you get',
+      items: [
+        {
+          number: '01',
+          title: 'Financial control',
+          description: 'You get a clear view of your business through transparent reporting.',
+        },
+        {
+          number: '02',
+          title: 'Tax confidence',
+          description: 'We help you stay compliant with UAE VAT and Corporate Tax requirements.',
+        },
+        {
+          number: '03',
+          title: 'Data to guide decisions',
+          description: 'Your financial data becomes a tool for growth, not just a report.',
+        },
+      ],
+    },
+  },
+  'crm-erp': {
+    title: 'CRM & ERP Solutions',
+    description:
+      'As a company grows, processes get more complex and the volume of data, customers, and operations increases. Parse Consult helps implement CRM and ERP systems that bring your business processes together, improve efficiency, and give you full control over operations.',
+    groups: [
+      {
+        title: 'Implementing digital systems for your business',
+        items: [
+          'CRM implementation.',
+          'ERP solutions.',
+          'System setup and customization.',
+          'Business process optimization.',
+          'Integration with your existing tools.',
+          'Staff training.',
+        ],
+      },
+      {
+        title: 'Comprehensive CRM and ERP implementation',
+        items: [
+          'CRM implementation for effective customer and process management.',
+          'ERP solutions for managing core business operations.',
+          'System setup and customization for your company\'s needs.',
+          'Integration with your existing tools.',
+          'Training staff to use the system.',
+          'We help build a single digital management system tailored to your business processes and goals.',
+        ],
+      },
+      {
+        title: 'Who this is for',
+        items: [
+          'Growing businesses.',
+          'Companies with a high volume of processes and data.',
+          'Businesses that need to bring their tools together.',
+          'Companies ready to move to systematic digital management.',
+        ],
+      },
+      {
+        title: 'Our approach',
+        items: [
+          'Analyzing your business processes and goals.',
+          'Selecting the right CRM or ERP solution.',
+          'Setting up and customizing the system.',
+          'Integration with your existing tools.',
+          'Staff training.',
+        ],
+      },
+      {
+        title: 'Support and follow-up',
+        items: [
+          'System setup and customization.',
+          'Integration with your existing tools.',
+          'Staff training.',
+          'Business process optimization.',
+        ],
+      },
+      {
+        title: 'Why choose us',
+        items: [
+          'Comprehensive CRM and ERP implementation.',
+          'Business process optimization.',
+          'Integration of digital systems with your existing tools.',
+          'A focus on efficient management and readiness to scale.',
+        ],
+      },
+    ],
+    advantages: {
+      title: 'What you get',
+      items: [
+        {
+          number: '01',
+          title: 'A single management space',
+          description: 'All your important business data lives in one system.',
+        },
+        {
+          number: '02',
+          title: 'Optimized processes',
+          description: 'Less manual work, fewer errors, less time lost.',
+        },
+        {
+          number: '03',
+          title: 'Ready to scale',
+          description: 'The system grows together with your business.',
+        },
+      ],
+    },
+  },
+  automation: {
+    title: 'Business Automation',
+    description:
+      'Repetitive tasks and inefficient processes slow down a company\'s growth. Parse Consult helps automate operations, connect systems, and build efficient workflows.',
+    groups: [
+      {
+        title: 'Business automation solutions',
+        items: [
+          'Process automation.',
+          'System integration.',
+          'Workflow optimization.',
+          'Financial operations automation.',
+          'AI solutions for business.',
+          'Digital transformation.',
+        ],
+      },
+      {
+        title: 'Comprehensive business process automation',
+        items: [
+          'Automating repetitive processes.',
+          'Integrating different systems and tools.',
+          'Workflow optimization.',
+          'Automating financial operations.',
+          'AI solutions for business.',
+          'Digital transformation for your company.',
+          'We help build efficient processes where technology handles routine tasks and connects your key operations.',
+        ],
+      },
+      {
+        title: 'Who this is for',
+        items: [
+          'Growing businesses.',
+          'Companies with a high volume of repetitive tasks.',
+          'Businesses that want to reduce manual work.',
+          'Companies ready for digital transformation.',
+        ],
+      },
+      {
+        title: 'Our approach',
+        items: [
+          'Analyzing your existing processes.',
+          'Identifying tasks to automate.',
+          'Workflow optimization.',
+          'Integrating the necessary systems.',
+          'Implementing automated solutions.',
+          'Supporting your digital transformation.',
+        ],
+      },
+      {
+        title: 'Support and follow-up',
+        items: [
+          'Workflow optimization.',
+          'System integration.',
+          'Financial operations automation.',
+          'AI solutions for business.',
+          'Ongoing support for digital transformation.',
+        ],
+      },
+      {
+        title: 'Why choose us',
+        items: [
+          'Comprehensive business process automation.',
+          'Integration of systems and tools.',
+          'Use of AI solutions.',
+          'A focus on efficiency and readiness to scale.',
+        ],
+      },
+    ],
+    advantages: {
+      title: 'What you get',
+      items: [
+        {
+          number: '01',
+          title: 'Time savings',
+          description: 'Your team spends less time on routine tasks.',
+        },
+        {
+          number: '02',
+          title: 'Greater efficiency',
+          description: 'Automated processes run faster and more accurately.',
+        },
+        {
+          number: '03',
+          title: 'Ready to grow',
+          description: 'Your business gains technology that supports scaling.',
+        },
+      ],
+    },
+  },
+  'digital-solutions': {
+    title: 'Digital Solutions',
+    description:
+      'A modern business needs more than solid internal processes — it needs a strong digital presence. Parse Consult builds digital solutions that help companies attract customers, strengthen their brand, and grow online.',
+    groups: [
+      {
+        title: 'Our digital solutions',
+        items: [
+          'Website development.',
+          'Landing pages.',
+          'Digital marketing.',
+          'Content creation.',
+          'Online tools for business.',
+          'Digital strategy.',
+        ],
+      },
+      {
+        title: 'Comprehensive digital solutions',
+        items: [
+          'Website development for your business.',
+          'Landing page creation.',
+          'Digital marketing to reach your audience.',
+          'Content creation.',
+          'Developing online tools for your business.',
+          'Building a digital strategy.',
+          'We combine technology, content, and business strategy to create digital solutions tailored to your goals.',
+        ],
+      },
+      {
+        title: 'Who this is for',
+        items: [
+          'Companies that need a professional digital presence.',
+          'Businesses that want to attract customers online.',
+          'Companies building their brand.',
+          'Businesses that need digital tools to grow.',
+        ],
+      },
+      {
+        title: 'Our approach',
+        items: [
+          'Analyzing your business goals.',
+          'Building a digital strategy.',
+          'Selecting the right digital tools.',
+          'Creating and implementing digital solutions.',
+          'Growing your digital presence.',
+        ],
+      },
+      {
+        title: 'Support and follow-up',
+        items: [
+          'Website and landing page development.',
+          'Digital marketing.',
+          'Content creation.',
+          'Development of online tools.',
+          'Ongoing support for your digital strategy.',
+        ],
+      },
+      {
+        title: 'Why choose us',
+        items: [
+          'A comprehensive approach to digital growth.',
+          'Combining technology with business strategy.',
+          'Solutions built around your company\'s goals.',
+          'A focus on attracting customers and growing your brand.',
+        ],
+      },
+    ],
+    advantages: {
+      title: 'What you get',
+      items: [
+        {
+          number: '01',
+          title: 'A professional online presence',
+          description: 'We build digital products that build customer trust.',
+        },
+        {
+          number: '02',
+          title: 'New growth opportunities',
+          description: 'We help you reach new audiences and grow your brand.',
+        },
+        {
+          number: '03',
+          title: 'Solutions built around your goals',
+          description: 'We combine technology with business strategy.',
+        },
+      ],
+    },
+  },
 }

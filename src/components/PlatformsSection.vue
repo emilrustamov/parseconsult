@@ -3,7 +3,8 @@
     id="platforms"
     class="scroll-mt-28 border-b border-slate-200/80 bg-white/80 py-6 backdrop-blur-[2px] md:scroll-mt-32 md:py-12 lg:py-10"
   >
-    <div class="mx-auto max-w-7xl ">
+    <!-- <div class="mx-auto max-w-7xl "> -->
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="max-w-4xl">
         <h2 class="mt-4 text-2xl font-semibold tracking-tight text-slate-950 md:text-4xl">
           {{ t('home.platformsHeading.intro') }}

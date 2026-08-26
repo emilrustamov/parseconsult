@@ -23,6 +23,13 @@ export const commonRu = {
     accountingSystems: 'Внедрение и восстановление бух. учета',
     training: 'Сопровождение и обучение бух. учету',
     vatCitFiling: 'Подача VAT и CIT',
+    businessRegistration: 'Регистрация бизнеса',   // новое
+    proServices: 'PRO Services',                    // новое
+    accounting: 'Бухгалтерия',                       // новое
+    taxServices: 'Налоги',                           // новое
+    crmErp: 'CRM & ERP',                             // новое
+    automation: 'Автоматизация',                     // новое
+    digitalSolutions: 'Цифровые решения',            // новое
   },
   footer: {
     tagline: 'Бухгалтерский учёт, внедрение, автоматизация — ОАЭ и ССАГПЗ',
@@ -235,6 +242,13 @@ export const commonRu = {
       'accounting-systems': 'Внедрение и восстановление учёта в ОАЭ',
       training: 'Обучение и сопровождение учёта в ОАЭ',
       'vat-cit-filing': 'Подача VAT и CIT в ОАЭ | Parse Consult',
+      'business-registration': 'Регистрация бизнеса в ОАЭ | Parse Consult',
+      'pro-services': 'PRO Services в ОАЭ | Parse Consult',
+      accounting: 'Бухгалтерия и налоговое сопровождение в ОАЭ | Parse Consult',
+      'tax-services': 'Налоговое сопровождение в ОАЭ | Parse Consult',
+      'crm-erp': 'CRM и ERP решения в ОАЭ | Parse Consult',
+      automation: 'Автоматизация бизнеса в ОАЭ | Parse Consult',
+      'digital-solutions': 'Цифровые решения для бизнеса в ОАЭ | Parse Consult',
     },
     serviceKeywords: {
       bitrix24:
@@ -247,6 +261,20 @@ export const commonRu = {
         'обучение бухгалтерии ОАЭ, адаптация команды, обучение 1С, Zoho Books, сопровождение QuickBooks, Parse Consult',
       'vat-cit-filing':
         'VAT ОАЭ, налог на прибыль ОАЭ, подача CIT, налоговое соответствие, FTA, Parse Consult',
+      'business-registration':
+        'регистрация бизнеса ОАЭ, открытие компании ОАЭ, Mainland, Free Zone, лицензия ОАЭ, Parse Consult',
+      'pro-services':
+        'PRO services ОАЭ, визы ОАЭ, Emirates ID, продление лицензии, административное сопровождение, Parse Consult',
+      accounting:
+        'бухгалтерия ОАЭ, бухгалтерский учёт, финансовая отчётность, банковские сверки, финансовый анализ, Parse Consult',
+      'tax-services':
+        'налоги ОАЭ, VAT регистрация, Corporate Tax, налоговое сопровождение, Parse Consult',
+      'crm-erp':
+        'CRM ОАЭ, ERP ОАЭ, внедрение CRM, внедрение ERP, интеграция систем, автоматизация бизнеса, Parse Consult',
+      automation:
+        'автоматизация бизнеса ОАЭ, интеграция систем, AI решения, цифровая трансформация, Parse Consult',
+      'digital-solutions':
+        'цифровые решения ОАЭ, разработка сайтов, landing page, digital marketing, цифровая стратегия, Parse Consult',
     },
     serviceDescriptions: {
       bitrix24:
@@ -259,6 +287,20 @@ export const commonRu = {
         'Сопровождение и обучение персонала в ОАЭ и ССАГПЗ: регламенты и инструкции по ролям, практические занятия по 1С, Firstbit, Zoho Books и QuickBooks, сопровождение закрытия месяца и ответы на вопросы после запуска, чтобы команда уверенно работала в новой модели учёта.',
       'vat-cit-filing':
         'Подача VAT и Corporate Tax (CIT) в ОАЭ: расчёты, подготовка и подача деклараций, сопровождение оплат и контроль соответствия требованиям.',
+      'business-registration':
+        'Регистрация бизнеса в ОАЭ: подбор структуры и юрисдикции (Mainland, Free Zone), подготовка документов, получение лицензии и сопровождение на всех этапах открытия компании.',
+      'pro-services':
+        'PRO Services в ОАЭ: оформление и продление виз, поддержка Emirates ID, продление лицензий, иммиграционные процедуры и взаимодействие с государственными органами.',
+      accounting:
+        'Бухгалтерия и налоговое сопровождение в ОАЭ: ведение бухгалтерского учёта, финансовая отчётность, банковские сверки, VAT и Corporate Tax сопровождение, финансовый анализ.',
+      'tax-services':
+        'Налоговое сопровождение в ОАЭ: VAT регистрация и отчётность, Corporate Tax сопровождение и соблюдение налоговых требований.',
+      'crm-erp':
+        'CRM и ERP решения для бизнеса в ОАЭ: внедрение, настройка и интеграция систем управления клиентами и бизнес-процессами.',
+      automation:
+        'Автоматизация бизнеса в ОАЭ: автоматизация процессов, интеграция систем, AI-решения и цифровая трансформация.',
+      'digital-solutions':
+        'Цифровые решения для бизнеса в ОАЭ: разработка сайтов, Landing Pages, Digital Marketing, контент и цифровая стратегия.',
     },
   },
 }
