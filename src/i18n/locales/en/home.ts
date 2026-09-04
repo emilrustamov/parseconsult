@@ -93,18 +93,18 @@ export const homeEn = {
         icon: '🧮',
         id: 'accounting',
         slug: 'accounting',
-        title: 'Accounting',
+        title: 'Accounting & Tax',
         description:
-          'Bookkeeping, financial statements, bank reconciliations, and financial analysis.',
+          'Bookkeeping, financial statements, bank reconciliations, VAT registration, and Corporate Tax support.',
       },
-      {
-        icon: '💼',
-        id: 'tax-services',
-        slug: 'tax-services',
-        title: 'Tax Services',
-        description:
-          'VAT registration and filing, Corporate Tax support, and tax compliance.',
-      },
+      // {
+      //   icon: '💼',
+      //   id: 'tax-services',
+      //   slug: 'tax-services',
+      //   title: 'Tax Services',
+      //   description:
+      //     'VAT registration and filing, Corporate Tax support, and tax compliance.',
+      // },
       {
         icon: '⚙️',
         id: 'crm-erp',

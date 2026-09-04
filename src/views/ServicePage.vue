@@ -527,7 +527,7 @@ const roadmapSlugs = new Set(['crm-erp', 'automation', ])
 const isRoadmapStylePage = computed(
   () => isBitrixPage.value || roadmapSlugs.has(String(route.params.slug ?? '')),
 )
-const showcaseSlugs = new Set(['firstbit', 'accounting-systems', 'training', 'vat-cit-filing', 'business-registration', 'pro-services', 'accounting', 'tax-services', 'digital-solutions'])
+const showcaseSlugs = new Set(['firstbit', 'accounting-systems', 'training', 'vat-cit-filing', 'business-registration', 'pro-services', 'accounting', 'digital-solutions'])
 const isShowcasePage = computed(() => showcaseSlugs.has(String(route.params.slug ?? '')))
 const isBitrixPage = computed(() => String(route.params.slug ?? '') === 'bitrix24')
 const isAccountingSystemsPage = computed(() => String(route.params.slug ?? '') === 'accounting-systems')
@@ -647,6 +647,16 @@ watch(isLeadModalOpen, (open) => {
 watch(
   () => [String(route.params.slug ?? ''), locale.value] as const,
   ([slug]) => {
+    if (slug === 'tax-services') {
+      void router.replace({
+        name: 'service-details',
+        params: {
+          locale: String(route.params.locale ?? readStoredLocale()),
+          slug: 'accounting',
+        },
+      })
+      return
+    }
     if (!getServiceContent(String(locale.value))[slug]) {
       void router.replace({
         name: 'not-found',

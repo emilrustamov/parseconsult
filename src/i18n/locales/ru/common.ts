@@ -10,7 +10,7 @@ export const commonRu = {
     parse: 'Parse',
     consult: 'Consult',
     siteName: 'Parse Consult',
-    logoAlt: 'Parse Consult — консалтинг по учёту, CRM и налогам в ОАЭ и ССАГПЗ',
+    logoAlt: 'Parse Consult — консалтинг по учёту, CRM и налогам в ОАЭ и GCC',
   },
   nav: {
     home: 'Главная',
@@ -25,14 +25,14 @@ export const commonRu = {
     vatCitFiling: 'Подача VAT и CIT',
     businessRegistration: 'Регистрация бизнеса',   // новое
     proServices: 'PRO Services',                    // новое
-    accounting: 'Бухгалтерия',                       // новое
+    accounting: 'Бухгалтерия и Налоги',                      // новое
     taxServices: 'Налоги',                           // новое
     crmErp: 'CRM & ERP',                             // новое
     automation: 'Автоматизация',                     // новое
     digitalSolutions: 'Цифровые решения',            // новое
   },
   footer: {
-    tagline: 'Бухгалтерский учёт, внедрение, автоматизация — ОАЭ и ССАГПЗ',
+    tagline: 'Бухгалтерский учёт, внедрение, автоматизация — ОАЭ и GCC',
     services: 'Услуги',
     poweredBy: 'Powered by ltm.studio',
   },
@@ -46,7 +46,7 @@ export const commonRu = {
     email: 'Email',
     phone: 'Телефон',
     location: 'Локация',
-    locationText: 'ОАЭ и ССАГПЗ: онлайн и у клиента по договорённости.',
+    locationText: 'ОАЭ и GCC: онлайн и у клиента по договорённости.',
   },
   social: {
     youtubeName: 'YouTube',
@@ -89,7 +89,7 @@ export const commonRu = {
     svcTraining: 'Обучение учёту',
     svcAutomation: 'Автоматизация учёта',
     svcVatCit: 'VAT и CIT',
-    svcFirstbit: '1С и Firstbit (ОАЭ и ССАГПЗ)',
+    svcFirstbit: '1С и Firstbit (ОАЭ и GCC)',
     svcMicrosoftDynamics: 'Microsoft Dynamics',
     svcQuickbooks: 'QuickBooks',
     svcZoho: 'Zoho Books',
@@ -204,20 +204,20 @@ export const commonRu = {
     platformsAnd: 'и',
     platformsAlso: 'а также',
     platformsOutro:
-      'Поддерживаем внедрение, настройку и интеграцию современных бухгалтерских систем — 1С и Firstbit, Zoho Books и QuickBooks — обеспечивая прозрачный учёт, автоматизацию процессов и соответствие требованиям бизнеса в ОАЭ и странах ССАГПЗ.',
+      'Поддерживаем внедрение, настройку и интеграцию современных бухгалтерских систем — 1С и Firstbit, Zoho Books и QuickBooks — обеспечивая прозрачный учёт, автоматизацию процессов и соответствие требованиям бизнеса в ОАЭ и странах GCC.',
     bitrixCertImageAlt: '{caption} — внедрение и поддержка Zoho CRM и Bitrix24 в ОАЭ',
   },
   seo: {
     homeTitle: 'Parse Consult — учёт и автоматизация в ОАЭ',
     homeDescription:
-      'Внедрение 1С и Firstbit, Zoho Books и QuickBooks в ОАЭ и странах ССАГПЗ. Восстановление учета, обучение персонала и автоматизация финансовых процессов.',
+      'Внедрение 1С и Firstbit, Zoho Books и QuickBooks в ОАЭ и странах GCC. Восстановление учета, обучение персонала и автоматизация финансовых процессов.',
     homeKeywords:
-      'Parse Consult, бухгалтерия ОАЭ, ССАГПЗ, 1С, Firstbit, Zoho Books, QuickBooks, автоматизация учёта, МСФО, VAT, налог на прибыль, внедрение учёта',
-    contactTitle: 'Контакты Parse Consult — ОАЭ и ССАГПЗ',
+      'Parse Consult, бухгалтерия ОАЭ, GCC, 1С, Firstbit, Zoho Books, QuickBooks, автоматизация учёта, МСФО, VAT, налог на прибыль, внедрение учёта',
+    contactTitle: 'Контакты Parse Consult — ОАЭ и GCC',
     contactDescription:
-      'Свяжитесь с Parse Consult для консультации по внедрению бухгалтерских систем и автоматизации учета в ОАЭ и странах ССАГПЗ.',
+      'Свяжитесь с Parse Consult для консультации по внедрению бухгалтерских систем и автоматизации учета в ОАЭ и странах GCC.',
     contactKeywords:
-      'Parse Consult контакты, консультант по учёту ОАЭ, ССАГПЗ, бухгалтерские системы, автоматизация, Zoho Books, QuickBooks, 1С, Firstbit',
+      'Parse Consult контакты, консультант по учёту ОАЭ, GCC, бухгалтерские системы, автоматизация, Zoho Books, QuickBooks, 1С, Firstbit',
     parseLedgerTitle: 'Parse Ledger — импорт выписок ОАЭ в учёт',
     parseLedgerDescription:
       'Parse Ledger на базе ИИ преобразует выписки банков ОАЭ из PDF, XLS, XLSX и снимков в структурированные данные для Zoho Books, QuickBooks и FirstBit.',
@@ -225,17 +225,17 @@ export const commonRu = {
       'Parse Ledger, банковская выписка ОАЭ, PDF в Excel, импорт в Zoho Books, QuickBooks, FirstBit, ИИ учёт, OCR',
     notFoundTitle: 'Страница не найдена | Parse Consult',
     notFoundDescription:
-      'Запрошенная страница на parseconsult.ae не найдена. Откройте главную или раздел услуг, чтобы узнать о внедрении учёта, CRM и налоговой поддержке в ОАЭ и странах ССАГПЗ, либо воспользуйтесь формой связи с Parse Consult.',
+      'Запрошенная страница на parseconsult.ae не найдена. Откройте главную или раздел услуг, чтобы узнать о внедрении учёта, CRM и налоговой поддержке в ОАЭ и странах GCC, либо воспользуйтесь формой связи с Parse Consult.',
     notFoundKeywords: 'Parse Consult, страница не найдена',
     fallbackTitle: 'Parse Consult — консалтинг и автоматизация учёта',
     fallbackDescription:
-      'Parse Consult помогает компаниям в ОАЭ и ССАГПЗ выстроить прозрачный учёт, внедрить 1С, Firstbit, Zoho Books и QuickBooks, автоматизировать процессы и обучить команды, чтобы отчётность и контроль соответствовали местным требованиям и целям бизнеса.',
+      'Parse Consult помогает компаниям в ОАЭ и GCC выстроить прозрачный учёт, внедрить 1С, Firstbit, Zoho Books и QuickBooks, автоматизировать процессы и обучить команды, чтобы отчётность и контроль соответствовали местным требованиям и целям бизнеса.',
     fallbackKeywords:
-      'Parse Consult, ОАЭ, ССАГПЗ, бухгалтерия, автоматизация, 1С, Firstbit, Zoho Books, QuickBooks, CRM, VAT, CIT',
+      'Parse Consult, ОАЭ, GCC, бухгалтерия, автоматизация, 1С, Firstbit, Zoho Books, QuickBooks, CRM, VAT, CIT',
     breadcrumbHome: 'Главная',
-    ogImageAlt: 'Parse Consult — консалтинг по учёту, CRM и налогам в ОАЭ и ССАГПЗ',
+    ogImageAlt: 'Parse Consult — консалтинг по учёту, CRM и налогам в ОАЭ и GCC',
     serviceFallbackDescription:
-      'Parse Consult выполняет проектирование, внедрение и настройку финансовых и учётных платформ для организаций в ОАЭ и ССАГПЗ: от обследования и миграции данных до запуска, обучения пользователей, автоматизации и сопровождения с учётом локальной отчётности и налоговых практик.',
+      'Parse Consult выполняет проектирование, внедрение и настройку финансовых и учётных платформ для организаций в ОАЭ и GCC: от обследования и миграции данных до запуска, обучения пользователей, автоматизации и сопровождения с учётом локальной отчётности и налоговых практик.',
     serviceTitles: {
       bitrix24: 'Zoho CRM и Bitrix24 — внедрение в ОАЭ',
       firstbit: '1С и Firstbit — внедрение в ОАЭ',
@@ -254,7 +254,7 @@ export const commonRu = {
       bitrix24:
         'Zoho CRM, Bitrix24, внедрение CRM ОАЭ, автоматизация продаж, бизнес-процессы, Parse Consult',
       firstbit:
-        '1С, Firstbit, бухгалтерия ОАЭ, ССАГПЗ, МСФО, внедрение ERP, настройка учёта, Parse Consult',
+        '1С, Firstbit, бухгалтерия ОАЭ, GCC, МСФО, внедрение ERP, настройка учёта, Parse Consult',
       'accounting-systems':
         'бухгалтерские системы ОАЭ, восстановление учёта, Zoho Books, QuickBooks, Microsoft Dynamics, интеграция с банком, Parse Consult',
       training:
@@ -278,13 +278,13 @@ export const commonRu = {
     },
     serviceDescriptions: {
       bitrix24:
-        'Внедрение Zoho CRM и Bitrix24 в ОАЭ: настройка воронок и сделок, автоматизация лидов и счетов, интеграции с мессенджерами и почтой, права доступа, импорт данных и техническая поддержка, чтобы продажи, финансы и операции работали согласованно в масштабах ОАЭ и ССАГПЗ.',
+        'Внедрение Zoho CRM и Bitrix24 в ОАЭ: настройка воронок и сделок, автоматизация лидов и счетов, интеграции с мессенджерами и почтой, права доступа, импорт данных и техническая поддержка, чтобы продажи, финансы и операции работали согласованно в масштабах ОАЭ и GCC.',
       firstbit:
-        'Экспертное внедрение и кастомизация 1С и Firstbit в ОАЭ и странах ССАГПЗ: аудит, отраслевая настройка учёта, автоматизация и методология IFRS.',
+        'Экспертное внедрение и кастомизация 1С и Firstbit в ОАЭ и странах GCC: аудит, отраслевая настройка учёта, автоматизация и методология IFRS.',
       'accounting-systems':
-        'Внедрение, восстановление и оптимизация бухгалтерских систем с интеграцией банков и CRM для бизнеса в ОАЭ и странах ССАГПЗ.',
+        'Внедрение, восстановление и оптимизация бухгалтерских систем с интеграцией банков и CRM для бизнеса в ОАЭ и странах GCC.',
       training:
-        'Сопровождение и обучение персонала в ОАЭ и ССАГПЗ: регламенты и инструкции по ролям, практические занятия по 1С, Firstbit, Zoho Books и QuickBooks, сопровождение закрытия месяца и ответы на вопросы после запуска, чтобы команда уверенно работала в новой модели учёта.',
+        'Сопровождение и обучение персонала в ОАЭ и GCC: регламенты и инструкции по ролям, практические занятия по 1С, Firstbit, Zoho Books и QuickBooks, сопровождение закрытия месяца и ответы на вопросы после запуска, чтобы команда уверенно работала в новой модели учёта.',
       'vat-cit-filing':
         'Подача VAT и Corporate Tax (CIT) в ОАЭ: расчёты, подготовка и подача деклараций, сопровождение оплат и контроль соответствия требованиям.',
       'business-registration':

@@ -49,7 +49,6 @@ const serviceLinks = computed(() =>
       { label: t('nav.businessRegistration'), to: { name: 'service-details', params: { slug: 'business-registration' } } },
       { label: t('nav.proServices'), to: { name: 'service-details', params: { slug: 'pro-services' } } },
       { label: t('nav.accounting'), to: { name: 'service-details', params: { slug: 'accounting' } } },
-      { label: t('nav.taxServices'), to: { name: 'service-details', params: { slug: 'tax-services' } } },
       { label: t('nav.crmErp'), to: { name: 'service-details', params: { slug: 'crm-erp' } } },
       { label: t('nav.automation'), to: { name: 'service-details', params: { slug: 'automation' } } },
       { label: t('nav.digitalSolutions'), to: { name: 'service-details', params: { slug: 'digital-solutions' } } },

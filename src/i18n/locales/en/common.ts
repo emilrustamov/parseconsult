@@ -25,7 +25,7 @@ export const commonEn = {
     vatCitFiling: 'VAT and CIT filing support',
     businessRegistration: 'Business Registration',  // новое
     proServices: 'PRO Services',                     // новое
-    accounting: 'Accounting',                        // новое
+    accounting: 'Accounting & Tax',                        // новое
     taxServices: 'Tax Services',                     // новое
     crmErp: 'CRM & ERP',                             // новое
     automation: 'Business Automation',               // новое

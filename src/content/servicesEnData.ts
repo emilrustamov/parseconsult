@@ -420,7 +420,6 @@ export const serviceContentEn: Record<string, ServiceContent> = {
         items: [
           'Visa processing and renewal.',
           'Emirates ID support.',
-          'License renewals.',
           'Immigration procedures.',
           'Employee documentation.',
           'Government approvals.',
@@ -430,13 +429,8 @@ export const serviceContentEn: Record<string, ServiceContent> = {
       {
         title: 'Comprehensive administrative support',
         items: [
-          'Visa processing and renewal.',
-          'Emirates ID support.',
           'License renewals.',
-          'Immigration procedures.',
-          'Employee documentation.',
           'Government approvals.',
-          'Document attestation.',
           'We manage the key administrative processes involved in running a business and employing staff in the UAE.',
         ],
       },
@@ -500,96 +494,6 @@ export const serviceContentEn: Record<string, ServiceContent> = {
     },
   },
   accounting: {
-    title: 'Accounting and Tax Services',
-    description:
-      'Proper accounting is about more than compliance — it is a tool that helps you understand your business and make better decisions. Parse Consult helps companies in the UAE build an effective financial system, from day-to-day bookkeeping to tax support and analysis.',
-    groups: [
-      {
-        title: 'Complete financial support for your business',
-        items: [
-          'Bookkeeping.',
-          'Financial statement preparation.',
-          'Transaction monitoring.',
-          'Bank reconciliations.',
-          'VAT registration and filing.',
-          'Corporate Tax support.',
-          'Financial analysis.',
-        ],
-      },
-      {
-        title: 'Comprehensive financial support',
-        items: [
-          'Bookkeeping for day-to-day financial control.',
-          'Financial statement preparation.',
-          'Transaction monitoring and bank reconciliations.',
-          'VAT registration and filing.',
-          'Corporate Tax support.',
-          'Financial analysis.',
-          'We build a financial system that helps you track your numbers and stay compliant with tax requirements.',
-        ],
-      },
-      {
-        title: 'Who this is for',
-        items: [
-          'New companies that need a financial system.',
-          'Growing businesses.',
-          'Companies preparing for tax requirements.',
-          'Businesses looking to replace disorganized bookkeeping.',
-        ],
-      },
-      {
-        title: 'Our approach',
-        items: [
-          'Setting up your bookkeeping.',
-          'Preparing financial statements.',
-          'Monitoring financial transactions.',
-          'Bank reconciliations.',
-          'Tax support.',
-          'Financial analysis.',
-        ],
-      },
-      {
-        title: 'Support and follow-up',
-        items: [
-          'Regular bookkeeping.',
-          'Financial statement preparation.',
-          'VAT registration and filing.',
-          'Corporate Tax support.',
-          'Financial analysis and transaction monitoring.',
-        ],
-      },
-      {
-        title: 'Why choose us',
-        items: [
-          'Comprehensive financial support for your business.',
-          'Support with UAE VAT and Corporate Tax.',
-          'Transparent bookkeeping and reporting.',
-          'Financial analysis for better decision-making.',
-        ],
-      },
-    ],
-    advantages: {
-      title: 'What you get',
-      items: [
-        {
-          number: '01',
-          title: 'Financial control',
-          description: 'You get a clear view of your business through transparent reporting.',
-        },
-        {
-          number: '02',
-          title: 'Tax confidence',
-          description: 'We help you stay compliant with UAE VAT and Corporate Tax requirements.',
-        },
-        {
-          number: '03',
-          title: 'Data to guide decisions',
-          description: 'Your financial data becomes a tool for growth, not just a report.',
-        },
-      ],
-    },
-  },
-  'tax-services': {
     title: 'Accounting and Tax Services',
     description:
       'Proper accounting is about more than compliance — it is a tool that helps you understand your business and make better decisions. Parse Consult helps companies in the UAE build an effective financial system, from day-to-day bookkeeping to tax support and analysis.',
@@ -862,7 +766,7 @@ export const serviceContentEn: Record<string, ServiceContent> = {
       {
         title: 'Our digital solutions',
         items: [
-          'Website development.',
+          'Website creation and automation.',
           'Landing pages.',
           'Digital marketing.',
           'Content creation.',
@@ -873,7 +777,7 @@ export const serviceContentEn: Record<string, ServiceContent> = {
       {
         title: 'Comprehensive digital solutions',
         items: [
-          'Website development for your business.',
+          'Website creation and automation for your business.',
           'Landing page creation.',
           'Digital marketing to reach your audience.',
           'Content creation.',
