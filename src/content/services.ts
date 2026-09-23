@@ -26,3 +26,11 @@ export type SiteContentLocale = keyof typeof serviceContentByLocale
 export function getServiceContent(locale: string) {
   return locale === 'en' ? serviceContentEn : serviceContentRu
 }
+export const activeServiceSlugs = [
+  'business-registration',
+  'pro-services',
+  'accounting',
+  'crm-erp',
+  'automation',
+  'digital-solutions',
+] as const

@@ -340,6 +340,77 @@ const applySeo = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): voi
   }
 }
 
+const escapeHtml = (value: string): string =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+
+/**
+ * Server-only: builds the same tags `applySeo` writes into `document.head`
+ * on the client, but as a plain HTML string, for the prerender step to
+ * splice into the static `dist/**\/index.html` files. No DOM access here —
+ * safe to run in Node.
+ */
+export const buildHeadData = (
+  route: RouteLocationNormalizedLoaded,
+  i18n: I18nInstance,
+): { html: string; lang: 'en' | 'ru' } => {
+  const meta = buildMeta(route, i18n)
+  const canonicalUrl = `${SITE_URL}${meta.path}`
+  const t = i18n.global.t as (key: string) => string
+  const siteName = t('brand.siteName')
+  const ogImageAlt = t('seo.ogImageAlt')
+  const ogLocale = currentLocale(i18n) === 'en' ? 'en_US' : 'ru_RU'
+  const ogLocaleAlternate = ogLocale === 'en_US' ? 'ru_RU' : 'en_US'
+  const lang = currentLocale(i18n) === 'en' ? 'en' : 'ru'
+
+  const tags: string[] = []
+  tags.push(`<title>${escapeHtml(meta.title)}</title>`)
+  tags.push(`<meta name="description" content="${escapeHtml(meta.description)}">`)
+  tags.push(`<meta name="keywords" content="${escapeHtml(meta.keywords)}">`)
+  tags.push(`<meta name="robots" content="${meta.robots ?? 'index,follow'}">`)
+  tags.push(`<meta name="author" content="${escapeHtml(DEVELOPER_SITE_URL)}">`)
+  tags.push(`<meta property="og:title" content="${escapeHtml(meta.title)}">`)
+  tags.push(`<meta property="og:description" content="${escapeHtml(meta.description)}">`)
+  tags.push('<meta property="og:type" content="website">')
+  tags.push(`<meta property="og:url" content="${escapeHtml(canonicalUrl)}">`)
+  tags.push(`<meta property="og:image" content="${escapeHtml(DEFAULT_IMAGE)}">`)
+  tags.push(`<meta property="og:image:alt" content="${escapeHtml(ogImageAlt)}">`)
+  tags.push(`<meta property="og:site_name" content="${escapeHtml(siteName)}">`)
+  tags.push(`<meta property="og:locale" content="${ogLocale}">`)
+  tags.push(`<meta property="og:locale:alternate" content="${ogLocaleAlternate}">`)
+  tags.push('<meta name="twitter:card" content="summary_large_image">')
+  tags.push(`<meta name="twitter:title" content="${escapeHtml(meta.title)}">`)
+  tags.push(`<meta name="twitter:description" content="${escapeHtml(meta.description)}">`)
+  tags.push(`<meta name="twitter:image" content="${escapeHtml(DEFAULT_IMAGE)}">`)
+  tags.push(`<meta name="twitter:image:alt" content="${escapeHtml(ogImageAlt)}">`)
+  tags.push(`<link rel="canonical" href="${escapeHtml(canonicalUrl)}">`)
+  tags.push(`<link rel="alternate" hreflang="en" href="${SITE_URL}/en">`)
+  tags.push(`<link rel="alternate" hreflang="ru" href="${SITE_URL}/ru">`)
+  tags.push(`<link rel="alternate" hreflang="x-default" href="${SITE_URL}/en">`)
+
+  tags.push(
+    `<script type="application/ld+json">${JSON.stringify(buildOrganizationJsonLd(i18n))}</script>`,
+  )
+  tags.push(
+    `<script type="application/ld+json">${JSON.stringify(buildWebsiteJsonLd(i18n))}</script>`,
+  )
+
+  const breadcrumb = buildBreadcrumbJsonLd(route, i18n)
+  if (breadcrumb) {
+    tags.push(`<script type="application/ld+json">${JSON.stringify(breadcrumb)}</script>`)
+  }
+
+  const service = buildServiceJsonLd(route, i18n)
+  if (service) {
+    tags.push(`<script type="application/ld+json">${JSON.stringify(service)}</script>`)
+  }
+
+  return { html: tags.join('\n    '), lang }
+}
+
 export const installSeo = (router: Router, i18n: I18nInstance): void => {
   const run = (): void => {
     applySeo(router.currentRoute.value, i18n)
