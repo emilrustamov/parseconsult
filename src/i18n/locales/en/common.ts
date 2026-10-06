@@ -10,26 +10,26 @@ export const commonEn = {
     parse: 'Parse',
     consult: 'Consult',
     siteName: 'Parse Consult',
-    logoAlt: 'Parse Consult — accounting, CRM, and tax consulting in the UAE and GCC',
+    logoAlt: 'Parse Consult — accounting, CRM and tax consulting in the UAE and GCC',
   },
   nav: {
     home: 'Home',
     services: 'Services',
     parseLedger: 'Parse Ledger',
     contact: 'Contact',
-    getInTouch: 'Contact us',
-    firstbit: '1C and Firstbit',
-    bitrix24: 'Zoho CRM & Bitrix24 Setup',
-    accountingSystems: 'Accounting system implementation and recovery',
-    training: 'Support and training',
-    vatCitFiling: 'VAT and CIT filing support',
-    businessRegistration: 'Business Registration',  // новое
-    proServices: 'PRO Services',                     // новое
-    accounting: 'Accounting & Tax',                        // новое
-    taxServices: 'Tax Services',                     // новое
-    crmErp: 'CRM & ERP',                             // новое
-    automation: 'Business Automation',               // новое
-    digitalSolutions: 'Digital Solutions',           // новое
+    getInTouch: 'Get in touch',
+    firstbit: '1C and Firstbit implementation',
+    bitrix24: 'Zoho CRM and Bitrix24 implementation and setup',
+    accountingSystems: 'Accounting implementation and recovery',
+    training: 'Accounting support and training',
+    vatCitFiling: 'VAT and CIT calculation',
+    businessRegistration: 'Business setup',
+    proServices: 'Administrative support',
+    accounting: 'Accounting and Tax',
+    taxServices: 'Tax',
+    crmErp: 'CRM & ERP',
+    automation: 'Automation',
+    digitalSolutions: 'Digital solutions',
   },
   footer: {
     tagline: 'Accounting, implementation, automation — UAE and GCC',
@@ -37,7 +37,7 @@ export const commonEn = {
     poweredBy: 'Powered by ltm.studio',
   },
   cta: {
-    contactUs: 'Contact us',
+    contactUs: 'Get in touch',
     submitRequest: 'Submit request',
     learnMore: 'Learn more',
     tryProduct: 'Try it',
@@ -46,7 +46,7 @@ export const commonEn = {
     email: 'Email',
     phone: 'Phone',
     location: 'Location',
-    locationText: 'UAE and GCC: online and on-site by agreement.',
+    locationText: 'UAE and GCC: online and on-site by arrangement.',
   },
   social: {
     youtubeName: 'YouTube',
@@ -55,31 +55,31 @@ export const commonEn = {
     instagramLabel: 'ParseLedger on Instagram',
   },
   leadForm: {
-    successApi: 'Thank you! Your request was received. We will contact you shortly.',
+    successApi: 'Thank you! Your request has been received. We will contact you in your preferred way.',
     successMailto:
-      'If your mail app opened, please send the message. If it did not, email us at {email} or use the messengers in the site header.',
-    submitError: 'Could not send the request. Try again or email {email}.',
+      'If your email app opened, send the email. If email is not set up, write to us at {email} or through the messengers in the site header.',
+    submitError: 'Could not send your request. Please try again or write to {email}.',
     fullName: 'Full name',
     fullNamePlaceholder: 'John Smith',
-    contactMethod: 'How should we contact you?',
+    contactMethod: 'How can we contact you?',
     phone: 'Phone',
     email: 'Email',
-    social: 'Social',
+    social: 'Social networks',
     phonePlaceholder: '+971 XX XXX XXXX',
     emailPlaceholder: "you{'@'}company.ae",
-    whatsappPlaceholder: "+971… or {'@'}username",
-    telegramPlaceholder: "{'@'}username or phone",
+    whatsappPlaceholder: "+971... or {'@'}username",
+    telegramPlaceholder: "{'@'}username or number",
     servicesLegend: 'Services of interest',
     message: 'Message',
-    messagePlaceholder: 'Briefly describe the task, timeline, and accounting system if known.',
+    messagePlaceholder: 'Briefly describe the task, timeline and your accounting system, if known.',
     submitting: 'Sending…',
     submit: 'Submit request',
     contactMethodError: 'Select at least one contact method.',
     servicesError: 'Select at least one service.',
     servicesSelectPlaceholder: 'Select services',
     mailSubject: 'Website request — {name}',
-    mailBodyName: 'Name',
-    mailBodyContact: 'Contact via',
+    mailBodyName: 'Full name',
+    mailBodyContact: 'Contact',
     mailBodyPhone: 'Phone',
     mailBodyEmail: 'Email',
     mailBodyWhatsapp: 'WhatsApp',
@@ -100,7 +100,7 @@ export const commonEn = {
   notFound: {
     badge: 'Error 404',
     title: 'Page not found',
-    text: 'The link may be outdated or the page was moved. Go back home or open contacts and we will help you find the right section.',
+    text: 'The link may be outdated or the page may have been moved. Go back to the home page or to the contacts page and we will quickly help you find the section you need.',
     home: 'Back to home',
     contact: 'Go to contacts',
   },
@@ -109,55 +109,55 @@ export const commonEn = {
   },
   parseLedger: {
     heroTitle:
-      'Automatic Bank Statement Import to Zoho Books, QuickBooks, and FirstBit in the UAE with Parse Ledger',
+      'Automatic import of bank statements into Zoho Books, QuickBooks and FirstBit in the UAE with Parse Ledger',
     lead1:
-      '🧾 Parse Ledger is an AI-powered solution for automating bank statement processing for UAE businesses. It turns PDF, XLS, and XLSX statements into clean, structured data ready for accounting.',
+      '🧾 Parse Ledger is an AI-based solution for automating the processing of business bank statements in the UAE. The system converts statements in PDF, XLS and XLSX formats into clean, structured data ready for accounting.',
     lead2:
-      '⚡ Skip manual entry: in minutes, raw statements become XLSX, CSV, or JSON — ready to import into Zoho Books, QuickBooks, and FirstBit.',
-    aiTitle: '🤖 AI-Powered Bank Statement Processing',
+      '⚡ Stop wasting time on manual entry: in minutes, raw statements become XLSX, CSV or JSON — ready to import into Zoho Books, QuickBooks and FirstBit.',
+    aiTitle: '🤖 AI processing of bank statements',
     aiEyebrow: '✨ AI · Statements · UAE',
     aiBody1:
-      'Parse Ledger uses advanced artificial intelligence to extract, clean, and structure financial data with high accuracy.',
+      'Parse Ledger uses modern AI models to extract, clean and structure financial data with high accuracy.',
     aiBody2:
-      'Whether your statements come from UAE banks or even photos, our system can accurately read and process data not only from files exported from banking apps but also directly from images, adapting to different formats and layouts automatically.',
+      'Whether the statement comes from a UAE bank or even as a photo, the system reads the data correctly, both from files exported from banking mobile apps and directly from images, adapting to different formats and layouts.',
     keyFeaturesTitle: '📌 Key features',
     keyFeatures: [
-      '📄 Automatic data extraction from PDF, XLS, and XLSX',
-      '🏷️ Smart transaction categorization',
-      '📊 Clean structured output (CSV, JSON, XLSX)',
-      '✅ High accuracy with minimal manual correction',
-      '⚡ Fast processing for large volumes of data',
+      '📄 Automatic data extraction from PDF, XLS and XLSX',
+      '🏷️ Smart categorization of transactions',
+      '📊 Clean, structured output (CSV, JSON, XLSX)',
+      '✅ High accuracy with minimal manual corrections',
+      '⚡ Fast processing of large volumes of data',
     ],
-    builtForTitle: '🇦🇪 Built for Accounting Automation in the UAE',
+    builtForTitle: '🇦🇪 For accounting automation in the UAE',
     builtForLead:
-      'Designed specifically for businesses operating in the UAE, Parse Ledger helps accountants, finance teams, and outsourcing firms streamline their workflows.',
-    integrationsLead: '🔗 Our solution integrates smoothly with:',
+      'Parse Ledger is built for companies doing business in the UAE: accountants, finance teams and outsourcing firms that need to speed up their daily processes.',
+    integrationsLead: '🔗 The solution works smoothly with:',
     integrations: ['📗 Zoho Books', '📘 QuickBooks', '⚙️ FirstBit'],
     integrationsOutro:
-      'This allows you to import processed data directly into your accounting system without additional formatting or adjustments.',
-    saveTimeTitle: '⏱️ Save Time, Reduce Errors, Increase Efficiency',
+      'Processed data can be imported directly into your accounting system, without extra formatting or manual rework.',
+    saveTimeTitle: '⏱️ Less time, fewer errors, higher efficiency',
     saveTimeLead:
-      'Manual processing of bank statements is time-consuming and prone to errors. Parse Ledger eliminates repetitive tasks and significantly reduces the risk of human mistakes.',
+      'Manual processing of statements takes a lot of time and increases the risk of errors. Parse Ledger removes the routine and significantly reduces the human factor.',
     benefitsSectionTitle: '💡 Benefits',
     benefitLines: [
-      '🕐 Save hours of manual work every month',
-      '💰 Reduce operational costs',
-      '🎯 Improve data accuracy',
-      '📈 Accelerate financial reporting',
-      '📦 Scale your accounting processes effortlessly',
+      '🕐 Dozens of hours of manual work saved every month',
+      '💰 Lower operating costs',
+      '🎯 Higher data accuracy',
+      '📈 Faster financial reporting',
+      '📦 Easy scaling of accounting processes',
     ],
-    ctaTitle: '🚀 Start Using Parse Ledger Today',
+    ctaTitle: '🚀 Start using Parse Ledger today',
     ctaLead:
-      'Take advantage of our free beta testing period and experience the future of accounting automation in the UAE.',
-    ctaHighlight: '👉 Upload your bank statements and let AI do the work.',
-    banksTitle: 'supports automatic processing of statements from leading UAE banks',
+      'Take advantage of the free beta period and see what accounting automation in the UAE can look like.',
+    ctaHighlight: '👉 Upload your bank statements — AI will do the work for you.',
+    banksTitle: 'supports automatic processing of bank statements from the UAE’s leading banks',
     banksLead:
-      'Parse Ledger helps you process bank statements quickly and accurately, cutting manual work and reducing error risk.',
-    banksListTitle: 'Supported banks include:',
+      'The Parse Ledger program lets you process bank statements quickly and accurately, minimizing manual work and reducing the risk of errors.',
+    banksListTitle: 'Statements from the following banks are supported:',
     otherBanks: 'and other banks',
     bankRowImageAlt:
-      '{name} — UAE bank statement formats for import into Zoho Books, QuickBooks, and FirstBit (Parse Ledger)',
-    tutorialTitle: 'How to use the app',
+      '{name} — UAE bank statements for import into Zoho Books, QuickBooks and FirstBit (Parse Ledger)',
+    tutorialTitle: 'How to use the program',
     videoTitle1: 'Parse Ledger — tutorial (video 1)',
     videoTitle2: 'Parse Ledger — tutorial (video 2)',
     videoTitle3: 'Parse Ledger — tutorial (video 3)',
@@ -168,35 +168,35 @@ export const commonEn = {
     otherFallback: 'Other',
     back: 'Back',
     selectSphere: 'Select an industry',
-    retake: 'Retake the survey',
+    retake: 'Take the survey again',
     sending: 'Sending…',
-    mailIntro: 'Bitrix24 survey: cloud vs on-premise',
+    mailIntro: 'Bitrix24 survey: cloud or on-premise',
     mailScores: 'Scores — cloud: {cloud}, on-premise: {box}',
     mailAnswers: 'Answers:',
     mailName: 'Name',
     mailPhone: 'Phone',
     mailSphere: 'Industry',
     mailSubject: 'Bitrix24 survey — discount — {name}',
-    recommendationCloud: 'Recommendation: Bitrix24 cloud.',
-    recommendationBox: 'Recommendation: Bitrix24 on-premise (box).',
-    recommendationTie: 'Recommendation: start in the cloud with an option to move on-premise later.',
+    recommendationCloud: 'Personal recommendation: the cloud version of Bitrix24.',
+    recommendationBox: 'Personal recommendation: the on-premise version of Bitrix24.',
+    recommendationTie: 'Personal recommendation: start with the cloud, with the option to move to on-premise later.',
   },
   servicePage: {
     services: 'Services',
     defaultDescription:
-      'We choose an industry accounting model and tune processes to your real operations.',
-    discussImplementation: 'Submit request',
-    tryDemo: 'Try the demo',
+      'We choose an industry-specific accounting model and set up processes around the real operations of your business.',
+    discussImplementation: 'Get in touch',
+    tryDemo: '⚡ Try the demo',
     certificates: 'Certificates',
-    roadmapTitle: 'Implementation roadmap',
+    roadmapTitle: 'Implementation stages',
     industries: 'Industries',
-    leaveRequest: 'Submit request',
+    leaveRequest: 'Get in touch',
     connect: 'Contact us',
-    modalTitle: 'Submit request',
+    modalTitle: 'Get in touch',
     modalAria: 'Request form',
     modalSubmit: 'Submit request',
     closeConfirmTitle: 'Close the form?',
-    closeConfirmText: 'Are you sure? Your data will not be saved.',
+    closeConfirmText: 'Are you sure you want to close? Your data will not be saved.',
     cancel: 'Cancel',
     closeWithoutSave: 'Close without saving',
     modalMessagePrefix: 'Configuration of interest:',
@@ -204,104 +204,103 @@ export const commonEn = {
     platformsAnd: 'and',
     platformsAlso: 'as well as',
     platformsOutro:
-      'We support implementation, configuration, and integration of modern accounting systems — 1C and Firstbit, Zoho Books and QuickBooks — delivering transparent accounting, process automation, and compliance for businesses in the UAE and GCC.',
-    bitrixCertImageAlt: '{caption} — Zoho CRM & Bitrix24 setup, implementation, and support in the UAE',
+      'We support the implementation, configuration and integration of modern accounting systems — 1C and Firstbit, Zoho Books and QuickBooks — ensuring transparent accounting, process automation and alignment with business requirements in the UAE and GCC.',
+    bitrixCertImageAlt: '{caption} — implementation and support of Zoho CRM and Bitrix24 in the UAE',
   },
   seo: {
-    homeTitle: 'Parse Consult — UAE & GCC accounting automation',
+    homeTitle: 'Parse Consult — Accounting & Automation in the UAE',
     homeDescription:
-      '1C and Firstbit, Zoho Books and QuickBooks in the UAE and GCC. Accounting recovery, team training, and financial process automation.',
+      'Implementation of 1C and Firstbit, Zoho Books and QuickBooks in the UAE and GCC. Accounting recovery, staff training and automation of financial processes.',
     homeKeywords:
       'Parse Consult, UAE accounting, GCC, 1C, Firstbit, Zoho Books, QuickBooks, accounting automation, IFRS, VAT, corporate tax, accounting implementation',
     contactTitle: 'Contact Parse Consult — UAE & GCC',
     contactDescription:
-      'Reach out to Parse Consult in the UAE and GCC for practical guidance on accounting systems, ERP and cloud tools, process automation, VAT and corporate tax questions, and team enablement tailored to your business stage and industry.',
+      'Contact Parse Consult for advice on implementing accounting systems and automating accounting in the UAE and GCC.',
     contactKeywords:
-      'Parse Consult contact, UAE accounting consultant, GCC, accounting systems, automation, Zoho Books, QuickBooks, 1C, Firstbit',
-    parseLedgerTitle: 'Parse Ledger: UAE bank statements to accounting',
+      'Parse Consult contacts, UAE accounting consultant, GCC, accounting systems, automation, Zoho Books, QuickBooks, 1C, Firstbit',
+    parseLedgerTitle: 'Parse Ledger — UAE Bank Statement Import',
     parseLedgerDescription:
-      'Parse Ledger uses AI to convert UAE bank statements from PDF, XLS, XLSX, and images into clean data ready for Zoho Books, QuickBooks, and FirstBit.',
+      'Parse Ledger uses AI to convert UAE bank statements from PDF, XLS, XLSX and images into structured data for Zoho Books, QuickBooks and FirstBit.',
     parseLedgerKeywords:
-      'Parse Ledger, UAE bank statement, PDF to Excel, bank feed automation, Zoho Books import, QuickBooks, FirstBit, AI accounting, OCR',
+      'Parse Ledger, UAE bank statement, PDF to Excel, Zoho Books import, QuickBooks, FirstBit, AI accounting, OCR',
     notFoundTitle: 'Page not found | Parse Consult',
     notFoundDescription:
-      'The page you requested could not be found on parseconsult.ae. Use the site navigation to explore accounting implementation, CRM and tax services in the UAE and GCC, or open the home page to contact Parse Consult.',
+      'The requested page on parseconsult.ae was not found. Open the home page or the services section to learn about accounting implementation, CRM and tax support in the UAE and GCC, or use the Parse Consult contact form.',
     notFoundKeywords: 'Parse Consult, page not found',
-    fallbackTitle: 'Parse Consult — consulting and accounting automation',
+    fallbackTitle: 'Parse Consult — Consulting & Accounting Automation',
     fallbackDescription:
-      'Parse Consult supports companies in the UAE and GCC with transparent accounting, structured financial processes, system implementation across 1C, Firstbit, Zoho Books and QuickBooks, integrations, training, and ongoing advisory so teams work confidently with compliant reporting.',
+      'Parse Consult helps companies in the UAE and GCC build transparent accounting, implement 1C, Firstbit, Zoho Books and QuickBooks, automate processes and train teams so reporting and control meet local requirements and business goals.',
     fallbackKeywords:
       'Parse Consult, UAE, GCC, accounting, automation, 1C, Firstbit, Zoho Books, QuickBooks, CRM, VAT, CIT',
     breadcrumbHome: 'Home',
-    ogImageAlt: 'Parse Consult — accounting, CRM, and tax consulting in the UAE and GCC',
+    ogImageAlt: 'Parse Consult — accounting, CRM and tax consulting in the UAE and GCC',
     serviceFallbackDescription:
-      'Parse Consult delivers professional design, implementation and configuration of accounting and finance platforms for UAE and GCC organisations, from discovery and data migration through go live, user training, automation, and continuous optimisation aligned with local regulatory expectations.',
+      'Parse Consult designs, implements and configures financial and accounting platforms for organizations in the UAE and GCC: from assessment and data migration to launch, user training, automation and support, taking local reporting and tax practices into account.',
     serviceTitles: {
-      bitrix24: 'CRM implementation UAE | Parse Consult',
-      firstbit: '1C & Firstbit UAE | Parse Consult',
-      'accounting-systems': 'Accounting systems UAE | Parse Consult',
-      training: 'Team training UAE | Parse Consult',
-      'vat-cit-filing': 'VAT & CIT filing UAE | Parse Consult',
-      'business-registration': 'Business Registration in the UAE | Parse Consult',
-      'pro-services': 'PRO Services in the UAE | Parse Consult',
-      accounting: 'Accounting & Tax Services UAE | Parse Consult',
-      'tax-services': 'Tax Services UAE | Parse Consult',
-      'crm-erp': 'CRM & ERP Solutions UAE | Parse Consult',
-      automation: 'Business Automation UAE | Parse Consult',
-      'digital-solutions': 'Digital Solutions for Business UAE | Parse Consult',
+      bitrix24: 'Zoho CRM and Bitrix24 — Implementation in the UAE',
+      firstbit: '1C and Firstbit — Implementation in the UAE',
+      'accounting-systems': 'Accounting Implementation and Recovery in the UAE',
+      training: 'Accounting Training and Support in the UAE',
+      'vat-cit-filing': 'VAT and CIT Calculation in the UAE | Parse Consult',
+      'business-registration': 'Business Setup Consulting in the UAE | Parse Consult',
+      'pro-services': 'Business Administrative Support in the UAE | Parse Consult',
+      accounting: 'Accounting and Tax Support in the UAE | Parse Consult',
+      'tax-services': 'Tax Support in the UAE | Parse Consult',
+      'crm-erp': 'CRM and ERP Solutions in the UAE | Parse Consult',
+      automation: 'Business Automation in the UAE | Parse Consult',
+      'digital-solutions': 'Digital Solutions for Business in the UAE | Parse Consult',
     },
     serviceKeywords: {
       bitrix24:
-        'Zoho CRM, Bitrix24, CRM UAE, CRM implementation, sales automation, business process automation, Parse Consult',
+        'Zoho CRM, Bitrix24, CRM implementation UAE, sales automation, business processes, Parse Consult',
       firstbit:
-        '1C, Firstbit, UAE accounting, GCC, IFRS, ERP implementation, accounting customization, Parse Consult',
+        '1C, Firstbit, UAE accounting, GCC, IFRS, ERP implementation, accounting setup, Parse Consult',
       'accounting-systems':
-        'accounting systems UAE, accounting recovery, Zoho Books, QuickBooks, Microsoft Dynamics, bank integration, Parse Consult',
+        'UAE accounting systems, accounting recovery, Zoho Books, QuickBooks, Microsoft Dynamics, bank integration, Parse Consult',
       training:
-        'accounting training UAE, team onboarding, 1C training, Zoho Books training, QuickBooks support, Parse Consult',
+        'UAE accounting training, team onboarding, 1C training, Zoho Books, QuickBooks support, Parse Consult',
       'vat-cit-filing':
-        'UAE VAT, corporate tax UAE, CIT filing, tax compliance UAE, FTA, Parse Consult',
+        'UAE VAT, UAE corporate tax, CIT calculation, tax compliance, FTA, Parse Consult',
       'business-registration':
-        'business registration UAE, company setup UAE, Mainland, Free Zone, UAE trade license, Parse Consult',
+        'UAE business setup consulting, company structure UAE, Mainland, Free Zone, consulting, Parse Consult',
       'pro-services':
-        'PRO services UAE, UAE visas, Emirates ID, license renewal, administrative support, Parse Consult',
+        'UAE business administrative support, employee documents, support, Parse Consult',
       accounting:
-        'accounting UAE, bookkeeping, financial reporting, bank reconciliation, financial analysis, Parse Consult',
+        'UAE accounting, bookkeeping, financial reporting, bank reconciliations, financial analysis, Parse Consult',
       'tax-services':
-        'tax services UAE, VAT registration, Corporate Tax, tax compliance UAE, Parse Consult',
+        'UAE taxes, VAT calculation, Corporate Tax, tax support, Parse Consult',
       'crm-erp':
-        'CRM UAE, ERP UAE, CRM implementation, ERP implementation, system integration, business automation, Parse Consult',
+        'CRM UAE, ERP UAE, CRM implementation, ERP implementation, systems integration, business automation, Parse Consult',
       automation:
-        'business automation UAE, system integration, AI solutions, digital transformation, Parse Consult',
+        'UAE business automation, systems integration, AI solutions, digital transformation, Parse Consult',
       'digital-solutions':
-        'digital solutions UAE, website development, landing pages, digital marketing, digital strategy, Parse Consult',
+        'UAE digital solutions, website development, landing page, digital marketing, digital strategy, Parse Consult',
     },
     serviceDescriptions: {
       bitrix24:
-        'Zoho CRM and Bitrix24 consulting in the UAE: end to end setup, pipeline design, automation for leads and invoices, messenger integrations, role security, data imports, and managed support so sales operations stay aligned with delivery, finance and compliance requirements across the GCC.',
+        'Zoho CRM and Bitrix24 implementation in the UAE: pipeline and deal setup, lead and invoice automation, messenger and email integrations, access rights, data import and technical support, so sales, finance and operations work together across the UAE and GCC.',
       firstbit:
-        'Expert 1C and Firstbit implementation in the UAE and GCC: audit, industry-specific accounting setup, automation, and IFRS methodology.',
+        'Expert implementation and customization of 1C and Firstbit in the UAE and GCC: audit, industry-specific accounting setup, automation and IFRS methodology.',
       'accounting-systems':
-        'Implementation, recovery, and optimisation of accounting systems for the UAE and GCC with bank feeds, CRM links and retail integrations. We restructure workflows, migrate historical data, configure roles and approvals, and build reporting so leadership has reliable cash flow, margin and balance sheet insight.',
+        'Implementation, recovery and optimization of accounting systems with bank and CRM integration for businesses in the UAE and GCC.',
       training:
-        'Hands on support and training for finance teams in the UAE and GCC: documented policies, role based guides, workshops on 1C, Firstbit, Zoho Books and QuickBooks, shadowing during month end close, and post launch Q&A so adoption sticks and mistakes drop after go live.',
+        'Support and staff training in the UAE and GCC: role-based procedures and guides, hands-on sessions for 1C, Firstbit, Zoho Books and QuickBooks, month-end close support and post-launch Q&A, so your team works confidently in the new accounting model.',
       'vat-cit-filing':
-        'VAT and Corporate Tax (CIT) filing in the UAE: calculations, return submission, payment support, and compliance guidance.',
+        'VAT and Corporate Tax (CIT) calculation in the UAE: calculations, tax reporting preparation, consulting and compliance control.',
       'business-registration':
-        'Business registration in the UAE: choosing the right structure and jurisdiction (Mainland, Free Zone), document preparation, licensing, and support at every stage of company setup.',
+        'Business setup consulting in the UAE: guidance on choosing a structure and jurisdiction (Mainland, Free Zone), help with preparing documents and support at every stage.',
       'pro-services':
-        'PRO services in the UAE: visa processing and renewal, Emirates ID support, license renewals, immigration procedures, and liaison with government authorities.',
+        'Administrative support for businesses in the UAE: consulting on employee documents, organizational matters and working with partners.',
       accounting:
-        'Accounting and tax services in the UAE: bookkeeping, financial statements, bank reconciliations, VAT and Corporate Tax support, and financial analysis.',
+        'Accounting and tax support in the UAE: bookkeeping, financial reporting, bank reconciliations, VAT and Corporate Tax support, financial analysis.',
       'tax-services':
-        'Tax services in the UAE: VAT registration and filing, Corporate Tax support, and tax compliance.',
+        'Tax support in the UAE: VAT calculation and reporting, Corporate Tax calculation and tax compliance.',
       'crm-erp':
-        'CRM and ERP solutions for businesses in the UAE: implementation, setup, and integration of customer and business process management systems.',
+        'CRM and ERP solutions for businesses in the UAE: implementation, configuration and integration of customer management and business process systems.',
       automation:
-        'Business automation in the UAE: process automation, system integration, AI solutions, and digital transformation.',
+        'Business automation in the UAE: process automation, systems integration, AI solutions and digital transformation.',
       'digital-solutions':
-        'Digital solutions for businesses in the UAE: website development, landing pages, digital marketing, content, and digital strategy.',
+        'Digital solutions for businesses in the UAE: website development, landing pages, digital marketing, content and digital strategy.',
     },
   },
 }
-

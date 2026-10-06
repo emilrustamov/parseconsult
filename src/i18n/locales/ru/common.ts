@@ -22,14 +22,14 @@ export const commonRu = {
     bitrix24: 'Внедрение и настройка Zoho CRM и Bitrix24',
     accountingSystems: 'Внедрение и восстановление бух. учета',
     training: 'Сопровождение и обучение бух. учету',
-    vatCitFiling: 'Подача VAT и CIT',
-    businessRegistration: 'Регистрация бизнеса',   // новое
-    proServices: 'PRO Services',                    // новое
-    accounting: 'Бухгалтерия и Налоги',                      // новое
-    taxServices: 'Налоги',                           // новое
-    crmErp: 'CRM & ERP',                             // новое
-    automation: 'Автоматизация',                     // новое
-    digitalSolutions: 'Цифровые решения',            // новое
+    vatCitFiling: 'Расчёт VAT и CIT',
+    businessRegistration: 'Запуск бизнеса',
+    proServices: 'Административная поддержка',
+    accounting: 'Бухгалтерия и Налоги',
+    taxServices: 'Налоги',
+    crmErp: 'CRM & ERP',
+    automation: 'Автоматизация',
+    digitalSolutions: 'Цифровые решения',
   },
   footer: {
     tagline: 'Бухгалтерский учёт, внедрение, автоматизация — ОАЭ и GCC',
@@ -241,9 +241,9 @@ export const commonRu = {
       firstbit: '1С и Firstbit — внедрение в ОАЭ',
       'accounting-systems': 'Внедрение и восстановление учёта в ОАЭ',
       training: 'Обучение и сопровождение учёта в ОАЭ',
-      'vat-cit-filing': 'Подача VAT и CIT в ОАЭ | Parse Consult',
-      'business-registration': 'Регистрация бизнеса в ОАЭ | Parse Consult',
-      'pro-services': 'PRO Services в ОАЭ | Parse Consult',
+      'vat-cit-filing': 'Расчёт VAT и CIT в ОАЭ | Parse Consult',
+      'business-registration': 'Запуск бизнеса в ОАЭ | Parse Consult',
+      'pro-services': 'Административная поддержка бизнеса в ОАЭ | Parse Consult',
       accounting: 'Бухгалтерия и налоговое сопровождение в ОАЭ | Parse Consult',
       'tax-services': 'Налоговое сопровождение в ОАЭ | Parse Consult',
       'crm-erp': 'CRM и ERP решения в ОАЭ | Parse Consult',
@@ -260,15 +260,15 @@ export const commonRu = {
       training:
         'обучение бухгалтерии ОАЭ, адаптация команды, обучение 1С, Zoho Books, сопровождение QuickBooks, Parse Consult',
       'vat-cit-filing':
-        'VAT ОАЭ, налог на прибыль ОАЭ, подача CIT, налоговое соответствие, FTA, Parse Consult',
+        'VAT ОАЭ, налог на прибыль ОАЭ, расчёт CIT, налоговое соответствие, FTA, Parse Consult',
       'business-registration':
-        'регистрация бизнеса ОАЭ, открытие компании ОАЭ, Mainland, Free Zone, лицензия ОАЭ, Parse Consult',
+        'запуск бизнеса ОАЭ, структура компании ОАЭ, Mainland, Free Zone, консалтинг, Parse Consult',
       'pro-services':
-        'PRO services ОАЭ, визы ОАЭ, Emirates ID, продление лицензии, административное сопровождение, Parse Consult',
+        'административная поддержка бизнеса ОАЭ, документы сотрудников, сопровождение, Parse Consult',
       accounting:
         'бухгалтерия ОАЭ, бухгалтерский учёт, финансовая отчётность, банковские сверки, финансовый анализ, Parse Consult',
       'tax-services':
-        'налоги ОАЭ, VAT регистрация, Corporate Tax, налоговое сопровождение, Parse Consult',
+        'налоги ОАЭ, расчёт VAT, Corporate Tax, налоговое сопровождение, Parse Consult',
       'crm-erp':
         'CRM ОАЭ, ERP ОАЭ, внедрение CRM, внедрение ERP, интеграция систем, автоматизация бизнеса, Parse Consult',
       automation:
@@ -286,15 +286,15 @@ export const commonRu = {
       training:
         'Сопровождение и обучение персонала в ОАЭ и GCC: регламенты и инструкции по ролям, практические занятия по 1С, Firstbit, Zoho Books и QuickBooks, сопровождение закрытия месяца и ответы на вопросы после запуска, чтобы команда уверенно работала в новой модели учёта.',
       'vat-cit-filing':
-        'Подача VAT и Corporate Tax (CIT) в ОАЭ: расчёты, подготовка и подача деклараций, сопровождение оплат и контроль соответствия требованиям.',
+        'Расчёт VAT и Corporate Tax (CIT) в ОАЭ: расчёты, подготовка налоговой отчётности, консультации и контроль соответствия требованиям.',
       'business-registration':
-        'Регистрация бизнеса в ОАЭ: подбор структуры и юрисдикции (Mainland, Free Zone), подготовка документов, получение лицензии и сопровождение на всех этапах открытия компании.',
+        'Запуск бизнеса в ОАЭ: консультации по выбору структуры и юрисдикции (Mainland, Free Zone), помощь в подготовке документов и сопровождение на всех этапах.',
       'pro-services':
-        'PRO Services в ОАЭ: оформление и продление виз, поддержка Emirates ID, продление лицензий, иммиграционные процедуры и взаимодействие с государственными органами.',
+        'Административная поддержка бизнеса в ОАЭ: консультации по документам сотрудников, организационным вопросам и взаимодействию с партнёрами.',
       accounting:
         'Бухгалтерия и налоговое сопровождение в ОАЭ: ведение бухгалтерского учёта, финансовая отчётность, банковские сверки, VAT и Corporate Tax сопровождение, финансовый анализ.',
       'tax-services':
-        'Налоговое сопровождение в ОАЭ: VAT регистрация и отчётность, Corporate Tax сопровождение и соблюдение налоговых требований.',
+        'Налоговое сопровождение в ОАЭ: расчёт VAT и отчётность, расчёт Corporate Tax и соблюдение налоговых требований.',
       'crm-erp':
         'CRM и ERP решения для бизнеса в ОАЭ: внедрение, настройка и интеграция систем управления клиентами и бизнес-процессами.',
       automation:
@@ -304,3 +304,4 @@ export const commonRu = {
     },
   },
 }
+ 

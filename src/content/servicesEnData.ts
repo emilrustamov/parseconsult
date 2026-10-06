@@ -188,7 +188,7 @@ export const serviceContentEn: Record<string, ServiceContent> = {
   'accounting-systems': {
     title: 'Accounting system implementation and recovery',
     description:
-      'Starting a business in the UAE or GCC? Set up accounting correctly from day one. If your company is already operating but your accounting is not structured, processes are chaotic, and reporting lacks transparency, we help you build a clear financial system through modern tools and process automation.',
+      'Growing a business in the UAE or GCC? Set up accounting correctly from day one. If your company is already operating but your accounting is not structured, processes are chaotic, and reporting lacks transparency, we help you build a clear financial system through modern tools and process automation.',
     groups: [
       {
         title: 'Turnkey implementation and accounting setup',
@@ -211,7 +211,7 @@ export const serviceContentEn: Record<string, ServiceContent> = {
       {
         title: 'Who this solution is for',
         items: [
-          'Companies at the business setup stage in the UAE.',
+          'Companies just beginning operations in the UAE.',
           'Businesses moving from Excel to ERP.',
           'Companies with chaotic accounting operations.',
           'Founders and managers who need transparency and control.',
@@ -275,16 +275,16 @@ export const serviceContentEn: Record<string, ServiceContent> = {
     ],
   },
   'vat-cit-filing': {
-    title: 'VAT and CIT Filing Help in the UAE',
+    title: 'VAT and CIT Calculation Help in the UAE',
     description:
-      'Filing taxes in the UAE does not have to be complicated. Our experienced tax specialists provide full-service support for VAT and Corporate Tax (CIT) filing, helping your business stay compliant while saving time and effort.',
+      'Tax calculations in the UAE do not have to be complicated. Our experienced tax specialists provide full-service support for VAT and Corporate Tax (CIT) calculation, helping your business stay compliant while saving time and effort.',
     groups: [
       {
-        title: 'Simple and Hassle-Free Tax Filing Process',
+        title: 'Simple and Hassle-Free Tax Calculation Process',
         items: [
           'Send us your bank statements.',
           'Provide primary documents (invoices, receipts, contracts).',
-          'Our tax experts handle the rest: data processing, calculations, filing, and payment support.',
+          'Our tax experts handle the rest: data processing, calculations, tax reporting preparation, and payment support.',
         ],
       },
       {
@@ -292,9 +292,9 @@ export const serviceContentEn: Record<string, ServiceContent> = {
         items: [
           'Review and process bank statements and financial documents.',
           'Calculate output and input VAT amounts (payable and recoverable VAT).',
-          'Prepare and submit VAT returns according to UAE regulations.',
+          'Prepare VAT tax reports according to UAE regulations.',
           'Compute Corporate Tax (CIT) from your financial data.',
-          'Prepare and file Corporate Tax returns.',
+          'Prepare Corporate Tax reports.',
           'Support tax payments and deadline control.',
           'Provide guidance to reduce risks and avoid penalties.',
         ],
@@ -313,8 +313,8 @@ export const serviceContentEn: Record<string, ServiceContent> = {
           'Stay compliant with UAE tax laws.',
           'Avoid costly penalties and fines.',
           'Keep accurate, audit-ready records.',
-          'From document processing to filing and payment, we manage the full cycle.',
-          'Get in touch today to simplify VAT and Corporate Tax filing in the UAE.',
+          'From document processing to reporting preparation and payment support, we manage the full cycle.',
+          'Get in touch today to simplify VAT and Corporate Tax calculation in the UAE.',
         ],
       },
     ],
@@ -323,29 +323,29 @@ export const serviceContentEn: Record<string, ServiceContent> = {
 
 
   'business-registration': {
-    title: 'Business Registration in the UAE',
+    title: 'Business Setup in the UAE',
     description:
-      'Setting up a company in the UAE opens major opportunities for growth, but choosing the right structure, jurisdiction, and launch strategy takes a professional approach. Parse Consult guides entrepreneurs and companies through the entire journey of starting a business in the UAE — from choosing the right setup to company registration, licensing, and completing all required procedures. We do more than help you get a license — we build a solid foundation for your business to operate and grow.',
+      'Starting a business in the UAE opens major opportunities for growth, but choosing the right structure, jurisdiction, and strategy takes a professional approach. Parse Consult advises entrepreneurs and companies: we help you choose the right setup, understand the required steps, and prepare to operate in the UAE. We do more than advise — we help build a solid foundation for your business to operate and grow.',
     groups: [
       {
-        title: 'End-to-end company setup support',
+        title: 'Business setup consulting',
         items: [
-          'Mainland and Free Zone company registration.',
+          'Consulting on Mainland and Free Zone formats.',
           'Selecting the optimal business structure.',
-          'Assistance obtaining your license.',
-          'Preparing and processing documents.',
-          'Trade name registration.',
-          'Support with visa processing.',
-          'Assistance opening a bank account.',
+          'Guidance on activity requirements.',
+          'Help preparing documents.',
+          'Guidance on choosing a business name.',
+          'Guidance on organizational matters.',
+          'Guidance on banking matters.',
         ],
       },
       {
-        title: 'Comprehensive registration support',
+        title: 'Comprehensive consulting support',
         items: [
           'Analyzing your business goals and requirements.',
-          'Choosing the best registration option.',
-          'Preparing the required documents.',
-          'Obtaining the license and completing procedures.',
+          'Choosing the best launch option.',
+          'Help preparing the required documents.',
+          'Guidance on next steps.',
           'Support after your business launch.',
           'We support you through every stage of setting up a business in the UAE.',
         ],
@@ -353,7 +353,7 @@ export const serviceContentEn: Record<string, ServiceContent> = {
       {
         title: 'Who this is for',
         items: [
-          'Entrepreneurs starting a business in the UAE.',
+          'Entrepreneurs growing a business in the UAE.',
           'Foreign investors.',
           'International companies entering the UAE market.',
           'Companies that need a reliable local partner.',
@@ -363,27 +363,27 @@ export const serviceContentEn: Record<string, ServiceContent> = {
         title: 'Our approach',
         items: [
           'Analyzing your business goals and requirements.',
-          'Choosing the best registration option.',
-          'Preparing the required documents.',
-          'Obtaining the license and completing procedures.',
+          'Choosing the best launch option.',
+          'Help preparing the required documents.',
+          'Guidance on next steps.',
           'Support after your business launch.',
         ],
       },
       {
         title: 'Support and follow-up',
         items: [
-          'Support with visa processing.',
-          'Assistance opening a bank account.',
-          'Support after company registration.',
+          'Guidance on organizational matters.',
+          'Guidance on banking matters.',
+          'Support after your business launch.',
           'Ongoing support with administrative processes.',
         ],
       },
       {
         title: 'Why choose us',
         items: [
-          'Comprehensive company setup support.',
+          'Comprehensive consulting support.',
           'Experience with both Mainland and Free Zone.',
-          'Support at every stage of registration.',
+          'Support at every stage of the launch.',
           'Support after your business launch.',
         ],
       },
@@ -399,8 +399,8 @@ export const serviceContentEn: Record<string, ServiceContent> = {
         },
         {
           number: '02',
-          title: 'A smooth registration process',
-          description: 'We handle communication with the relevant authorities and manage every step of the process.',
+          title: 'A clear launch process',
+          description: 'We help you understand the required steps and manage every stage of preparation.',
         },
         {
           number: '03',
@@ -411,27 +411,27 @@ export const serviceContentEn: Record<string, ServiceContent> = {
     },
   },
   'pro-services': {
-    title: 'PRO Services in the UAE',
+    title: 'Administrative Support in the UAE',
     description:
-      'Running a company in the UAE means constant interaction with government authorities, ongoing document renewals, and compliance with local regulations. Parse Consult helps businesses manage administrative processes efficiently, reducing the burden on owners and staff.',
+      'Running a company in the UAE involves administrative processes, document preparation, and compliance with local regulations. Parse Consult advises businesses on administrative matters, reducing the burden on owners and staff.',
     groups: [
       {
         title: 'Comprehensive support for your business',
         items: [
-          'Visa processing and renewal.',
-          'Emirates ID support.',
-          'Immigration procedures.',
+          'Guidance on employee documentation.',
+          'Guidance on employee organizational matters.',
+          'Guidance on administrative procedures.',
           'Employee documentation.',
-          'Government approvals.',
-          'Document attestation.',
+          'Guidance on required approvals.',
+          'Help preparing documents.',
         ],
       },
       {
         title: 'Comprehensive administrative support',
         items: [
-          'License renewals.',
-          'Government approvals.',
-          'We manage the key administrative processes involved in running a business and employing staff in the UAE.',
+          'Reminders about document deadlines.',
+          'Guidance on required approvals.',
+          'We help you navigate the key administrative processes involved in running a business in the UAE.',
         ],
       },
       {
@@ -448,18 +448,18 @@ export const serviceContentEn: Record<string, ServiceContent> = {
         items: [
           'Analyzing the administrative processes you need.',
           'Preparing and processing documents.',
-          'Liaising with government authorities.',
+          'Guidance on working with partners.',
           'Tracking processes and deadlines.',
-          'Support through to completion of the required procedures.',
+          'Support through to completion of the required steps.',
         ],
       },
       {
         title: 'Support and follow-up',
         items: [
           'Ongoing administrative support for your business.',
-          'Processing and renewing required documents.',
-          'Support with visa and immigration matters.',
-          'Support with government approvals.',
+          'Help preparing required documents.',
+          'Guidance on employee organizational matters.',
+          'Guidance on required approvals.',
         ],
       },
       {
@@ -505,8 +505,8 @@ export const serviceContentEn: Record<string, ServiceContent> = {
           'Financial statement preparation.',
           'Transaction monitoring.',
           'Bank reconciliations.',
-          'VAT registration and filing.',
-          'Corporate Tax support.',
+          'VAT calculation and reporting.',
+          'Corporate Tax calculation.',
           'Financial analysis.',
         ],
       },
@@ -516,8 +516,8 @@ export const serviceContentEn: Record<string, ServiceContent> = {
           'Bookkeeping for day-to-day financial control.',
           'Financial statement preparation.',
           'Transaction monitoring and bank reconciliations.',
-          'VAT registration and filing.',
-          'Corporate Tax support.',
+          'VAT calculation and reporting.',
+          'Corporate Tax calculation.',
           'Financial analysis.',
           'We build a financial system that helps you track your numbers and stay compliant with tax requirements.',
         ],
@@ -547,8 +547,8 @@ export const serviceContentEn: Record<string, ServiceContent> = {
         items: [
           'Regular bookkeeping.',
           'Financial statement preparation.',
-          'VAT registration and filing.',
-          'Corporate Tax support.',
+          'VAT calculation and reporting.',
+          'Corporate Tax calculation.',
           'Financial analysis and transaction monitoring.',
         ],
       },
