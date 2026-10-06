@@ -75,7 +75,7 @@ export const routes: RouteRecordRaw[] = [
         component: () => import('@/views/ServicePage.vue'),
       },
       {
-        path: ':pathMatch(.*)+',
+        path: ':pathMatch(.+)+',
         name: 'not-found',
         component: () => import('@/views/NotFoundPage.vue'),
       },
