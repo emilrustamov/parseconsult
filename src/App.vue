@@ -15,11 +15,12 @@ const setPreloaderCookie = (): void => {
   document.cookie = `${PRELOADER_COOKIE_NAME}=1; max-age=${PRELOADER_COOKIE_MAX_AGE_SECONDS}; path=/; SameSite=Lax`
 }
 
-const showPreloader = ref(!hasPreloaderCookie())
+const showPreloader = ref(false)
 
 onMounted(() => {
-  if (!showPreloader.value) return
+  if (hasPreloaderCookie()) return
 
+  showPreloader.value = true
   setPreloaderCookie()
   window.setTimeout(() => {
     showPreloader.value = false
