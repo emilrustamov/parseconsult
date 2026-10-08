@@ -210,7 +210,7 @@ export const commonRu = {
   seo: {
     homeTitle: 'Parse Consult — учёт и автоматизация в ОАЭ',
     homeDescription:
-      'Внедрение 1С и Firstbit, Zoho Books и QuickBooks в ОАЭ и странах GCC. Восстановление учета, обучение персонала и автоматизация финансовых процессов.',
+      'Восстановление учёта, налоги, открытие компании, поддержка бизнеса в ОАЭ.',
     homeKeywords:
       'Parse Consult, бухгалтерия ОАЭ, GCC, 1С, Firstbit, Zoho Books, QuickBooks, автоматизация учёта, МСФО, VAT, налог на прибыль, внедрение учёта',
     contactTitle: 'Контакты Parse Consult — ОАЭ и GCC',

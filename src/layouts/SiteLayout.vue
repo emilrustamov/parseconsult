@@ -16,6 +16,7 @@ const currentYear = new Date().getFullYear()
 const route = useRoute()
 const router = useRouter()
 const { localized } = useLocaleRoute()
+const instagramLink = socialLinkDefs.find((s) => s.network === 'instagram')
 
 type NavLink =
   | { label: string; to: RouteLocationRaw }
@@ -297,6 +298,16 @@ const isHomeRoute = computed(() => route.matched.some((record) => record.name ==
               </svg>
             </a>
             <a
+              v-if="instagramLink"
+              :href="instagramLink.href"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-pink-600 transition hover:bg-pink-50 hover:text-pink-700"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="t(instagramLink.labelKey)"
+            >
+              <SocialNetworkIcon network="instagram" class="h-5 w-5" />
+            </a>
+            <a
               :href="headerWhatsappHref"
               class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-emerald-600 transition hover:bg-emerald-50 hover:text-emerald-700"
               target="_blank"
@@ -309,7 +320,7 @@ const isHomeRoute = computed(() => route.matched.some((record) => record.name ==
                 />
               </svg>
             </a>
-          </div>
+          </div> 
 
             <div
             class="flex shrink-0 items-center rounded-full border border-slate-200/90 bg-white/80 p-0.5 shadow-sm"
@@ -440,6 +451,16 @@ const isHomeRoute = computed(() => route.matched.some((record) => record.name ==
                       d="M21.49 4.52a1.5 1.5 0 00-1.63-.2L3.16 12.03a1.5 1.5 0 00.13 2.75l3.84 1.4 1.44 4.64a1.5 1.5 0 002.63.51l2.18-2.65 3.59 2.62a1.5 1.5 0 002.35-.9L22 6.05a1.5 1.5 0 00-.51-1.53zm-3.15 3.34l-8 7.76-.69 2.08-.88-2.85a1.5 1.5 0 00-.92-.94l-2.28-.83 12.77-5.95zm-6.78 8.87l5.62-5.45-4.67 5.68-.95-.23z"
                     />
                   </svg>
+                </a>
+                <a
+                  v-if="instagramLink"
+                  :href="instagramLink.href"
+                  class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-pink-600 transition hover:bg-pink-50 hover:text-pink-700"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :aria-label="t(instagramLink.labelKey)"
+                >
+                  <SocialNetworkIcon network="instagram" class="h-5 w-5" />
                 </a>
                 <a
                   :href="headerWhatsappHref"

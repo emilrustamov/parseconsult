@@ -210,7 +210,7 @@ export const commonEn = {
   seo: {
     homeTitle: 'Parse Consult — Accounting & Automation in the UAE',
     homeDescription:
-      'Implementation of 1C and Firstbit, Zoho Books and QuickBooks in the UAE and GCC. Accounting recovery, staff training and automation of financial processes.',
+      'Accounting recovery, taxes, company setup, business support in the UAE.',
     homeKeywords:
       'Parse Consult, UAE accounting, GCC, 1C, Firstbit, Zoho Books, QuickBooks, accounting automation, IFRS, VAT, corporate tax, accounting implementation',
     contactTitle: 'Contact Parse Consult — UAE & GCC',
