@@ -26,14 +26,14 @@ const locales = ['en', 'ru']
 
 const urlEntry = ({ path, priority, changefreq }) => {
   const alternates = locales
-    .map((loc) => `    <xhtml:link rel="alternate" hreflang="${loc}" href="${SITE_URL}/${loc}${path}"/>`)
+    .map((loc) => `    <xhtml:link rel="alternate" hreflang="${loc}" href="${SITE_URL}/${loc}${path}/"/>`)
     .join('\n')
   return locales
     .map(
       (loc) => `  <url>
-    <loc>${SITE_URL}/${loc}${path}</loc>
+    <loc>${SITE_URL}/${loc}${path}/</loc>
 ${alternates}
-    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}/en${path}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}/en${path}/"/>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`,
