@@ -80,10 +80,27 @@ const upsertHreflang = (hreflang: string, href: string): void => {
   el.setAttribute('href', href)
 }
 
-const applyHreflangs = (): void => {
-  upsertHreflang('en', `${SITE_URL}/en`)
-  upsertHreflang('ru', `${SITE_URL}/ru`)
-  upsertHreflang('x-default', `${SITE_URL}/en`)
+/**
+ * Pages are prerendered as folders (dist/<route>/index.html), so the server
+ * redirects every URL without a trailing slash to the slash version. All
+ * canonical / hreflang / og:url values therefore use the trailing-slash form,
+ * the same as sitemap.xml.
+ */
+const withTrailingSlash = (path: string): string => (path.endsWith('/') ? path : `${path}/`)
+
+/** `/ru/services/accounting` -> `/services/accounting` ('' for the home page). */
+const pathWithoutLocale = (path: string): string => {
+  const rest = path.replace(/^\/(ru|en)(?=\/|$)/, '')
+  return rest.replace(/\/+$/, '')
+}
+
+const pageUrl = (loc: 'en' | 'ru', restPath: string): string => `${SITE_URL}/${loc}${restPath}/`
+
+const applyHreflangs = (path: string): void => {
+  const rest = pathWithoutLocale(path)
+  upsertHreflang('en', pageUrl('en', rest))
+  upsertHreflang('ru', pageUrl('ru', rest))
+  upsertHreflang('x-default', pageUrl('en', rest))
 }
 
 const upsertCanonical = (href: string): void => {
@@ -212,13 +229,13 @@ const buildBreadcrumbJsonLd = (
         '@type': 'ListItem',
         position: 1,
         name: t('seo.breadcrumbHome'),
-        item: `${SITE_URL}/${loc}`,
+        item: `${SITE_URL}/${loc}/`,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: service.title,
-        item: `${SITE_URL}/${loc}/services/${slug}`,
+        item: `${SITE_URL}/${loc}/services/${slug}/`,
       },
     ],
   }
@@ -283,14 +300,14 @@ const buildServiceJsonLd = (route: RouteLocationNormalizedLoaded, i18n: I18nInst
       '@type': 'Country',
       name: 'United Arab Emirates',
     },
-    url: `${SITE_URL}/${loc}/services/${slug}`,
+    url: `${SITE_URL}/${loc}/services/${slug}/`,
     inLanguage: lang,
   }
 }
 
 const applySeo = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): void => {
   const meta = buildMeta(route, i18n)
-  const canonicalUrl = `${SITE_URL}${meta.path}`
+  const canonicalUrl = `${SITE_URL}${withTrailingSlash(meta.path)}`
   const siteName = (i18n.global.t as (key: string) => string)('brand.siteName')
   const ogImageAlt = (i18n.global.t as (key: string) => string)('seo.ogImageAlt')
   const ogLocale = currentLocale(i18n) === 'en' ? 'en_US' : 'ru_RU'
@@ -315,7 +332,7 @@ const applySeo = (route: RouteLocationNormalizedLoaded, i18n: I18nInstance): voi
   upsertMetaTag('twitter:image', DEFAULT_IMAGE)
   upsertMetaTag('twitter:image:alt', ogImageAlt)
   upsertCanonical(canonicalUrl)
-  applyHreflangs()
+  applyHreflangs(meta.path)
   upsertJsonLd('organization', buildOrganizationJsonLd(i18n))
   upsertJsonLd('website', buildWebsiteJsonLd(i18n))
 
@@ -358,7 +375,7 @@ export const buildHeadData = (
   i18n: I18nInstance,
 ): { html: string; lang: 'en' | 'ru' } => {
   const meta = buildMeta(route, i18n)
-  const canonicalUrl = `${SITE_URL}${meta.path}`
+  const canonicalUrl = `${SITE_URL}${withTrailingSlash(meta.path)}`
   const t = i18n.global.t as (key: string) => string
   const siteName = t('brand.siteName')
   const ogImageAlt = t('seo.ogImageAlt')
@@ -387,9 +404,10 @@ export const buildHeadData = (
   tags.push(`<meta name="twitter:image" content="${escapeHtml(DEFAULT_IMAGE)}">`)
   tags.push(`<meta name="twitter:image:alt" content="${escapeHtml(ogImageAlt)}">`)
   tags.push(`<link rel="canonical" href="${escapeHtml(canonicalUrl)}">`)
-  tags.push(`<link rel="alternate" hreflang="en" href="${SITE_URL}/en">`)
-  tags.push(`<link rel="alternate" hreflang="ru" href="${SITE_URL}/ru">`)
-  tags.push(`<link rel="alternate" hreflang="x-default" href="${SITE_URL}/en">`)
+  const restPath = pathWithoutLocale(meta.path)
+  tags.push(`<link rel="alternate" hreflang="en" href="${pageUrl('en', restPath)}">`)
+  tags.push(`<link rel="alternate" hreflang="ru" href="${pageUrl('ru', restPath)}">`)
+  tags.push(`<link rel="alternate" hreflang="x-default" href="${pageUrl('en', restPath)}">`)
 
   tags.push(
     `<script type="application/ld+json">${JSON.stringify(buildOrganizationJsonLd(i18n))}</script>`,
