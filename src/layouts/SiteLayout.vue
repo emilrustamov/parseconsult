@@ -10,6 +10,7 @@ import { applyDocumentLang, persistLocale } from '@/i18n'
 import type { AppLocale } from '@/i18n'
 import { socialLinkDefs } from '@/socialLinks'
 import { DEVELOPER_SITE_URL } from '@/developerSite'
+import { trackWhatsAppClick } from '@/analytics'
 
 const { t, locale } = useI18n()
 const currentYear = new Date().getFullYear()
@@ -309,6 +310,7 @@ const isHomeRoute = computed(() => route.matched.some((record) => record.name ==
             </a>
             <a
               :href="headerWhatsappHref"
+              @click="trackWhatsAppClick"
               class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-emerald-600 transition hover:bg-emerald-50 hover:text-emerald-700"
               target="_blank"
               rel="noopener noreferrer"
@@ -464,6 +466,7 @@ const isHomeRoute = computed(() => route.matched.some((record) => record.name ==
                 </a>
                 <a
                   :href="headerWhatsappHref"
+                  @click="trackWhatsAppClick"
                   class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-emerald-600 transition hover:bg-emerald-50 hover:text-emerald-700"
                   target="_blank"
                   rel="noopener noreferrer"
