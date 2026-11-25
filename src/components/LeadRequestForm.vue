@@ -296,6 +296,22 @@ watch(
   { immediate: true }
 )
 
+function trackLead(kind: 'api' | 'mailto'): void {
+  try {
+    const w = window as unknown as { dataLayer?: Record<string, unknown>[] }
+    w.dataLayer = w.dataLayer || []
+    w.dataLayer.push({
+      event: 'lead_form_submit',
+      form_kind: kind,
+      contact_methods: form.contactMethods.join(','),
+      services: form.services.join(','),
+      page_lang: document.documentElement.lang,
+    })
+  } catch {
+    // аналитика не должна ломать отправку формы
+  }
+}
+
 async function submitContactForm(): Promise<void> {
   if (form.website.trim().length > 0) {
     return
@@ -363,6 +379,7 @@ async function submitContactForm(): Promise<void> {
       }
       submitKind.value = 'api'
       formSuccess.value = true
+      trackLead('api')
     } catch {
       submitError.value = true
     } finally {
@@ -377,6 +394,7 @@ async function submitContactForm(): Promise<void> {
   submitKind.value = 'mailto'
   formSuccess.value = true
   formSubmitting.value = false
+  trackLead('mailto')
 }
 
 function isContactOptionActive(option: ContactMethod): boolean {
