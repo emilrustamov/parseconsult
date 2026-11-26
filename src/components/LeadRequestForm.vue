@@ -299,14 +299,19 @@ watch(
 function trackLead(kind: 'api' | 'mailto'): void {
   try {
     const w = window as unknown as { dataLayer?: Record<string, unknown>[] }
-    w.dataLayer = w.dataLayer || []
-    w.dataLayer.push({
+    const layer = (w.dataLayer = w.dataLayer || [])
+    const lang = document.documentElement.lang
+    layer.push({
       event: 'lead_form_submit',
       form_kind: kind,
       contact_methods: form.contactMethods.join(','),
       services: form.services.join(','),
-      page_lang: document.documentElement.lang,
+      page_lang: lang,
     })
+    // по одному событию на каждую выбранную услугу (для отчёта «заявки по услугам»)
+    for (const service of form.services) {
+      layer.push({ event: 'lead_service', service, form_kind: kind, page_lang: lang })
+    }
   } catch {
     // аналитика не должна ломать отправку формы
   }
